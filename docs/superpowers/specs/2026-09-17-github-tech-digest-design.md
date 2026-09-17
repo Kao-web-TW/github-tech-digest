@@ -36,8 +36,8 @@ Claude 內容分析
       ▼
 篩選與排序 (5-10 個浮動，依當天品質調整)
       │
-      ├──► 稽查紀錄：完整原始候選 + 篩選理由 → 寫入 dated 檔案 → git commit
-      │            （本機 repo：D:\Claude\Project_github）
+      ├──► 稽查紀錄：完整原始候選 + 篩選理由 → 寫入 dated 檔案 → git commit + push
+      │            （GitHub 遠端 repo，使用者可隨時 git pull 到本機同步備份）
       │
       ├──► Artifact 發布：更新同一個網頁連結（手機/電腦皆可開）
       │
@@ -59,12 +59,15 @@ Claude 內容分析
 - 對不確定的判斷需明確標註「推測」而非武斷陳述
 
 ### 3. 稽查紀錄（Audit Log）
+
+> **架構修正（2026-09-17）**：cloud routine 執行於 Anthropic 雲端環境，無法存取使用者本機檔案系統或本機 git repo。因此稽查紀錄改為 commit + push 到一個 **GitHub 遠端 repo**（cloud routine 的 session 直接 clone 這個 repo 並操作），而非原本設想的本機 `D:\Claude\Project_github`。使用者可以直接在 github.com 上瀏覽歷史，也可以隨時 `git pull` 同步一份到本機做為備份，效果與本機 git 紀錄相近，且不受筆電是否開機影響。
+
 - 每次執行寫入一份帶日期的紀錄檔（如 `digest/2026-09-17.md` 或 `.json`），內容包含：
   - 當次使用的完整搜尋條件
   - 所有候選 repo（含被篩掉者）與篩選/淘汰理由
   - 最終入選清單與推薦理由
   - 執行狀態（成功/部分失敗/失敗原因）
-- 自動 `git commit` 到使用者本機 repo，作為權威歷史紀錄，使用者可用 `git log` / `git diff` 隨時回溯任一天的完整判斷過程。
+- cloud routine 於每次執行結束時 `git commit` + `git push` 到該 GitHub repo，作為權威歷史紀錄，使用者可用 GitHub 網頁或本機 `git pull` 後的 `git log` / `git diff` 隨時回溯任一天的完整判斷過程。
 
 ### 4. 發布（Artifact）
 - 產出一個 Artifact 網頁，內容含當日精選清單（含分析內容）與歷史瀏覽入口。
@@ -84,7 +87,8 @@ Claude 內容分析
 
 1. **GitHub Personal Access Token**：免費申請，用於提高 Search API 查詢額度。
 2. **Discord Webhook URL**：需先建立一個 Discord 伺服器頻道並產生 Webhook 網址。
-3. **本機 git repo**：`D:\Claude\Project_github`（已於設計階段初始化）。
+3. **GitHub 遠端 repo**：作為稽查紀錄的權威儲存位置，供 cloud routine clone/commit/push；使用者本機 `D:\Claude\Project_github`（已於設計階段初始化為本機 git repo）可設為此遠端的 clone，供日後 `git pull` 同步備份。
+4. **Claude cloud routine 環境**：透過 `schedule` skill 建立，需綁定上述 GitHub repo 作為 session 的 git source。
 
 ## 驗證計畫
 
