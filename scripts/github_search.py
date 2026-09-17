@@ -18,13 +18,19 @@ SEARCH_TOPICS = [
 ]
 
 
-def build_query(days_back: int, min_stars: int, reference_date=None) -> str:
-    """Build a GitHub search qualifier string for recent, AI-adjacent repos."""
+def build_query(topic: str, days_back: int, min_stars: int, reference_date=None) -> str:
+    """Build a GitHub search qualifier string for one topic, recent + min stars.
+
+    GitHub's repository search API does not support OR between qualifiers
+    (only between free-text terms) — confirmed live: a query like
+    "topic:a OR topic:b" either errors or silently returns zero results.
+    So each topic is queried separately here, and search_candidates() below
+    merges the per-topic results.
+    """
     if reference_date is None:
         reference_date = datetime.now(timezone.utc)
     since = (reference_date - timedelta(days=days_back)).strftime("%Y-%m-%d")
-    topic_clause = " OR ".join(f"topic:{topic}" for topic in SEARCH_TOPICS)
-    return f"({topic_clause}) created:>={since} stars:>={min_stars}"
+    return f"topic:{topic} created:>={since} stars:>={min_stars}"
 
 
 def parse_search_response(data: dict) -> list:
@@ -43,11 +49,7 @@ def parse_search_response(data: dict) -> list:
     return candidates
 
 
-def search_candidates(days_back: int = 2, min_stars: int = 20, per_page: int = 50,
-                       token=None) -> list:
-    """Run the search against the live GitHub API and return parsed candidates."""
-    token = token or os.environ.get("GITHUB_TOKEN")
-    query = build_query(days_back, min_stars)
+def _run_query(query: str, per_page: int, token) -> list:
     params = urllib.parse.urlencode({
         "q": query,
         "sort": "stars",
@@ -68,12 +70,27 @@ def search_candidates(days_back: int = 2, min_stars: int = 20, per_page: int = 5
     return parse_search_response(data)
 
 
+def search_candidates(days_back: int = 2, min_stars: int = 20, per_page: int = 50,
+                       token=None) -> list:
+    """Query each configured topic separately, merge, dedupe, and rank by stars."""
+    token = token or os.environ.get("GITHUB_TOKEN")
+    merged = {}
+    for topic in SEARCH_TOPICS:
+        query = build_query(topic, days_back, min_stars)
+        for candidate in _run_query(query, per_page, token):
+            existing = merged.get(candidate["full_name"])
+            if existing is None or candidate["stars"] > existing["stars"]:
+                merged[candidate["full_name"]] = candidate
+    ranked = sorted(merged.values(), key=lambda c: c["stars"], reverse=True)
+    return ranked[:per_page]
+
+
 if __name__ == "__main__":
     import sys
-    query = build_query(days_back=2, min_stars=20)
+    query_summary = " | ".join(build_query(t, 2, 20) for t in SEARCH_TOPICS)
     try:
         candidates = search_candidates(days_back=2, min_stars=20)
-        print(json.dumps({"query": query, "candidates": candidates}, indent=2, ensure_ascii=False))
+        print(json.dumps({"query": query_summary, "candidates": candidates}, indent=2, ensure_ascii=False))
     except Exception as exc:
-        print(json.dumps({"query": query, "candidates": [], "error": str(exc)}, indent=2, ensure_ascii=False))
+        print(json.dumps({"query": query_summary, "candidates": [], "error": str(exc)}, indent=2, ensure_ascii=False))
         sys.exit(1)
