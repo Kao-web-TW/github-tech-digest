@@ -365,7 +365,7 @@ git push
 - Test: `scripts/tests/test_audit_log.py`
 
 **Interfaces:**
-- Consumes: 無（獨立模組，`record` 為 dict，形如 Task 3 candidate + `selected: bool, reason: str` 欄位，外加頂層 `date, status, query, candidates, error(可選)`）
+- Consumes: 無（獨立模組，`record` 為 dict，`candidates` 內每個項目只需 `full_name, html_url, stars, reason, selected` 五個欄位——即審計所需的最小集合，非 Task 3 candidate 的完整原始物件；`reason` 是稽查稽核的核心依據，欄位定義與下方 SAMPLE_RECORD 及 Task 6 的 record JSON 範例一致，外加頂層 `date, status, query, candidates, error(可選)`）
 - Produces:
   - `render_audit_markdown(record: dict) -> str`
   - `write_audit_log(record: dict, repo_root: Path) -> Path`
