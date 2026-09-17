@@ -69,4 +69,11 @@ def search_candidates(days_back: int = 2, min_stars: int = 20, per_page: int = 5
 
 
 if __name__ == "__main__":
-    print(json.dumps(search_candidates(), indent=2, ensure_ascii=False))
+    import sys
+    query = build_query(days_back=2, min_stars=20)
+    try:
+        candidates = search_candidates(days_back=2, min_stars=20)
+        print(json.dumps({"query": query, "candidates": candidates}, indent=2, ensure_ascii=False))
+    except Exception as exc:
+        print(json.dumps({"query": query, "candidates": [], "error": str(exc)}, indent=2, ensure_ascii=False))
+        sys.exit(1)

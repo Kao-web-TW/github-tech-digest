@@ -10,14 +10,16 @@ description: 每日抓取、分析並發布 GitHub 新興 AI 整合工具精選�
 ## 1. 取得候選 repo
 
 ```bash
-python scripts/github_search.py > /tmp/candidates.json
+python scripts/github_search.py > /tmp/search_result.json
 ```
 
-若此指令失敗（非 0 結束碼），將 `status` 設為 `"failed"`、`error` 設為錯誤訊息、`candidates` 設為空陣列，直接跳到步驟 4（略過步驟 2、3、5 的內容分析與 Artifact 精選）。
+這個指令一定會印出合法 JSON（格式：`{"query": "...", "candidates": [...]}`，失敗時額外帶 `"error"` 欄位、`candidates` 為空陣列，結束碼非 0）。無論成功或失敗都繼續往下執行，不要中斷。
 
 ## 2. 逐一分析候選
 
-讀取 `/tmp/candidates.json`，對每個候選 repo：
+讀取 `/tmp/search_result.json` 的 `candidates` 欄位。若該次執行有 `error` 欄位（代表步驟 1 失敗），略過本節的逐一分析，直接進入步驟 3 組成失敗狀態的 record。
+
+對每個候選 repo：
 
 - 用 `curl -s https://raw.githubusercontent.com/<full_name>/HEAD/README.md` 取得 README；若失敗改用 `curl -s -H "Accept: application/vnd.github.raw" https://api.github.com/repos/<full_name>/readme`
 - 判讀並記錄：功能摘要（做什麼）、使用的模型/技術、本地執行可行性、規格與限制
@@ -26,13 +28,18 @@ python scripts/github_search.py > /tmp/candidates.json
 
 ## 3. 組成 record
 
-寫入 `/tmp/record.json`，格式：
+寫入 `/tmp/record.json`。`query` 欄位直接取自 `/tmp/search_result.json` 的 `query` 欄位（無論成功或失敗都有值）。
+
+- 若步驟 1 沒有 `error`：`status` 為 `"success"`，`candidates` 為步驟 2 分析後的完整清單（含 `selected`/`reason`）。
+- 若步驟 1 有 `error`：`status` 為 `"failed"`，`error` 欄位帶入該訊息，`candidates` 為空陣列。
+
+格式：
 
 ```json
 {
   "date": "2026-09-17",
   "status": "success",
-  "query": "<步驟1實際使用的查詢字串，來自 github_search.py 印出的內容>",
+  "query": "<來自 /tmp/search_result.json 的 query 欄位>",
   "candidates": [
     {
       "full_name": "owner/repo",
