@@ -38,6 +38,28 @@ class TestSendDiscordNotification(unittest.TestCase):
         with unittest.mock.patch("discord_notify.urllib.request.urlopen", side_effect=OSError("boom")):
             self.assertFalse(send_discord_notification("https://discord.example/webhook", {"embeds": []}))
 
+    def test_sends_a_custom_user_agent(self):
+        captured = {}
+
+        class FakeResponse:
+            status = 204
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *args):
+                return False
+
+        def fake_urlopen(request, timeout=15):
+            captured["headers"] = dict(request.headers)
+            return FakeResponse()
+
+        with unittest.mock.patch("discord_notify.urllib.request.urlopen", fake_urlopen):
+            send_discord_notification("https://discord.example/webhook", {"embeds": []})
+
+        self.assertIn("User-agent", captured["headers"])
+        self.assertNotIn("Python-urllib", captured["headers"]["User-agent"])
+
 
 if __name__ == "__main__":
     unittest.main()

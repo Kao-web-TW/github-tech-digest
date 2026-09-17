@@ -35,7 +35,10 @@ def send_discord_notification(webhook_url: str, payload: dict) -> bool:
     request = urllib.request.Request(
         webhook_url,
         data=data,
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Content-Type": "application/json",
+            "User-Agent": "github-tech-digest (+https://github.com/Kao-web-TW/github-tech-digest)",
+        },
         method="POST",
     )
     try:
