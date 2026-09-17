@@ -47,7 +47,7 @@ Claude 內容分析
 ### 1. GitHub 搜尋模組
 - 使用 GitHub Search API（repositories 端點）。
 - 查詢條件採開放式策略：AI/ML 相關 topics（如 ai, machine-learning, llm, agent, genai 等）交叉「近期建立」或「star 快速成長」條件，而非侷限於使用者預先列出的關鍵字。
-- 需要 GitHub Personal Access Token 以取得較高的 API 查詢額度（公開資料讀取權限即可，免費申請）。
+- 每日僅需一次查詢，未認證請求的 Search API 額度（10 次/分鐘）已足夠，故不需要申請 GitHub Personal Access Token 這項前置條件。
 
 ### 2. 內容分析（Claude 執行時直接完成）
 對每個候選 repo：
@@ -85,10 +85,9 @@ Claude 內容分析
 
 ## 前置條件（實作階段需引導使用者完成）
 
-1. **GitHub Personal Access Token**：免費申請，用於提高 Search API 查詢額度。
+1. **GitHub 遠端 repo**：作為稽查紀錄的權威儲存位置，供 cloud routine clone/commit/push；使用者本機 `D:\Claude\Project_github`（已於設計階段初始化為本機 git repo）可設為此遠端的 clone，供日後 `git pull` 同步備份。
 2. **Discord Webhook URL**：需先建立一個 Discord 伺服器頻道並產生 Webhook 網址。
-3. **GitHub 遠端 repo**：作為稽查紀錄的權威儲存位置，供 cloud routine clone/commit/push；使用者本機 `D:\Claude\Project_github`（已於設計階段初始化為本機 git repo）可設為此遠端的 clone，供日後 `git pull` 同步備份。
-4. **Claude cloud routine 環境**：透過 `schedule` skill 建立，需綁定上述 GitHub repo 作為 session 的 git source。
+3. **Claude cloud routine 環境**：透過 `schedule` skill 建立，需綁定上述 GitHub repo 作為 session 的 git source；需另外確認此密鑰（Discord Webhook URL）在 cloud 執行環境中的傳遞方式。
 
 ## 驗證計畫
 
