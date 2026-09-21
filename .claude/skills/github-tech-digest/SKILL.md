@@ -9,11 +9,38 @@ description: 每日抓取、分析並發布 GitHub 新興 AI 整合工具精選�
 
 ## 1. 取得候選 repo
 
-```bash
-python scripts/github_search.py > /tmp/search_result.json
+> `scripts/github_search.py` 只用於本機開發/試跑時的參考實作。**在 cloud routine 執行環境中不要執行它**——它呼叫的 `api.github.com/search/repositories` 在這個環境會被拒絕存取（session 的網路權限只綁定在被指定的 repo，跨 repo 的全站搜尋 API 一律回 403）。
+
+改為直接呼叫 `mcp__github__search_repositories` 工具，對以下 5 個 topic **分別各查一次**（GitHub 搜尋 API 不支援用 `OR` 合併多個 `topic:` 條件，必須逐一查詢再自行合併）：
+
+`artificial-intelligence`、`machine-learning`、`llm`、`ai-agent`、`generative-ai`
+
+先用 `date -u -d '2 days ago' +%Y-%m-%d` 取得 `<SINCE>`（2 天前的日期），對每個 topic 呼叫：
+
+```json
+{"query": "topic:<TOPIC> created:>=<SINCE> stars:>=20", "sort": "stars", "order": "desc", "perPage": 50}
 ```
 
-這個指令一定會印出合法 JSON（格式：`{"query": "...", "candidates": [...]}`，失敗時額外帶 `"error"` 欄位、`candidates` 為空陣列，結束碼非 0）。無論成功或失敗都繼續往下執行，不要中斷。
+把 5 次呼叫回傳的 `items` 合併：依 `full_name` 去重（重複出現時保留 `stargazers_count` 較高的那筆），依 `stargazers_count` 由高到低排序，取前 50 筆，轉成以下欄位並寫入 `/tmp/search_result.json`：
+
+```json
+{
+  "query": "topic:artificial-intelligence created:>=<SINCE> stars:>=20 | topic:machine-learning created:>=<SINCE> stars:>=20 | topic:llm created:>=<SINCE> stars:>=20 | topic:ai-agent created:>=<SINCE> stars:>=20 | topic:generative-ai created:>=<SINCE> stars:>=20",
+  "candidates": [
+    {
+      "full_name": "owner/repo",
+      "html_url": "https://github.com/owner/repo",
+      "description": "...",
+      "stars": 123,
+      "created_at": "2026-...",
+      "topics": ["..."],
+      "language": "Python"
+    }
+  ]
+}
+```
+
+若任一次 `mcp__github__search_repositories` 呼叫失敗（回傳錯誤或逾時），記錄失敗原因，寫入 `{"query": "<已知的查詢字串，未完成的部分省略>", "candidates": [], "error": "<錯誤訊息全文>"}` 到 `/tmp/search_result.json`。無論成功或失敗都繼續往下執行，不要中斷。
 
 ## 2. 逐一分析候選
 
@@ -21,7 +48,7 @@ python scripts/github_search.py > /tmp/search_result.json
 
 對每個候選 repo：
 
-- 用 `curl -s https://raw.githubusercontent.com/<full_name>/HEAD/README.md` 取得 README；若失敗改用 `curl -s -H "Accept: application/vnd.github.raw" https://api.github.com/repos/<full_name>/readme`
+- 用 `curl -s https://raw.githubusercontent.com/<full_name>/HEAD/README.md` 取得 README（這是純檔案 CDN，非 GitHub API，不受 session 的 repo 範圍限制，對任何公開 repo 都能存取）。**若失敗不要改試 `api.github.com/repos/<full_name>/readme`**——那是 GitHub API 端點，對非本 session 配置的 repo 會被拒絕存取；README 抓取失敗就直接跳過該候選，於 `reason` 中註明「README 無法取得」
 - 判讀並記錄：功能摘要（做什麼）、使用的模型/技術、本地執行可行性、規格與限制
 - 決定 `selected: true/false` 與一句話 `reason`；不確定的判斷要在 reason 中明確標註「推測」
 - 從所有候選中選出品質最佳的 5-10 個標記 `selected: true`，其餘標記 `false` 並附上淘汰理由（例如 star 數過低、與 AI/ML 無明顯關聯、功能重複）
