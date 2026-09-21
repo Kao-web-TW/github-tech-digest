@@ -81,9 +81,15 @@ description: 每日抓取、分析並發布 GitHub 新興 AI 整合工具精選�
 
 ## 4. 發布 Artifact
 
-- 若 `digests/artifact_url.txt` 存在，讀取其內容作為既有 Artifact 網址。
+- 若 `digests/artifact_url.txt` 存在，讀取其內容作為既有 Artifact 網址，並用 `Artifact` 工具的 `action: "read"` 讀取目前線上版本，保留既有的版面風格與收藏按鈕實作（見下方），不要每天重新設計。
 - 依 `record` 中 `selected: true` 的項目產生網頁內容：先載入 `artifact-design` skill 依循其設計規範，列出每個入選項目的功能摘要、技術/模型、本地可行性、規格限制、推薦理由。若 `status` 不是 `"success"` 或沒有入選項目，於頁面上誠實顯示對應狀態訊息（例如「今日資料取得失敗」或「今日無顯著新工具」），不得產生虛構內容。
-- 呼叫 `Artifact` 工具發布：
+- **每個入選項目旁邊要有一個收藏按鈕**（☆/★ 切換），讓使用者可以直接在頁面上點擊收藏，不需要跑去 GitHub 編輯檔案：
+  - 按鈕標記 `data-full-name="<owner/repo>"`
+  - 頁面載入時，對每個按鈕呼叫 `await window.claude.use("db")` 取得資料庫、`db.doc("favorites/" + fullName.replace(/\//g, "__")).get()` 讀取目前是否已收藏（`data().starred === true` 則顯示為 ★ 並加上 `is-starred`）
+  - 點擊時 `docRef.set({full_name, starred: <toggle 後的值>, starred_at: new Date().toISOString()})`，成功後更新按鈕圖示與樣式
+  - 若 `window.claude`/`use` 不存在或 `use("db")` 回傳 `null`，隱藏所有收藏按鈕（`btn.hidden = true`），不要讓頁面壞掉
+  - 完整範例可參考 `digests/artifact_url.txt` 目前指向的頁面原始碼（用 `Artifact action: "read"` 讀取即可看到目前實作）
+- 呼叫 `Artifact` 工具發布，**務必帶上 `capabilities: {"db": {}}`**（收藏按鈕需要資料庫能力才能運作；即使是更新既有頁面也要每次都帶，不要省略）：
   - 若已有既有網址，帶 `url` 參數更新（保持同一連結）
   - 若沒有，建立新的，並將回傳網址寫入 `digests/artifact_url.txt`，然後 `git add digests/artifact_url.txt && git commit -m "chore: record artifact url" && git push`
 

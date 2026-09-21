@@ -18,10 +18,13 @@ notification.
   logs (one JSON file per date), used by the Discord-relay workflow.
 - **Actions tab** — run history for the Discord-relay workflow
   (`.github/workflows/notify-discord.yml`).
-- **`digests/starred.md`** — your manually-maintained favorites list (one
-  `owner/repo` per line, edit directly on github.com). A separate monthly
-  routine cross-references it against `digests/records/` and regenerates
-  **`digests/favorites.md`**. See
+- **`digests/starred.md`** — the durable favorites list (one `owner/repo`
+  per line). Add to it by editing the file directly on github.com, by
+  asking Claude to add an entry, or by clicking the ☆ button next to any
+  entry on the daily Artifact page itself (writes to that page's own `db`
+  capability). A separate monthly routine syncs anything starred via the
+  Artifact into this file, cross-references it against `digests/records/`,
+  and regenerates **`digests/favorites.md`**. See
   `.claude/skills/github-tech-digest-favorites/SKILL.md`.
 
 ## About `scripts/*.py`
