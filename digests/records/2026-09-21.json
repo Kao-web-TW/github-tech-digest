@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-21",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-09-19 stars:>=20 | topic:machine-learning created:>=2026-09-19 stars:>=20 | topic:llm created:>=2026-09-19 stars:>=20 | topic:ai-agent created:>=2026-09-19 stars:>=20 | topic:generative-ai created:>=2026-09-19 stars:>=20",
+  "candidates": [
+    {
+      "full_name": "mizorewww/laya-mlx",
+      "html_url": "https://github.com/mizorewww/laya-mlx",
+      "stars": 1738,
+      "reason": "提供可安裝、可在 Apple Silicon 本機直接執行的「型別決策模型」MLX 推理套件（pip install 即用，7-14ms 延遲），是本波 Jev/Laya 生態中最成熟可用的實作；官方自報延遲數據未經第三方覆核（推測）。",
+      "selected": true
+    },
+    {
+      "full_name": "v-modal/awesome-jev-tools",
+      "html_url": "https://github.com/v-modal/awesome-jev-tools",
+      "stars": 552,
+      "reason": "本身是連結彙整型 awesome-list 而非可執行工具或模型；其 README 亦自陳同作者短期內大量發布之專案「屬未經驗證」，故不列入精選工具，但可作背景參考。",
+      "selected": false
+    },
+    {
+      "full_name": "Heman10x-NGU/openJev-verdict-2.0",
+      "html_url": "https://github.com/Heman10x-NGU/openJev-verdict-2.0",
+      "stars": 182,
+      "reason": "基於 ModernBERT/GLiClass 的 151M 非自回歸決策分類模型，提供 ONNX/WebGPU 本地與瀏覽器端推理及可重現評測腳本；「擊敗 XX」的基準數字為作者自報，未經第三方覆核（推測）。",
+      "selected": true
+    },
+    {
+      "full_name": "Dimweaker/jev-libero",
+      "html_url": "https://github.com/Dimweaker/jev-libero",
+      "stars": 27,
+      "reason": "以 Jev 決策模型控制機器人於 LIBERO/MuJoCo 模擬環境完成具體任務並附可重現錄影紀錄，展示了型別決策模型在機器人控制上的具體應用；需依賴外部 Jev API 而非本地開源模型。",
+      "selected": true
+    },
+    {
+      "full_name": "samdotmak/jev-recall",
+      "html_url": "https://github.com/samdotmak/jev-recall",
+      "stars": 27,
+      "reason": "以 Jev 作記憶檢索重排序器，解決語意搜尋「字面不像但語意相關」的痛點，附即時 demo 與具體 benchmark；需依賴外部付費 API（TYPESAFE_API_KEY），非可離線執行，效益數據為作者自建測試（推測未經第三方驗證）。",
+      "selected": true
+    },
+    {
+      "full_name": "walidboulanouar/awesome-jev-use-cases",
+      "html_url": "https://github.com/walidboulanouar/awesome-jev-use-cases",
+      "stars": 22,
+      "reason": "為社群媒體案例排行榜彙整清單，含商業贊助商置入（AY Automate），性質偏行銷彙整而非開源工具或模型本身，故不列入精選。",
+      "selected": false
+    }
+  ]
+}
