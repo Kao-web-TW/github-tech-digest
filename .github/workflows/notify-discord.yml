@@ -3,7 +3,6 @@ name: Notify Discord
 on:
   push:
     branches:
-      - feature/github-tech-digest
       - master
     paths:
       - 'digests/records/*.json'
