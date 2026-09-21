@@ -8,25 +8,28 @@ import urllib.request
 from pathlib import Path
 
 
-def build_discord_payload(selected: list, artifact_url: str) -> dict:
-    """Build a Discord webhook payload summarizing today's picks."""
-    if not selected:
-        description = "今日無顯著新工具。"
+def build_discord_payload(record: dict, artifact_url: str) -> dict:
+    """Build a Discord webhook payload summarizing a day's digest run."""
+    status = record.get("status", "success")
+    if status != "success":
+        description = f"今日資料取得失敗：{record.get('error', '未知錯誤')}"
     else:
-        description = "\n".join(
-            f"**{item['full_name']}** (★{item['stars']}) — {item['reason']}"
-            for item in selected
-        )
-    return {
-        "embeds": [
-            {
-                "title": "GitHub 新技術每日精選",
-                "description": description,
-                "url": artifact_url,
-                "color": 5814783,
-            }
-        ]
+        selected = [c for c in record["candidates"] if c["selected"]]
+        if not selected:
+            description = "今日無顯著新工具。"
+        else:
+            description = "\n".join(
+                f"**{item['full_name']}** (★{item['stars']}) — {item['reason']}"
+                for item in selected
+            )
+    embed = {
+        "title": "GitHub 新技術每日精選",
+        "description": description,
+        "color": 5814783,
     }
+    if artifact_url:
+        embed["url"] = artifact_url
+    return {"embeds": [embed]}
 
 
 def send_discord_notification(webhook_url: str, payload: dict) -> bool:
@@ -44,7 +47,9 @@ def send_discord_notification(webhook_url: str, payload: dict) -> bool:
     try:
         with urllib.request.urlopen(request, timeout=15) as response:
             return 200 <= response.status < 300
-    except Exception:
+    except Exception as exc:
+        detail = getattr(exc, "read", lambda: b"")()
+        print(f"discord webhook failed: {type(exc).__name__}: {exc} {detail[:500]!r}", file=sys.stderr)
         return False
 
 

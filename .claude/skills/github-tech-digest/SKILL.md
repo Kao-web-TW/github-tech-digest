@@ -79,17 +79,7 @@ description: 每日抓取、分析並發布 GitHub 新興 AI 整合工具精選�
 }
 ```
 
-## 4. 寫入稽查紀錄並推送
-
-```bash
-python scripts/audit_log.py /tmp/record.json .
-```
-
-此指令會把 `digests/audit/<date>.md`（人類可讀稽查紀錄）與 `digests/records/<date>.json`（機器可讀的原始 record，供 GitHub Actions 使用）一起 commit 並 push 到 `origin`。若指令失敗，記下錯誤但繼續嘗試步驟 5（稽查紀錄失敗不應阻擋 Artifact 發布）。
-
-> `digests/records/<date>.json` 一旦 push 上去，會自動觸發 repo 裡的 `.github/workflows/notify-discord.yml`——Discord 推播已改由這個 workflow 負責（詳見步驟 6 的說明），因為 cloud routine 自己的網路環境無法直接連到 discord.com。
-
-## 5. 發布 Artifact
+## 4. 發布 Artifact
 
 - 若 `digests/artifact_url.txt` 存在，讀取其內容作為既有 Artifact 網址。
 - 依 `record` 中 `selected: true` 的項目產生網頁內容：先載入 `artifact-design` skill 依循其設計規範，列出每個入選項目的功能摘要、技術/模型、本地可行性、規格限制、推薦理由。若 `status` 不是 `"success"` 或沒有入選項目，於頁面上誠實顯示對應狀態訊息（例如「今日資料取得失敗」或「今日無顯著新工具」），不得產生虛構內容。
@@ -97,13 +87,23 @@ python scripts/audit_log.py /tmp/record.json .
   - 若已有既有網址，帶 `url` 參數更新（保持同一連結）
   - 若沒有，建立新的，並將回傳網址寫入 `digests/artifact_url.txt`，然後 `git add digests/artifact_url.txt && git commit -m "chore: record artifact url" && git push`
 
+## 5. 寫入稽查紀錄並推送
+
+```bash
+python scripts/audit_log.py /tmp/record.json .
+```
+
+此指令會把 `digests/audit/<date>.md`（人類可讀稽查紀錄）與 `digests/records/<date>.json`（機器可讀的原始 record，供 GitHub Actions 使用）一起 commit 並 push 到 `origin`。Artifact 已於步驟 4 發布完成，因此本步驟即使失敗也只需記下錯誤，不影響已發布的 Artifact 內容。
+
+> `digests/records/<date>.json` 一旦 push 上去，會自動觸發 repo 裡的 `.github/workflows/notify-discord.yml`——Discord 推播已改由這個 workflow 負責（詳見步驟 6 的說明），因為 cloud routine 自己的網路環境無法直接連到 discord.com。此時 Artifact 已是最新內容，Discord 訊息連結不會指向過期頁面。
+
 ## 6. 推播 Discord（已自動化，routine 不需執行任何動作）
 
-Discord 推播由 `.github/workflows/notify-discord.yml` 這個 GitHub Actions workflow 負責，在步驟 4 push `digests/records/<date>.json` 後自動觸發，直接複用 `scripts/discord_notify.py` 的 `build_discord_payload`/`send_discord_notification`。
+Discord 推播由 `.github/workflows/notify-discord.yml` 這個 GitHub Actions workflow 負責，在步驟 5 push `digests/records/<date>.json` 後自動觸發，直接複用 `scripts/discord_notify.py` 的 `build_discord_payload`/`send_discord_notification`。
 
 > 背景：cloud routine 執行環境的網路出口政策只允許連到 GitHub、Anthropic 自身 API 等少數白名單目的地，直接對 `discord.com` 發送 HTTPS 會被組織層級政策拒絕（非本專案程式碼問題）。GitHub Actions runner 沒有這個限制，所以改由它來做這一步。Webhook 網址存在該 repo 的 GitHub Actions Secret（`DISCORD_WEBHOOK_URL`）裡，routine 的執行指令不再需要帶這個環境變數。
 
-routine 不需要為這一步做任何事；步驟 4 成功 push 後，Discord 通知會在數十秒內自動送達（可以到 repo 的 Actions 分頁查看執行紀錄）。
+routine 不需要為這一步做任何事；步驟 5 成功 push 後，Discord 通知會在數十秒內自動送達（可以到 repo 的 Actions 分頁查看執行紀錄）。
 
 ## 錯誤處理原則
 

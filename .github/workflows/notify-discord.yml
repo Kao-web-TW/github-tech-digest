@@ -8,14 +8,15 @@ on:
     paths:
       - 'digests/records/*.json'
 
+permissions:
+  contents: read
+
 jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -25,16 +26,17 @@ jobs:
       - name: Find changed record file
         id: find
         run: |
-          FILE=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- 'digests/records/*.json' 2>/dev/null | tail -1)
+          FILE=$(ls -1 digests/records/*.json 2>/dev/null | sort | tail -1)
           if [ -z "$FILE" ]; then
-            FILE=$(git show --name-only --pretty="" "${{ github.sha }}" -- 'digests/records/*.json' | tail -1)
+            echo "::error::push matched digests/records/*.json but no record file found"
+            exit 1
           fi
           echo "file=$FILE" >> "$GITHUB_OUTPUT"
 
       - name: Send Discord notification
-        if: steps.find.outputs.file != ''
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RECORD_PATH: ${{ steps.find.outputs.file }}
         run: |
           python3 - <<'PY'
           import json
@@ -44,15 +46,14 @@ jobs:
           sys.path.insert(0, "scripts")
           from discord_notify import build_discord_payload, send_discord_notification
 
-          record_path = "${{ steps.find.outputs.file }}"
+          record_path = os.environ["RECORD_PATH"]
           record = json.load(open(record_path, encoding="utf-8"))
-          selected = [c for c in record["candidates"] if c["selected"]]
 
           artifact_url = ""
           if os.path.exists("digests/artifact_url.txt"):
               artifact_url = open("digests/artifact_url.txt", encoding="utf-8").read().strip()
 
-          payload = build_discord_payload(selected, artifact_url)
+          payload = build_discord_payload(record, artifact_url)
           ok = send_discord_notification(os.environ["DISCORD_WEBHOOK_URL"], payload)
           print("sent" if ok else "failed")
           sys.exit(0 if ok else 1)

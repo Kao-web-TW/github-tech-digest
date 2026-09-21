@@ -49,6 +49,8 @@ Claude 內容分析
 - 查詢條件採開放式策略：AI/ML 相關 topics（如 ai, machine-learning, llm, agent, genai 等）交叉「近期建立」或「star 快速成長」條件，而非侷限於使用者預先列出的關鍵字。
 - 每日僅需一次查詢，未認證請求的 Search API 額度（10 次/分鐘）已足夠，故不需要申請 GitHub Personal Access Token 這項前置條件。
 
+> **架構修正（2026-09-21）**：實作後發現 cloud routine 的網路出口政策會擋掉對 `api.github.com/search/...` 的直接 REST 呼叫（session 的網路權限只綁定在被指定的 repo，跨 repo 的全站搜尋一律回 403）。因此搜尋步驟改為呼叫 `mcp__github__search_repositories` 這個 MCP 工具（在 cloud routine 內部執行，對 5 個 topic 分別查詢後自行合併去重），而非直接打 REST API。`scripts/github_search.py` 仍保留作為本機開發/測試用的參考實作，但 cloud routine 執行時不使用它。
+
 ### 2. 內容分析（Claude 執行時直接完成）
 對每個候選 repo：
 - 功能摘要（做什麼、解決什麼問題）
@@ -76,6 +78,8 @@ Claude 內容分析
 ### 5. 推播（Discord）
 - 透過 Discord Webhook 發送當日摘要訊息（精選項目 + 一句話理由）與 Artifact 連結。
 - 需要使用者建立 Discord 伺服器並取得 Webhook 網址。
+
+> **架構修正（2026-09-21）**：與搜尋模組同樣的原因，cloud routine 的網路出口政策也會擋掉對 `discord.com` 的直接 HTTPS 呼叫，這是平台層級的政策，並非本專案可設定調整的項目。因此 Discord 推播改為由 GitHub Actions workflow（`.github/workflows/notify-discord.yml`）負責：cloud routine 在步驟完成後把 `digests/records/<date>.json` push 上去，觸發該 workflow 於 GitHub 的 runner（不受此網路限制）上讀取該 record、組成 payload 並送出 webhook。Webhook 網址存放在該 repo 的 GitHub Actions Secret 中，routine 本身不再需要持有或傳遞這個密鑰。
 
 ## 錯誤處理
 

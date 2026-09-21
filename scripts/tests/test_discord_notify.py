@@ -1,3 +1,4 @@
+import io
 import sys
 import unittest
 import unittest.mock
@@ -10,14 +11,37 @@ from discord_notify import build_discord_payload, send_discord_notification
 
 class TestBuildDiscordPayload(unittest.TestCase):
     def test_lists_each_selected_item(self):
-        selected = [{"full_name": "a/b", "stars": 42, "reason": "star 快速成長"}]
-        payload = build_discord_payload(selected, "https://claude.site/abc")
+        record = {
+            "status": "success",
+            "candidates": [
+                {"full_name": "a/b", "stars": 42, "reason": "star 快速成長", "selected": True}
+            ],
+        }
+        payload = build_discord_payload(record, "https://claude.site/abc")
         self.assertIn("a/b", payload["embeds"][0]["description"])
         self.assertEqual(payload["embeds"][0]["url"], "https://claude.site/abc")
 
     def test_empty_selection_says_no_notable_tools(self):
-        payload = build_discord_payload([], "https://claude.site/abc")
+        record = {"status": "success", "candidates": []}
+        payload = build_discord_payload(record, "https://claude.site/abc")
         self.assertIn("無顯著新工具", payload["embeds"][0]["description"])
+
+    def test_failed_status_reports_honest_failure(self):
+        record = {"status": "failed", "error": "GitHub search API timed out", "candidates": []}
+        payload = build_discord_payload(record, "https://claude.site/abc")
+        description = payload["embeds"][0]["description"]
+        self.assertIn("今日資料取得失敗", description)
+        self.assertIn("GitHub search API timed out", description)
+
+    def test_empty_artifact_url_omits_url_key(self):
+        record = {"status": "success", "candidates": []}
+        payload = build_discord_payload(record, "")
+        self.assertNotIn("url", payload["embeds"][0])
+
+    def test_nonempty_artifact_url_is_set(self):
+        record = {"status": "success", "candidates": []}
+        payload = build_discord_payload(record, "https://claude.site/abc")
+        self.assertEqual(payload["embeds"][0]["url"], "https://claude.site/abc")
 
 
 class TestSendDiscordNotification(unittest.TestCase):
@@ -37,6 +61,14 @@ class TestSendDiscordNotification(unittest.TestCase):
     def test_returns_false_on_exception(self):
         with unittest.mock.patch("discord_notify.urllib.request.urlopen", side_effect=OSError("boom")):
             self.assertFalse(send_discord_notification("https://discord.example/webhook", {"embeds": []}))
+
+    def test_exception_logs_detail_to_stderr(self):
+        with unittest.mock.patch("discord_notify.urllib.request.urlopen", side_effect=OSError("boom")):
+            with unittest.mock.patch("sys.stderr", new_callable=io.StringIO) as fake_stderr:
+                send_discord_notification("https://discord.example/webhook", {"embeds": []})
+        stderr_output = fake_stderr.getvalue()
+        self.assertIn("discord webhook failed", stderr_output)
+        self.assertIn("boom", stderr_output)
 
     def test_sends_a_custom_user_agent(self):
         captured = {}
