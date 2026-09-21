@@ -85,7 +85,9 @@ description: 每日抓取、分析並發布 GitHub 新興 AI 整合工具精選�
 python scripts/audit_log.py /tmp/record.json .
 ```
 
-此指令會將 `digests/audit/<date>.md` 寫入目前 repo、commit 並 push 到 `origin`。若指令失敗，記下錯誤但繼續嘗試步驟 5、6（稽查紀錄失敗不應阻擋 Artifact 與 Discord 發布）。
+此指令會把 `digests/audit/<date>.md`（人類可讀稽查紀錄）與 `digests/records/<date>.json`（機器可讀的原始 record，供 GitHub Actions 使用）一起 commit 並 push 到 `origin`。若指令失敗，記下錯誤但繼續嘗試步驟 5（稽查紀錄失敗不應阻擋 Artifact 發布）。
+
+> `digests/records/<date>.json` 一旦 push 上去，會自動觸發 repo 裡的 `.github/workflows/notify-discord.yml`——Discord 推播已改由這個 workflow 負責（詳見步驟 6 的說明），因為 cloud routine 自己的網路環境無法直接連到 discord.com。
 
 ## 5. 發布 Artifact
 
@@ -95,28 +97,15 @@ python scripts/audit_log.py /tmp/record.json .
   - 若已有既有網址，帶 `url` 參數更新（保持同一連結）
   - 若沒有，建立新的，並將回傳網址寫入 `digests/artifact_url.txt`，然後 `git add digests/artifact_url.txt && git commit -m "chore: record artifact url" && git push`
 
-## 6. 推播 Discord
+## 6. 推播 Discord（已自動化，routine 不需執行任何動作）
 
-```bash
-python - <<'PY'
-import json
-from pathlib import Path
-import sys
-sys.path.insert(0, "scripts")
-from discord_notify import build_discord_payload
+Discord 推播由 `.github/workflows/notify-discord.yml` 這個 GitHub Actions workflow 負責，在步驟 4 push `digests/records/<date>.json` 後自動觸發，直接複用 `scripts/discord_notify.py` 的 `build_discord_payload`/`send_discord_notification`。
 
-record = json.loads(Path("/tmp/record.json").read_text(encoding="utf-8"))
-selected = [c for c in record["candidates"] if c["selected"]]
-artifact_url = Path("digests/artifact_url.txt").read_text(encoding="utf-8").strip()
-payload = build_discord_payload(selected, artifact_url)
-Path("/tmp/discord_payload.json").write_text(json.dumps(payload), encoding="utf-8")
-PY
-python scripts/discord_notify.py /tmp/discord_payload.json
-```
+> 背景：cloud routine 執行環境的網路出口政策只允許連到 GitHub、Anthropic 自身 API 等少數白名單目的地，直接對 `discord.com` 發送 HTTPS 會被組織層級政策拒絕（非本專案程式碼問題）。GitHub Actions runner 沒有這個限制，所以改由它來做這一步。Webhook 網址存在該 repo 的 GitHub Actions Secret（`DISCORD_WEBHOOK_URL`）裡，routine 的執行指令不再需要帶這個環境變數。
 
-若此步驟失敗，僅記錄失敗（不影響前面已完成的稽查紀錄與 Artifact 發布），且不得重試超過一次。
+routine 不需要為這一步做任何事；步驟 4 成功 push 後，Discord 通知會在數十秒內自動送達（可以到 repo 的 Actions 分頁查看執行紀錄）。
 
 ## 錯誤處理原則
 
 - 任何步驟失敗都不得產生虛構資料；record 的 `status` 與 `error` 欄位要如實反映實際發生的狀況。
-- 找不到候選項目時，`candidates` 為空陣列，Artifact 與 Discord 都要明確顯示「今日無顯著新工具」而非沉默不推播。
+- 找不到候選項目時，`candidates` 為空陣列，Artifact 要明確顯示「今日無顯著新工具」；Discord 那邊 `build_discord_payload` 遇到空的 `selected` 清單同樣會顯示這句話，不會沉默不推播。

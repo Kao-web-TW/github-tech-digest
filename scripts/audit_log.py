@@ -45,10 +45,25 @@ def write_audit_log(record: dict, repo_root: Path) -> Path:
     return path
 
 
-def commit_and_push(path: Path, repo_root: Path, message: str) -> None:
-    """Stage, commit, and push the audit log file from within repo_root."""
-    relative = path.relative_to(repo_root)
-    subprocess.run(["git", "add", str(relative)], cwd=repo_root, check=True)
+def write_record_json(record: dict, repo_root: Path) -> Path:
+    """Write the raw record JSON to digests/records/<date>.json.
+
+    This is the machine-readable counterpart to the audit markdown, read by
+    the GitHub Actions Discord-relay workflow (the cloud routine's own
+    network egress cannot reach discord.com, so that workflow does the
+    actual webhook call once this file lands on the remote).
+    """
+    records_dir = repo_root / "digests" / "records"
+    records_dir.mkdir(parents=True, exist_ok=True)
+    path = records_dir / f"{record['date']}.json"
+    path.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
+
+
+def commit_and_push(paths: list[Path], repo_root: Path, message: str) -> None:
+    """Stage, commit, and push the given files from within repo_root."""
+    relatives = [str(path.relative_to(repo_root)) for path in paths]
+    subprocess.run(["git", "add", *relatives], cwd=repo_root, check=True)
     subprocess.run(["git", "commit", "-m", message], cwd=repo_root, check=True)
     subprocess.run(["git", "push"], cwd=repo_root, check=True)
 
@@ -57,6 +72,12 @@ if __name__ == "__main__":
     record_path = Path(sys.argv[1])
     repo_root_arg = Path(sys.argv[2])
     loaded_record = json.loads(record_path.read_text(encoding="utf-8"))
-    written_path = write_audit_log(loaded_record, repo_root_arg)
-    commit_and_push(written_path, repo_root_arg, f"chore: digest audit log for {loaded_record['date']}")
-    print(str(written_path))
+    markdown_path = write_audit_log(loaded_record, repo_root_arg)
+    json_path = write_record_json(loaded_record, repo_root_arg)
+    commit_and_push(
+        [markdown_path, json_path],
+        repo_root_arg,
+        f"chore: digest audit log for {loaded_record['date']}",
+    )
+    print(str(markdown_path))
+    print(str(json_path))

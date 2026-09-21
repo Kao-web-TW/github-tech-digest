@@ -1,3 +1,4 @@
+import json
 import subprocess
 import sys
 import tempfile
@@ -6,7 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from audit_log import render_audit_markdown, write_audit_log, commit_and_push
+from audit_log import render_audit_markdown, write_audit_log, write_record_json, commit_and_push
 
 
 SAMPLE_RECORD = {
@@ -62,15 +63,29 @@ class TestWriteAndPushAuditLog(unittest.TestCase):
         self.assertEqual(path, self.repo_root / "digests" / "audit" / "2026-09-17.md")
         self.assertTrue(path.exists())
 
+    def test_write_record_json_creates_expected_file(self):
+        path = write_record_json(SAMPLE_RECORD, self.repo_root)
+        self.assertEqual(path, self.repo_root / "digests" / "records" / "2026-09-17.json")
+        self.assertTrue(path.exists())
+        loaded = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(loaded, SAMPLE_RECORD)
+
     def test_commit_and_push_lands_on_remote(self):
-        path = write_audit_log(SAMPLE_RECORD, self.repo_root)
-        commit_and_push(path, self.repo_root, "chore: add digest for 2026-09-17")
+        md_path = write_audit_log(SAMPLE_RECORD, self.repo_root)
+        json_path = write_record_json(SAMPLE_RECORD, self.repo_root)
+        commit_and_push([md_path, json_path], self.repo_root, "chore: add digest for 2026-09-17")
         subprocess.run(["git", "fetch", "origin"], cwd=self.repo_root, check=True)
         log = subprocess.run(
             ["git", "log", "origin/master", "--oneline"],
             cwd=self.repo_root, capture_output=True, text=True, check=True,
         )
         self.assertIn("add digest for 2026-09-17", log.stdout)
+        show = subprocess.run(
+            ["git", "show", "origin/master", "--stat"],
+            cwd=self.repo_root, capture_output=True, text=True, check=True,
+        )
+        self.assertIn("2026-09-17.md", show.stdout)
+        self.assertIn("2026-09-17.json", show.stdout)
 
 
 if __name__ == "__main__":
