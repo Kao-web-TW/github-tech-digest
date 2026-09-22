@@ -1,0 +1,119 @@
+{
+  "date": "2026-09-22",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-09-20 stars:>=20 | topic:machine-learning created:>=2026-09-20 stars:>=20 | topic:llm created:>=2026-09-20 stars:>=20 | topic:ai-agent created:>=2026-09-20 stars:>=20 | topic:generative-ai created:>=2026-09-20 stars:>=20",
+  "candidates": [
+    {
+      "full_name": "jev-chat/jev-chat-jarvis",
+      "html_url": "https://github.com/jev-chat/jev-chat-jarvis",
+      "stars": 3082,
+      "reason": "Android 端「先判斷、再寫字」聊天副駕：無障礙服務讀微信/QQ/X 訊息，本地/自帶金鑰呼叫 LLM 判斷意圖與風險後產生候選回覆，只填入輸入框不自動發送；有簽名 APK、真機測試矩陣與清楚的隱私邊界說明，是本日星數與完成度最高的候選。",
+      "selected": true
+    },
+    {
+      "full_name": "jev-chat/jev-chat-jarvis-mac",
+      "html_url": "https://github.com/jev-chat/jev-chat-jarvis-mac",
+      "stars": 142,
+      "reason": "與已入選的 jev-chat-jarvis 同一產品的 macOS 版本，核心功能與判斷邏輯重複，故不重複收錄。",
+      "selected": false
+    },
+    {
+      "full_name": "kydlikebtc/awesome-jev",
+      "html_url": "https://github.com/kydlikebtc/awesome-jev",
+      "stars": 78,
+      "reason": "連結彙整型 awesome-list（索引 TypeSafe AI「Jev」決策模型的社群範例），非可安裝執行的工具本身，不符合每日精選聚焦「工具」的定位。",
+      "selected": false
+    },
+    {
+      "full_name": "Michael-Jiahao-Zhang/game-the-llm-reviewer",
+      "html_url": "https://github.com/Michael-Jiahao-Zhang/game-the-llm-reviewer",
+      "stars": 65,
+      "reason": "核心賣點是「用措辭偏好操縱 LLM 審稿人評分」，儘管 README 聲稱保留科學內容並附學術誠信警語，但價值主張本身涉及同儕審查倫理爭議，先不列入（推測：實際使用邊界難以稽核）。",
+      "selected": false
+    },
+    {
+      "full_name": "openlayer-ai/jevals",
+      "html_url": "https://github.com/openlayer-ai/jevals",
+      "stars": 58,
+      "reason": "把 agent 評測（工具選擇、扎根度、間接注入偵測等）打包成單一請求送進型別決策模型，號稱比傳統 LLM-judge 快上百倍、便宜千倍以上；pip 可裝、有具體程式碼範例與延遲/成本實測數字，出自已知的 evals 團隊 openlayer-ai，是本日最具工程落地感的候選。",
+      "selected": true
+    },
+    {
+      "full_name": "freestylefly/WeChatBridge",
+      "html_url": "https://github.com/freestylefly/WeChatBridge",
+      "stars": 42,
+      "reason": "macOS 原生工具，把微信「合併轉發」的聊天紀錄一鍵送進 Codex/Claude/Obsidian 等九個目的地並自動整理成 Markdown 筆記；已有 Developer ID 簽名公證的 DMG 與 CI 徽章，是可直接安裝使用的完成品。",
+      "selected": true
+    },
+    {
+      "full_name": "Rylaispirit/cinematic-video-prompt-skill",
+      "html_url": "https://github.com/Rylaispirit/cinematic-video-prompt-skill",
+      "stars": 36,
+      "reason": "給 Claude Skill／Claude Code 用的電影攝影詞彙庫（700+ 鏡位、燈光、構圖、調色術語）與提示詞公式，內容結構完整、跨模型通用（Veo/Kling/Sora/Runway/Midjourney 等），是實用的生成式影像提示詞輔助工具。",
+      "selected": true
+    },
+    {
+      "full_name": "ahang008/ah-douyin-clean-downloader",
+      "html_url": "https://github.com/ahang008/ah-douyin-clean-downloader",
+      "stars": 35,
+      "reason": "功能侷限於單一短影音平台（抖音）的去浮水印下載與本地 Whisper 逐字稿，涉及第三方影片內容抓取的版權／使用邊界問題，先不列入。",
+      "selected": false
+    },
+    {
+      "full_name": "Inkloom-art/inkloom",
+      "html_url": "https://github.com/Inkloom-art/inkloom",
+      "stars": 29,
+      "reason": "標榜以結構化決策生成可交付的商標設計規格，但頁面性質偏產品介紹（早期封測），程式碼實際開放與可自行運行程度不明確，先不列入（推測）。",
+      "selected": false
+    },
+    {
+      "full_name": "andududu/jeview",
+      "html_url": "https://github.com/andududu/jeview",
+      "stars": 27,
+      "reason": "零依賴的本地閘道／視覺化工具，攔截並記錄每一次對 Jev（TypeSafe）決策 API 的呼叫，即時畫面呈現在本機網頁，附兩個可直接跑的範例（遊戲 AI、客服分流），對除錯型別決策 API 的呼叫流程很直接有用。",
+      "selected": true
+    },
+    {
+      "full_name": "liyupi/ai-desktop-outfit-video",
+      "html_url": "https://github.com/liyupi/ai-desktop-outfit-video",
+      "stars": 26,
+      "reason": "本質是把近期網路熱門「AI 桌面換裝影片」拆解成的提示詞範本，包裝成 Agent Skill，並非新的模型或工具，先不列入。",
+      "selected": false
+    },
+    {
+      "full_name": "lukeckprobierts/Hemmingway-1",
+      "html_url": "https://github.com/lukeckprobierts/Hemmingway-1",
+      "stars": 24,
+      "reason": "27B 開放權重模型，專攻「像人一樣寫日常訊息」，Apache-2.0 授權、權重公開於 Hugging Face，並附 Mac/Android 應用程式；本日候選中少見的可直接下載、可本地執行的新模型發布。",
+      "selected": true
+    },
+    {
+      "full_name": "PsiACE/dohnuts",
+      "html_url": "https://github.com/PsiACE/dohnuts",
+      "stars": 23,
+      "reason": "0.8B 小型多模態決策模型，單次前向傳遞回傳多個判斷（分流、是非題等），可在一般消費級 GPU 本地跑，附完整訓練/推論/評測 Python 工具鏈與模型卡，是型別決策模型路線裡具體可自行部署的實作。",
+      "selected": true
+    },
+    {
+      "full_name": "lewismosciski/LMMOCK",
+      "html_url": "https://github.com/lewismosciski/LMMOCK",
+      "stars": 21,
+      "reason": "OpenAI／Anthropic／Gemini API 的視覺化本地 mock server，可在瀏覽器設定規則後只換 SDK Base URL 就能無金鑰、確定性地測試 AI 應用；跨平台（原始碼/Docker/各平台發行檔）且有 CI，對開發 AI 應用的測試流程很實用。",
+      "selected": true
+    },
+    {
+      "full_name": "libingzheren/Jev-Mem",
+      "html_url": "https://github.com/libingzheren/Jev-Mem",
+      "stars": 21,
+      "reason": "有 arXiv 論文與 Hugging Face Space 佐證的 agent 記憶系統，用輕量型別決策模型（System-One）分流記憶管理決策、留給主模型做深度綜合；在 LoCoMo 基準上報告具體且可比對的數字（答案品質、建構速度、查詢延遲），學術嚴謹度優於本日其他同類候選。",
+      "selected": true
+    },
+    {
+      "full_name": "MiaoWuNYA/rikkahub-sillytavern-android",
+      "html_url": "https://github.com/MiaoWuNYA/rikkahub-sillytavern-android",
+      "stars": 20,
+      "reason": "既有 SillyTavern 相容 Android 聊天客戶端的深度訂製分支，雖有提示詞快取、語意記憶等具體優化，但 AI 聊天/角色扮演客戶端品類已相對飽和，先不列入。",
+      "selected": false
+    }
+  ]
+}
