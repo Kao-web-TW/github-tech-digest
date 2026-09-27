@@ -57,7 +57,7 @@ description: 每日抓取、分析並發布 GitHub 新興 AI 整合工具精選�
 
 寫入 `/tmp/record.json`。`query` 欄位直接取自 `/tmp/search_result.json` 的 `query` 欄位（無論成功或失敗都有值）。
 
-- 若步驟 1 沒有 `error`：`status` 為 `"success"`，`candidates` 為步驟 2 分析後的完整清單（含 `selected`/`reason`）。
+- 若步驟 1 沒有 `error`：`status` 為 `"success"`，`candidates` 為步驟 2 分析後的完整清單（含 `selected`/`reason`，選中項目另外補上 `summary`/`tech`/`feasibility`/`limits`，見下方格式）。可選加一個 `notice` 欄位（`{"lede": "一句話總結今天的觀察", "body": "一段較長的說明"}`），用來呈現當天候選榜整體樣貌（例如某個生態系連續佔據候選榜之類的觀察）；沒有值得特別點出的觀察就省略這個欄位，不要硬湊內容。
 - 若步驟 1 有 `error`：`status` 為 `"failed"`，`error` 欄位帶入該訊息，`candidates` 為空陣列。
 
 格式：
@@ -67,31 +67,42 @@ description: 每日抓取、分析並發布 GitHub 新興 AI 整合工具精選�
   "date": "2026-09-17",
   "status": "success",
   "query": "<來自 /tmp/search_result.json 的 query 欄位>",
+  "notice": {
+    "lede": "一句話總結",
+    "body": "較長的說明段落"
+  },
   "candidates": [
     {
       "full_name": "owner/repo",
       "html_url": "https://github.com/owner/repo",
       "stars": 123,
-      "reason": "一句話說明選中或淘汰理由",
-      "selected": true
+      "selected": true,
+      "summary": "功能摘要（只有 selected: true 才需要）",
+      "tech": "技術/模型",
+      "feasibility": "本地可行性",
+      "limits": "規格限制",
+      "reason": "一句話說明選中或淘汰理由"
     }
   ]
 }
 ```
 
-## 4. 發布 Artifact
+這份 record 同時是 `digests/records/<date>.json`（給 GitHub Actions 用，見步驟 5）也是 Artifact 封存資料庫裡當天的完整內容（見步驟 4），欄位不要精簡——過去只存 `reason` 一行字，導致每天卡片上豐富的分析內容過了當天就永久遺失，現在必須把完整分析存下來。
 
-- 若 `digests/artifact_url.txt` 存在，讀取其內容作為既有 Artifact 網址，並用 `Artifact` 工具的 `action: "read"` 讀取目前線上版本，保留既有的版面風格與收藏按鈕實作（見下方），不要每天重新設計。
-- 依 `record` 中 `selected: true` 的項目產生網頁內容：先載入 `artifact-design` skill 依循其設計規範，列出每個入選項目的功能摘要、技術/模型、本地可行性、規格限制、推薦理由。若 `status` 不是 `"success"` 或沒有入選項目，於頁面上誠實顯示對應狀態訊息（例如「今日資料取得失敗」或「今日無顯著新工具」），不得產生虛構內容。
-- **每個入選項目旁邊要有一個收藏按鈕**（☆/★ 切換），讓使用者可以直接在頁面上點擊收藏，不需要跑去 GitHub 編輯檔案：
-  - 按鈕標記 `data-full-name="<owner/repo>"`
-  - 頁面載入時，對每個按鈕呼叫 `await window.claude.use("db")` 取得資料庫、`db.doc("favorites/" + fullName.replace(/\//g, "__")).get()` 讀取目前是否已收藏（`data().starred === true` 則顯示為 ★ 並加上 `is-starred`）
-  - 點擊時 `docRef.set({full_name, starred: <toggle 後的值>, starred_at: new Date().toISOString()})`，成功後更新按鈕圖示與樣式
-  - 若 `window.claude`/`use` 不存在或 `use("db")` 回傳 `null`，隱藏所有收藏按鈕（`btn.hidden = true`），不要讓頁面壞掉
-  - 完整範例可參考 `digests/artifact_url.txt` 目前指向的頁面原始碼（用 `Artifact action: "read"` 讀取即可看到目前實作）
-- 呼叫 `Artifact` 工具發布，**務必帶上 `capabilities: {"db": {}}`**（收藏按鈕需要資料庫能力才能運作；即使是更新既有頁面也要每次都帶，不要省略）：
-  - 若已有既有網址，帶 `url` 參數更新（保持同一連結）
-  - 若沒有，建立新的，並將回傳網址寫入 `digests/artifact_url.txt`，然後 `git add digests/artifact_url.txt && git commit -m "chore: record artifact url" && git push`
+## 4. 寫入 Artifact 封存資料庫並發布頁面
+
+Artifact 頁面是「日期選單 + 依所選日期渲染」的封存式頁面，靠頁面自己的 JS 從資料庫讀取每一天的 record 並渲染，**不是**每天重新設計/重新產生整頁 HTML。
+
+1. 讀取 `digests/artifact_url.txt` 取得目前的 Artifact 網址。
+   - 若檔案不存在（第一次執行）：讀取 repo 內固定的樣板 `digests/artifact_template.html`（不要重新設計，這是已經定案的版面），把其中的 `__TODAY_JSON__` 字串換成今天 record 的 JSON（`json.dumps(record, ensure_ascii=False)`，並把字串裡的 `</` 換成 `<\/` 避免提早結束 `<script>` 標籤），用 `Artifact` 工具發布這份 HTML，**務必帶上 `capabilities: {"db": {}}`**，把回傳網址寫入 `digests/artifact_url.txt`。
+   - 若檔案已存在：一樣讀取 `digests/artifact_template.html` 樣板、替換 `__TODAY_JSON__` 為今天的 record JSON，用 `Artifact` 工具的 `action: "publish"`、帶上既有的 `url` 更新（同樣要帶 `capabilities: {"db": {}}`）——這一步每天都要做，用來更新頁面上「今天」這個預設顯示的靜態內容；不需要改動樣板本身的版面/CSS/JS，除非使用者明確要求調整設計。
+2. 把今天的 record 寫進封存資料庫，讓「依日期回顧」功能看得到這一天：呼叫 `Artifact` 工具的 `action: "write_db"`、`db_op: "set"`、`collection: "digests"`、`doc_id: "<date>"`、`data: record`，把完整的 record 存成一筆文件。
+3. **清理超過 30 天且未收藏的入選項目**（在寫入今天的資料之後做）：
+   - 算出 30 天前的日期 `<CUTOFF>`（`date -u -d '30 days ago' +%Y-%m-%d`）。
+   - 呼叫 `Artifact` 工具的 `action: "read_db"`、`db_op: "query"`、`collection: "digests"`、`query: {"where": [["date", "<", "<CUTOFF>"]]}`，取出所有過期的封存文件。
+   - 呼叫 `Artifact` 工具的 `action: "read_db"`、`db_op: "list"`、`collection: "favorites"`，取得目前所有收藏狀態，整理出一份「目前已收藏的 full_name」集合（`data().starred === true` 的才算）。
+   - 對每筆過期文件，把 `candidates` 陣列中 `selected: true` 且 `full_name` 不在已收藏集合裡的項目移除（保留 `selected: false` 的淘汰項目與其他欄位不動），呼叫 `action: "write_db"`、`db_op: "set"` 把裁剪後的文件寫回去。若某文件裁剪後沒有變化（所有入選項目都已收藏或本來就沒有入選項目），不需要重寫。
+   - 這一步刪除的資料是真的刪除、不可回復；已收藏的項目永遠不會被這個步驟動到。
 
 ## 5. 寫入稽查紀錄並推送
 

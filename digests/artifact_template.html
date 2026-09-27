@@ -1,0 +1,506 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Repo Signal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #eef1ee;
+    --paper-raised: #e4e8e3;
+    --ink: #1b2420;
+    --ink-soft: #4a544e;
+    --ink-faint: #7c8880;
+    --rule: #c7cec6;
+    --accent: #1f6e83;
+    --accent-soft: #dce9ea;
+    --good: #3f7d4f;
+    --good-soft: #dfeade;
+    --rejected: #9c5a3c;
+    --rejected-soft: #ece0d8;
+    --warn: #a3771f;
+    --warn-soft: #ece3d3;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #151b18;
+      --paper-raised: #1c2420;
+      --ink: #e7ebe6;
+      --ink-soft: #a9b3ac;
+      --ink-faint: #75817a;
+      --rule: #313b35;
+      --accent: #6fb6c9;
+      --accent-soft: #1e3238;
+      --good: #7cbb87;
+      --good-soft: #203327;
+      --rejected: #cf9877;
+      --rejected-soft: #34281f;
+      --warn: #d9b25f;
+      --warn-soft: #362d19;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #151b18;
+    --paper-raised: #1c2420;
+    --ink: #e7ebe6;
+    --ink-soft: #a9b3ac;
+    --ink-faint: #75817a;
+    --rule: #313b35;
+    --accent: #6fb6c9;
+    --accent-soft: #1e3238;
+    --good: #7cbb87;
+    --good-soft: #203327;
+    --rejected: #cf9877;
+    --rejected-soft: #34281f;
+    --warn: #d9b25f;
+    --warn-soft: #362d19;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    padding-inline: 20px;
+    padding-block: 32px 56px;
+  }
+  main { max-width: 680px; margin-inline: auto; }
+  .mono { font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace; }
+
+  .masthead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .masthead h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.7rem, 5vw, 2.2rem);
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .masthead-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+  .dateline {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .day-select {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--ink);
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 4px 10px;
+    max-width: 200px;
+  }
+  .day-select:disabled { opacity: 0.55; }
+
+  .signal-wave { display: block; width: 100%; height: 20px; margin: 14px 0 22px; }
+  .signal-wave path { fill: none; stroke: var(--good); stroke-width: 1.5; stroke-linecap: round; opacity: 0.55; }
+  @media (prefers-reduced-motion: no-preference) {
+    .signal-wave path { animation: pulse 5s ease-in-out infinite; }
+  }
+  @keyframes pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.75; } }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    flex-wrap: wrap;
+  }
+  .status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--good-soft);
+    color: var(--good);
+    border-radius: 999px;
+    padding: 3px 12px 3px 10px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+  .status-chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .status-chip.is-failed { background: var(--rejected-soft); color: var(--rejected); }
+
+  .retention-note {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    margin: 8px 0 28px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--rule);
+  }
+
+  section.log { margin-bottom: 36px; }
+  section.log > h2 {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    margin: 0 0 16px;
+    font-weight: 500;
+  }
+
+  .notice {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .notice p { margin: 0; font-size: 0.94rem; line-height: 1.6; color: var(--ink); }
+  .notice p.lede { font-family: "Fraunces", Georgia, serif; font-size: 1.05rem; font-weight: 500; }
+
+  .cards { display: flex; flex-direction: column; gap: 16px; }
+  .card {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 18px 20px;
+  }
+  .card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .card-head h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin: 0;
+  }
+  .card-head h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .card-head h3 a:hover { color: var(--accent); border-color: var(--accent); }
+  .card-head-meta { display: flex; align-items: center; gap: 8px; }
+  .stars {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  .ttl {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--warn);
+    background: var(--warn-soft);
+    border-radius: 999px;
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+  .fav-btn {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--ink-faint);
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  .fav-btn:hover { background: var(--paper); }
+  .fav-btn.is-starred { color: var(--accent); }
+  .fav-btn:disabled { opacity: 0.5; cursor: default; }
+  dl.fields {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    row-gap: 7px;
+    column-gap: 14px;
+    margin: 0;
+  }
+  dl.fields dt {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    padding-top: 2px;
+  }
+  dl.fields dd { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
+  dl.fields dd.reason { color: var(--ink); }
+
+  .rejected-list { display: flex; flex-direction: column; gap: 10px; }
+  .rejected-item {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 0.88rem;
+    padding: 10px 14px;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rejected);
+    border-radius: 4px;
+  }
+  .rejected-item a { color: var(--ink-soft); font-weight: 500; text-decoration: none; }
+  .rejected-item a:hover { color: var(--accent); }
+  .rejected-item .why { color: var(--ink-faint); }
+
+  footer {
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  footer a { color: var(--ink-soft); }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 460px) {
+    dl.fields { grid-template-columns: 72px 1fr; }
+    .masthead-right { align-items: flex-start; }
+  }
+</style>
+
+<main>
+  <div class="masthead">
+    <h1>Repo Signal</h1>
+    <div class="masthead-right">
+      <div class="dateline" id="dateline">daily scan</div>
+      <select class="day-select mono" id="day-select" disabled>
+        <option>載入歷史紀錄…</option>
+      </select>
+    </div>
+  </div>
+
+  <svg class="signal-wave" viewBox="0 0 600 20" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,10 Q50,3 100,10 T200,10 T300,10 T400,10 T500,10 T600,10" />
+  </svg>
+
+  <div id="archive-content"></div>
+
+  <div class="retention-note">★ 收藏的項目永久保留在封存紀錄裡；未收藏的入選項目會在上線滿 30 天後自動清除。收藏也會在每月初自動整理進「我的收藏」彙整頁。</div>
+</main>
+
+<script id="today-data" type="application/json">__TODAY_JSON__</script>
+
+<script>
+(function () {
+  var TODAY_RECORD = JSON.parse(document.getElementById("today-data").textContent);
+  var archive = {}; // date -> record
+  archive[TODAY_RECORD.date] = TODAY_RECORD;
+  var favorites = {}; // full_name -> boolean
+  var db = null;
+  var content = document.getElementById("archive-content");
+  var dateline = document.getElementById("dateline");
+  var daySelect = document.getElementById("day-select");
+
+  function escapeHtml(str) {
+    return String(str == null ? "" : str).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function sanitizeId(fullName) {
+    return fullName.replace(/\//g, "__");
+  }
+
+  function daysSince(dateStr) {
+    var then = new Date(dateStr + "T00:00:00Z").getTime();
+    var now = Date.now();
+    return Math.floor((now - then) / 86400000);
+  }
+
+  function fieldRow(label, value) {
+    if (!value) return "";
+    return '<dt>' + label + '</dt><dd>' + escapeHtml(value) + '</dd>';
+  }
+
+  function renderCard(candidate) {
+    var fullName = candidate.full_name;
+    var starred = !!favorites[fullName];
+    var age = daysSince(candidate._digestDate || TODAY_RECORD.date);
+    var daysLeft = 30 - age;
+    var ttl = "";
+    if (!starred && daysLeft <= 10) {
+      ttl = '<span class="ttl">' + (daysLeft > 0 ? daysLeft + " 天後清除" : "即將清除") + '</span>';
+    }
+    var fields = [
+      fieldRow("功能摘要", candidate.summary),
+      fieldRow("技術/模型", candidate.tech),
+      fieldRow("本地可行性", candidate.feasibility),
+      fieldRow("規格限制", candidate.limits),
+    ].join("");
+    var reasonRow = candidate.reason
+      ? '<dt>推薦理由</dt><dd class="reason">' + escapeHtml(candidate.reason) + "</dd>"
+      : "";
+    return (
+      '<div class="card">' +
+        '<div class="card-head">' +
+          '<h3><a href="' + escapeHtml(candidate.html_url) + '" target="_blank" rel="noopener">' + escapeHtml(fullName) + '</a></h3>' +
+          '<div class="card-head-meta">' +
+            ttl +
+            '<span class="stars mono">★ ' + escapeHtml(candidate.stars) + '</span>' +
+            '<button class="fav-btn' + (starred ? " is-starred" : "") + '" data-full-name="' + escapeHtml(fullName) + '" aria-pressed="' + starred + '" title="收藏這個 repo">' + (starred ? "★" : "☆") + '</button>' +
+          '</div>' +
+        '</div>' +
+        '<dl class="fields">' + fields + reasonRow + '</dl>' +
+      '</div>'
+    );
+  }
+
+  function renderRejected(candidate) {
+    return (
+      '<div class="rejected-item">' +
+        '<a href="' + escapeHtml(candidate.html_url) + '" target="_blank" rel="noopener">' + escapeHtml(candidate.full_name) + '</a>' +
+        '<span class="why">★' + escapeHtml(candidate.stars) + ' · ' + escapeHtml(candidate.reason) + '</span>' +
+      '</div>'
+    );
+  }
+
+  function render(date) {
+    var record = archive[date];
+    if (!record) return;
+    dateline.textContent = record.date + " · daily scan";
+    if (daySelect.value !== date) daySelect.value = date;
+
+    var candidates = (record.candidates || []).map(function (c) {
+      return Object.assign({}, c, { _digestDate: record.date });
+    });
+    var selected = candidates.filter(function (c) { return c.selected; });
+    var rejected = candidates.filter(function (c) { return !c.selected; });
+
+    var html = "";
+    var chipClass = record.status === "success" ? "" : " is-failed";
+    html += '<div class="status-row" style="margin-bottom:28px;">';
+    html += '<span class="status-chip' + chipClass + '">' + escapeHtml(record.status) + '</span>';
+    html += '<span>' + candidates.length + ' 個候選 · ' + selected.length + ' 個入選</span>';
+    html += '</div>';
+
+    if (record.status !== "success") {
+      html += '<section class="log"><div class="notice"><p>今日資料取得失敗' + (record.error ? "：" + escapeHtml(record.error) : "。") + '</p></div></section>';
+    } else {
+      if (record.notice && (record.notice.lede || record.notice.body)) {
+        html += '<section class="log"><h2>今日觀察</h2><div class="notice">';
+        if (record.notice.lede) html += '<p class="lede">' + escapeHtml(record.notice.lede) + '</p>';
+        if (record.notice.body) html += '<p>' + escapeHtml(record.notice.body) + '</p>';
+        html += '</div></section>';
+      }
+      if (selected.length) {
+        html += '<section class="log"><h2>入選項目（' + selected.length + '）</h2><div class="cards">';
+        html += selected.map(renderCard).join("");
+        html += '</div></section>';
+      } else {
+        html += '<section class="log"><div class="notice"><p>今日無顯著新工具。</p></div></section>';
+      }
+      if (rejected.length) {
+        html += '<section class="log"><h2>未入選（' + rejected.length + '）</h2><div class="rejected-list">';
+        html += rejected.map(renderRejected).join("");
+        html += '</div></section>';
+      }
+    }
+
+    html += '<footer>';
+    html += '<span>查詢條件：' + escapeHtml(record.query || "—") + '</span>';
+    html += '<a href="https://github.com/Kao-web-TW/github-tech-digest/blob/master/digests/audit/' + encodeURIComponent(record.date) + '.md" target="_blank" rel="noopener">' + escapeHtml(record.date) + ' 稽查紀錄 →</a>';
+    html += '</footer>';
+
+    content.innerHTML = html;
+    wireFavButtons();
+  }
+
+  function wireFavButtons() {
+    var buttons = content.querySelectorAll(".fav-btn");
+    if (!db) {
+      buttons.forEach(function (btn) { btn.hidden = true; });
+      return;
+    }
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var fullName = btn.dataset.fullName;
+        var starred = !btn.classList.contains("is-starred");
+        btn.disabled = true;
+        db.doc("favorites/" + sanitizeId(fullName)).set({
+          full_name: fullName,
+          starred: starred,
+          starred_at: new Date().toISOString(),
+        }).then(function () {
+          favorites[fullName] = starred;
+          btn.textContent = starred ? "★" : "☆";
+          btn.classList.toggle("is-starred", starred);
+          btn.setAttribute("aria-pressed", String(starred));
+          var meta = btn.closest(".card-head-meta");
+          var ttlEl = meta && meta.querySelector(".ttl");
+          if (ttlEl) ttlEl.remove();
+        }).catch(function () {
+          // leave the button state unchanged on failure
+        }).finally(function () {
+          btn.disabled = false;
+        });
+      });
+    });
+  }
+
+  function loadFavoritesThenRender() {
+    if (!db) { render(TODAY_RECORD.date); return; }
+    db.collection("favorites").get().then(function (snap) {
+      snap.docs.forEach(function (doc) {
+        var data = doc.data();
+        if (data && data.starred && data.full_name) favorites[data.full_name] = true;
+      });
+    }).catch(function () {}).finally(function () {
+      render(TODAY_RECORD.date);
+    });
+  }
+
+  function loadArchiveList() {
+    if (!db) return;
+    db.collection("digests").orderBy("date", "desc").limit(60).get().then(function (snap) {
+      snap.docs.forEach(function (doc) {
+        archive[doc.id] = doc.data();
+      });
+      var dates = Object.keys(archive).sort().reverse();
+      daySelect.innerHTML = dates.map(function (d) {
+        return '<option value="' + d + '">' + d + '</option>';
+      }).join("");
+      daySelect.value = TODAY_RECORD.date;
+      daySelect.disabled = dates.length <= 1;
+    }).catch(function () {
+      daySelect.innerHTML = '<option value="' + TODAY_RECORD.date + '">' + TODAY_RECORD.date + '</option>';
+    });
+  }
+
+  daySelect.addEventListener("change", function () {
+    render(daySelect.value);
+  });
+
+  async function init() {
+    daySelect.innerHTML = '<option value="' + TODAY_RECORD.date + '">' + TODAY_RECORD.date + '</option>';
+    if (!window.claude || !window.claude.use) {
+      render(TODAY_RECORD.date);
+      return;
+    }
+    try {
+      db = await window.claude.use("db");
+    } catch (e) {
+      db = null;
+    }
+    loadFavoritesThenRender();
+    loadArchiveList();
+  }
+
+  init();
+})();
+</script>
+
+</body></html>
