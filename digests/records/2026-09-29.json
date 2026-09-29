@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-29",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-09-27 stars:>=20 | topic:machine-learning created:>=2026-09-27 stars:>=20 | topic:llm created:>=2026-09-27 stars:>=20 | topic:ai-agent created:>=2026-09-27 stars:>=20 | topic:generative-ai created:>=2026-09-27 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜異常精簡,5 個 topic 合併去重後只有 2 個符合條件的新 repo,而且兩者都是圍繞 AI coding agent(尤其是 Claude Code)生態系的開發工具,而非模型或產品本身。",
+    "body": "artificial-intelligence、machine-learning、generative-ai 三個 topic 在近 2 天內完全沒有星數 >=20 的新 repo,只有 llm 與 ai-agent 兩個 topic 各貢獻了結果(且彼此有重疊)。這或許只是單日雜訊,但也可能反映出目前新專案的能見度正集中在「給 agent 用的基礎設施/周邊工具」(文件 linter、agent 執行環境)而非新模型或端對端應用,兩個候選都證實了這個方向。"
+  },
+  "candidates": [
+    {
+      "full_name": "scarletkc/seiso",
+      "html_url": "https://github.com/scarletkc/seiso",
+      "stars": 115,
+      "selected": true,
+      "summary": "一款 Rust 撰寫的 Markdown 慣例與 linter,規範「AI 寫、人與 agent 讀」的專案文件(howto、reference、ADR 等文件種類各有固定內容契約),並提供可自動修復的診斷訊息。",
+      "tech": "Rust 實作的靜態分析/linter;規則分「穩定(預設執行)」與「預覽(--preview,較實驗性)」兩級;可透過 cargo/uv/pipx/npm 安裝,並提供 Claude Code hooks、pre-commit、CI 整合文件。",
+      "feasibility": "高。純 CLI 工具,`seiso init` 產生設定檔、`seiso check` 執行檢查,不需要額外服務或 API key,可直接整合進現有 repo 的 CI 或 Claude Code hook。",
+      "limits": "上線僅 2 天,多數規則仍屬預覽階段,官方註明可能有誤判、建議先本地試用不要放進 CI gate;長期規則涵蓋範圍與維護狀況待觀察(推測)。",
+      "reason": "定位明確地解決「AI 產生文件品質失控」問題,直接可本機安裝使用且與 Claude Code 生態整合,選入。"
+    },
+    {
+      "full_name": "ufo-ai/ufo-core",
+      "html_url": "https://github.com/ufo-ai/ufo-core",
+      "stars": 81,
+      "selected": true,
+      "summary": "開源的 AI agent 執行環境(「Business agent operating system」),團隊成員在聊天介面把工作交給 agent,agent 可讀寫檔案、執行指令;同一套程式碼同時支援自架與官方託管服務(ufo.ai)。",
+      "tech": "Python 3.12+ 打造;agent turn 以 DBOS workflow 持久化以支援當機恢復;同時支援 Anthropic 與 OpenAI 模型;沙箱可選 local/Docker/E2B;另有 Rust 服務與 extension SDK 供擴充工具/連接器。",
+      "feasibility": "中。單機可用 SQLite + 本地檔案,以 `make install && make init && make serve` 快速自架起一個 instance;但完整多 workspace/擴充沙箱功能需要額外部署 Postgres/S3/Redis,且需自備 Anthropic/OpenAI API key。",
+      "limits": "上線僅 2 天,星數尚少(81);官方文件明確指出預設 local 沙箱僅限制寫入路徑、仍可讀取整個主機,面對不受信任輸入或多租戶場景建議改用 Docker/E2B;屬早期專案,長期維運與安全穩定性待觀察(推測)。",
+      "reason": "功能完整的 AI agent 執行環境,兼具自架與託管路徑、對安全模型有明確說明,技術深度與應用意圖清楚,選入。"
+    }
+  ]
+}
