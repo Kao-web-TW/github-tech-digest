@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-30",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-09-28 stars:>=20 | topic:machine-learning created:>=2026-09-28 stars:>=20 | topic:llm created:>=2026-09-28 stars:>=20 | topic:ai-agent created:>=2026-09-28 stars:>=20 | topic:generative-ai created:>=2026-09-28 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜極度清淡：五個 topic 合併後只有 2 個符合條件的新 repo，且都只來自 llm 這一個 topic，其餘四個 topic（artificial-intelligence、machine-learning、ai-agent、generative-ai）完全零結果。",
+    "body": "唯一入選的 AIHOT 是一個高星（3101★）、可自架的「AI 熱點站框架」，用 LLM 做二次評分、聚簇與寫作，技術與文件都相當完整，明顯是這兩天里最扎實的一筆。另一個候選 ai-chatroom 則展示了不需要 API key、直接呼叫本機已登入的 Claude Code / Codex / Grok / Antigravity CLI 讓多個 AI 角色互相聊天的做法，技術上有意思，但定位偏向二次元陪聊娛樂產品而非實務工具，star 數也僅 37，故未選入。整體來看今天不是新模型或新框架的爆發日，樣本量也很小，不宜過度解讀趨勢。"
+  },
+  "candidates": [
+    {
+      "full_name": "KKKKhazix/AIHOT",
+      "html_url": "https://github.com/KKKKhazix/AIHOT",
+      "stars": 3101,
+      "selected": true,
+      "summary": "「一個自己找熱點、自己寫日報的網站框架」：作者將自己線上運行的 AI 新聞站 aihot.news 的完整程式碼開源，讓任何人可以把信源與精選標準換成自己的產業（法律、HR、金融等），變成該產業的熱點站。內建六種信源（RSS、網頁列表、JSON、X 帳號、微信公眾號、自訂推送）、LLM 兩次獨立評分篩選、事件聚簇（同一事件多來源報導合併去重）、熱度排序、每日/週/月報自動產出，且對 Agent 也開放 RSS/API/MCP/llms.txt。",
+      "tech": "Node.js 24 + TypeScript + React Router（SSR）+ Fastify + PostgreSQL 17 + pg-boss + Tailwind CSS，用 Docker Compose 一鍵部署；核心流程（預篩、評分、寫作、聚簇）全部透過 OpenAI 相容介面呼叫大模型（可用 DeepSeek/千問/智譜等），所有 prompt 原文與入選門檻皆公開在 `industry/prompts/`。",
+      "feasibility": "高。只需 Docker 與一個 OpenAI 相容的模型 API Key，`docker compose up -d --build` 即可本機跑起來，一兩分鐘後開始有內容；作者也建議直接把整個 repo 交給 Claude Code/Codex 之類的 coding agent，讀 `AGENTS.md` 後把站改成自己的產業。",
+      "limits": "官方明確說明這是「線上版本的快照」而非精心打磨的通用框架，倉庫不含作者自己的正式信源清單與營運數據（只附 18 個示範信源），要換成自己產業的信源與 prompt 才能真正發揮價值；作者自述非專業開發者出身，程式碼由其與 AI 共同重寫，可能仍有不完善之處（推測）。",
+      "reason": "高星（3101）、上線即被大量關注，功能完整且文件詳盡，直接示範了 LLM 驅動的篩選/聚簇/寫作管線，且明確為可自架、可客製化的實務工具，選入。"
+    },
+    {
+      "full_name": "Moris-kr/ai-chatroom",
+      "html_url": "https://github.com/Moris-kr/ai-chatroom",
+      "stars": 37,
+      "selected": false,
+      "reason": "技術上示範了不需 API key、直接 headless 呼叫本機已登入的 Claude Code/Codex/Grok/Antigravity CLI 讓多個 AI 角色自動對話、共用工作空間與 3D 建築世界，多 CLI 協作方式有一定參考價值；但整體定位偏向二次元陪聊/娛樂向產品（tags 含 anime、waifu、kawaii、otaku），非以生產力或工程用途為主，且上線僅 2 天、star 數偏低（37），暫不選入。"
+    }
+  ]
+}
