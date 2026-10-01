@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-01",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-09-29 stars:>=20 | topic:machine-learning created:>=2026-09-29 stars:>=20 | topic:llm created:>=2026-09-29 stars:>=20 | topic:ai-agent created:>=2026-09-29 stars:>=20 | topic:generative-ai created:>=2026-09-29 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜由瀏覽器自動化類的 AI agent 項目拿下最高星數，但整體候選量偏少、品質參差。",
+    "body": "本次 5 個 topic 合併去重後僅有 7 個候選，數量明顯低於以往，顯示近兩天內新建立且達 20 星門檻的 AI 相關 repo 較少。其中 feder-cr/dots 以近 2000 星大幅領先，走的是「反偵測瀏覽器 + 任意 LLM」路線，呼應近期多個 browser-use 類 agent 專案的趨勢。另外也出現兩個以『驅動瀏覽器模擬網頁操作來白嫖免費 AI 服務』為核心手法的專案（duckapi、某種程度上的 dots），README 都誠實揭露了違反服務條款與帳號被封的風險，這類專案的可行性與合規性需要額外留意。"
+  },
+  "candidates": [
+    {
+      "full_name": "feder-cr/dots",
+      "html_url": "https://github.com/feder-cr/dots",
+      "stars": 1933,
+      "selected": true,
+      "summary": "本地啟動的 AI 瀏覽器代理人：左側對話、右側即時瀏覽器畫面，讓任意 OpenRouter 模型操作一個經過 C++ 層修改的 Firefox 引擎去完成網頁任務（填表、查價、登入後持續操作等）。",
+      "tech": "patched Firefox engine（C++ 層偽裝指紋，非 JS 覆蓋）、OpenRouter 任意模型、Playwright 風格的真人滑鼠/鍵盤事件模擬、--seed 固定裝置指紋、--profile-dir 保留登入狀態、可透過 invisible_playwright_mcp 以 MCP server 形式接入 Claude Code / Codex / Gemini CLI。",
+      "feasibility": "一行 uvx 指令即可在 Windows/Linux 本地啟動，門檻低；但需自備 OpenRouter API key，且其「反偵測」設計本質是繞過網站的機器人偵測機制，實際部署時需評估合規與對方網站 ToS 風險。",
+      "limits": "僅支援 OpenRouter 模型（非直連各家官方 API）；指紋偽裝再強仍可能被目標網站的新偵測手法識破；專案與 OpenAI 無關聯（README 特別聲明），穩定性未知，剛建立兩天内星數暴衝需觀察是否曇花一現。",
+      "reason": "近兩天內星數最高且技術內容紮實（自製瀏覽器指紋偽裝、真實輸入事件模擬、MCP 整合），對需要穩定網頁自動化代理的開發者有直接參考價值，故選入。"
+    },
+    {
+      "full_name": "nanaism/yomiyasu",
+      "html_url": "https://github.com/nanaism/yomiyasu",
+      "stars": 218,
+      "selected": true,
+      "summary": "給 Claude Code / Codex / Cursor 使用的 Agent Skill，將 AI 生成日文中常見的「AI 臭」（比喻動詞濫用、主語不明、過度條列）歸納成 7 條語法轉換原則，自動把生成文改寫成更自然、資訊密度更高的日文。",
+      "tech": "以 Agent Skill 形式（透過 npx skills add 或 openskills install 安裝）在既有 AI coding CLI 中運作，核心是一套語言學規則集而非另外的模型；附公開語料驗證與對照範例。",
+      "feasibility": "安裝門檻極低（一行 npx 指令），可直接整合進現有 Claude Code / Codex / Cursor 工作流程，立即可用；僅限日文文本場景，但該場景是明確且常見的痛點（企業技術文件、對外公告等）。",
+      "limits": "僅處理日文輸出的自然度問題，不具備翻譯或多語言能力；規則集偏向特定文體（偏技術/業務說明文），對口語或行銷文案可能需要調整；效果仍依賴底層 LLM 對規則的遵從度。",
+      "reason": "方法論清楚、附驗證案例與明確安裝方式，解決一個具體且常見的「AI 翻譯腔」問題，對使用 AI 工具產出日文內容的團隊有實際可行性，故選入。"
+    },
+    {
+      "full_name": "blendi-remade/dioramas",
+      "html_url": "https://github.com/blendi-remade/dioramas",
+      "stars": 159,
+      "selected": true,
+      "summary": "開源的電影感互動 3D 網站框架：以生成式 AI（Nano Banana 2 生圖 + Meshy 7.1 圖轉 3D）產生主視覺素材，再透過自製 three.js 引擎（HDR 後製、體積光、平面反射）與腳本化相機/捲動互動包裝成完整登陸頁，並附 20 個完整範例站。",
+      "tech": "fal.ai 上的 Nano Banana 2（文生圖）與 Meshy 7.1（圖轉 3D，60k–250k 三角面 PBR 模型）、自製 three.js 核心引擎、meshopt 壓縮與 WebP 貼圖優化 pipeline、Lenis + GSAP 捲動編排。",
+      "feasibility": "本地可直接 git clone + npm install + npm run dev 執行 20 個範例（模型檔已隨 repo 附上，約 330MB，無需 LFS）；若要產生新素材則需申請 fal.ai 的 FAL_KEY 並承擔生成成本（單一模型約 1.2 美元）。",
+      "limits": "重度依賴桌面級 GPU 才能跑滿 60fps；素材生成需要付費 API（非免費本地模型）；授權上程式碼 MIT、但生成的模型與圖片是 CC BY 4.0，商用需留意標註義務。",
+      "reason": "完整呈現「文字 prompt → AI 生圖 → AI 轉 3D → 優化 → 互動網頁」的生成式 AI 資產產線，文件與範例齊全、可直接本地運行驗證，是本輪 generative-ai 主題中技術含量最高的候選，故選入。"
+    },
+    {
+      "full_name": "VoltEmperorChaos/ai-agent-for-pc",
+      "html_url": "https://github.com/VoltEmperorChaos/ai-agent-for-pc",
+      "stars": 50,
+      "selected": false,
+      "reason": "README 僅描述「雙擊 exe 即可啟動」，未說明使用的模型、技術棧或任何實作細節，也看不到可檢視的原始碼邏輯，專案本身註明「仍在開發中」，缺乏可驗證的技術內容，故淘汰（推測：目前僅為封裝好的執行檔展示，尚無足夠資訊判斷實際能力）。"
+    },
+    {
+      "full_name": "Moris-kr/ai-chatroom",
+      "html_url": "https://github.com/Moris-kr/ai-chatroom",
+      "stars": 44,
+      "selected": false,
+      "reason": "雖然用無頭方式呼叫本機已登入的 Claude Code / Codex / Grok / Gemini CLI 來做多代理人對話是個有趣技巧，但產品定位是娛樂性質的『AI 聊天室』（閒聊、貼圖、虛擬小鎮），而非具備明確生產力用途的開發工具，且做法遊走在以聊天室用途消耗各家 CLI 訂閱額度的灰色地帶，故淘汰。"
+    },
+    {
+      "full_name": "hirotomasato/duckapi",
+      "html_url": "https://github.com/hirotomasato/duckapi",
+      "stars": 30,
+      "selected": false,
+      "reason": "README 自行明載此專案透過瀏覽器自動化操作 Duck.ai 網頁介面來「免費」取得 OpenAI/Anthropic 相容 API，明確違反 Duck.ai 服務條款、帳號／IP 會被永久封鎖且無法申訴，風險與可行性都由作者自行揭露為不可控，不適合推薦為可長期依賴的工具，故淘汰。"
+    },
+    {
+      "full_name": "Dreamer-Toby/STEPQuant",
+      "html_url": "https://github.com/Dreamer-Toby/STEPQuant",
+      "stars": 30,
+      "selected": true,
+      "summary": "針對 Delta-rule 線性注意力模型（如 Kimi-Linear）的常駐遞迴狀態（recurrent state）做量化壓縮的研究方法：依狀態單元誤差存續時間動態分配位元數（when），並對 key/value 分軸校正（where），在 4–6 bit 下仍維持接近 FP32 的下游任務準確率。",
+      "tech": "基於 arXiv 論文的官方實作，搭配 SGLang 0.5.12 serving、PyTorch 2.11、Triton 3.7 kernel，提供校準、serving、評測三段式腳本。",
+      "feasibility": "有完整可重現的腳本與設定檔，但官方範例門檻偏高：需要多張 GPU（範例用 4 張 A800）、特定版本的 SGLang/CUDA 環境與模型 checkpoint，較適合有多卡 GPU 資源的研究或 MLOps 團隊實際導入，一般個人開發者本地重現難度較高。",
+      "limits": "僅公開 Qwen3.8-27B 與 Kimi-Linear-48B-A3B 兩組模型的基準結果；數據為論文自行量測（4-bit AWQ 權重、batch size 512、4×A800），尚待社群獨立驗證；僅適用於 Delta-rule 類遞迴狀態模型，不是通用的 LLM 量化方案。",
+      "reason": "附 arXiv 論文與可重現的官方程式碼、具體的記憶體與準確率數據（狀態記憶體壓縮 5 倍、serving 記憶體降低 5–7 成），是本輪少數具備嚴謹量化基準的 LLM 推論優化研究，對做大規模 LLM serving 的團隊有參考價值，故選入。"
+    }
+  ]
+}
