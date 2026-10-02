@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-02",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-09-30 stars:>=20 | topic:machine-learning created:>=2026-09-30 stars:>=20 | topic:llm created:>=2026-09-30 stars:>=20 | topic:ai-agent created:>=2026-09-30 stars:>=20 | topic:generative-ai created:>=2026-09-30 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜非常小——5 個 topic 合併後只有 4 個不重複的新 repo 符合條件，machine-learning topic 甚至零結果。",
+    "body": "這可能反映 2026-09-30~10-02 這個區間本身新專案爆發量較低，而非搜尋條件出錯（star 門檻與日期區間都照常套用）。四個候選中有三個通過篩選：一個是給 AI coding agent 用的日文潤色 Agent Skill（951 star，今天人氣最高）、一個是結合生成式 3D 資產管線的開源網站框架、一個是 AI agent 的 typed 長期記憶層。唯一淘汰的候選（Windows 上的單一 .exe AI agent）缺乏技術透明度，無法判斷其可行性與限制。"
+  },
+  "candidates": [
+    {
+      "full_name": "nanaism/yomiyasu",
+      "html_url": "https://github.com/nanaism/yomiyasu",
+      "stars": 951,
+      "selected": true,
+      "summary": "給 Claude Code、Codex、Cursor、Gemini、Antigravity 等 AI coding agent 使用的 Agent Skill，專門把 AI 生成的日文文章潤色成更自然、資訊密度更高的日文，目標文體包括技術文章、設計書/規格書、PR 說明文、內部報告等實務文件。",
+      "tech": "以 Agent Skill（給 LLM 讀取的規則/流程文件）形式實作，而非獨立程式；依賴呼叫端的 LLM（Claude/Codex/Gemini 等）本身的語言能力執行潤色，並附帶語言學病理分析與多語料驗證結果（見作者 Zenn 文章）。",
+      "feasibility": "本地可行性高：只是一份要被讀入 AI coding 環境的 skill 文件，沒有任何額外依賴或伺服器，安裝即是把 skill 放進對應工具的 skill 目錄。",
+      "limits": "僅處理日文，且效果依賴底層 LLM 的日文能力與版本；是規則/提示工程而非確定性演算法，潤色品質無法完全保證（推測：不同模型效果會有落差）。",
+      "reason": "今天人氣最高、技術描述最完整的候選；提供具體的問題分析（AI 日文的「不自然感」四大根因）與實測驗證，而非空泛宣稱，且安裝與使用門檻極低，選中。"
+    },
+    {
+      "full_name": "blendi-remade/dioramas",
+      "html_url": "https://github.com/blendi-remade/dioramas",
+      "stars": 181,
+      "selected": true,
+      "summary": "開源框架，用於製作「3D 場景即頁面」的電影感互動網站，內附 20 個完整範例站點；核心賣點是用生成式 AI（文字→圖片→3D 模型）產生場景主視覺素材。",
+      "tech": "素材管線為 Nano Banana 2（fal.ai 上的圖片生成模型）生成產品圖 → Meshy 7.1 image-to-3D（同樣跑在 fal 上）轉成 6-25 萬面的 PBR 3D 模型，再用自製腳本做網格最佳化（meshopt 壓縮、轉 WebP 貼圖）；前端引擎是 three.js，疊加 HDR 後製、體積光、平面反射等效果，並用 GSAP/Lenis 做捲動互動。",
+      "feasibility": "中等：程式碼與範例齊全、開源,但要重新產生素材需要 fal.ai 的 FAL_KEY 並產生實際費用（單個模型約 $1.2 美元,20 個範例全套約 90 美元）;若只是研究引擎或重用既有範例素材則幾乎零成本。",
+      "limits": "生成素材有金錢成本且非一次性免費;高品質視覺效果仰賴 three.js/WebGL 知識才能二次開發;大型 3D 模型（即便壓縮後）仍可能影響網頁載入效能（推測）。",
+      "reason": "把生成式 AI 影像與 3D 模型生成串接成完整素材管線並公開全部 prompt 與成本數據，是少見把「生成式 AI 用於前端視覺資產」講得這麼具體透明的專案，選中。"
+    },
+    {
+      "full_name": "cmoraes10/loci",
+      "html_url": "https://github.com/cmoraes10/loci",
+      "stars": 24,
+      "selected": true,
+      "summary": "給 AI agent 用的「有型別」長期記憶層,把對話中萃取出的事實依八大類別（routine、study、preferences、finance、goals、relationships、constraints、ephemeral）、四個重要度分層與狀態生命週期儲存,並做每日整併與過期淘汰,避免記憶清單無限膨脹或腐化。",
+      "tech": "核心是 Python 套件 + SQLite 儲存;萃取採雙路徑（LLM 語意理解 + regex 規則,以 LLM 結果為優先,LLM 無法使用時仍可用 regex 路徑運作）;提供兩種介接方式：標準 MCP server（remember/recall/forget 三個工具,被動式,需要 agent 主動呼叫）與 Hermes plugin（透過 post_llm_call hook 自動萃取、每次呼叫前自動注入情境,並有固定 12 筆的注入上限依重要度與時近性排序）。",
+      "feasibility": "本地可行性高：`pip install mowave-loci` 即可,MCP 版本不需要額外啟動伺服器,資料存在本機 SQLite 檔案,設定單純。",
+      "limits": "自動萃取（不需手動呼叫 remember）目前只有 Hermes 平台的 plugin 支援,純 MCP 使用者仍要自己觸發工具呼叫;star 數與社群驗證都還很少（24 stars、剛建立約一天),成熟度有待觀察（推測）。",
+      "reason": "解決 AI agent 長期記憶的具體痛點（記憶腐化、無限膨脹、跨 session 失憶）,設計考慮周全（分類、重要度、衰減、雙萃取路徑降級),且安裝門檻低,雖然 star 數低但技術完整度高,選中。"
+    },
+    {
+      "full_name": "VoltEmperorChaos/ai-agent-for-pc",
+      "html_url": "https://github.com/VoltEmperorChaos/ai-agent-for-pc",
+      "stars": 46,
+      "selected": false,
+      "reason": "README 內容過於空泛，只說明「雙擊 .exe 即可啟動」，完全沒有說明所用模型、技術棧、功能細節或原始碼結構，無法判斷其可行性與限制，且以單一執行檔形式發布缺乏透明度（推測可信度偏低），淘汰。"
+    }
+  ]
+}
