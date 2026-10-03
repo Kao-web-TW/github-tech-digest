@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-03",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-01 stars:>=20 | topic:machine-learning created:>=2026-10-01 stars:>=20 | topic:llm created:>=2026-10-01 stars:>=20 | topic:ai-agent created:>=2026-10-01 stars:>=20 | topic:generative-ai created:>=2026-10-01 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜出現兩個圍繞「多帳號/多訂閱管理」的周邊工具,顯示開發者正在替 AI 服務的用量調度打造基礎設施,而不只是做模型能力本身。",
+    "body": "IuCC123/CLIProxyAPI-Rust 把 Claude、ChatGPT、Gemini 等多個既有訂閱帳號彙整成單一相容 API 端點,而 lhfer/factory-switcher 則是用 macOS 選單列工具在 Factory Droid 的多個帳號間一鍵切換並顯示額度。兩者都不是在做模型推理或 agent 能力本身,而是在解決「手上有多個 AI 服務訂閱,如何方便切換、不浪費額度」的實務痛點,反映出 AI 編程助理的多帳號/多供應商管理正逐漸成為獨立的工具類別。"
+  },
+  "candidates": [
+    {
+      "full_name": "Stxqq/self-driving-car",
+      "html_url": "https://github.com/Stxqq/self-driving-car",
+      "stars": 46,
+      "selected": true,
+      "summary": "用遺傳演算法演化出的神經網路,在純 JavaScript 寫成的高速公路模擬中自駕過彎、換道超車,瀏覽器中可觀看訓練成果或親自上場駕駛對照。",
+      "tech": "類神經網路 + 遺傳演算法(neuroevolution),純 vanilla JS 實作、零外部依賴,約 1,300 行 ES modules。",
+      "feasibility": "完全在瀏覽器執行,無需安裝任何套件,開啟頁面即可本地試跑,門檻極低。",
+      "reason": "經典但完整的 neuroevolution 教學示範,程式碼量小、零依賴、可直接在瀏覽器體驗,適合作為學習入門案例。"
+    },
+    {
+      "full_name": "vedantdhande04/tweetytweets",
+      "html_url": "https://github.com/vedantdhande04/tweetytweets",
+      "stars": 42,
+      "selected": true,
+      "summary": "讓 AI agent 全自動經營 X/Twitter 帳號的管線:研究當日新聞、以使用者語氣寫貼文、透過真實瀏覽器發布,並用視覺模型驗證貼文確實上線。",
+      "tech": "Python 標準庫 + 單一 websockets 依賴,透過 Chrome DevTools Protocol 操控瀏覽器,搭配 LLM 與視覺模型做研究、寫作與發文後驗證。",
+      "feasibility": "不需 X API key 或付費爬蟲,但需要一組已登入的真實 X 帳號與瀏覽器環境,並自行設定排程與 LLM 存取金鑰(推測:實際運作成本取決於所選模型用量)。",
+      "reason": "設計完整的 agent 自動化管線(研究→寫作→排程→發布→驗證),且刻意避開官方 API 費用,具代表性,但自動發文涉及帳號風險值得留意。"
+    },
+    {
+      "full_name": "facebookresearch/swe-sweep",
+      "html_url": "https://github.com/facebookresearch/swe-sweep",
+      "stars": 37,
+      "selected": true,
+      "summary": "評測語言模型在真實大型程式庫中能自主找出並修復多少 bug 的基準框架,不提供 bug 類型或位置提示給 agent。",
+      "tech": "建立於 Meta 的 Harbor 評測框架之上,以 patch-applying agent 套用模型產生的 diff,在隔離的驗證環境中執行測試並評分。",
+      "feasibility": "需搭配特定釘選版本的 Harbor 與 uv 工具鏈,屬於研究/評測用途,一般開發者直接導入日常開發流程的門檻較高。",
+      "reason": "出自 Meta FAIR,是對 agentic bug-finding 能力的嚴謹基準測試,對評估 coding agent 實力有參考價值。"
+    },
+    {
+      "full_name": "cobanov/PS5LM",
+      "html_url": "https://github.com/cobanov/PS5LM",
+      "stars": 37,
+      "selected": true,
+      "summary": "把 llama.cpp 移植到已破解的 PlayStation 5 上,讓 GGUF 格式的語言模型直接在主機 CPU/GPU 運行,透過主機瀏覽器即可對話。",
+      "tech": "llama.cpp 移植 + PS5 payload(ELF),目前支援 Qwen3.5 0.8B/2B 等小模型,聊天介面相容 OpenAI API。",
+      "feasibility": "需要一台已 jailbreak(韌體 7.00–13.60)且裝有 payload loader 的 PS5,一般開發者難以重現,目前僅能載入 1.6GB 以下的小模型。",
+      "reason": "極具新意的本地 LLM 部署案例,展示 llama.cpp 生態的可移植性,雖然受眾極小眾但技術上頗有意思。"
+    },
+    {
+      "full_name": "IuCC123/CLIProxyAPI-Rust",
+      "html_url": "https://github.com/IuCC123/CLIProxyAPI-Rust",
+      "stars": 28,
+      "selected": true,
+      "summary": "用單一 Rust binary 把 Claude、ChatGPT、Gemini 等多個既有訂閱帳號整合成一個相容 OpenAI/Anthropic/Gemini 格式的 API,任何工具指向同一端點即可切換模型來源。",
+      "tech": "Rust 編寫,內建 dashboard,支援十個供應商的訂閱登入/服務帳號/API key,並處理 WebSocket 中轉與請求格式互轉。",
+      "feasibility": "單一約 8MB 執行檔,無需 Docker/Node,本地啟動門檻低,適合想統一多個 AI 工具存取入口的開發者。",
+      "reason": "實用的開發者基礎設施工具,解決多供應商/多帳號管理痛點,體積小、上手快,具備一定通用性。"
+    },
+    {
+      "full_name": "cmoraes10/loci",
+      "html_url": "https://github.com/cmoraes10/loci",
+      "stars": 25,
+      "selected": true,
+      "summary": "為 AI agent 提供具型別的長期記憶層,把對話中的事實依類別與重要度分級儲存、每日自動鞏固與過期,透過 MCP server 或 Hermes 外掛供 agent 查詢。",
+      "tech": "Python,核心邏輯搭配兩個 adapter(MCP server、Hermes plugin),以 LLM 加正規表示式雙軌抽取記憶,SQLite 本地儲存。",
+      "feasibility": "`pip install mowave-loci` 即可使用,MCP 版本可接入任何 MCP client,本地執行門檻低,不需另外起 server。",
+      "reason": "切中 agent 長期記憶這個常見痛點,MCP 相容性讓它能直接插入現有工具鏈,設計(分類/重要度/衰減)也較一般記憶外掛完整。"
+    },
+    {
+      "full_name": "lhfer/factory-switcher",
+      "html_url": "https://github.com/lhfer/factory-switcher",
+      "stars": 20,
+      "selected": false,
+      "reason": "核心功能是在 Factory Droid 的多個帳號間切換並顯示額度,屬於帳號管理/UI 工具,與 AI/ML 技術本身(模型能力、agent 行為)關聯薄弱,故不列入精選。"
+    }
+  ]
+}
