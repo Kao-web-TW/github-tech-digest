@@ -80,6 +80,8 @@ Claude 內容分析
 - 需要使用者建立 Discord 伺服器並取得 Webhook 網址。
 
 > **架構修正（2026-09-21）**：與搜尋模組同樣的原因，cloud routine 的網路出口政策也會擋掉對 `discord.com` 的直接 HTTPS 呼叫，這是平台層級的政策，並非本專案可設定調整的項目。因此 Discord 推播改為由 GitHub Actions workflow（`.github/workflows/notify-discord.yml`）負責：cloud routine 在步驟完成後把 `digests/records/<date>.json` push 上去，觸發該 workflow 於 GitHub 的 runner（不受此網路限制）上讀取該 record、組成 payload 並送出 webhook。Webhook 網址存放在該 repo 的 GitHub Actions Secret 中，routine 本身不再需要持有或傳遞這個密鑰。
+>
+> **架構修正（2026-10-04）**：`notify-discord.yml` 原本只監聽 `push.branches: [master]`，但 cloud routine 每次執行是 push 到當次 session 專屬的 `claude/<name>` 分支（依既有的分支規範，routine 不會、也不該直接 push 到 `master`），`master` 只在人工合併 PR 時才前進，而這件事並非每天發生。結果是 Discord 推播只在 PR 被合併的那幾天才觸發，且因為 workflow 的「找出變動的 record 檔」邏輯是取 `digests/records/*.json` 裡字典序最新的檔名，一次合併多天份只會送出最新一天的通知，中間幾天完全沒有推播——這正是「沒有每天觸發」的成因。修正方式：把 workflow 的 `branches` 條件加上 `'claude/**'`（保留 `master` 以涵蓋未來可能的直接合併情境），讓 routine 每天的 push 直接觸發通知，不再依賴人工合併 PR 的時間點。
 
 ## 錯誤處理
 

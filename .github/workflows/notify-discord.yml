@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - 'claude/**'
     paths:
       - 'digests/records/*.json'
 

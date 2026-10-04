@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-04",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-02 stars:>=20 | topic:machine-learning created:>=2026-10-02 stars:>=20 | topic:llm created:>=2026-10-02 stars:>=20 | topic:ai-agent created:>=2026-10-02 stars:>=20 | topic:generative-ai created:>=2026-10-02 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜呈現兩個明顯主題：『統一多家 AI 訂閱/API 的閘道代理』與『降低餵給 AI 的 token 成本』。",
+    "body": "topic:artificial-intelligence、machine-learning、generative-ai 三個較泛用的 topic 這兩天都沒有符合門檻（★≥20、2天內建立）的新 repo，候選完全來自 llm 與 ai-agent 兩個 topic，顯示近兩天的新專案仍高度集中在「LLM 應用層」而非泛 AI/ML 基礎研究。入選清單裡有兩個主題特別明顯：一是多供應商 API 閘道（CLIProxyAPI-Rust、LTZY-API），都在做把多家雲端 AI 服務與訂閱帳號整併成單一端點、並提供用量/額度管理；二是「降 token 成本」工具（answer-me-with-html 讓模型少寫 HTML 樣板、FileFlipper 把文件轉成精簡 Markdown 再餵給 AI），反映開發者社群對 AI 使用成本的敏感度持續上升。"
+  },
+  "candidates": [
+    {
+      "full_name": "QingYunA/answer-me-with-html",
+      "html_url": "https://github.com/QingYunA/answer-me-with-html",
+      "stars": 309,
+      "selected": true,
+      "summary": "Claude Code/Codex/Cursor/OpenCode 用的 agent skill，讓模型只寫精簡 Markdown draft，交給內建 CLI 轉成可互動的 HTML 頁面（含圖表、對比表、甚至 3b1b 風格講解影片），省下大量輸出 token。",
+      "tech": "Node.js 20+ CLI，無需額外安裝，透過 `npx skills add` 或 Claude Code plugin 安裝；影片生成可選 ElevenLabs 或系統 TTS。",
+      "feasibility": "本地可行性高，一行指令安裝，無需 API key，CI 綠燈，README 附有實測 token/時間對比數據（輸出 token 降至約 1/7，耗時降至約 1/3.6）。",
+      "limits": "僅是輸出格式化外層，不改變模型推理本身；影片匯出需要 Chrome/ffmpeg/Node 22+；目前只支援前述幾個 agent 平台。",
+      "reason": "實測數據具體（輸出 token 降 7.4 倍），安裝簡單，解決真實痛點（輸出耗時/token），剛發布即獲高星數關注。"
+    },
+    {
+      "full_name": "whirlchat/whirl",
+      "html_url": "https://github.com/whirlchat/whirl",
+      "stars": 259,
+      "selected": true,
+      "summary": "開源全端 AI 聊天應用（whirl.chat 背後程式碼），整合多模型路由、長期記憶、即時網路搜尋、MCP 工具整合、living artifacts（可編輯文件/圖表）等功能，可自架。",
+      "tech": "Next.js 16 + React 19 + Convex（DB/functions）+ Clerk（Auth）+ OpenRouter（多模型路由）+ AI SDK；Bun workspaces。",
+      "feasibility": "本地可行性中等：需要申請 Convex/Clerk/OpenRouter 帳號與金鑰，README 提供清楚的 self-hosting guide，部署門檻略高但文件完整。",
+      "limits": "多數進階功能（billing/web search/memory/analytics）依賴第三方付費服務的 API key，未設定則功能隱藏；仍是快速迭代中的產品。",
+      "reason": "功能完整、文件齊全、MIT 授權可自架，是具代表性的全端 AI chat 應用範例。"
+    },
+    {
+      "full_name": "Zhou-Yujing114514/deepseek-harness-linux",
+      "html_url": "https://github.com/Zhou-Yujing114514/deepseek-harness-linux",
+      "stars": 58,
+      "selected": false,
+      "reason": "單純是官方 DeepSeek Harness 桌面端的 Linux 打包/分發 fork，未改動 agent 核心能力，技術新穎度低，屬於維運型專案而非新 AI 整合工具。"
+    },
+    {
+      "full_name": "xop01/ai_goodpractice",
+      "html_url": "https://github.com/xop01/ai_goodpractice",
+      "stars": 52,
+      "selected": false,
+      "reason": "內容是個人心得與 prompting 經驗分享的 Markdown 指南，沒有可執行程式碼或工具產出，不屬於可評估的軟體專案。"
+    },
+    {
+      "full_name": "IuCC123/CLIProxyAPI-Rust",
+      "html_url": "https://github.com/IuCC123/CLIProxyAPI-Rust",
+      "stars": 33,
+      "selected": true,
+      "summary": "單一 Rust 二進位檔案，把 Claude/ChatGPT/Gemini/Grok/Kimi 等多個 AI 訂閱帳號與 API key 統一轉成 OpenAI/Anthropic/Gemini 相容端點，依剩餘額度自動選帳號、支援格式互轉與 WebSocket relay，並附帶即時 dashboard。",
+      "tech": "Rust 1.88+，單執行檔約 8MB，支援 Docker；相容原 Go 版 CLIProxyAPI 的設定檔與憑證格式。",
+      "feasibility": "本地可行性高：下載即可執行或 docker run，一行環境變數即可接入 Claude Code/Codex/任意 OpenAI SDK；文件清楚、有 release binary。",
+      "limits": "多帳號代理訂閱制 AI 服務可能牴觸各家服務條款（ToS），需自行評估合規風險；功能聚焦代理轉發，不含原廠的 payload 規則/plugin 等進階功能。",
+      "reason": "實用的多供應商統一閘道，工程成熟（CI、release、文件），但多帳號訂閱代理屬灰色地帶需注意 ToS 風險（推測）。"
+    },
+    {
+      "full_name": "Aimee51819/FileFlipper",
+      "html_url": "https://github.com/Aimee51819/FileFlipper",
+      "stars": 23,
+      "selected": true,
+      "summary": "Mac 菜單列工具，在 Finder 拖曳檔案並按 Shift 即可一鍵轉換格式，主打把 Word/PDF/PPT/Excel 轉成乾淨 Markdown 以降低餵給 AI 的 token 用量，另支援圖片/影片/音訊轉換、裁切壓縮去背等工具，全程本機離線處理。",
+      "tech": "Swift/macOS 原生 App；掃描 PDF 用系統 OCR；無需聯網或上傳雲端。",
+      "feasibility": "本地可行性高：需 macOS 14+，有下載包（未付費簽名需手動允許 Gatekeeper）及原始碼可自行編譯；免費開源。",
+      "limits": "僅支援 macOS；未上架 App Store 前需手動繞過 Gatekeeper 警告；轉檔品質依賴系統內建框架，複雜版面 PDF/PPT 轉換可能失真。",
+      "reason": "針對『餵資料給 AI 省 token』這個實際痛點提供離線、免費、隱私友善的解法，功能完整且文件清楚。"
+    },
+    {
+      "full_name": "LTZY-ACU/LTZY-API",
+      "html_url": "https://github.com/LTZY-ACU/LTZY-API",
+      "stars": 22,
+      "selected": true,
+      "summary": "自托管 LLM API 閘道與用量管理系統（原 AQUA-API 改名），統一多家雲端 API 與訂閱帳號（OAuth）、支援 Ollama/vLLM 本機模型，提供智能路由、精確計費、分組權限與運營後台。",
+      "tech": "Go（單二進位、零 CGO）+ SQLite，支援 OpenAI/Anthropic/Gemini 協議互轉，含 Web 管理介面與多語系。",
+      "feasibility": "本地可行性中高：單一二進位可直接部署，有線上 demo 與多語 README；但功能偏向中大型團隊的用量/計費管理，個人輕量使用可能過重。",
+      "limits": "品牌剛從 AQUA-API 改名，社群與文件仍在補齊中；README 的防偽/商標聲明暗示曾有仿冒爭議，需留意官方來源；訂閱帳號代理同樣有 ToS 風險（推測）。",
+      "reason": "計費與多協議管理功能完整，適合需要精確控管 AI 用量成本的團隊，工程架構（Go 單檔部署）務實。"
+    },
+    {
+      "full_name": "tutuhong2001/LLM-Learning-Notes",
+      "html_url": "https://github.com/tutuhong2001/LLM-Learning-Notes",
+      "stars": 20,
+      "selected": true,
+      "summary": "中文 AI 學習筆記 RAG 教學 Demo，用 10 篇短筆記建立小型問答知識庫，提供 BM25 與 Sentence-Transformers 兩種檢索後端比較、檢索評估指標（Hit Rate/Recall/MRR）與完整測試，適合面試/教學展示。",
+      "tech": "Python + Sentence-Transformers（BGE 中文嵌入）+ OpenAI 相容 SDK + pytest，CI 跑 Windows/Linux 雙系統。",
+      "feasibility": "本地可行性高：30 秒可離線跑 BM25 demo 不需任何 API key 或 GPU；真正呼叫生成模型才需另外設定金鑰。",
+      "limits": "知識庫為人工整理的 10 篇短文，規模小，評估題集也是自建，無法用來宣稱通用能力；沒有長文件分塊、向量快取或線上部署。",
+      "reason": "工程紀律良好（真實測試、CI、離線路徑清楚標示），是學習 RAG/檢索評估方法的優質教學範例，雖 star 數較低但內容紮實。"
+    }
+  ]
+}
