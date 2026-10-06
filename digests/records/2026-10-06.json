@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-06",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-04 stars:>=20 | topic:machine-learning created:>=2026-10-04 stars:>=20 | topic:llm created:>=2026-10-04 stars:>=20 | topic:ai-agent created:>=2026-10-04 stars:>=20 | topic:generative-ai created:>=2026-10-04 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜同樣只來自 llm 與 ai-agent 兩個 topic，而且主題明顯集中在「把 coding agent 裝進行動裝置／專屬介面」。",
+    "body": "topic:artificial-intelligence、machine-learning、generative-ai 三個泛用 topic 連續多日沒有符合門檻（★≥20、2天內建立）的新 repo，候選完全來自 llm 與 ai-agent，顯示近期新專案仍高度集中在「LLM 應用層」。今天候選中有三個都是「讓既有 coding agent 跑在手機/行動裝置上」的獨立前端：Pi Pocket（Pi agent 的多人協作行動 Web App）、Hermes Mobile（Hermes Agent 的原生 Android 殼）、以及作為樣板基礎的 PenguinHarness 衍生品 Adelie，顯示社群對「桌面 agent 隨身化」的需求持續升溫；另一端則出現 AiPC 這類把整台電腦（螢幕、鍵鼠、瀏覽器、終端機）暴露給 agent 的 MCP 工具，操作風險值得留意。"
+  },
+  "candidates": [
+    {
+      "full_name": "TannerMidd/pi-pocket",
+      "html_url": "https://github.com/TannerMidd/pi-pocket",
+      "stars": 109,
+      "selected": true,
+      "summary": "為 Pi coding agent 打造的「永續、多人協作、行動裝置優先」Web App，可跑在自己的電腦或直接跑在手機上；支援斷線續跑、多人同場協作（聊天、@提及、輪流操作）、Plan mode、內建瀏覽器、排程訊息、Lancet Guard 風險指令審批等功能。",
+      "tech": "Node.js 22.19+、Preact/htm 前端、SQLite（pocket.sqlite）儲存對話狀態、server-sent events 推播、內建 headless Chromium（CDP）、Web Push。基於 Pi 自身的 model runtime/skills/prompt templates。",
+      "feasibility": "本地可行性高：`git clone` 後 `npm install && npm start` 即可啟動，支援 Linux/macOS/Windows/Android(Termux)；需先用 Pi 本身登入模型供應商。多種遠端存取模式（local/lan/cloudflare/tailscale）。",
+      "limits": "Pi Durable 本身仍是實驗性 API，版本可能變動；一次只能一個 server process 使用資料庫；git worktree 僅隔離檔案非沙箱，agent 仍可觸及使用者全部權限；瀏覽器需系統自備 Chromium/Chrome/Brave/Edge；尚未在 Windows 上完整測試。",
+      "reason": "功能完整、文件清楚、本地可直接試用，且明確標示「可操作本機一切」的安全警語，是今天候選中最成熟的 agent 行動化方案。"
+    },
+    {
+      "full_name": "chenxiachan/paperfold",
+      "html_url": "https://github.com/chenxiachan/paperfold",
+      "stars": 54,
+      "selected": true,
+      "summary": "把任何 arXiv 論文轉成可「縮放」閱讀的介面：5 個層級（全文→重點句→論點→段落一句話→章節地圖），AI 摘要與作者原文以不同字體區分，並可針對段落或全文提問、附證據引用，支援 12 種語言逐句翻譯與筆記匯出。",
+      "tech": "Python 3.9+ 的本地 CLI/服務（`python3 -m adr serve`），可直接沿用 Claude Code/Codex/Pi 既有登入，或接 ChatGPT 計畫、OpenRouter、Anthropic/OpenAI/DeepSeek 等 API Key。",
+      "feasibility": "本地可行性高：三行指令安裝啟動，瀏覽器打開 localhost:3017 貼上 arXiv 連結即可用；也提供線上 Demo 免安裝試用；可匯出成單一自包含 HTML 離線分享。",
+      "limits": "僅支援有 arXiv HTML 版本的論文（2023 年底後的論文較多符合）；AI 產生的摘要/論點層級需使用者自行核實；分享匯出的 HTML 受原論文授權條款限制（多數 arXiv 論文僅允許閱讀不允許轉散布）。",
+      "reason": "解決真實的論文閱讀痛點，互動設計具體且有線上 Demo 可直接驗證，本地部署門檻低，是今天候選中最貼近一般知識工作者的工具。"
+    },
+    {
+      "full_name": "omarqaterge/hermes-mobile-app",
+      "html_url": "https://github.com/omarqaterge/hermes-mobile-app",
+      "stars": 45,
+      "selected": true,
+      "summary": "非官方的 Hermes Agent 原生 Android 介面，讓 Hermes 完全跑在手機上（透過 Termux + Debian），提供串流對話、工具卡片、審批通知（Android 16 Live Update 式的狀態列互動）、語音輸入輸出、與 Hermes 共用的互動畫布（HTML/Mermaid/程式碼）等。",
+      "tech": "React + TypeScript 前端（Vite 打包成單一 HTML），原生殼為 Java + WebView；透過與 Hermes Desktop 相同的 `tui_gateway` JSON-RPC 協定對接，另有一個 Hermes 插件負責推播狀態與審批事件。",
+      "feasibility": "中等：需先在手機 Termux 內安裝 Debian 環境與 Hermes Agent 本體（約 20 分鐘流程），再透過一鍵安裝腳本安裝 App；作者註明僅在自己手機上完整測試過，全新手機流程未必順暢。",
+      "limits": "非官方社群專案，與 Nous Research 無關；僅支援 Android 8+ 的 arm64 裝置；依賴 Hermes 內部協定，Hermes 更新後需手動同步 vendor 程式碼；電池優化若未關閉會導致背景服務被系統砍掉。",
+      "reason": "把桌面級 agent 介面完整搬進手機、功能豐富且有清楚的架構圖與故障排除指南，與今天另一款 Pi Pocket 形成有趣的「agent 隨身化」對照組。"
+    },
+    {
+      "full_name": "SysikNagibator/AiPC",
+      "html_url": "https://github.com/SysikNagibator/AiPC",
+      "stars": 27,
+      "selected": true,
+      "summary": "透過 MCP 協定把整台 Windows 電腦（螢幕截圖、UI 座標辨識、滑鼠鍵盤、瀏覽器 CDP、檔案系統、終端機、SSH）開放給任何支援工具呼叫的模型操作，提供 63 個工具與 ask/auto/read-only 三種風險模式。",
+      "tech": "Python 3.10+ 本地服務 + MCP server（stdio），screenshot 以原生 image block 傳輸降低 token 成本，內建敏感指令/路徑 deny-list 與操作稽核紀錄（`~/.aipc/audit.log`）。",
+      "feasibility": "僅支援 Windows 10/11：下載一個 exe 雙擊即可自動安裝並註冊進 14 類 IDE 的 MCP 設定；提供 19 個單元測試與自我診斷（`aipc doctor`/`selftest`）。",
+      "limits": "屬高風險工具——預設模式仍需人工確認，但一旦切到 auto 模式等同讓模型完全操控電腦（檔案、瀏覽器、SSH 等）；僅限 Windows；雲端 IDE 因無法連到 localhost 需額外架橋接。README 明確聲明僅供個人自動化/測試用途，不得用於未授權存取。",
+      "reason": "展示了把電腦完整開放給 agent 操作的具體工程做法（token 效率、風險分級、審計紀錄），值得关注其安全設計，但使用時務必评估風險與授權範圍。"
+    },
+    {
+      "full_name": "THUROI0787/absent-author",
+      "html_url": "https://github.com/THUROI0787/absent-author",
+      "stars": 24,
+      "selected": true,
+      "summary": "提供一份 83 項「AI 代寫論文跡象」證據清單，以及兩個 agent skill：`paper-author-pass`（供作者在投稿前自我檢查，只問問題不代答）與 `paper-slop-screen`（供審稿人/AC 產出 W/R/Q 評分與可引用的證據）。",
+      "tech": "Claude Code / Codex 的 Agent Skills（`SKILL.md` 格式），另附一個零依賴的 Python 3.9+ 規則式 lint 工具（`tools/slop_lint.py`）掃描 28 種表層特徵。",
+      "feasibility": "本地可行性高：`./install.sh` 一鍵裝進 `~/.claude/skills`，之後直接在 Claude Code/Codex 內下指令使用；lint 工具可獨立執行無需任何 API。",
+      "limits": "明確聲明「不是 AI 偵測器」，語言層證據（L 層）僅能佐證「文筆」軸而不能佐證「研究誠信」軸；校準樣本僅 59 篇人類論文對 20 篇 AI 論文，樣本小且有時代混淆；僅為線索提供工具，仍需人工覆核。",
+      "reason": "針對 2026 年學術圈普遍關注的 AI 代寫論文問題，提供有學術背書（多校共同作者、Zenodo DOI）且方法論透明（附校準報告、盲測結果）的實用工具，兼具研究與工程價值。"
+    },
+    {
+      "full_name": "h9-tec/arabic-ai-atlas",
+      "html_url": "https://github.com/h9-tec/arabic-ai-atlas",
+      "stars": 21,
+      "selected": true,
+      "summary": "阿拉伯語 AI 生態系的互動地圖與清單（3302 筆項目，涵蓋 LLM/ASR/TTS/OCR/Embedding/資料集/工具/論文/機構），並把自己做成一個 Claude Code plugin：5 個 skill 加一個可離線查詢圖譜的 MCP server。",
+      "tech": "資料以 YAML 維護並以 JSON Schema 驗證，CI 每晚自動拉取 Hugging Face 下載量重新產生地圖與 `dist/atlas.json`；MCP server 以 `uv run` 啟動 Python 腳本提供 `recommend`/`lineage` 等工具。",
+      "feasibility": "本地可行性高：`claude plugin marketplace add` + `claude plugin install` 兩行指令即可讓 Claude 透過 `recommend` 工具回答「哪個開源阿拉伯語 TTS 能跑在手機上」之類問題；一般 MCP client 也可直接設定連線。",
+      "limits": "本質上是一份精選清單/資料庫而非執行引擎，資料品質與覆蓋度仰賴社群貢獻與 Hugging Face 中繼資料是否正確；僅服務阿拉伯語 AI 生態，應用範圍較侷限於特定語言/地區需求。",
+      "reason": "把傳統的 awesome-list 轉型成可被 agent 查詢的結構化知識庫（MCP + skills），在「讓 LLM 查詢專業領域知識」這個方向上具代表性，且資料規模與自動更新機制扎實。"
+    },
+    {
+      "full_name": "lmliheng/Adelie",
+      "html_url": "https://github.com/lmliheng/Adelie",
+      "stars": 21,
+      "selected": false,
+      "reason": "README 幾乎只說明「本專案是 PenguinHarness 的品牌重塑分支（fork），程式碼/引擎/前端/協定全部沿用上游」，缺乏自身功能的具體描述，與既有專案高度重複，淘汰。"
+    }
+  ]
+}
