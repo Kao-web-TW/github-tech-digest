@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-07",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-05 stars:>=20 | topic:machine-learning created:>=2026-10-05 stars:>=20 | topic:llm created:>=2026-10-05 stars:>=20 | topic:ai-agent created:>=2026-10-05 stars:>=20 | topic:generative-ai created:>=2026-10-05 stars:>=20",
+  "notice": {
+    "lede": "今天符合篩選門檻的新建 AI repo 數量極少，五個 topic 合併後只有 4 筆候選。",
+    "body": "本次窗口（2026-10-05 ~ 2026-10-07）在五個關鍵字 topic 下搜尋結果明顯稀疏：artificial-intelligence、machine-learning、ai-agent 三個 topic 均無任何符合「創立於近 2 天內且星數 ≥20」條件的新 repo，只有 llm 與 generative-ai 各貢獻少數候選，合併去重後僅 4 筆。候選榜中還出現兩筆與「AI 技術本身」關聯度低的項目：一筆是第三方 SaaS 產品的聯盟導流/SEO 清單頁，repo 裡沒有實際程式碼；另一筆是用瀏覽器自動化搭配拋棄式信箱大量申請帳號與 API 金鑰、以規避服務限流與試用限制的工具，屬於帳號農場性質，皆未納入精選。最終只有 OpenChart（把多家 LLM agent 接入圖表/技術分析工作流的桌面應用）與 Absent Author（給 Claude Code / Codex 用的學術誠信檢測 agent skill）兩個項目符合精選標準，數量低於平常的 5-10 個區間，如實反映今天候選榜的稀薄程度。"
+  },
+  "candidates": [
+    {
+      "full_name": "longsurf-ai/openchart",
+      "html_url": "https://github.com/longsurf-ai/openchart",
+      "stars": 82,
+      "selected": true,
+      "summary": "把 AI agent（Claude、Codex、Gemini）整合進圖表與技術分析平台：統計/技術分析、即時市場事件警示、以自然語言描述監控條件由 agent 轉成監控規則、選取圖表區間請 agent 研究並附來源註解，並提供自製指標 DSL「Tea」。",
+      "tech": "TypeScript + Bun + Effect（runtime/並行/錯誤處理基礎）；前端用 shadcn/ui、Radix UI、Base UI；agent 對話介面採 assistant-ui 與 AG-UI 事件協議；指標語言 Tea 設計靈感來自 TradingView Pine Script。",
+      "feasibility": "可從原始碼自建：需 Node 24、npm、Bun 1.4.2、Just，`just install && just desktop` 即可跑桌面版；官方也提供 macOS Apple Silicon 預編譯 DMG。本地可行性高，但目前只有 macOS arm64 的現成安裝包，其他平台須自行建置。",
+      "limits": "AI 功能需使用者自備 Claude/Codex/Gemini 帳號及其額度，進階的 Cloud 市場資料為另外計價的付費服務；repo 剛在本次搜尋窗口內建立，尚無長期維護紀錄可供評估穩定性。",
+      "reason": "技術整合完整、文件詳盡、星數領先本次候選榜，是少見把多家主流 LLM agent 實際接入金融圖表/技術分析工作流程的專案，可行性與文件品質皆佳，故選入。"
+    },
+    {
+      "full_name": "THUROI0787/absent-author",
+      "html_url": "https://github.com/THUROI0787/absent-author",
+      "stars": 41,
+      "selected": true,
+      "summary": "提供兩個 Claude Code / Codex agent skill（paper-author-pass 給作者自查、paper-slop-screen 給審稿人/AC 篩查）與一份 83 項「無人把關的 AI 代寫論文」證據清單，協助辨識寫作、研究把關、最終核實三層面上「作者缺席」的跡象。",
+      "tech": "核心是給 Claude Code/Codex 讀取的 SKILL.md agent skill；另附一個不依賴外部套件的 Python 3.9+ 規則式 lint 工具（`slop_lint.py`，28 項表面特徵偵測，已用 79 篇論文做校準）。",
+      "feasibility": "`./install.sh` 一行即可安裝兩個 skill 到 `~/.claude/skills`（或指定 `--project`/`--codex`），lint 工具可獨立執行、無外部依賴，本地可行性高；實際使用仍需人在 agent 對話中引導與做最終判斷。",
+      "limits": "官方明確說明偵測結果只是「候選訊號」而非結論性判定，乾淨的報告不代表沒問題；使用前須先確認所屬學術會議/期刊的審稿 LLM 使用政策是否允許（README 以 ICML 2026 497 篇論文被退件為例提醒）。",
+      "reason": "在 agent skills 生態中少見針對學術誠信/審稿流程設計的實用工具，證據清單與校準方法公開透明、作者具體學術背景可查，屬於有明確落地場景的 AI agent 應用，故選入。"
+    },
+    {
+      "full_name": "BoatswainValve94/1min-ai-download",
+      "html_url": "https://github.com/BoatswainValve94/1min-ai-download",
+      "stars": 35,
+      "selected": false,
+      "reason": "repo 內容是第三方 SaaS 產品 1min.AI 的聯盟導流/SEO 清單頁，只有截圖與導向 softgit.pro 外部頁面的連結，沒有任何實際程式碼或可本地執行的功能，非技術專案，故未選入。"
+    },
+    {
+      "full_name": "0xgetz/tokenharbor-bulk-creator",
+      "html_url": "https://github.com/0xgetz/tokenharbor-bulk-creator",
+      "stars": 32,
+      "selected": false,
+      "reason": "此工具以拋棄式信箱搭配 Playwright 瀏覽器自動化大量註冊 Token Harbor 帳號並產生 API 金鑰，明確偵測並規避對方的反濫用限流機制，屬帳號農場/服務濫用性質，雖標註僅供自有帳號測試，仍與一般服務條款相衝突，不符合精選的技術/合規門檻，故未選入。"
+    }
+  ]
+}
