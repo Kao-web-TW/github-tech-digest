@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-08",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-06 stars:>=20 | topic:machine-learning created:>=2026-10-06 stars:>=20 | topic:llm created:>=2026-10-06 stars:>=20 | topic:ai-agent created:>=2026-10-06 stars:>=20 | topic:generative-ai created:>=2026-10-06 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜很小（僅 5 筆），其中兩個都是圍繞同一個開源專案 Hermes Agent 的周邊生態（作業系統介面、情境壓縮外掛）。",
+    "body": "artificial-intelligence、machine-learning、generative-ai 三個 topic 兩天內都沒有新進且達到 20 星門檻的 repo，候選完全來自 llm 與 ai-agent 兩個 topic。值得注意的是候選中出現了一個以自動化量產第三方 SaaS 帳號與 API 金鑰為目的的工具，疑似濫用該服務的註冊/試用機制，因此予以淘汰；這類「包裝成開發工具的帳號量產腳本」近期在 llm/ai-gateway 相關 topic 下有重複出現的跡象，值得留意。"
+  },
+  "candidates": [
+    {
+      "full_name": "iamlukethedev/Herald-OS",
+      "html_url": "https://github.com/iamlukethedev/Herald-OS",
+      "stars": 109,
+      "selected": true,
+      "summary": "以 Hermes Agent 作為互動介面的「agent-native」桌面作業系統外殼：使用者用自然語言對話，Agent 負責開啟應用程式、整理檔案、監看執行中的程序、排程常駐任務，並即時寫程式；所有會改動系統狀態的動作都經過使用者可控的權限系統。",
+      "tech": "基於 Nous Research 開源的 Hermes Agent 作為核心推理/執行引擎，本身是桌面殼層（提供 macOS App、Linux 安裝程式、Arch/Omarchy 套件與可攜 tarball），再疊加權限管理層；模型提供者可選 Nous Portal 或 OpenRouter/OpenAI/Anthropic/本地模型等 Hermes 支援的供應商。",
+      "feasibility": "本地可行性中等：需另外安裝 Hermes Agent 並綁定模型供應商金鑰才能運作，官方標示為 alpha(0.1) 且提醒「保留好任何讓 Agent 碰過東西的備份」；安裝路徑依平台（macOS Apple Silicon / Linux / Arch / VM）分別處理，上手門檻不算低。",
+      "limits": "仍為 alpha 階段，29 個開放 issue，官方明確聲明非 Nous Research 官方/認可專案；賦予 Agent 整台機器的操作權限，對一般使用者而言資安與誤操作風險不低，需要搭配良好的權限設定與備份習慣。",
+      "reason": "完整的 agent-native OS 概念、有版本發行與 CI、文件齊全且誠實標示風險與專案關係，是本次候選中規模最大也最完整的一個，值得收錄。"
+    },
+    {
+      "full_name": "nikuscs/orbs",
+      "html_url": "https://github.com/nikuscs/orbs",
+      "stars": 34,
+      "selected": true,
+      "summary": "自架的多機器人群聊應用：一個房間可容納多個 bot，使用者可直接 @ 指定 bot 回應，或由路由模型（Jev/TypeSafe）判斷該由誰接話；每個 bot 可各自設定名稱、指令與模型，定位為 Grok Bot / Muse / Dots 等商用多機器人聊天產品的開源自架替代方案。",
+      "tech": "前端/後端用 Bun + TanStack Start，可部署在 Cloudflare（Workers + D1 + R2 + 每組織一個 Durable Object）或本機 Bun 行程（SQLite）；實際「跑一輪對話」的工作由使用者自己機器上的 daemon 透過 Pi（另一個獨立 CLI 專案，以 RPC 模式）呼叫 OpenAI Codex、Claude、Grok、OpenRouter 等模型完成。",
+      "feasibility": "本地可行性中等：需先安裝 Bun 與獨立的 Pi CLI（非隨附），並自行準備網頁服務與 daemon 的環境變數（daemon API key、工作目錄等），簡單帳密登入即可開始，但要讓路由功能(Jev)運作還需另外申請 TypeSafe API key。",
+      "limits": "目前是早期版本（README 明確標註安全性警告，bot 會用 Pi 執行工作），依賴外部專案 Pi 才能運作，屬於「需要自己串好多個元件」的自架方案，不是單一封裝好的產品。",
+      "reason": "具體可用、定位清楚（多模型群聊的自架替代方案），技術棧完整、README 詳細交代安裝與安全性注意事項，是值得收錄的新興整合工具。"
+    },
+    {
+      "full_name": "0xgetz/tokenharbor-bulk-creator",
+      "html_url": "https://github.com/0xgetz/tokenharbor-bulk-creator",
+      "stars": 34,
+      "selected": false,
+      "reason": "淘汰：此工具的核心功能是用 Playwright 自動化加暫時信箱，大量繞過 Token Harbor(tokenharbor.ai) 這個 AI gateway 服務的註冊/驗證流程來量產帳號與 API 金鑰，本質是規避第三方服務 ToS 的帳號量產腳本，而非真正的 AI 技術整合，不適合推薦（推測：即便 README 聲稱僅用於「自己帳號的合法自動化測試」，大量量產金鑰的使用情境仍以濫用為主）。"
+    },
+    {
+      "full_name": "Elevatormusic/hermes-warm-compaction",
+      "html_url": "https://github.com/Elevatormusic/hermes-warm-compaction",
+      "stars": 31,
+      "selected": true,
+      "summary": "Hermes Agent 的情境壓縮（context compaction）外掛：讓主模型在壓縮發生時，直接在「已快取」的上一次請求前綴上寫交接摘要，伺服器端只需讀取新增的那幾行，使壓縮動作更快完成，同時保留更多關鍵事實。",
+      "tech": "純 Python 3.10+、零依賴，只使用 Hermes Agent 官方文件化的外掛 API（不修改主程式、不繼承內建壓縮器、不做 runtime patch），README 附上與官方內建壓縮器、另一套第三方方案 hermes-lcm 的基準測試對比（中位壓縮耗時、事實保留率）。",
+      "feasibility": "本地可行性高：前提是已經在跑 Hermes Agent，安裝只需一行 `hermes plugins install ... --enable` 再切換 context engine 設定即可，附測試與 lint CI badge，工程成熟度相對高。",
+      "limits": "效用完全綁定於 Hermes Agent 這個特定 host 專案，對沒有使用 Hermes Agent 的使用者沒有直接用途；基準測試是作者自己在單一合成情境（約 10.5 萬 token、DGX 伺服器、10 組案例）下量出來的結果，樣本量小，實際效益可能因使用場景而異（推測）。",
+      "reason": "技術含量高、有明確的效能與品質基準數據，且完全透過官方外掛介面實作，是今天品質最紮實的候選之一。"
+    },
+    {
+      "full_name": "wc985732-lang/qq-live-digest",
+      "html_url": "https://github.com/wc985732-lang/qq-live-digest",
+      "stars": 23,
+      "selected": true,
+      "summary": "QQ 群訊息即時摘要推播工具：透過 NapCat/OneBot v11 唯讀接收指定 QQ 群訊息，本地用規則加上可選的大模型（阿里百鍊 LLM）過濾閒聊、擷取通知/待辦/截止時間，產生摘要後推送到微信等管道，並附帶手機端待辦看板。",
+      "tech": "Python 3.12+、SQLite + JSONL 做訊息去重與摘要歸檔，OneBot v11 HTTP 接收器搭配 NapCat 做即時訊息與重啟後 24 小時歷史補採，摘要引擎可用規則或可選串接的大模型，推播支援 WxPusher/Server 酱/PushPlus/Webhook 等多通道。",
+      "feasibility": "本地可行性中等偏低：僅支援 Windows（PowerShell 排程腳本與隱藏啟動腳本僅適用 Windows），需要額外部署 NapCat 這個 QQ 協議實作，並至少設定一個推播通道才能完整運作。",
+      "limits": "功能高度綁定 QQ 群與微信推播的使用情境，屬於特定地區/特定通訊軟體的垂直應用，泛用性有限；AI 摘要部分依賴外部模型 API（百鍊），非完全本地化。",
+      "reason": "是少見把 LLM 摘要/擷取能力落地到即時通訊場景、並做出完整產品化（含手機待辦看板、多推播管道、去重與補採）的候選，功能完整度高，值得收錄。"
+    }
+  ]
+}
