@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-09",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-07 stars:>=20 | topic:machine-learning created:>=2026-10-07 stars:>=20 | topic:llm created:>=2026-10-07 stars:>=20 | topic:ai-agent created:>=2026-10-07 stars:>=20 | topic:generative-ai created:>=2026-10-07 stars:>=20",
+  "notice": {
+    "lede": "今天 6 個候選裡有 3 個圍繞著「9Router」這個第三方 LLM provider 聚合工具，其中 2 個的本質是自動化批量註冊/領取別家服務免費額度再轉賣進 provider pool,技術上可行但屬灰色地帶,因此這兩個都未入選。",
+    "body": "topic:llm 查詢貢獻了這 6 個候選中的 5 個,topic:artificial-intelligence/machine-learning 只各貢獻 1 個(同一個 repo,Autotrader),topic:ai-agent 與 topic:generative-ai 這兩天完全沒有新候選。值得留意的是 0xgetz 這位作者同時發了 zcode-claim-9router 與 hark-pool 兩個repo,手法都是「無頭瀏覽器/API 批量建立免費帳號 → 以 cookie/token 偽裝成 OpenAI 相容 provider → 接入 9Router 做額度池」,屬於自動化規避服務條款領取免費額度的工具而非真正的 AI 整合應用,故本次未選入;真正入選的 4 個(gluon、docflare-ai、answerui、Autotrader)則都是有明確技術價值、可自行本地部署或執行的工具。"
+  },
+  "candidates": [
+    {
+      "full_name": "fidipro/gluon",
+      "html_url": "https://github.com/fidipro/gluon",
+      "stars": 39,
+      "selected": true,
+      "summary": "終端機內的 coding agent 控制平台,可讓 Claude Code、Codex、Antigravity、Grok Build、OpenCode、Kimi Code 等多個 AI 編碼代理在同一個終端機畫面裡並排執行,並提供成本/context 的觀察與分析,還會依任務建議「工具 × 模型 × effort」的最省成本組合。",
+      "tech": "TypeScript/Bun 撰寫的 CLI 工具;整合多家 coding agent harness 的 API/CLI,用使用者自己的 API key 或訂閱執行,本身不提供模型推論。",
+      "feasibility": "本地可行性高:提供 curl/irm 一行安裝指令(Linux/macOS/WSL/Windows 皆支援),裝好後在任意 repo 目錄下執行 `gluon` 即可使用,需先自行連接好各家 agent 的金鑰/訂閱。",
+      "limits": "依賴使用者已有至少一種受支援 agent 的 API key 或訂閱才能真正發揮作用;多代理並行管理與成本分析屬於新功能,穩定性與邊界案例需長期觀察(推測)。",
+      "reason": "6 個候選中 star 數最高、功能完整且文件齊全,是少見同時支援多家主流 coding agent 的控制台,對本地開發者有直接可用價值,選入。"
+    },
+    {
+      "full_name": "0xgetz/zcode-claim-9router",
+      "html_url": "https://github.com/0xgetz/zcode-claim-9router",
+      "stars": 29,
+      "selected": false,
+      "reason": "本質是透過反向工程繞過驗證碼、批量自動領取 ZCode 免費 Start Plan 額度再接入 9Router 轉賣/共用額度池,屬於規避服務商免費方案限制的灰色工具而非真正的 AI 技術整合,故不選入。"
+    },
+    {
+      "full_name": "p10node/docflare-ai",
+      "html_url": "https://github.com/p10node/docflare-ai",
+      "stars": 25,
+      "selected": true,
+      "summary": "為文件/官網提供一個 `<script>` 標籤即可嵌入的 RAG 聊天機器人與站內搜尋 widget,回答會附上來源出處,並附一個 `/admin` 後台可管理網站索引與查看使用者問題。",
+      "tech": "100% 建構在 Cloudflare 全家桶上:Workers + Hono 做 API/爬蟲,Workers AI(bge-small-en-v1.5 做嵌入、bge-reranker-base 做重排、llama-3.1-8b-instruct-fp8 做生成)做 RAG 推論,Vectorize 做向量檢索,D1(SQLite)存metadata 與對話紀錄,Cron Triggers 做背景索引。",
+      "feasibility": "可行性高:附一鍵「Deploy to Cloudflare」按鈕,完全免 OpenAI key、免自建向量資料庫、免自架伺服器,在 Cloudflare 免費額度內即可運行(依官方列出的免費額度上限)。",
+      "limits": "完全綁定 Cloudflare 生態(Workers AI/Vectorize/D1),無法脫離 Cloudflare 自架;免費額度有明確上限(如 10k neurons/day、5GB D1),流量大的站點需升級付費方案(推測)。",
+      "reason": "把「RAG 文件問答」做成零成本、一鍵部署的嵌入式 widget,技術選型(Cloudflare AI 全家桶)對小型專案/個人文件站非常實用,選入。"
+    },
+    {
+      "full_name": "0xcro3dile/answerui",
+      "html_url": "https://github.com/0xcro3dile/answerui",
+      "stars": 23,
+      "selected": true,
+      "summary": "開源版「類 ChatGPT Intelligent UI」,模型回答問題時不只回文字,還能即時生成可互動的圖表、表單、計算器與 2D/3D 場景(例如拖動滑桿即時改變場景並連動文字中的數字)。",
+      "tech": "模型以「OpenUI Lang」串流輸出介面描述,每個場景在前端以沙盒化的 code island 執行,並與回答狀態雙向綁定;相容任何 OpenAI-compatible 模型 API,也支援透過 Ollama 跑本地模型。",
+      "feasibility": "本地可行性高:`npx answerui-app` 即可啟動,支援 Docker 一行指令執行,也可從原始碼自建;本地模型(Ollama)與雲端 API 皆可,安裝門檻低。",
+      "limits": "互動式場景的生成品質依賴底層模型對「OpenUI Lang」格式輸出的穩定度,較弱的模型可能生成錯誤或不穩定的介面(推測);目前看起來是個人/小團隊維護的新專案,生態與外掛尚待擴充。",
+      "reason": "把「生成式 UI」做成可本地執行、相容任意 OpenAI-compatible 模型(含本地 Ollama)的開源實作,呈現形式新穎且技術門檻清楚,選入。"
+    },
+    {
+      "full_name": "0xgetz/hark-pool",
+      "html_url": "https://github.com/0xgetz/hark-pool",
+      "stars": 20,
+      "selected": false,
+      "reason": "以無頭方式批量建立 Hark.com 帳號、擷取 cookie session 後包裝成 OpenAI 相容 provider 餵給 9Router 做額度池,與 zcode-claim-9router 同作者、同手法,屬於規避服務條款量產帳號的工具,不是真正的 AI 技術整合,不選入。"
+    },
+    {
+      "full_name": "PkLavc/Autotrader",
+      "html_url": "https://github.com/PkLavc/Autotrader",
+      "stars": 20,
+      "selected": true,
+      "summary": "用金融基礎模型 Kronos 做市場預測的全自動「紙上交易」研究系統,在 GitHub Actions 上排程跑完整流程:抓市場資料 → Kronos 預測 → 資產排名 → 建構投資組合 → 風控約束 → 模擬再平衡 → 記錄績效歷史,並有即時 dashboard。",
+      "tech": "Python + PyTorch,核心預測模型為 NeoQuasar/Kronos-base(金融時間序列基礎模型),透過 GitHub Actions 排程自動執行與提交狀態,另有每週自動同步上游 Kronos 並跑迴歸測試再決定是否採用新版本的機制。",
+      "feasibility": "本地可行性高且風險低:明確聲明「僅紙上交易,不含任何券商金鑰與真實下單」,靠 GitHub Actions 免費額度即可無人值守運行,程式碼結構(config/data/forecast 分離)清楚,方便直接拿來研究或改接其他市場。",
+      "limits": "僅為研究/模擬性質,無真實下單與券商整合,預測效果未經長期真實市場驗證(推測);策略邏輯(固定 5 檔持倉、18% 單檔上限等)較簡單,屬於示範性風控設計而非成熟量化策略。",
+      "reason": "把金融基礎模型 Kronos 落地成一個有風控、有自動化回歸測試、完全在 GitHub Actions 免費額度內跑的紙上交易系統,工程完整度高且明確限定研究用途,選入。"
+    }
+  ]
+}
