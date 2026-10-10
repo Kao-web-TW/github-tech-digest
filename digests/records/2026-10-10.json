@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-10",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-08 stars:>=20 | topic:machine-learning created:>=2026-10-08 stars:>=20 | topic:llm created:>=2026-10-08 stars:>=20 | topic:ai-agent created:>=2026-10-08 stars:>=20 | topic:generative-ai created:>=2026-10-08 stars:>=20",
+  "notice": {
+    "lede": "今天候選量非常稀少,5 個 topic 合計只撈到 3 筆符合門檛的新 repo。",
+    "body": "artificial-intelligence、machine-learning、generative-ai 三個 topic 在近 2 天 (2026-10-08 起)、star 數 >=20 的條件下完全沒有命中,只有 llm 與 ai-agent 各貢獻了 1-2 筆。候選數量明顯偏低,可能是這兩天剛好是新 repo 累積 star 的空窗期,也可能是這批 topic 的新專案普遍還沒衝到 20 star 門檻。3 筆候選中有 1 筆 (zcode-claim-9router) 屬於繞過服務商條款、自動化濫用免費額度的灰色工具,判定不予選入,最終只有 2 筆進入精選。"
+  },
+  "candidates": [
+    {
+      "full_name": "abbcreat-cyber/stepfun-harness",
+      "html_url": "https://github.com/abbcreat-cyber/stepfun-harness",
+      "stars": 49,
+      "selected": true,
+      "summary": "阶跃星辰 (StepFun) Harness:以 Step Code 為底座的桌面 AI 工作台 (Electron),把模型對話、檔案、終端、瀏覽器、插件與多代理工作流整合在同一個介面,可視覺化查看並行子任務的執行狀態與產物,內建 Word/PDF/簡報/表格等文件技能插件。",
+      "tech": "Electron + TypeScript 桌面應用,透過 stepcode-adapter 轉接層呼叫 Step Code RPC 底座;支援 Step Plan 訂閱、阶跃官方 API,以及相容 OpenAI Chat Completions / OpenAI Responses / Anthropic Messages 協議的自訂供應商。",
+      "feasibility": "提供 Windows x64 一鍵安裝包,免另裝 Node.js/Python/Git Bash;開發者也可用 pnpm 從原始碼建置執行 (pnpm install → pnpm harness:dev)。需自備 Step Plan 訂閱或 API 額度才能實際跑模型。",
+      "limits": "官方安裝包僅支援 Windows x64,非阶跃星辰/Z.ai/DeepSeek/OpenAI 官方產品,屬社群衍生工程 (fork 自 ZCode,參考 DeepSeek Harness/Codex 設計);隨附第三方插件與技能文件另有非商業限制授權,需另閱 LICENSES.md。",
+      "reason": "具備完整可視覺化的多代理工作流與文件插件生態,是這批候選中功能最完整、工程成熟度最高的桌面 agent harness,故選入。"
+    },
+    {
+      "full_name": "0xgetz/zcode-claim-9router",
+      "html_url": "https://github.com/0xgetz/zcode-claim-9router",
+      "stars": 33,
+      "selected": false,
+      "reason": "本質是逆向工程 ZCode 用戶端、繞過驗證碼限制批量自動申領/濫用 z.ai 免費額度 (Start Plan) 並導入 9Router 轉售/復用,README 自己承認「透過自動化申領試用額度違反 z.ai 服務條款」。屬於服務濫用/灰色工具而非正當技術應用,不予選入。"
+    },
+    {
+      "full_name": "menonpg/ste-prompt",
+      "html_url": "https://github.com/menonpg/ste-prompt",
+      "stars": 22,
+      "selected": true,
+      "summary": "讓 Claude Code、Codex 等程式碼代理以「簡化技術英文」(ASD-STE100,航太/國防業維護手冊慣用的受控語言) 風格輸出說明、手冊與操作步驟:短句、每句一個指令、主動語態、受控詞彙表,降低 LLM 輸出的歧義與誤讀率。",
+      "tech": "規則式 (rule-based) 風格指南 + Claude Code plugin/skill/slash command (/ste),同時提供 AGENTS.md 格式的提示詞片段,可套用在 Codex、Cursor、Cline、Aider、Windsurf 等任何支援 AGENTS.md 慣例的代理上。",
+      "feasibility": "Claude Code 使用者可直接 `/plugin marketplace add menonpg/ste-prompt` 一行安裝;其他代理只需把 AGENTS.ste.md 內容併入專案或全域的 AGENTS.md,無需額外依賴或建置,導入成本極低。",
+      "limits": "純提示詞/風格規則,不具強制力,模型仍可能偏離規則 (作者亦提及有另一個專案 agent-ste 以 linter 方式強制檢查);僅適用於程序性/步驟性文字,不適合需要保留模糊性與風險討論的研究型摘要內容。",
+      "reason": "一行指令即可安裝、零依賴,解決 LLM 輸出手冊/步驟時含糊不清的實際痛點,實用性高且導入門檻極低,故選入。"
+    }
+  ]
+}
