@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-11",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-09 stars:>=20 | topic:machine-learning created:>=2026-10-09 stars:>=20 | topic:llm created:>=2026-10-09 stars:>=20 | topic:ai-agent created:>=2026-10-09 stars:>=20 | topic:generative-ai created:>=2026-10-09 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜出現兩個幾乎同主題的「麥當勞優惠券優化」專案，疑似來自同一場黑客松的參賽作品。",
+    "body": "Ayzzz123/mcd-coupon-strategist 與 hujjun/mcd-saver-strategist 都基於麥當勞中國官方 MCP（mcp.mcd.cn），做法幾乎一致：抓取門店即時菜單與帳戶可用優惠券，再用確定性演算法窮舉出總價最低的合規組合，兩者都標註「麥當勞程式設計創意開發大賽參賽作品」。這類基於官方 MCP 做垂直消費場景的 Agent Skill 正在變多，顯示 MCP 生態已從通用工具鏈延伸到具體消費應用，但也帶來同質化——這兩個專案因應用場景過窄、彼此重複而未入選本日精選。"
+  },
+  "candidates": [
+    {
+      "full_name": "rociiu/talorys",
+      "html_url": "https://github.com/rociiu/talorys",
+      "stars": 368,
+      "selected": true,
+      "summary": "可在自己的 Cloudflare 帳號內一鍵部署的個人 AI 助理，具聊天、記憶、任務/筆記/專案管理與排程提醒功能，無需外部伺服器或資料庫。",
+      "tech": "Cloudflare Workers + Durable Objects（Cloudflare Agents SDK）搭配 React 前端（Pages）；對話由 Workers AI 的 @cf/zai-org/glm-4.7-flash 模型提供串流與工具呼叫；資料存於 Durable Object 內建 SQLite，排程提醒靠 Durable Object alarm 觸發。",
+      "feasibility": "本地/雲端部署門檻低：執行 `npx create-talorys@latest` 即可一鍵部署到自己的 Cloudflare 帳號，免費額度友善，單人使用免維運伺服器或資料庫；即使 Workers AI 額度用盡，任務/筆記/提醒等非 AI 功能仍可運作。",
+      "limits": "依賴 Cloudflare Workers AI 的免費額度與特定模型可用性；單使用者設計，不支援多人協作/團隊帳號；Worker 本身無公開 URL，需透過 Pages Function 轉送請求。",
+      "reason": "架構文件完整、產品定位清楚，且上線一天內即衝上 368★，是「個人自架 AI 助理」目前最成熟的範例之一。"
+    },
+    {
+      "full_name": "liyupi/ai-promo-video-maker",
+      "html_url": "https://github.com/liyupi/ai-promo-video-maker",
+      "stars": 104,
+      "selected": true,
+      "summary": "輸入一句話描述產品，AI 會自動調研賣點、提出多種風格樣圖讓你挑選、截取真實頁面畫面、依音樂節拍剪輯、生成並校驗旁白配音，最終產出 4K 商業宣傳片與可線上播放的網頁版。",
+      "tech": "以 AGENTS.md 定義一套可被 AI 編程工具讀懂並照著執行的製作規範，搭配 Remotion 影片工程模板、ElevenLabs 語音合成、Playwright 截圖與 ffmpeg 剪輯；可直接 clone 使用，也能安裝成 Claude Code / Cursor / Codex 的 Agent Skill。",
+      "feasibility": "本地可行，需先備妥 Node.js 18+、Python 3.9+ 與 ffmpeg，並執行 `playwright install chromium`；專案內附環境體檢腳本協助補齊缺少的依賴。",
+      "limits": "依賴 ElevenLabs 等外部語音合成服務的額度與品質；最終風格仍需人工從多個方案中挑選把關；目前文件以中文為主。",
+      "reason": "把「AI 編碼工具當通用內容生產線」的構想做成可直接執行的具體流程，展示 Agent Skill 在非程式碼任務（影片製作）上的應用潛力。"
+    },
+    {
+      "full_name": "ymybxx/SoloMCN",
+      "html_url": "https://github.com/ymybxx/SoloMCN",
+      "stars": 46,
+      "selected": true,
+      "summary": "不預先搭建工作流，直接把 Claude Code 當成「短影音團隊」操作：從國內熱榜/推特選題、調研、腳本、剪輯到抖音、小紅書、B站、YouTube、推特多平台發布，全程由 Claude 親手完成。",
+      "tech": "以中文寫成的「崗位說明」（即 Claude Code 技能）取代傳統工作流節點；工作台只負責遞工具給 Claude（讀寫帳號與素材、截網頁、呼叫各平台發布 API），並提供人工即時插話與拍板的介面。",
+      "feasibility": "需要 Claude Code 訂閱與各發布平台（抖音、小紅書、B站、YouTube、X）的帳號與 API 權限；工作台本身可本地或雲端執行，核心推理與工具呼叫完全交給 Claude Code。",
+      "limits": "高度綁定 Claude Code 的推理能力，模型表現即系統上限；多平台發布需逐一申請憑證，海外使用者需額外適配非中文平台的發布流程。",
+      "reason": "示範「技能驅動、不事先搭建固定工作流」的新型 Agent 應用模式，上線兩天即成長到 46★，對內容自動化場景有參考價值。"
+    },
+    {
+      "full_name": "final-bench/ongrid",
+      "html_url": "https://github.com/final-bench/ongrid",
+      "stars": 29,
+      "selected": true,
+      "summary": "把文件解析成 3D 本體知識圖譜，以 GraphRAG 檢索圖中事實來回答問題，並用「零生成 token」的 ZTC-Judge 模型即時判定該回答是否可信。",
+      "tech": "three.js / 3d-force-graph 做 3D 知識圖視覺化；檢索層採 GraphRAG，推理由一般 LLM API 完成；驗證層使用 FINAL-Bench 的 ZTC-Judge-9B 模型，在單次前向傳播中以零生成 token 的方式判斷答案真實性，該模型在 S1MB 幻覺偵測榜單排名第一。",
+      "feasibility": "提供 Hugging Face Spaces 線上 Demo 可直接試用；本地自架需架設 FastAPI 後端並接上 LLM API，複雜度中等，適合有 GraphRAG 經驗的團隊。",
+      "limits": "答案可信度判定的品質取決於 ZTC-Judge 模型本身的評測覆蓋範圍；專案剛建立（2 天內），UI 目前以韓/英/中三語為主，尚待觀察長期維護狀況。",
+      "reason": "針對 RAG 常見的幻覺問題提出「零 token 驗證」這一具體且已有榜單成績佐證的解法，技術路線在候選中最具新意。"
+    },
+    {
+      "full_name": "talhaanwarch/awesome-llmops-platforms",
+      "html_url": "https://github.com/talhaanwarch/awesome-llmops-platforms",
+      "stars": 25,
+      "selected": true,
+      "summary": "一份以 GitHub Action 每週自動更新的 LLMOps 工具總覽清單，涵蓋 tracing、評測、AI gateway、guardrails、prompt 管理等 9 大類、共 144 個開源專案，並附星數、授權與最後更新時間。",
+      "tech": "清單內容由 `data/projects.toml` 定義、`scripts/build_readme.py` 自動產生 README，排除論文/課程/模型榜單/Agent 框架，只收可自架執行的工具。",
+      "feasibility": "非可執行工具，而是文件型導覽資源，讀者可直接依分類查閱並選用清單中列出的工具，無需額外安裝此專案本身。",
+      "limits": "本身不提供任何功能，僅作為索引；資訊是否持續準確取決於自動化腳本能否長期維護下去。",
+      "reason": "作為查找 LLMOps 生態工具的高品質索引，具自動化每週更新機制，可信度較一般手刻 awesome list 高，適合作為後續精選的參考來源。"
+    },
+    {
+      "full_name": "Ayzzz123/mcd-coupon-strategist",
+      "html_url": "https://github.com/Ayzzz123/mcd-coupon-strategist",
+      "stars": 62,
+      "selected": false,
+      "reason": "與同日候選的 hujjun/mcd-saver-strategist 高度重複（皆為基於麥當勞中國 MCP 的優惠券組合優化 Skill，同屬一場黑客松參賽作品），且僅適用於中國麥當勞帳號情境，應用場景過窄，故不選入（此為星數較高的一方，已記錄於 notice 中）。"
+    },
+    {
+      "full_name": "hujjun/mcd-saver-strategist",
+      "html_url": "https://github.com/hujjun/mcd-saver-strategist",
+      "stars": 32,
+      "selected": false,
+      "reason": "與同日候選的 Ayzzz123/mcd-coupon-strategist 為同一主題的重複構想（麥當勞優惠券優化 Skill），星數較低、應用場景同樣侵限於中國麥當勞帳號，故不選入。"
+    },
+    {
+      "full_name": "pju-hoge/a-letter-to-junior-agents",
+      "html_url": "https://github.com/pju-hoge/a-letter-to-junior-agents",
+      "stars": 24,
+      "selected": false,
+      "reason": "本質是搭配特定平台 Hermes Agent 的個人設定文件與操作慣例，需先自行安裝尚不普及的 Hermes Agent 才能使用，通用性與可獨立執行的可行性較低（推測：主要受眾僅限該平台既有使用者），故不選入。"
+    },
+    {
+      "full_name": "0xgetz/solar-pool-9router",
+      "html_url": "https://github.com/0xgetz/solar-pool-9router",
+      "stars": 20,
+      "selected": false,
+      "reason": "靠大量匿名瀏覽器 session 池繞過 Solar Chat 的免費額度與 30 分鐘 TTL 限制來做負載平衡代理，屬於規避服務條款的灰色用法，不建議收錄（推測：此用法可能違反該服務的使用條款）。"
+    }
+  ]
+}
