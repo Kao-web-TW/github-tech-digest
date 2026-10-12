@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-12",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-10 stars:>=20 | topic:machine-learning created:>=2026-10-10 stars:>=20 | topic:llm created:>=2026-10-10 stars:>=20 | topic:ai-agent created:>=2026-10-10 stars:>=20 | topic:generative-ai created:>=2026-10-10 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜清一色來自 llm 與 ai-agent 兩個 topic，主題高度集中在「個人化持久 AI agent」這個方向。",
+    "body": "artificial-intelligence、machine-learning、generative-ai 三個較泛用的 topic 這次完全沒有符合門檻（★≥20、2 天內建立）的新 repo，候選完全來自 llm 與 ai-agent 兩個 topic。六個候選中有兩個圍繞 Nous Research 的 Hermes Agent 生態（官方外掛包 hermes-official-plugins、人格/記憶 bootstrap kit a-letter-to-junior-agents），另外兩個則是各自獨立的「自架持久化個人 agent」（部署在 Cloudflare 上的 talorys、支援進程崩潰後恢復的 pi-durable-assistant），顯示開發者社群這兩天的焦點集中在「讓 agent 記得你、不因重啟或換模型而失憶」這個命題上；其餘兩個候選則是圍繞特定第三方客戶端（WorkBuddy）打造的周邊工具：麥當勞 MCP 點餐優化 skill 與免費模型接入橋接器。"
+  },
+  "candidates": [
+    {
+      "full_name": "rociiu/talorys",
+      "html_url": "https://github.com/rociiu/talorys",
+      "stars": 749,
+      "selected": true,
+      "summary": "免費、開源的個人 AI 助理，完全部署在使用者自己的 Cloudflare 帳號裡，提供聊天、長期記憶、任務/筆記/專案管理，以及用 Durable Object alarm 驅動的排程提醒與自動化，單人單帳號設計、無需註冊第三方服務。",
+      "tech": "Cloudflare Pages（React 前端）+ Workers（私有 API，無公開 URL）+ Durable Objects/SQLite 儲存全部資料 + Workers AI（@cf/zai-org/glm-4.7-flash）負責串流聊天與工具呼叫。",
+      "feasibility": "本地可行性高：`npx create-talorys@latest` 一行安裝，走 Wrangler OAuth 免 Global API Key，完全可在 Cloudflare 免費方案額度內運作；本地開發提供 mock AI provider，不需登入 Cloudflare 即可跑。",
+      "limits": "受 Cloudflare 免費方案的每日 Workers AI 配額限制，額度用完當天聊天功能會暫停（其他功能仍可用）；僅支援單一擁有者帳號，非多租戶產品。",
+      "reason": "文件完整、架構清楚（服務繫結、無公開 URL 的私有 Worker），真正落地在免費額度內可用，是這波「自架個人 AI agent」趨勢中工程品質較高的代表。"
+    },
+    {
+      "full_name": "NousResearch/hermes-official-plugins",
+      "html_url": "https://github.com/NousResearch/hermes-official-plugins",
+      "stars": 184,
+      "selected": true,
+      "summary": "Nous Research 官方維護的 Hermes Agent 外掛集中倉庫，一行指令即可從外掛目錄安裝 Home Assistant、Spotify、Claude 訂閱直連、Telegram Business、Blender、Snyk、TouchDesigner 等整合，每個外掛釘選在審核過的 commit。",
+      "tech": "Python 外掛（plugin.yaml + register(ctx)）為主，部分外掛以 MCP server 形式整合（Blender、Snyk），每個外掛獨立目錄、獨立測試，CI 對 Linux/macOS/Windows 跑全套回歸測試。",
+      "feasibility": "本地可行性高：`hermes plugins install <name>` 即可安裝，支援稀疏 clone（只抓單一外掛目錄），不需要的外掛不會被下載；文件、目錄結構、開發指南齊全。",
+      "limits": "需要先安裝 Hermes Agent 核心才能使用；部分外掛（如 Claude Subscription DirectSDK）標示為 experimental，且依賴使用者本機已登入的 claude CLI。",
+      "reason": "官方維護、工程成熟（CI、文件、稀疏安裝設計），是「Agent 核心精簡 + 外掛生態擴充」這個架構模式的代表性實作。"
+    },
+    {
+      "full_name": "Ayzzz123/mcd-coupon-strategist",
+      "html_url": "https://github.com/Ayzzz123/mcd-coupon-strategist",
+      "stars": 171,
+      "selected": true,
+      "summary": "基於麥當勞中國官方 MCP 的點餐成本優化 Skill，不只回答「這一單怎麼點最省」，還會從歷史訂單與券存量算出「券的沉默成本」（即將過期卻沒用掉的券面值），並主動偵測「為用券而湊單反而更貴」的陷阱。",
+      "tech": "Python，透過 MCP streamablehttp 連接 mcp.mcd.cn，所有金額一律由 MCP `calculate-price` 真實回填（不讓模型自行估算價格），適配層統一處理分/元換算與欄位映射。",
+      "feasibility": "本地可行性中等：四組純本地單元測試不需 MCP Token 即可跑，但要接上真實資料需申請麥當勞 MCP Token，且目前是以 WorkBuddy 這個特定客戶端的自訂連接器形式使用。",
+      "limits": "僅適用於麥當勞中國市場與帳號；目前綁定 WorkBuddy 平台使用，非麥當勞官方產品，屬競賽參賽作品性質。",
+      "reason": "雖然應用場景侷限於麥當勞中國消費者，但「用 MCP 真實計價取代模型估算」與「把優惠券當成有保質期的資產來算沉默成本」是值得參考的 MCP 編排設計範例。"
+    },
+    {
+      "full_name": "HRuiCcc/RuiC-oc-ferry",
+      "html_url": "https://github.com/HRuiCcc/RuiC-oc-ferry",
+      "stars": 45,
+      "selected": true,
+      "summary": "跨平台托盤應用，把 OpenCode 的免費模型池「擺渡」成 WorkBuddy 可用的本機 OpenAI 相容端點：自動篩出真正免費（而非僅名稱帶 free）的模型、逐一並發體檢是否能依協議產生工具呼叫，通過的才寫入 WorkBuddy 設定。",
+      "tech": "Electron 托盤應用 + 隔離運行時的 OpenCode 實例，內建判定快取（成功 6 小時、失敗原因 10 分鐘～1 小時後重試）與本機轉發口（Bearer 鑑權、拒絕瀏覽器來源請求）。",
+      "feasibility": "本地可行性高：macOS/Windows 都有打包好的安裝檔，免登入免 API Key，85 項自動化測試不連網；但目前仍是為了 WorkBuddy 這個特定客戶端設計。",
+      "limits": "僅服務 WorkBuddy 這個特定平台的 models.json 格式；免費模型池與額度完全由 OpenCode 上游決定，隨時可能下線或變動；系統代理僅支援手動 HTTP/HTTPS，不支援 PAC/SOCKS。",
+      "reason": "示範了「先體檢模型是否真的符合工具呼叫協議，再寫入設定」這種務實的免費模型接入模式，工程細節（判定快取、退出清理）做得細緻。"
+    },
+    {
+      "full_name": "pju-hoge/a-letter-to-junior-agents",
+      "html_url": "https://github.com/pju-hoge/a-letter-to-junior-agents",
+      "stars": 37,
+      "selected": false,
+      "reason": "本質是給 Hermes Agent 用的人格/記憶設定文件與方法論指南（SOUL.md、AGENTS.md 等），沒有可執行的程式邏輯或工具產出，較接近維運/經驗分享文件而非可評估的軟體專案。"
+    },
+    {
+      "full_name": "xiaomoBoy/pi-durable-assistant",
+      "html_url": "https://github.com/xiaomoBoy/pi-durable-assistant",
+      "stars": 28,
+      "selected": true,
+      "summary": "基於 Pi Durable 建構的可自托管持久化個人 Agent，支援進程崩潰後從斷點恢復任務、前景/背景 Subagent、排程提醒、跨會話長期記憶（需人工核准候選記憶）與可選的微信接入。",
+      "tech": "Node.js 22 + Pi Durable 1.1.0 + SQLite 持久化 + 原生 JavaScript/SSE 前端，支援 openai-completions/openai-responses/anthropic-messages 三種 API 類型，提供 Docker Compose 部署。",
+      "feasibility": "本地可行性高：`LLM_API=faux` 模式下 3 分鐘即可體驗完整 UI 與恢復機制，不需任何 API Key；接上真實模型只需設定 .env。",
+      "limits": "項目狀態為「個人單用戶實驗性實作」，非 Pi Durable 官方產品；生產環境的 HTTPS、存取控制、備份需自行處理；微信通道僅支援文字與語音轉文字。",
+      "reason": "「進程重啟後任務可恢復」加上完整的 Docker 部署與故障排查文件，對於想自架持久化個人 agent 的開發者是實用且可驗收的參考實作。"
+    }
+  ]
+}
