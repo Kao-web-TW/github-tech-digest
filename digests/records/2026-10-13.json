@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-13",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-11 stars:>=20 | topic:machine-learning created:>=2026-10-11 stars:>=20 | topic:llm created:>=2026-10-11 stars:>=20 | topic:ai-agent created:>=2026-10-11 stars:>=20 | topic:generative-ai created:>=2026-10-11 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜被「用 AI 操作真實裝置/真實網站」的具體整合工具佔據，而不是新模型或新框架。",
+    "body": "7 個候選裡,artificial-intelligence 與 machine-learning 兩個 topic 完全交白卷,反而是 llm/ai-agent/generative-ai 撐出全部結果。質量最高的幾個都不是抽象的 agent 框架,而是把 LLM 接到具體、原本難以自動化的場域:用 $7 的 ESP32 讓任意視覺模型操控一支真實 iPhone、把 19 個伊朗生活服務網站包成 MCP 工具、把個人電腦代理人塞進 Docker 沙箱讓它自己跑一整天。另一端則是給 AI 應用做 UI 的設計系統與給 AI 寫作抓 AI 腔的規則集,顯示「幫人蓋 AI 產品」本身也成了一個穩定的子類別。"
+  },
+  "candidates": [
+    {
+      "full_name": "onehumanbeing/esp32-iphone-agent",
+      "html_url": "https://github.com/onehumanbeing/esp32-iphone-agent",
+      "stars": 571,
+      "selected": true,
+      "summary": "用 AirPlay 把 iPhone 螢幕鏡射到電腦當作 AI 的「眼睛」,再用一片約 7 美元的 ESP32-S3 板插在 iPhone 的 USB-C/Lightning 埠上模擬 USB 滑鼠鍵盤當作「手」,讓任何相容 OpenAI API 的視覺模型規劃並執行觸控、滑動、打字等操作,完全不需要 Mac、Xcode、開發者帳號或越獄。",
+      "tech": "UxPlay 做 AirPlay 鏡射 + GStreamer 轉成 JPEG 影格;ESP32-S3 以 USB HID 模擬滑鼠鍵盤,透過 Wi-Fi 收電腦下發的 move/click/type 指令;後端是 planner + actor 兩個角色的視覺模型迴圈(可用同一個模型),每次動作後比對畫面變化判斷是否成功,並持續校正游標位置。",
+      "feasibility": "本地可行性高但需要特定硬體:一片 Seeed XIAO ESP32S3(未焊接版,非 Sense/Plus)、一支 USB-C 或搭配轉接頭的 Lightning iPhone、一台同網路的 Mac 或 Linux 電腦跑 UxPlay 與伺服器,以及任一 OpenAI 相容的視覺模型 API 或自架模型。設置步驟清楚(含可貼給 coding agent 自動安裝的提示詞),但仍有實體接線與 iOS AssistiveTouch 設定等手動步驟。",
+      "limits": "依賴 AirPlay 鏡射延遲與影像品質,游標是相對定位需要時常重新校正;僅支援 USB-C 或搭配轉接器的 Lightning 機型且手機需開著電源;目前只在少數 ESP32-S3 板型上測試過;整體仍是概念驗證性質的個人專案(作者本人維護),穩定性與安全性(例如任意應用都能被操控)未經大規模驗證。",
+      "reason": "少見地用低成本硬體 + 任意視覺語言模型實現「無需越獄、無需開發者帳號」的真實 iPhone 自動化,技術路徑新穎且文件完整,星數成長也最快,具高度示範價值。"
+    },
+    {
+      "full_name": "deeplethe/solid-glass",
+      "html_url": "https://github.com/deeplethe/solid-glass",
+      "stars": 229,
+      "selected": true,
+      "summary": "一套基於 shadcn/ui 的「玻璃質感」視覺設計系統,專門為 AI 應用(agent workspace、operator console)設計,內建約 70 個元件,其中一組是直接給「有 AI agent 在運作」介面用的:狀態燈號、對話輸入框、工具執行步驟列表、diff 檢視、agent 提出的確認卡、context 使用量環形圖、任務通知、思考過程展開等。",
+      "tech": "純 CSS/Tailwind 4 樣式層,疊加在 React 19 + shadcn/ui(Base UI)元件之上,靠元件既有的 data-slot 與 class 選取樣式,不需要改動元件程式碼本身;提供線上 Create 頁面可即時調整玻璃厚薄、色調、圓角再輸出成客製化 CSS。",
+      "feasibility": "本地可行性很高:`npx shadcn@latest add` 一行指令即可安裝樣式或個別元件,標準 Node.js/npm 開發流程(`npm install && npm run dev`),沒有任何 API 金鑰或後端依賴,純前端專案可直接試用。",
+      "limits": "只是視覺樣式/元件庫,不含任何 LLM 呼叫或 agent 邏輯本身,必須自行接上真正的模型與資料流才有用;綁定在 React + Tailwind 4 + shadcn/ui 技術棧,其他框架難以直接套用。",
+      "reason": "雖然本身不含 AI 功能,但精準命中「幫人蓋 agent 介面」這個新興子類別,且是少見把 AI 應用 UI 當成第一類設計問題來做的系統化嘗試,對讀者中打造 agent 產品的開發者有直接參考價值。"
+    },
+    {
+      "full_name": "sepehr071/awesome-iran-mcp",
+      "html_url": "https://github.com/sepehr071/awesome-iran-mcp",
+      "stars": 65,
+      "selected": true,
+      "summary": "把 19 個伊朗本地生活服務網站(購物、外送、訂房、機票、掛號、電子書等,如 Digikala、Snappfood、Jabama、MrBilit、Paziresh24)各自逆向其未公開 API,包裝成 308 個乾淨的 MCP 工具,讓 Claude、Cursor、Copilot 等任何 MCP 用戶端能直接用一句話查價格(以 Toman 計價)、比較賣家、訂房訂票、找醫生空檔。",
+      "tech": "每個站點是一個獨立發佈在 PyPI、用 `uvx` 執行的 Python MCP server;整套可透過 Claude Code plugin marketplace 一次安裝一個或整包(如旅遊、全部唯讀站點),也支援以 Agent Skills 形式接給 Codex/Cursor/Gemini CLI 等其他代理,或直接寫進任意 MCP 用戶端設定檔。",
+      "feasibility": "本地可行性高,大多數伺服器免金鑰、免安裝步驟(`uvx` 直接拉套件執行),一行 `claude plugin install` 即可用;僅 payping、bale 兩個涉及帳戶操作的伺服器需要使用者自己的憑證。作者提醒 308 個工具同時掛載會吃掉大量 context,建議按需啟用。",
+      "limits": "所有 server 都是對未公開/非官方 API 的逆向工程,網站改版隨時可能讓某個工具失效;僅服務伊朗本地網站與波斯語/Toman 計價場景,對非該地區使用者實用性有限;單一作者維護 19 個套件,長期更新量能是風險。",
+      "reason": "用 MCP 把一整個地區性生活服務生態系統串成可被任何 AI agent 呼叫的工具箱,規模(19 servers/308 tools)與完整度在同類「awesome-mcp」專案中少見,是 MCP 實際落地到真實商業場景的好範例。"
+    },
+    {
+      "full_name": "FeedHive/ai-slop-detector",
+      "html_url": "https://github.com/FeedHive/ai-slop-detector",
+      "stars": 42,
+      "selected": true,
+      "summary": "整理出 9 大類、120 條會讓文字讀起來像「AI 腔」的寫作模式(用詞如 delve/leverage/seamless、空洞的三段式結構、LinkedIn 式開場白等),每條附壞例句與改寫範例,可在模型寫作前當規則餵給它,或寫完後拿來檢查草稿,並附一個可直接裝進 Claude Code 的 agent skill。",
+      "tech": "核心是結構化資料檔 `patterns.json`,一支 Node 腳本 `scripts/build.mjs` 由它自動產生 README 與 Claude Code skill 檔案,確保規則集只有一份真相;另有免費網頁版工具可直接貼文字檢查。",
+      "feasibility": "本地可行性非常高:`git clone` 後把 `skills/ai-slop-detector` 複製進 `~/.claude/skills/` 即可在 Claude Code 使用,不需任何 API 金鑰、模型或建置流程;對 ChatGPT 等聊天介面也只需把 README 貼進對話即可用。",
+      "limits": "規則集是作者主觀整理,並非統計或模型驗證過的客觀腔調偵測器,作者也坦承正常人類寫作一樣會出現個別模式,只有「同段落多個模式疊加」才算 slop,因此判斷仍帶主觀性;目前只覆蓋英文寫作模式。",
+      "reason": "切中「AI 寫作腔太重」這個普遍痛點,資料完整、可直接落地成 agent 可重複使用的風格規則,安裝與使用成本極低,對任何用 LLM 輔助寫作的人都有即時價值。"
+    },
+    {
+      "full_name": "SouravBeraAkaSpeed/xiryn",
+      "html_url": "https://github.com/SouravBeraAkaSpeed/xiryn",
+      "stars": 33,
+      "selected": true,
+      "summary": "開源版「個人代理人」,仿效 Meta Muse、xAI Grok Bot、OpenAI Dots 等雲端個人助理的概念,但每個 agent 在使用者自己機器上的 Docker 容器裡擁有一個獨立 Linux 桌面(含瀏覽器),在背景研究、寫程式、瀏覽網頁,並可從 Telegram 遠端下指令、查看即時畫面甚至接管操作。",
+      "tech": "一支安裝腳本串接 Git/Node.js/Docker 建立執行環境;對話、記憶、設定與金鑰集中存在本機 SQLite,帳密等機密資料放在以作業系統金鑰保護的加密保險箱;支援 OpenAI、Anthropic、Google、xAI、Groq、Mistral、DeepSeek、OpenRouter、Ollama、LM Studio 等多家模型供應商,可依 agent 各自指定模型;多個 agent 可組隊互相派工。",
+      "feasibility": "本地可行性中等:一行安裝腳本可處理大部分依賴,但需要 Docker 常駐執行每個 agent 的沙箱桌面,對機器資源(尤其同時開多個 agent 時)要求不低;若要全離線執行需另外串 Ollama/LM Studio 本地模型,否則仍需使用者自備雲端模型 API 金鑰。",
+      "limits": "官方比較表是作者自行整理、以 2026 年 10 月的公開發布資訊為準,未必公正客觀(標註「這些產品變化很快,歡迎糾正」);星數與社群規模尚小,長期維護力與安全性(沙箱逃逸、金鑰保護強度等)缺乏第三方驗證。",
+      "reason": "把近期幾家大廠才推出的『雲端個人代理人』體驗,用 Docker 沙箱 + 任意模型 + 本機資料的方式做成開源平替,定位清晰且功能完整(記憶、接管、Telegram 遠控、多 agent 協作),對比大廠閉源方案有明確差異化價值。"
+    },
+    {
+      "full_name": "Emily2040/gravitas",
+      "html_url": "https://github.com/Emily2040/gravitas",
+      "stars": 24,
+      "selected": false,
+      "reason": "完全綁定 Google Antigravity 這個特定專有工具,功能是讓其內建 agent 多檢查一次使用者的隱含假設,應用範圍窄;README 裡的「效果提升」案例全部是作者自己用兩個 Gemini 模型互評,缺乏第三方或客觀基準驗證(推測:行銷性質強於技術證據)。"
+    },
+    {
+      "full_name": "ac1261692159/candela",
+      "html_url": "https://github.com/ac1261692159/candela",
+      "stars": 22,
+      "selected": false,
+      "reason": "核心定位是自架用戶行為分析平台(事件、漏斗、留存、儀表板),AI 只是預設關閉的選用輔助功能,與「AI 整合工具」的主題關聯薄弱,淘汰。"
+    }
+  ]
+}
