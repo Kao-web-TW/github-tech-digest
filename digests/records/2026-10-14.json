@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-14",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-12 stars:>=20 | topic:machine-learning created:>=2026-10-12 stars:>=20 | topic:llm created:>=2026-10-12 stars:>=20 | topic:ai-agent created:>=2026-10-12 stars:>=20 | topic:generative-ai created:>=2026-10-12 stars:>=20",
+  "notice": {
+    "lede": "今天的候選榜明顯稀薄,三個主流 AI/ML topic(artificial-intelligence、machine-learning、generative-ai)完全零命中,全部 7 個候選都來自 llm 與 ai-agent 這兩個 topic。",
+    "body": "本日搜尋顯示近兩天內新建、達到 20 star 門檻且掛上傳統 AI/ML topic 的 repo 非常稀少;反而是 coding agent(opencode-rust 的 Rust 重寫版)、瀏覽器代理(alibaba 的 qz-browser-agent)與另類 LLM 評測手法(composo-ai 的 DishwasherBench,用實體模擬的洗碗機排列遊戲當基準)成為今天的焦點。另外也淘汰了一個刻意掛上 llm topic 搭便車、但實際上是繞過 River AI 註冊驗證與 Cloudflare 防刷機制、批量生成試用帳號與 API key 的工具(river-bulk-apikey)——這類濫用 topic 標籤、且有服務條款濫用風險的專案不列入精選。"
+  },
+  "candidates": [
+    {
+      "full_name": "deeplethe/solid-glass",
+      "html_url": "https://github.com/deeplethe/solid-glass",
+      "stars": 253,
+      "selected": true,
+      "summary": "給 AI 應用(聊天介面、agent workspace)用的設計系統,基於 shadcn/ui 提供約 13 個元件與多個整頁 block(如 agent workspace、對話串、檔案、背景任務面板),風格介於 flat 與 liquid glass 之間。",
+      "tech": "React 19 + Tailwind CSS 4,建構於 shadcn/ui 之上,元件以 registry.json 形式發布,可用 shadcn CLI 直接安裝進專案。",
+      "feasibility": "純前端元件庫,無需任何模型或後端依賴,`npx shadcn add` 即可裝進既有 React 專案,本地整合成本低。",
+      "limits": "僅是 UI 元件/視覺語言,不含任何 agent 邏輯或模型整合;目前僅 13 個 registry 項目,元件覆蓋面有限,且與特定技術堆疊(React + Tailwind + shadcn)綁定較深。",
+      "reason": "star 數最高(253),雖然本質是設計系統而非 agent/模型本身,但精準對準 AI 應用介面(agent workspace、聊天 UI)這個近期明顯升溫的子領域,且可直接落地使用,故選入。"
+    },
+    {
+      "full_name": "vakandi/opencode-rust",
+      "html_url": "https://github.com/vakandi/opencode-rust",
+      "stars": 60,
+      "selected": true,
+      "summary": "開源 AI coding agent OpenCode 的 Rust 重寫版,提供 CLI、TUI 與 HTTP server 三種介面,支援 session、工具執行、MCP、LSP 與 TypeScript plugin bridge,且不需要容器/Docker 執行環境。",
+      "tech": "Rust(21 個 crate),整合 MCP 與 LSP 協定,並透過 TypeScript plugin bridge 支援既有 OpenCode 生態的外掛。",
+      "feasibility": "npm/Homebrew 均提供預編譯二進位(對應各平台),npm 安裝不需編譯;從原始碼建置則需要 Rust 工具鏈,`install.sh` 會做增量重建判斷。整體本地可行性高,屬於可直接下載執行的 CLI 工具。",
+      "limits": "依賴外部模型供應商(需自行設定 API),專案聲稱 571 個測試通過但未附第三方評測對照;原生 Windows 執行透過 Node 轉介,對 Rust 二進位的直接整合仍間接。",
+      "reason": "作為既有熱門 agent 專案的高完成度重寫版(571 測試、三種執行介面、無容器依賴),工程成熟度明顯高於多數新建 repo,具參考價值。"
+    },
+    {
+      "full_name": "FeedHive/ai-slop-detector",
+      "html_url": "https://github.com/FeedHive/ai-slop-detector",
+      "stars": 58,
+      "selected": true,
+      "summary": "彙整 120 種「AI 腔」寫作模式(分 9 類),每條附壞例與改寫範例,可作為 Claude Code / Codex 的 agent skill 安裝,在生成前提醒或生成後檢查文字是否有 AI 慣性用詞與句型。",
+      "tech": "純資料驅動(patterns.json)+ Node 腳本重新產生 README 與 skill 檔案;不涉及模型推論本身,是提示詞/規則層的輔助工具。",
+      "feasibility": "極輕量,`git clone` 後複製資料夾到 `~/.claude/skills/` 即可使用,或直接貼上線上工具網頁檢查,無需任何環境設定或 API key。",
+      "limits": "本質是靜態規則表,不是偵測器模型,無法判定文字是否真的由 AI 生成,只能抓常見套語;規則針對英文寫作,中文等其他語言不適用。",
+      "reason": "解決一個具體且普遍的痛點(AI 寫作腔),落地成本幾乎為零,且直接以 agent skill 形式與 Claude Code/Codex 整合,實用性高。"
+    },
+    {
+      "full_name": "composo-ai/DishwasherBench",
+      "html_url": "https://github.com/composo-ai/DishwasherBench",
+      "stars": 53,
+      "selected": true,
+      "summary": "用 Bosch 洗碗機的剛體物理模擬打造的「裝洗碗機」小遊戲,同時作為語言模型基準:人類在瀏覽器裡玩,模型則透過 MCP 下達相同的放置/移除等動作,依清洗後乾淨程度計分,且每一局都可重現驗證。",
+      "tech": "TypeScript + Jolt 剛體物理引擎,搭配噴淋/水流/清潔化學模擬分兩層(official 精確版、fast 預覽版),並透過 MCP 暴露給模型操作。",
+      "feasibility": "瀏覽器端可直接玩(WebGPU),跑模型則需自備可呼叫 MCP 工具的 LLM 與算力;官方層級模擬最大關卡約需數分鐘,本地重現門檻中等。",
+      "limits": "目前僅針對單一特定機型(Bosch SMV4HAX40G)與其 Eco 50 程式校正,泛化到其他家電/情境有限;屬於新創基準,尚缺乏大規模模型排行榜數據。",
+      "reason": "少見且具體可驗證的物理模擬型 LLM 評測基準,跳脫常見的純文字/程式碼基準框架,具新穎性與可重現性,值得關注。"
+    },
+    {
+      "full_name": "alibaba/qz-browser-agent",
+      "html_url": "https://github.com/alibaba/qz-browser-agent",
+      "stars": 40,
+      "selected": true,
+      "summary": "阿里巴巴開源的 Chrome 擴充套件型本地優先 AI 代理「輕舟」,可做網頁研究、瀏覽器自動化與結構化資料擷取,支援自帶模型、平行子任務、Skills 擴充與 MCP bridge 讓外部 agent 控制瀏覽器。",
+      "tech": "Chrome Extension(TypeScript),DOM/截圖雙模操作,支援任何相容 tool-calling 的模型供應商(含本地模型伺服器),並有 MCP bridge 服務對外暴露瀏覽器工具。",
+      "feasibility": "下載 release 解壓後在 Chrome 以「載入未封裝項目」安裝即可,或 `npm ci && npm run build` 自行建置;資料與 session 存於本機瀏覽器,門檻低。",
+      "limits": "目前僅支援 Chrome/Chromium;模型請求會帶出使用者輸入與頁面內容,若串接外部服務仍有資料外流風險,須留意 docs/permissions.md 的資料流說明。",
+      "reason": "大廠(阿里巴巴)背書、功能完整(自動化+擷取+MCP bridge+可擴充 Skills)且強調本地優先與資料留在瀏覽器內,是瀏覽器代理類別中少見兼顧隱私與擴充性的實作。"
+    },
+    {
+      "full_name": "0xgetz/river-bulk-apikey",
+      "html_url": "https://github.com/0xgetz/river-bulk-apikey",
+      "stars": 29,
+      "selected": false,
+      "reason": "淘汰:本質是透過真實瀏覽器 CDP 操作繞過 River AI 註冊流程的 Cloudflare Turnstile/WorkOS Radar 防刷機制,搭配拋棄式信箱大量批量申請帳號與免費 API key,屬於服務條款濫用/薪水刷量工具,與「新興 AI 整合技術」的精選主旨不符,且掛 llm topic 標籤搭便車(推測)。"
+    },
+    {
+      "full_name": "1nikitas/NIKA_desktop",
+      "html_url": "https://github.com/1nikitas/NIKA_desktop",
+      "stars": 23,
+      "selected": true,
+      "summary": "給 macOS 用的原生 AI 助理桌面 App,可下載本地模型(llama.cpp/GGUF)離線對話、處理文件/PDF,並可選擇性串接 NIKA 雲端取得跨裝置對話、雲端 agent 與自訂助理等進階功能。",
+      "tech": "SwiftUI + Swift 6,推論引擎為 llama.cpp,本地模型錯誤時保證不會靜默轉送雲端(依 README 聲明)。",
+      "feasibility": "需 Apple Silicon + macOS 26+ + Xcode 16.4+,`brew install llama.cpp` 後以原始碼建置(`bash scripts/dev.sh`);僅提供 ad-hoc 簽名的原始碼建置,未提供已過公證的發行版,安裝門檻中等。",
+      "limits": "目前介面文案主要為俄文(README 註明),雲端進階功能需另外註冊帳號且後端程式碼未開源;僅支援 Apple Silicon,無 Intel Mac 或其他平台版本。",
+      "reason": "少見的原生 SwiftUI + llama.cpp 本地優先 AI 助理,離線能力與「本地優先、雲端可選」的設計取向明確,雖然目前主要使用者介面為俄文、成熟度仍待觀察(推測:國際化程度較低可能限制早期採用)。"
+    }
+  ]
+}
