@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-15",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-13 stars:>=20 | topic:machine-learning created:>=2026-10-13 stars:>=20 | topic:llm created:>=2026-10-13 stars:>=20 | topic:ai-agent created:>=2026-10-13 stars:>=20 | topic:generative-ai created:>=2026-10-13 stars:>=20",
+  "notice": {
+    "lede": "今日新興 AI repo 候選數量偏低,僅 5 個通過 20 星門檻,反映本窗口期內沒有出現爆發性熱門專案。",
+    "body": "這波候選以瀏覽器/編碼代理人與本地化 LLM 應用為主軸:outcrawlai/scout 作為瀏覽器操作型 agent 單日衝上 647 星,熱度明顯高於其餘候選;其餘入選項目(opencode-rust、NIKA_desktop、cromford)則呈現「工具鏈本地化、去雲端依賴」的共同傾向——不論是 Rust 重寫的 coding agent、llama.cpp 驅動的離線 macOS 助理,或是自架軟體交付管線,皆強調脫離雲端代管或容器依賴,自行掌控執行環境。"
+  },
+  "candidates": [
+    {
+      "full_name": "outcrawlai/scout",
+      "html_url": "https://github.com/outcrawlai/scout",
+      "stars": 647,
+      "selected": true,
+      "summary": "開源瀏覽器代理人,用自然語言描述任務後,操控真實瀏覽器完成網頁操作任務(點擊、輸入、捲動),失敗時回報缺少什麼。",
+      "tech": "TypeScript + Node 22+,透過標準 Chat Completions API 呼叫任意 LLM(可自架模型),瀏覽器自動化透過 CDP(Chrome DevTools Protocol)。",
+      "feasibility": "npm 安裝即可,本地執行需自備瀏覽器與模型 API Key;官方雲端版本提供防機器人偵測與重播功能,屬於可選加值服務而非必需。",
+      "limits": "本地執行的穩定性/防偵測能力弱於官方雲端版本(一般網站可能視為自動化流量而阻擋),且需要外部 LLM API 金鑰才能運作。",
+      "reason": "Star 數高(647)、功能明確且有清楚安裝/使用範例,是典型且成熟的瀏覽器操作型 AI agent。"
+    },
+    {
+      "full_name": "vakandi/opencode-rust",
+      "html_url": "https://github.com/vakandi/opencode-rust",
+      "stars": 71,
+      "selected": true,
+      "summary": "以 Rust 重寫的開源 AI coding agent(對照 OpenCode),提供 CLI、TUI 與 HTTP server 三種介面,支援 session、工具執行、MCP、LSP 及 TypeScript plugin bridge,不需 Docker。",
+      "tech": "Rust(21 crates,571 個測試),支援 MCP 協定與 LSP 整合;可透過 npm/Homebrew/原始碼建置安裝。",
+      "feasibility": "npm 安裝不需編譯(直接抓預建二進位檔,支援 macOS/Linux/Windows);Homebrew 版本需要 Rust 工具鏈從源碼建置。整體安裝門檻低,適合本地測試。",
+      "limits": "為另一個專案(OpenCode)的 Rust 重寫/移植版本,尚未說明與原版的功能對等程度或穩定度;文件未提及支援哪些 LLM 供應商或是否需另外的 API 金鑰設定(推測)。",
+      "reason": "不需 Docker、安裝方式多元(npm/brew/原始碼)、測試覆蓋看起來扎實,對本地開發者的 coding agent 替代方案有實用價值。"
+    },
+    {
+      "full_name": "1nikitas/NIKA_desktop",
+      "html_url": "https://github.com/1nikitas/NIKA_desktop",
+      "stars": 33,
+      "selected": true,
+      "summary": "原生 macOS AI 助理,透過 llama.cpp 在本機執行 LLM,可離線對話、處理 PDF 文件,並支援建立自訂助理;另提供可選的雲端整合(透過 Telegram 登入)。",
+      "tech": "SwiftUI + Swift 6,底層推理引擎為 llama.cpp,支援 GGUF 格式模型;影像輸入需搭配支援的 vision projector。",
+      "feasibility": "需要 Apple Silicon Mac、macOS 26+、Xcode 16.4+ 與 Homebrew,從原始碼建置;本地對話一旦模型下載完成即可離線使用,門檻集中在開發環境設置而非執行本身。",
+      "limits": "僅支援 Apple Silicon macOS,無法跨平台使用;目前僅提供原始碼建置版(ad-hoc 簽章),未提供經公證的發行版;介面目前仍主要是俄文。",
+      "reason": "本地優先、離線可用的 AI 助理具代表性,原生 SwiftUI 介面與 llama.cpp 整合提供良好的本地可行性範例,惟平台限制明顯。"
+    },
+    {
+      "full_name": "diip3sh/feel",
+      "html_url": "https://github.com/diip3sh/feel",
+      "stars": 25,
+      "selected": false,
+      "reason": "雖標記 ai-agent 主題並包裝為 Claude Code skill,但核心功能是純前端物理動畫引擎(質量/勁度/阻尼模型),未使用任何 LLM 或機器學習技術,與 AI/ML 無明顯關聯,故不列入精選。"
+    },
+    {
+      "full_name": "cromford-ai/cromford",
+      "html_url": "https://github.com/cromford-ai/cromford",
+      "stars": 20,
+      "selected": true,
+      "summary": "開源「軟體工廠」自動化管線,從看板票務出發,依序完成分流判斷、規劃、建置、對抗式程式碼審查、PR、預覽環境 QA、合併與正式環境部署驗證,全程無人值守運作。",
+      "tech": "Shell 腳本串接多個階段(triage/build/review/merge/deploy-verify/postmerge-qa),各階段使用獨立 LLM 呼叫與預算,搭配資料庫與檔案系統維持跨階段狀態,並串接 GitHub Issues/PR。",
+      "feasibility": "需自行架設遠端建置機器(或 Fly.io machine)、GitHub 權限與多項腳本協調,屬於「企業/團隊級」自動化基礎設施而非單機可直接試用的小工具。",
+      "limits": "設置複雜度高,需要熟悉其多階段腳本與外部服務(Fly.io、GitHub)配置;README 未提供快速試跑路徑,對個人開發者的導入門檻偏高;Star 數剛好壓線門檻(20)。",
+      "reason": "概念完整且公開了罕見的「全自動軟體交付管線」實作細節,具研究/參考價值,但導入門檻偏高、屬早期專案(剛好 20 星),故列入觀察但標注限制。"
+    }
+  ]
+}
