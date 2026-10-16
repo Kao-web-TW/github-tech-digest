@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-16",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-14 stars:>=20 | topic:machine-learning created:>=2026-10-14 stars:>=20 | topic:llm created:>=2026-10-14 stars:>=20 | topic:ai-agent created:>=2026-10-14 stars:>=20 | topic:generative-ai created:>=2026-10-14 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜很薄，5 個 topic 只湊出 4 個不重複候選，其中一半是帳號農場類自動化工具。",
+    "body": "topic:artificial-intelligence、topic:machine-learning、topic:generative-ai 三個查詢今天都是 0 筆結果，只有 topic:llm（3 筆）與 topic:ai-agent（1 筆）有命中，合併去重後僅 4 個候選。更值得注意的是同一位作者（0xgetz）連續推出兩個「批量註冊帳號 + 自動擷取 session/API key + 灌進 9Router 代理池」的工具（notion-bulk-9router、agentscope-bulk-apikey），本質是繞過 Notion AI 無公開 API 與平台配額限制的帳號農場/憑證擷取自動化，屬於明顯違反目標平台服務條款的灰色工具，不符合本精選「新興 AI 整合工具」的篩選標準，今天予以淘汰。"
+  },
+  "candidates": [
+    {
+      "full_name": "mmm1712/Local_AI_esp32",
+      "html_url": "https://github.com/mmm1712/Local_AI_esp32",
+      "stars": 43,
+      "selected": true,
+      "summary": "PocketGPT：從零訓練的小型 decoder-only Transformer 語言模型，離線運行在 ESP32-S3 微控制器上，XIAO 板用觸控螢幕鍵盤互動、DevKit 板用 USB 聊天介面，不需雲端 API。",
+      "tech": "自製 Decoder-only Transformer（12 層、hidden size 448、8 個 query head/2 個 KV head，約 3046 萬參數）；SentencePiece tokenizer（6144 tokens）；64-token context，單次最多生成 24 token；已提供訓練好的權重與 tokenizer（Releases 下載），附完整訓練程式碼。",
+      "feasibility": "本地可行性高但需特定硬體：需購入 XIAO ESP32-S3（8MB Flash/8MB PSRAM + Seeed 螢幕 + microSD）或 ESP32-S3 DevKit（32MB Flash/16MB PSRAM），依文件下載對應模型包、自行編譯燒錄韌體即可運行，不需 GPU 或雲端帳號。",
+      "limits": "模型能力非常有限：只能產生簡短問候語等基本對話，答案常錯誤、重複或無關，連基本算術都不可靠；生成速度極慢（DevKit 約 1.41 token/s、XIAO 約 0.742 token/s），作者本人也明確標註這是「個人實驗、能力有限」。",
+      "reason": "少見但紮實的 edge AI 示範：作者誠實公開訓練方法、模型規格與真實限制（非誇大宣傳），展示超小型 LLM 在微控制器上離線推論的可行界線，具教育與硬體 AI 愛好者參考價值，故入選。"
+    },
+    {
+      "full_name": "ShadowSwaps/REA-Reconstruction-Companion",
+      "html_url": "https://github.com/ShadowSwaps/REA-Reconstruction-Companion",
+      "stars": 36,
+      "selected": true,
+      "summary": "一個與模型無關（model-independent）的 Agent Skill，搭配 REA 專案，把軟體逆向工程證據轉化成可執行的規格書、架構設計、實作計畫與驗證流程，可在整個應用、單一功能、函式或資料格式等不同範疇使用。",
+      "tech": "以 Agent Skill 形式封裝（相容 Claude Code、Codex 等支援 Skill 的 AI 用戶端），核心邏輯是 JavaScript 撰寫的安裝/驗證工具鏈，搭配 REA（reverse-engineering evidence-based 方法論）專案整合，v1.2.0 起內建選用的每週更新檢查機制。",
+      "feasibility": "本地可行性高：透過 AI agent（如 Claude Code）給定安裝提示即可自動偵測用戶端與 skills 目錄完成安裝，支援 --dry-run 預覽與 --check 驗證，可選擇是否啟用 REA 整合規則，不需額外付費服務（文件特別強調避免產生額外費用）。",
+      "limits": "依賴使用者的 AI agent 具備本機檔案與指令存取權限才能完成安裝；功能聚焦在「理解現有程式碼並規劃重建」這類逆向工程情境，非通用開發助手；REA 整合與更新檢查皆為選用、預設關閉，需要使用者主動决定。",
+      "reason": "屬於開發者工具／AI agent 生態的新增實用元件，流程設計嚴謹（明確徵求使用者同意、避免意外付費、提供驗證步驟），對需要理解既有程式碼並重建的開發情境有實際幫助，故入選。"
+    },
+    {
+      "full_name": "0xgetz/notion-bulk-9router",
+      "html_url": "https://github.com/0xgetz/notion-bulk-9router",
+      "stars": 27,
+      "selected": false,
+      "reason": "本質是批量註冊 Notion 帳號、以瀏覽器自動化擷取 httpOnly session cookie（token_v2）再包裝成 OpenAI 相容 API 供 9Router 代理池使用，目的是繞過 Notion AI 未開放公開 API 與用量限制——屬於違反目標平台服務條款的帳號農場/憑證擷取自動化工具，不符合本精選篩選的技術創新或正當整合標準，故淘汰。"
+    },
+    {
+      "full_name": "0xgetz/agentscope-bulk-apikey",
+      "html_url": "https://github.com/0xgetz/agentscope-bulk-apikey",
+      "stars": 21,
+      "selected": false,
+      "reason": "與上一個候選同作者、同模式：批量註冊 AgentScope Platform 帳號並自動產生 API key 灌入 9Router 代理池，實質是規避平台帳號/配額限制的批量帳號農場工具，而非正當的 AI 技術整合，故淘汰。"
+    }
+  ]
+}
