@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-17",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-15 stars:>=20 | topic:machine-learning created:>=2026-10-15 stars:>=20 | topic:llm created:>=2026-10-15 stars:>=20 | topic:ai-agent created:>=2026-10-15 stars:>=20 | topic:generative-ai created:>=2026-10-15 stars:>=20",
+  "notice": {
+    "lede": "今天候選池異常小（僅 6 筆，遠低於平日規模），artificial-intelligence / machine-learning / generative-ai 三個 topic 完全交白卷，候選全部來自 llm 與 ai-agent 兩個 topic。",
+    "body": "過去兩天內新建、star 數達門檻的 repo 數量明顯偏少，可能是時段波動或巧合。候選中出現兩個值得注意的訊號：一是「Agent 周邊工具」持續成長（遊戲 NPC 語音整合、桌面端 Agent 管理介面、從零手刻的通用 Agent Runtime 教學專案），顯示開發者對 agent runtime 與人機互動介面的興趣仍在；二是出現一個透過偽裝瀏覽器 TLS 指紋來繞過 Google Gemini Web 速率限制、把消費版網頁服務包裝成付費 API 替代品的專案，這類規避偵測工具存在服務條款風險，本次精選選擇不予收錄。"
+  },
+  "candidates": [
+    {
+      "full_name": "christos-antono/NPCTalk",
+      "html_url": "https://github.com/christos-antono/NPCTalk",
+      "stars": 79,
+      "selected": true,
+      "summary": "讓遊戲內 NPC 即時用複刻語音開口回話的工具組：語音活動偵測 + 語音轉文字（fal）→ LLM 依角色性格生成台詞（Cerebras）→ Fish Audio 複刻語音合成（自架於 Modal GPU）→ 回放給玩家,全程約 1.2-2.2 秒。以 GTA V 為完整示範,並以 Agent Skills 格式打包,可一鍵安裝進 Claude Code、Codex、Gemini CLI、Cursor、Copilot、OpenCode 等多種 AI coding agent。",
+      "tech": "fal（STT）、Cerebras（LLM 推理）、Fish Audio Drama 3 / S2 Pro（語音複刻，自架於 Modal H100）、Agent Skills 格式 + MCP server",
+      "feasibility": "需要申請並串接至少三個雲端服務（fal、Cerebras、Fish Audio/Modal）的 API 金鑰，且需自架 GPU 語音伺服器,對一般使用者門檻偏高;但作者把流程拆成可重用的 skills,理論上可移植到 GTA V 以外的遊戲,用 AI coding agent 輔助接線。",
+      "limits": "高度依賴多個第三方付費服務的延遲與配額;目前官方完整案例僅 GTA V,其他遊戲需自行依 skills 文件補齊整合代碼;自架 Fish Audio 語音伺服器需要 GPU 資源。",
+      "reason": "把 LLM 生成對白、語音複刻、低延遲管線和 AI coding agent 安裝流程整合成一套可重用的遊戲模組工具,案例完整(GTA V 示範影片/架構圖),技術組合新穎,值得收錄。"
+    },
+    {
+      "full_name": "ShadowSwaps/REA-Reconstruction-Companion",
+      "html_url": "https://github.com/ShadowSwaps/REA-Reconstruction-Companion",
+      "stars": 63,
+      "selected": true,
+      "summary": "一套與模型無關的 Agent Skill,協助 AI coding agent 把既有軟體的逆向工程證據,轉成可執行的規格、架構、實作計畫與驗證流程,可配合 REA 框架做整合,支援整個應用、單一功能、函式或資料格式等不同範圍的重建任務。",
+      "tech": "Agent Skills 格式（SKILL.md）+ 可選的 REA 框架整合規則,內建 --dry-run / --check 的安裝與驗證腳本",
+      "feasibility": "純本機安裝,透過 AI agent（Claude Code、Codex 等）讀取安裝提示自動完成設定,不需額外雲端服務或付費 API,門檻低。",
+      "limits": "依賴使用者的 AI agent 本身具備檔案與指令存取權限才能完成安裝;功能聚焦在「軟體重建」這個相對特定的場景,非通用開發助手;v1.2.0 新增的每週更新檢查需使用者額外確認啟用。",
+      "reason": "把逆向工程/軟體重建的方法論包裝成可攜式、模型無關的 Agent Skill,安裝流程設計嚴謹(dry-run、驗證、保留既有備份),對做程式碼考古、遷移重寫的團隊有實用價值。"
+    },
+    {
+      "full_name": "azrinaldi/gemini-stealth-bridge",
+      "html_url": "https://github.com/azrinaldi/gemini-stealth-bridge",
+      "stars": 42,
+      "selected": false,
+      "reason": "技術上雖精細(自製 uTLS/HTTP2 指紋偽裝,取代 headless Chrome),但本質是偽裝瀏覽器指紋以繞過 Google Gemini 網頁版的速率限制與偵測機制,把消費版網頁服務包裝成付費 API 的替代品,存在明顯的服務條款與帳號風險,不適合納入精選推薦（推測：此類規避偵測工具可能隨 Google 端防護更新而迅速失效或導致帳號被封）。"
+    },
+    {
+      "full_name": "ztt0216/MyAgent",
+      "html_url": "https://github.com/ztt0216/MyAgent",
+      "stars": 37,
+      "selected": true,
+      "summary": "從零手刻的通用 Agent Runtime：完整實作 Agent Loop（模型推理→工具呼叫意圖→權限檢查→執行→結果回寫→繼續推理）、權限控制、MCP 外部工具接入、子 Agent、長期記憶、Skills 體系與「自進化」機制（從使用回饋自動擴充 SKILL.md）、會話恢復與上下文壓縮,同時支援 OpenAI 與 Anthropic 相容介面。",
+      "tech": "Python,OpenAI-compatible / Anthropic-compatible 雙協議,自研 stdio JSON-RPC MCP Client",
+      "feasibility": "本機可直接執行,只需提供任一相容的 LLM API 金鑰即可跑完整 Agent Loop,適合想理解 Claude Code / Codex 等 agent harness 底層機制的人直接讀原始碼學習或二次開發。",
+      "limits": "屬個人/教學性質專案,文件以簡體中文為主,尚無多語系或企業級部署說明;「Skills 自進化」等機制的穩定性與安全邊界未見第三方驗證。",
+      "reason": "完整重現了現代 coding agent（含 Harness、權限控管、Skills、子 Agent、記憶、MCP）的核心機制,原始碼可讀,是學習或自建通用 Agent Runtime 的優質參考實作。"
+    },
+    {
+      "full_name": "MG1937/rust_ASC",
+      "html_url": "https://github.com/MG1937/rust_ASC",
+      "stars": 32,
+      "selected": false,
+      "reason": "本質是 Android APK 反編譯/逆向分析 CLI 工具（ASC 的 Rust 重寫版,主打效能比 Python 版快約 10 倍）,雖標註 ai-agent 主題並訴求供 agent/研究者呼叫,但工具本身不含任何 LLM 或 AI 模型元件,與本精選聚焦的「AI 整合工具」關聯度低,淘汰。"
+    },
+    {
+      "full_name": "Hermes-Deck/hermes-deck",
+      "html_url": "https://github.com/Hermes-Deck/hermes-deck",
+      "stars": 28,
+      "selected": true,
+      "summary": "Hermes Agent（NousResearch 的開源 agent 框架）的桌面端管理 App,提供與多個 agent 聊天、即時查看 agent 的思考過程/工具呼叫/子 agent 活動、可隨時介入操控或停止,並整合審批收件匣、Telegram 模式、agent 專屬瀏覽器分頁與桌面控制等功能,支援 Windows 與 macOS。",
+      "tech": "桌面應用（Electron/類似架構，JavaScript）,透過 SSH / WSL / 本機連線既有 Hermes 執行環境,可選用中繼服務（relay）提供跨裝置即時視圖與遠端瀏覽器/桌面控制",
+      "feasibility": "需要使用者已自行架設並運行 Hermes Agent 後端,此 App 僅作為前端管理介面;核心聊天與 session 功能不需 relay,但跨裝置即時監控、Telegram 整合、遠端桌面/瀏覽器控制等進階功能需另外啟用 relay 與 Telegram bot。",
+      "limits": "目前僅支援 Windows / macOS（iOS 版「soon」尚未推出）,依賴 Hermes Agent 生態系,非獨立可用的通用 agent 管理工具;進階功能的安全性（遠端桌面/瀏覽器控制）需仰賴使用者自行把關授權範圍。",
+      "reason": "把多 agent 的即時監控、人機協作（審批、介入、接管）與跨平台通知（Telegram）整合成單一桌面體驗,補上了 Hermes Agent 生態系缺乏的圖形化管理介面,對已採用該框架的使用者有直接價值。"
+    }
+  ]
+}
