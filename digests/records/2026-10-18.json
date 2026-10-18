@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-18",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-16 stars:>=20 | topic:machine-learning created:>=2026-10-16 stars:>=20 | topic:llm created:>=2026-10-16 stars:>=20 | topic:ai-agent created:>=2026-10-16 stars:>=20 | topic:generative-ai created:>=2026-10-16 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜很薄：5 個 topic 總共只篩出 5 個新 repo，其中 2 個與 AI/LLM 技術關聯薄弱。",
+    "body": "artificial-intelligence 與 machine-learning 兩個 topic 在近 2 天內完全沒有達到 20 星門檻的新 repo，候選全部來自 llm、ai-agent、generative-ai 三個 topic。其中 rust_ASC 雖被標記 ai-agent，實際上是給行動安全研究「人員」（非 AI agent）用的 Android 逆向工具；gemini-stealth-bridge 則是透過偽裝瀏覽器流量繞過 Google 官方 API 限制存取 Gemini Web 的「隱身」橋接工具，官方條款與穩定性風險都偏高。扣除這兩個後，今天真正值得收錄的新東西集中在本地部署教學、自製 Agent Runtime 與一個有趣的生成式 AI 應用案例（用 Claude Code 把手寫筆記變成字型），質量尚可但數量明顯偏少，可能只是這兩天的自然波動。"
+  },
+  "candidates": [
+    {
+      "full_name": "azrinaldi/gemini-stealth-bridge",
+      "html_url": "https://github.com/azrinaldi/gemini-stealth-bridge",
+      "stars": 83,
+      "selected": false,
+      "reason": "繞過 Google 官方 Gemini API 限制、偽裝瀏覽器流量存取 Gemini Web 的「隱身」橋接工具，依賴未公開協議且明確標註不保證規避偵測，官方條款與長期穩定性風險高，不適合推薦給一般使用者（推測：此類工具隨 Google 前端調整隨時可能失效）。"
+    },
+    {
+      "full_name": "justxor/deepseek-local-guide-ru",
+      "html_url": "https://github.com/justxor/deepseek-local-guide-ru",
+      "stars": 55,
+      "selected": true,
+      "summary": "俄語撰寫的 DeepSeek 本地部署完整教學，涵蓋從 5 分鐘快速上手到 Ollama、llama.cpp、LM Studio、vLLM、Open WebUI、API 串接、RAG 與 agent 應用、模型量化與選型建議的完整流程，並隨 2026-10-17 發布的 DeepSeek-V4.1-Flash 更新內容。",
+      "tech": "DeepSeek V4 / R1 系列開源模型；Ollama、llama.cpp、LM Studio、vLLM、SGLang、Open WebUI 等本機推理與介面工具",
+      "feasibility": "高：純教學文件加 Shell 腳本，依文件步驟即可在個人電腦、Mac 或伺服器上跑起來，入門門檻低（`ollama run deepseek-r1:8b` 一行指令）",
+      "limits": "內容以俄語為主，非俄語使用者需要翻譯；跑旗艦模型（如 284B 的 V4-Flash-0731）仍需要大量記憶體（約 110GB），一般消費級硬體只能跑蒸餾版",
+      "reason": "內容完整、更新即時，對想在本機跑開源大模型的讀者實用價值高"
+    },
+    {
+      "full_name": "MG1937/rust_ASC",
+      "html_url": "https://github.com/MG1937/rust_ASC",
+      "stars": 53,
+      "selected": false,
+      "reason": "本質是 Android APK 逆向解碼工具（Python 版的 Rust 移植版，主打效能），ai-agent topic 標記指的是服務對象為行動安全研究人員而非 AI agent 技術本身，與本精選主題關聯薄弱。"
+    },
+    {
+      "full_name": "ztt0216/MyAgent",
+      "html_url": "https://github.com/ztt0216/MyAgent",
+      "stars": 36,
+      "selected": true,
+      "summary": "從零實作的通用 Agent Runtime，統一編排模型推理、工具呼叫、權限控制、長期記憶、Skills 系統與自進化、MCP 外部工具整合、子 Agent 與會話恢復/上下文壓縮，核心設計理念是把「環境操作」交給 Runtime 統一做權限判斷與執行（類似 Claude Code 的 harness 概念）。",
+      "tech": "Python；自研 stdio JSON-RPC MCP Client；同時相容 OpenAI 與 Anthropic API 協議",
+      "feasibility": "中：可直接 clone 執行，需自備 OpenAI/Anthropic 相容的模型 API key；文件與介面以中文為主",
+      "limits": "新專案（36 星，發布僅 2 天），生態與測試覆蓋尚待觀察，架構文件完整但缺乏長期維護紀錄（推測：目前仍是個人實驗性專案階段）",
+      "reason": "完整重現了 agent harness 的核心機制（權限、MCP、子 agent、skills 自進化），對想理解或二次開發 agent runtime 的開發者是很好的參考實作"
+    },
+    {
+      "full_name": "harshpreet931/harshpreet-hand",
+      "html_url": "https://github.com/harshpreet931/harshpreet-hand",
+      "stars": 27,
+      "selected": true,
+      "summary": "作者用 Claude Code 讀取 120 頁手寫筆記照片，自動化重建出一套可安裝、可嵌入網頁的個人手寫字型（每個字母有 2-3 個真實變體輪替，避免重複字母看起來像蓋章），單一 prompt、66 分鐘、API 花費 13.68 美元完成，並附完整製作過程影片。",
+      "tech": "Claude Code 驅動的 agentic pipeline：OpenCV 影像處理定位筆畫路徑、fontTools 產生 TTF/WOFF2 字型檔、Remotion 製作流程影片",
+      "feasibility": "中：需要使用者自備手寫筆記照片與 Claude Code API 額度重現整套流程；若只是要用作者已做好的字型，直接引入 CSS 或下載字型檔即可，門檻低",
+      "limits": "目前只涵蓋拉丁字母與作者本人筆跡風格，非通用工具；要重現同等品質需要類似規模的 API 資源投入",
+      "reason": "具體展示 Claude Code 作為生成式 AI agent 處理真實世界非程式任務（字型設計)的能力，案例完整且有趣，值得作為應用案例收錄"
+    }
+  ]
+}
