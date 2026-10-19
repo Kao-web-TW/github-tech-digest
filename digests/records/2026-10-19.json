@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-19",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-17 stars:>=20 | topic:machine-learning created:>=2026-10-17 stars:>=20 | topic:llm created:>=2026-10-17 stars:>=20 | topic:ai-agent created:>=2026-10-17 stars:>=20 | topic:generative-ai created:>=2026-10-17 stars:>=20",
+  "notice": {
+    "lede": "今日候選量稀少但品質偏向基礎建設:兩個 MCP server 與一個 AI gateway 占了入選名額的大半。",
+    "body": "受限於近 2 天的時間窗與 20 星門檻,今天合併 5 個主題只找到 6 筆候選,其中 machine-learning 主題掛零。入選的 5 筆裡有 3 筆屬於『讓 agent 存取外部系統或模型』的基礎建設型專案——cve-intel 與 im-mcp 是 MCP server,antirion 則是多供應商 LLM gateway——顯示開發者社群這幾天仍持續在補強 agent 與既有系統/模型供應商之間的整合層,而非直接做終端應用。另外兩筆(DeepSeek 本地部署教學、越南商業法規 skill)則分別代表『本地執行 LLM』與『封裝領域知識成 agent skill』這兩種常見的草根整合模式。"
+  },
+  "candidates": [
+    {
+      "full_name": "justxor/deepseek-local-guide-ru",
+      "html_url": "https://github.com/justxor/deepseek-local-guide-ru",
+      "stars": 93,
+      "selected": true,
+      "summary": "一份完整的俄語教學,手把手教如何在個人電腦、Mac、伺服器上本地安裝並執行 DeepSeek V4/R1 全家族模型,涵蓋 Ollama、llama.cpp、LM Studio、vLLM、Open WebUI、API、RAG、agent 等整合情境。",
+      "tech": "整合 Ollama、llama.cpp、LM Studio、vLLM、SGLang、Open WebUI 等本地推理框架,涵蓋 GGUF 量化模型與剛發布的 DeepSeek-V4.1-Flash-1017(552B MoE,8-16B 啟用參數,百萬 token 上下文)。",
+      "feasibility": "內容即是「如何本地執行」的教學,小模型(1.5B-8B 蒸餾版)可在一般消費級 GPU/CPU 跑;大型旗艦版(284B 以上)需要約 110GB 記憶體等級的工作站或伺服器,一般筆電不可行。",
+      "limits": "全文為俄文,非俄語使用者需翻譯;屬教學文件而非程式碼工具,須自行依文件操作各外部專案;部分連結導向 Telegram 頻道而非原始資料來源。",
+      "reason": "針對本地部署 DeepSeek 新一代模型的實務教學,涵蓋完整工具鏈且更新即時(含 10/17 發布的 V4.1-Flash),star 成長快,對想自架 LLM 的開發者高度實用。"
+    },
+    {
+      "full_name": "diginno-net/opc-vn-business-law",
+      "html_url": "https://github.com/diginno-net/opc-vn-business-law",
+      "stars": 50,
+      "selected": true,
+      "summary": "提供給 Claude Code / Codex / OpenCode 等 agent 使用的「Skill」套件,內建越南個人企業(一人公司)法律、稅務、會計的參考知識庫與問答範本,協助 agent 回答工商登記、稅制選擇等問題。",
+      "tech": "以 Markdown 參考文件 + SKILL.md 指令組成的 agent skill,搭配一支 Python 稅額試算腳本(so_sanh_thue.py),無需外部 API 或模型服務。",
+      "feasibility": "直接複製資料夾到 agent 的 skills 目錄即可使用,本地可行性高,無額外相依套件,跨 Claude Code/Codex/OpenCode 通用。",
+      "limits": "僅涵蓋越南法規且聲明為參考資料非正式法律意見,法規時效性需人工覆核;適用範圍侷限於特定地區與語言(越南文)。",
+      "reason": "示範了「AI agent skill」這種輕量整合模式如何封裝領域知識,結構清楚、可直接安裝使用,是少見的地區化合規知識型 skill。"
+    },
+    {
+      "full_name": "Fazmin/cve-intel",
+      "html_url": "https://github.com/Fazmin/cve-intel",
+      "stars": 42,
+      "selected": true,
+      "summary": "原生 Rust 打造的本地資安情報工具,整合 31 項工具與 25 個資料來源(NVD、EPSS、CISA KEV、GitHub、Shodan 等),針對 CVE/IP/檔案雜湊/網域提供風險評分與處置建議,並可作為 MCP server 供 AI agent 呼叫。",
+      "tech": "Rust + Tauri 2 桌面應用,內建 llama.cpp 執行的在地小模型做預設分析,OpenAI/Anthropic/Gemini 僅為選用雲端補強;同時提供 CLI、REST API 與 MCP server 介面,相容 Claude Code、Cursor、VS Code、Claude Desktop、Windsurf。",
+      "feasibility": "單一執行檔即可在本機離線運行,預設不上傳資料,對安全團隊或個人在筆電/工作站即可部署,可行性高。",
+      "limits": "風險判讀仍依賴公開資料源的即時性與完整性,不會主動掃描網路或套用修補;25 個來源的 API 配額與可用性可能隨時間變動。",
+      "reason": "把多個分散的 CVE 情報來源整合成單一離線優先的 MCP 相容工具,對資安與 AI agent 整合都有實際價值,功能完整度高。"
+    },
+    {
+      "full_name": "harshpreet931/harshpreet-hand",
+      "html_url": "https://github.com/harshpreet931/harshpreet-hand",
+      "stars": 37,
+      "selected": false,
+      "reason": "屬於「用 Claude Code 把個人手寫筆記轉成字型」的成果展示案例,本身非可重複使用的 AI 整合工具或框架,與本精選聚焦的『可安裝/可整合工具』定位不符,予以割愛(推測其高星數來自話題性而非工具實用性)。"
+    },
+    {
+      "full_name": "stkoecn/im-mcp",
+      "html_url": "https://github.com/stkoecn/im-mcp",
+      "stars": 29,
+      "selected": true,
+      "summary": "本地運行的只讀 MCP server,讓 Claude Desktop、Cursor、Cline 等 AI agent 能安全地檢索微信(WeChat 4.x/3.x)與釘釘(DingTalk 7.x)的聊天記錄與通訊錄,支援全文檢索(FTS5)。",
+      "tech": "以 Model Context Protocol 規範實作,直接解密本機 SQLite 聊天資料庫(Windows 透過動態提取 Config.Cipher,macOS 透過原生 CommonCrypto),共 16 項只讀工具。",
+      "feasibility": "需安裝在同一台裝有微信/釘釘用戶端的電腦上執行,支援 Windows x64 與 macOS(Intel/Apple Silicon),屬本機可行但平台/版本相依性高。",
+      "limits": "僅支援列出的特定用戶端版本範圍,新版用戶端更新加密機制後可能需要跟進修補;涉及讀取私人聊天資料,使用上需留意資料隱私與授權問題。",
+      "reason": "填補了「本地即時通訊紀錄」與 AI agent 之間的整合空白,只讀且離線的設計降低隱私疑慮,屬於實用的垂直領域 MCP server。"
+    },
+    {
+      "full_name": "eliasbiondo/antirion",
+      "html_url": "https://github.com/eliasbiondo/antirion",
+      "stars": 23,
+      "selected": true,
+      "summary": "開源 AI gateway,單一 Rust binary 內建管理控制台,統一路由、保護、預算控管並觀測跨 OpenAI、Anthropic、Bedrock、Gemini 等各家 LLM API 呼叫。",
+      "tech": "Rust 實作、無 GC/直譯器開銷,支援 OpenAI/Anthropic/Gemini/Bedrock 協議互轉,具備 fallback、權重分流、最低成本/延遲路由、語意快取、PII/機密/提示注入防護等能力,並相容 MCP。",
+      "feasibility": "單一 binary 或 distroless image 即可自架部署,無需額外 sidecar,README 附有與 Bifrost、LiteLLM 的效能基準比較,本地/自架可行性高。",
+      "limits": "作為新專案(創建於 2026-10-17),成熟度與社群驗證仍待觀察;多供應商相容性需持續跟進各家 API 變動才能維持翻譯正確性。",
+      "reason": "作為 LiteLLM/Bifrost 的競品,主打效能與一體化控制台,對需要統一管理多家 LLM 供應商呼叫的團隊具備明確實用價值。"
+    }
+  ]
+}
