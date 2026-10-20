@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-20",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-18 stars:>=20 | topic:machine-learning created:>=2026-10-18 stars:>=20 | topic:llm created:>=2026-10-18 stars:>=20 | topic:ai-agent created:>=2026-10-18 stars:>=20 | topic:generative-ai created:>=2026-10-18 stars:>=20",
+  "notice": {
+    "lede": "今日候選榜出現明顯的疑似 spam/誘導下載執行檔 repo 群聚現象,實際可精選的優質新工具偏少。",
+    "body": "2 天內新建、llm/artificial-intelligence 相關且星數達 20 以上的候選僅 11 個,其中 5 個是同一時間區段(相差數秒)建立、語言皆標示 CSS、星數與 fork 數高度一致、README 以「下載 ZIP 執行檔」為主要訴求的「Windows local AI 工具」,高度疑似模板量產或誘導下載惡意執行檔的帳號群,另有 1 個(n33-bulk-9router)核心功能是繞過服務條款大量建立帳號擷取 cookie,這些皆未予選入。最終僅 3 個真正具備技術內容與清晰價值主張的專案(cve-intel、Lampline、agents-contract)入選,低於過去常見的 5-10 個區間,如實反映今日的候選品質分佈。"
+  },
+  "candidates": [
+    {
+      "full_name": "Fazmin/cve-intel",
+      "html_url": "https://github.com/Fazmin/cve-intel",
+      "stars": 74,
+      "selected": true,
+      "summary": "本機優先的 CVE 資安情報桌面應用(Tauri 2 + Rust),彙整 31 個資料來源(含 CISA KEV、EPSS、Metasploit 利用證據)做弱點分級,並提供 CLI/REST API/MCP server 供 AI agent 查詢風險分數。",
+      "tech": "Rust + Tauri 2 桌面框架;內建 on-device AI 做風險評分;透過 MCP server 暴露 32 個工具供 AI agent 呼叫。",
+      "feasibility": "可在本機安裝執行,強調 private-by-default、不上傳資料;README 提供完整安裝與 MCP 設定步驟,對資安/DevSecOps 團隊可行性高。",
+      "limits": "目前仍是新專案(2 天前建立),缺乏長期維運紀錄;MCP 工具數量多,實際穩定性與資料來源更新頻率待觀察。",
+      "reason": "結合資安弱點情報與 MCP/AI agent 整合,屬於少見的「AI agent 可直接查詢」資安工具,技術完整度高,值得精選。"
+    },
+    {
+      "full_name": "C4rohan/Lampline",
+      "html_url": "https://github.com/C4rohan/Lampline",
+      "stars": 59,
+      "selected": true,
+      "summary": "開源自架語音代理人平台,可將既有 Dialogflow CX / CX Agent Studio 的 agent 匯入後在本機或自有伺服器執行,支援 20 種模型供應商與電話/SIP(透過 jambonz)。",
+      "tech": "Python;整合 pipecat 語音管線、多家 LLM/STT/TTS 供應商,透過 SIP/jambonz 接通話。",
+      "feasibility": "提供一鍵指令建置測試,README 標示每通電話成本可從 $0.50 降到 $0.02–0.17,對想自架客服語音機器人的團隊具體可行。",
+      "limits": "剛發布(1 天前),生態與社群尚未驗證;依賴多個外部服務(電話線路、模型供應商)串接,部署複雜度不低。",
+      "reason": "提供企業常見的語音客服代理人從雲端(Dialogflow CX)遷移到自架環境的具體路徑,實用性與技術完整度皆佳。"
+    },
+    {
+      "full_name": "AntoGA/agents-contract",
+      "html_url": "https://github.com/AntoGA/agents-contract",
+      "stars": 40,
+      "selected": true,
+      "summary": "提供單一 AGENTS.md(Claude Code 的 CLAUDE.md 會 import 它)作為專案對 AI coding agent 的規則契約,搭配零依賴 linter 防止規則過時,以及 SessionStart hook 在工作開始前檢查環境。",
+      "tech": "純 Python 3.9+ 實作的 linter,無外部依賴;相容 Claude Code、Codex、Cursor、GitHub Copilot 等多種 coding agent。",
+      "feasibility": "README 說明一小時內可導入(複製範本、填 5 個章節),跨 Windows/macOS/Linux,對已採用多種 AI coding agent 的團隊很容易落地。",
+      "limits": "仍是新專案,社群採用率未知;其價值高度依賴團隊是否願意持續維護 AGENTS.md 內容與 Lessons 章節。",
+      "reason": "針對「AI coding agent 規則漂移/過時」這個實際痛點提供具體、低依賴的解法,對導入多個 AI coding agent 的團隊有直接幫助。"
+    },
+    {
+      "full_name": "Riper21/hh-sniper",
+      "html_url": "https://github.com/Riper21/hh-sniper",
+      "stars": 31,
+      "selected": false,
+      "reason": "功能僅鎖定俄文求職網站 hh.ru,以高頻自動投遞履歷搶先其他使用者/機器人,屬高度地區限定且涉及規避平台公平性機制的灰色自動化工具,對本精選的國際開發者讀者實用性低,不予選入。"
+    },
+    {
+      "full_name": "0xgetz/n33-bulk-9router",
+      "html_url": "https://github.com/0xgetz/n33-bulk-9router",
+      "stars": 22,
+      "selected": false,
+      "reason": "核心功能為「大量建立 n33.ai 帳號並擷取 session cookie」以繞過免費額度限制,屬違反服務條款的濫用型工具而非正當 AI 開發框架,排除(推測此分類判斷,未實測其實際使用情境)。"
+    },
+    {
+      "full_name": "MagentaHokageType/ollama-windows-model-library-manager",
+      "html_url": "https://github.com/MagentaHokageType/ollama-windows-model-library-manager",
+      "stars": 20,
+      "selected": false,
+      "reason": "與另外 4 個同天出現的「windows-local-ai-*」repo 高度雷同:語言皆標示 CSS、星數同為 20、fork 數同為 7-8、建立時間相差僅數秒,且 README 以「下載 ZIP 執行檔」為主要賣點而非程式碼本身——高度疑似模板量產/誘導下載執行檔的 spam 或惡意軟體散布帳號群,不予選入(推測判斷)。"
+    },
+    {
+      "full_name": "desertmoosespindle/windows-local-ai-one-click-runtime",
+      "html_url": "https://github.com/desertmoosespindle/windows-local-ai-one-click-runtime",
+      "stars": 20,
+      "selected": false,
+      "reason": "與 ollama-windows-model-library-manager 等同一批次出現的雷同 repo(CSS 語言、同時間建立、同樣主打下載 ZIP),判斷為同一疑似 spam/惡意軟體散布群組,不予選入(推測判斷)。"
+    },
+    {
+      "full_name": "MagistrateUpgrade/local-ai-model-download-queue-manager",
+      "html_url": "https://github.com/MagistrateUpgrade/local-ai-model-download-queue-manager",
+      "stars": 20,
+      "selected": false,
+      "reason": "同上述可疑批次之一,特徵相同(CSS 語言、同時間建立、主打下載 ZIP 執行檔),不予選入(推測判斷)。"
+    },
+    {
+      "full_name": "soulblademask/local-ai-model-cache-storage-cleaner",
+      "html_url": "https://github.com/soulblademask/local-ai-model-cache-storage-cleaner",
+      "stars": 20,
+      "selected": false,
+      "reason": "同上述可疑批次之一,特徵相同,不予選入(推測判斷)。"
+    },
+    {
+      "full_name": "Neutronkrebond/local-ai-vram-oom-recovery-helper",
+      "html_url": "https://github.com/Neutronkrebond/local-ai-vram-oom-recovery-helper",
+      "stars": 20,
+      "selected": false,
+      "reason": "同上述可疑批次之一,特徵相同,不予選入(推測判斷)。"
+    },
+    {
+      "full_name": "IntersectSponsor/windows-cuda-local-ai-setup-helper",
+      "html_url": "https://github.com/IntersectSponsor/windows-cuda-local-ai-setup-helper",
+      "stars": 20,
+      "selected": false,
+      "reason": "同上述可疑批次之一,特徵相同,不予選入(推測判斷)。"
+    }
+  ]
+}
