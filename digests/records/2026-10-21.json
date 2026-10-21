@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-21",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-19 stars:>=20 | topic:machine-learning created:>=2026-10-19 stars:>=20 | topic:llm created:>=2026-10-19 stars:>=20 | topic:ai-agent created:>=2026-10-19 stars:>=20 | topic:generative-ai created:>=2026-10-19 stars:>=20",
+  "notice": {
+    "lede": "今天候選池異常稀薄且雜訊很高：3 個熱門 topic 零結果，llm/ai-agent 底下混入大量疑似刷量或惡意工具，最終只有 5 個站得住腳的專案入選。",
+    "body": "topic:artificial-intelligence、topic:machine-learning、topic:generative-ai 在近 48 小時內（stars>=20）完全沒有符合條件的新 repo，只有 topic:llm 與 topic:ai-agent 有結果（合計 16 筆去重後候選）。這些結果裡標籤濫用的情況很明顯：一個 C++ DLL injection framework、一個遊戲記憶體編輯器（含 evasion-techniques / exploit-development / windows-malware 等標籤）都被貼上 ai/llm/ai-agent 標籤拉流量；還有一個 Kahoot 考試作弊機器人、一個以「大量建立 n33.ai 帳號、擷取 session cookie 繞過服務限制」為核心功能的工具。另外觀察到 6 個幾乎在同一分鐘內建立、內容高度模板化（只給一個 .exe 下載連結、大量 SEO 關鍵字堆疊、star 數剛好都卡在 20、fork 數詭異一致於 7-8）的「Windows local-AI utility」系列 repo，研判是刷量或偽裝成工具的可疑倉庫，一律不選入。真正通過分析、有實際技術內容可看的只剩 5 個：一個記憶體原生架構的基礎模型（MemT-1.0）、一個語音 agent 平台（Lampline）、一個 AI coding agent 的 AGENTS.md 契約工具、一個誠實記錄訓練過程的本地 7B 教學 agent 專案，以及一個新增多語言 UI 的 Qwen API gateway fork。"
+  },
+  "candidates": [
+    {
+      "full_name": "MemTensor/MemT-1.0",
+      "html_url": "https://github.com/MemTensor/MemT-1.0",
+      "stars": 194,
+      "selected": true,
+      "summary": "新一代「記憶原生」基礎模型家族（Nano/Flash），把持久化、可動態演化的記憶做成模型計算的內建部分，而不是外部 RAG；推理時不用重新餵入完整歷史文本，記憶狀態大小固定，在 128K 歷史長度下比 full-context KV cache 省約 66 倍儲存空間。附帶一個「經驗導向的 agentic coding」應用：把程序性經驗存入原生記憶，讓長任務 agent 不用把經驗文字塞進 context 就能複用。",
+      "tech": "MemT-1.0-Nano（Qwen3.6-35B-A3B backbone，36B 總參數/3B 啟用）與 MemT-1.0-Flash（DeepSeek-V4-Flash backbone，288B/17B 啟用）；核心是 Native Memory Block，內含 Local Memory Block（動態多通道記憶矩陣）與 Hyper Memory Block（可訓練的 read/write/erase/forget gate），搭配 stable GDN-2 做逐 token 記憶更新；推理用 SGLang + 自家 memt_sglang Python client。",
+      "feasibility": "需要 NVIDIA GPU 的 Linux 伺服器（範例用 2 張 GPU 跑 Nano）、Python 3.11+、uv 安裝 inference 套件；模型權重在 HuggingFace 另外下載。對一般筆電不可行，屬於中小型 GPU 叢集/工作站等級的本地部署。",
+      "limits": "官方技術報告自承：在 11 個記憶 benchmark 中，MemT 系列在「parametric-memory 方法」裡排名前二，但強力的 textual-memory（外部檢索式）系統在需要長歷史細節證據檢索的任務上仍領先；論文與技術報告採 CC BY-NC-SA（非商用），repository 程式碼採 PolyForm Noncommercial License，商用需另外洽談授權。",
+      "reason": "有完整技術報告（arXiv）、HuggingFace 模型與可執行的 SGLang 推理範例，記憶架構與「經驗導向 agentic coding」的應用方向對本地/自架 LLM 工作流有實際參考價值，star 數在今天候選中也最高。"
+    },
+    {
+      "full_name": "C4rohan/Lampline",
+      "html_url": "https://github.com/C4rohan/Lampline",
+      "stars": 43,
+      "selected": true,
+      "summary": "開源、自架的語音 agent 平台：可以把 Google Dialogflow CX / CX Agent Studio 匯出的 agent（flow、頁面、表單、playbook、工具）直接匯入並在自己的硬體上跑，提供拖拉式建構器、逐步高亮的測試主控台、HTTP/MCP 工具、內建資料與文件檢索，並透過 Twilio、Telnyx 或任意 SIP trunk（經 jambonz）接電話；號稱每通電話成本約 $0.02–0.17，對比 Dialogflow 的 $0.50。",
+      "tech": "建構在 Pipecat 之上；支援 20 個模型供應商（Claude、OpenAI、Gemini/Vertex、Azure OpenAI、Bedrock、Groq、Mistral、DeepSeek、Grok、Ollama 等），語音端可選 Whisper/Kokoro/Moonshine/Parakeet 本地模型；agent 以 YAML + Markdown 檔案描述（agents-as-code），有專屬 `vk` CLI 做 lint/test/import/export。",
+      "feasibility": "一行指令 `scripts/docker-up.sh` 即可用 Docker Compose 在本機/on-prem 跑起來，也可用原生 Python 3.11+ 啟動；本地語音模型可免費跑，雲端模型供應商則各自需要 API key；README 附有詳細的 CI（含真實 WebRTC 握手測試、gitleaks 掃描）與成本模型試算，工程成熟度高。",
+      "limits": "電話整合目前只支援 Twilio/Telnyx/SIP(jambonz)；Genesys、Avaya、Cisco、Amazon Connect 等聯絡中心整合、Google Cloud 一鍵部署都標示「即將推出」；成本數字是作者 2026 年 10 月的 list price 估算，會隨供應商調整。",
+      "reason": "文件完整、CI 扎實、提供可重現的成本試算與明確 roadmap，是今天候選中少見的「可直接自架使用」且有實際商業場景（客服語音）的完整平台。"
+    },
+    {
+      "full_name": "AntoGA/agents-contract",
+      "html_url": "https://github.com/AntoGA/agents-contract",
+      "stars": 40,
+      "selected": true,
+      "summary": "給 AI coding agent（Claude Code、Codex、Cursor、GitHub Copilot 等）用的 AGENTS.md/CLAUDE.md「契約」範本，搭配零依賴的 Python lint 工具與 SessionStart hook，確保專案規範（技術棧、指令、慣例、禁區、完成標準、Lessons）不會隨時間腐爛失效。",
+      "tech": "純 Python 3.9+ 寫的 linter（無第三方依賴，跨 Windows/macOS/Linux），檢查必填段落、測試指令、殘留佔位符、疑似洩漏的金鑰字串等；提供 Claude Code 的 `.claude/settings.json` hook 範例，於 session 開始時自動跑 lint/安裝依賴/測試。",
+      "feasibility": "導入成本低：複製範本、填 5 個段落、跑一次 linter 即可，支援 CI（`.github/workflows/agents-lint.yml`），本地執行幾乎零門檻，README 附有速度測量（典型契約檔 lint 耗時低於 1 毫秒）。",
+      "limits": "核心價值高度依賴團隊是否願意持續維護 AGENTS.md 內容本身，工具只保證格式正確、不保證規範寫得好；附帶的 A/B 測試（5 次 vs 5 次）樣本量作者自己也坦承「太小，不具統計顯著性」，只做了 Claude Code,未測 Codex/Cursor/Copilot。",
+      "reason": "解決 AI coding agent 常見的「專案規範寫了但很快過時/被忽略」痛點,工具本身誠實附上效益測試的局限說明,對已經在用多種 coding agent 的團隊實用性高。"
+    },
+    {
+      "full_name": "pnnnx/local-code-tutor",
+      "html_url": "https://github.com/pnnnx/local-code-tutor",
+      "stars": 23,
+      "selected": true,
+      "summary": "用免費的 Kaggle T4 對 Qwen2.5-Coder-7B 做 QLoRA 微調，產出可以在 8GB MacBook 上跑的本地程式教學 agent；核心原則是「模型永遠不猜程式執行結果，一定要真的跑過」——訓練資料每一筆都經過實際執行驗證，agent 回答「這段程式印出什麼」之類問題前會先真的執行程式碼。",
+      "tech": "Qwen2.5-Coder-7B-Instruct 底模，Unsloth QLoRA 4-bit 在 Kaggle T4 上微調，匯出 GGUF Q4_K_M（約 4.4GB）用 llama.cpp/Ollama 推理；配套的 `loca` agent 是純 stdlib 的終端 coding agent，`wtools` 提供權重檢查/LoRA 分析/量化誤差分析的 CLI 與 MCP server。",
+      "feasibility": "推理端可在 8GB RAM 的 Apple Silicon MacBook 上跑（Q4_K_M 約需 4.7GB RAM）；訓練端用免費 Kaggle GPU 額度即可重現整套流程，全程成本 $0；README 附完整指令與 notebook。",
+      "limits": "作者自述目標是「2 年級大學生的程式教學工具」，非通用聊天或大型重構用途；held-out 測試 18 題只答對 13 題（目標 15+），訓練資料集本身因 ChatGPT/Claude 使用條款限制不公開；僅在單一模型/單一語言（繁簡中文為主）上驗證過。",
+      "reason": "整個專案的方法論（執行驗證資料、量化 agent 失敗模式、誠實列出「沒達標的項目」）在今天候選中最紮實,且目標（免費、本機、教學用）具體可驗證,附完整 roadmap 與限制清單。"
+    },
+    {
+      "full_name": "satriyaa67/qwen2api-MultiLANG",
+      "html_url": "https://github.com/satriyaa67/qwen2api-MultiLANG",
+      "stars": 50,
+      "selected": true,
+      "summary": "qwen2API（把 Qwen Web 能力轉成 OpenAI/Anthropic/Gemini 相容 API 的自架 gateway）的多語言 fork，將原本僅中文的管理 WebUI 加上英文與土耳其語介面，程式碼本體沿用原專案（Go backend + React WebUI），功能上支援帳號池輪替、下游 API key 管理、聊天/圖片/影片測試。",
+      "tech": "Go 1.26 backend + React 19 前端，提供 `/v1/chat/completions`、`/v1/messages`（Anthropic 相容）、`/v1beta/...generateContent`（Gemini 相容）等多協議端點，透過 Docker Compose 一鍵部署，內建帳號池與各類 cooldown 管理。",
+      "feasibility": "`docker compose up -d` 即可自架，README 附完整 compose 範例與環境變數說明，對有 Docker 經驗者部署門檻低；但依賴反向工程 Qwen Web 帳號登入，屬灰色地帶的「用網頁帳號換 API」做法。",
+      "limits": "此 fork 本身只新增 i18n（多語言 UI），核心架構與原專案（YuJunZhiXue/qwen2API）完全相同，創新程度有限；依賴 Qwen Web 的帳號機制，上游條款變動或帳號被封鎖會直接影響可用性，README 本身也提醒使用者要遵守當地法律與平台規則。",
+      "reason": "功能完整、可直接自架且支援多種主流 API 協議，對需要本地多語言管理介面的使用者有實用價值，但主要是既有專案的介面語言擴充,非原創技術突破,故排在今天選中名單的最後一位。"
+    },
+    {
+      "full_name": "VolcanoDomainTriumph/kahoot-tools-ai-resocket-answer-tool",
+      "html_url": "https://github.com/VolcanoDomainTriumph/kahoot-tools-ai-resocket-answer-tool",
+      "stars": 55,
+      "selected": false,
+      "reason": "README 無法取得（raw.githubusercontent.com 回 404）。從 topics（free-kahoot-bot、kahoot-answers-hack、kahoot-bot-spammer、kahoot-flood、kahoot-hacker、kahoot-spam）判斷，這是 Kahoot 測驗作弊/洗版工具，雖然用了 LLM 輔助答題，但性質是考試作弊工具而非正規 AI 整合專案，不選入。"
+    },
+    {
+      "full_name": "DreamHazeSever/meanp-injector-rpocket-team",
+      "html_url": "https://github.com/DreamHazeSever/meanp-injector-rpocket-team",
+      "stars": 50,
+      "selected": false,
+      "reason": "README 無法取得（404）。描述為「C++26 DLL Injection Framework for Windows Memory Patching」，topics 含 driver-development、kernel-mode、manual-map、pe-loader 等記憶體注入相關字眼，疑似為繞過偵測用的注入框架濫貼 ai/llm 標籤以提升曝光，與 AI 整合無關，不選入（推測）。"
+    },
+    {
+      "full_name": "SelfGeckoBoiler/rpocket-team-Python-Memory-Forge",
+      "html_url": "https://github.com/SelfGeckoBoiler/rpocket-team-Python-Memory-Forge",
+      "stars": 50,
+      "selected": false,
+      "reason": "README 無法取得（404）。描述為「Far Cry 3 記憶體編輯器」，topics 含 evasion-techniques、exploit-development、offensive-security、process-hollowing-poc、windows-malware，是遊戲外掛/惡意程式研究工具，掛上 ai-agent 標籤純屬蹭流量，與 AI 無關，不選入。"
+    },
+    {
+      "full_name": "0xgetz/n33-bulk-9router",
+      "html_url": "https://github.com/0xgetz/n33-bulk-9router",
+      "stars": 23,
+      "selected": false,
+      "reason": "核心功能是批量建立 n33.ai 帳號、擷取其 session cookie 以繞過官方 API key 機制來免費使用模型，README 自己也提醒「請遵守 n33.ai 服務條款」，本質是濫用第三方服務條款換取免費額度的工具，不符合正規 AI 整合工具的精選標準，不選入。"
+    },
+    {
+      "full_name": "yjh051108/fengcha-2.0",
+      "html_url": "https://github.com/yjh051108/fengcha-2.0",
+      "stars": 21,
+      "selected": false,
+      "reason": "僅是特定平台（DeepSeek Harness/DSH）的 prompt 格式化預設，把模型思考過程的用詞從「我」改成「我們」；作者本身在 README 誠實列出「未測正確率、未測是否有負面影響、樣本量小、只測過單一模型」等限制，影響範圍極窄且未證明有實際效益，不選入（但附上肯定作者誠實揭露限制的觀察）。"
+    },
+    {
+      "full_name": "MagentaHokageType/ollama-windows-model-library-manager",
+      "html_url": "https://github.com/MagentaHokageType/ollama-windows-model-library-manager",
+      "stars": 20,
+      "selected": false,
+      "reason": "README 內容高度模板化（大量 SEO 關鍵字堆疊、無原始碼可查、唯一操作是下載並執行一個來源不明的 .exe），與另外 4 個同一分鐘內建立、star/fork 數異常一致的「Windows local-AI utility」repo 高度相似，疑似刷量或 SEO 農場，且要求使用者執行未經驗證的執行檔有安全風險，不選入。"
+    },
+    {
+      "full_name": "MagistrateUpgrade/local-ai-model-download-queue-manager",
+      "html_url": "https://github.com/MagistrateUpgrade/local-ai-model-download-queue-manager",
+      "stars": 20,
+      "selected": false,
+      "reason": "與 MagentaHokageType/ollama-windows-model-library-manager 等同一批「Windows utility」repo 內容/結構高度相似（同一分鐘建立、模板化 SEO 文案、僅提供 .exe 下載），疑似刷量/農場帳號產出，不選入（推測）。"
+    },
+    {
+      "full_name": "soulblademask/local-ai-model-cache-storage-cleaner",
+      "html_url": "https://github.com/soulblademask/local-ai-model-cache-storage-cleaner",
+      "stars": 20,
+      "selected": false,
+      "reason": "與同批「Windows utility」repo 模式相同（模板化內容、僅 .exe 下載、同分鐘建立），疑似刷量/農場帳號產出，不選入（推測）。"
+    },
+    {
+      "full_name": "desertmoosespindle/windows-local-ai-one-click-runtime",
+      "html_url": "https://github.com/desertmoosespindle/windows-local-ai-one-click-runtime",
+      "stars": 20,
+      "selected": false,
+      "reason": "與同批「Windows utility」repo 模式相同（模板化內容、僅 .exe 下載、同分鐘建立），疑似刷量/農場帳號產出，不選入（推測）。"
+    },
+    {
+      "full_name": "Neutronkrebond/local-ai-vram-oom-recovery-helper",
+      "html_url": "https://github.com/Neutronkrebond/local-ai-vram-oom-recovery-helper",
+      "stars": 20,
+      "selected": false,
+      "reason": "與同批「Windows utility」repo 模式相同（模板化內容、僅 .exe 下載、同分鐘建立），疑似刷量/農場帳號產出，不選入（推測）。"
+    },
+    {
+      "full_name": "IntersectSponsor/windows-cuda-local-ai-setup-helper",
+      "html_url": "https://github.com/IntersectSponsor/windows-cuda-local-ai-setup-helper",
+      "stars": 20,
+      "selected": false,
+      "reason": "與同批「Windows utility」repo 模式相同（模板化內容、僅 .exe 下載、同分鐘建立），疑似刷量/農場帳號產出，不選入（推測）。"
+    }
+  ]
+}
