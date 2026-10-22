@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-22",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-20 stars:>=20 | topic:machine-learning created:>=2026-10-20 stars:>=20 | topic:llm created:>=2026-10-20 stars:>=20 | topic:ai-agent created:>=2026-10-20 stars:>=20 | topic:generative-ai created:>=2026-10-20 stars:>=20",
+  "notice": {
+    "lede": "今天候選池明顯縮水，5 個 topic 合計僅 4 個新 repo 達到 20 星門檻，其中 3 個入選。",
+    "body": "artificial-intelligence、machine-learning、generative-ai 三個 topic 在過去 2 天內完全沒有新 repo 達到 20 星門檻（推測：可能是該時段發布量本身偏少，也可能是這三個泛用標籤的新專案近期成長較慢，樣本量太小不足以下定論）。今天的候選集中在 llm 與 ai-agent 兩個 topic，且多數是圍繞 Claude Code / Hermes Agent 這類 agent 平台打造的周邊外掛或 skill（排版產圖工具、遊戲開發外掛、agent 工作流 harness），顯示社群現階段的新工具產出，不少是在既有 agent 生態系之上疊加垂直應用，而非從零打造新的底層模型或框架。"
+  },
+  "candidates": [
+    {
+      "full_name": "helloianneo/ian-xhs-carousel",
+      "html_url": "https://github.com/helloianneo/ian-xhs-carousel",
+      "stars": 135,
+      "selected": true,
+      "summary": "把文章、案例或筆記排版成小紅書風格的 3:4 輪播圖文（1080×1440），內建 20 個簡潔產品介面風母版，流程上先產出分鏡表讓使用者確認，確認後才正式排版出圖，並支援淺色/深色兩版。",
+      "tech": "Claude Code Skill，底層用 HTML/CSS 版面模板搭配 Playwright 無頭瀏覽器把頁面渲染成 PNG，Pillow 處理圖片輸出；不涉及額外的語言模型 API，排版決策交給執行 skill 的 Claude 本身。",
+      "feasibility": "本地可行性高：`git clone` 後複製到 `~/.claude/skills`，另需 `pip install playwright pillow` 並執行 `playwright install chromium`；渲染時需保持網路連線以下載英文與代碼字型，不需額外 API key。",
+      "limits": "版式固定為簡潔產品介面風，不適合手繪、插畫或大色塊海報類需求；小紅書貼文的標題、正文與話題標籤仍需使用者自行撰寫；缺素材時會在分鏡表中列出詢問，而非自動生成佔位圖。",
+      "reason": "功能完整、文件齊全，分鏡表先確認再出圖的流程設計成熟，發布僅 1 天即有 135 星成長迅速，是實用且好懂的 Claude Code 內容生產類 skill。"
+    },
+    {
+      "full_name": "h9-tec/ai-roadmap-2026",
+      "html_url": "https://github.com/h9-tec/ai-roadmap-2026",
+      "stars": 73,
+      "selected": false,
+      "reason": "內容是純 Markdown 學習路線圖與資源清單（含連結檢查腳本，但無可執行的 AI 工具或程式產出），性質上屬於教學文件彙整而非可整合的軟體工具，與先前淘汰的個人心得指南（如 xop01/ai_goodpractice）同類，不在本精選的「新興 AI 整合工具」範疇內。"
+    },
+    {
+      "full_name": "DECRUX9812/hermes-plugin-gameforge",
+      "html_url": "https://github.com/DECRUX9812/hermes-plugin-gameforge",
+      "stars": 32,
+      "selected": true,
+      "summary": "為 Hermes Agent（NousResearch）打造的遊戲開發外掛：一句需求即可生成音效、音樂、NPC 語音、像素美術、3D 模型，輸出可玩的 Web/Godot/Unity 專案，並內建「真的會玩」的自動遊玩測試員，找出崩潰點、卡關處與無聊段落，附一鍵匯出到網頁/手機/itch.io。",
+      "tech": "核心為純 Python + Pillow 離線實作（sfxr 風格合成音效、程序化音樂與和弦生成、Wang-corner 拼貼地圖），AI 供應商（fal.ai、Meshy、ElevenLabs、Edge TTS）為選用升級；自動遊玩測試以自寫的 CDP 客戶端驅動 headless Chrome，或用 Godot headless 模式以 60fps 固定步驟高速跑圖。",
+      "feasibility": "核心功能預設離線可跑、不需任何 API key；進階 3D 生成與語音合成需自備第三方 API 金鑰；對應引擎（Godot/Unity/Blender/Unreal）匯出功能需本機先安裝該引擎；專案內建 59 個 pytest 測試，缺依賴時會自動跳過對應測試。",
+      "limits": "外掛需依附 Hermes Agent 生態運作，非獨立可用的通用工具；3D 模型與語音生成的進階效果仍綁定第三方付費 API；不同引擎的功能完整度不一致，需使用者自行準備對應開發環境。",
+      "reason": "技術揭露具體紮實（明確列出網路存取、外部程序呼叫與檔案寫入範圍，離線優先設計清楚），自動遊玩測試員是少見且實用的功能，整體工程成熟度高（單元測試、設定與安全揭露文件齊全）。"
+    },
+    {
+      "full_name": "alexpiar/be-ambitious-harness",
+      "html_url": "https://github.com/alexpiar/be-ambitious-harness",
+      "stars": 22,
+      "selected": true,
+      "summary": "一套讓 AI agent 在「追求更高目標」與「維持可控」之間取得平衡的 Claude Code skill／多 agent 工作流：planner 先寫出含基礎線與進取線兩套標準的提示，worker 執行前先過一個低成本的 gate check 決定是否值得做進取版，verifier 則只看需求、驗收標準與證據紀錄來評分，避免 agent 球員兼裁判。",
+      "tech": "純 Markdown 模板 + Claude Code skill 機制，不依賴任何外部程式庫；設計上引用近期 LLM 相關研究（多重指令同時遵循會因「約束飽和」而失效、否定式指令反而強化目標詞彙、LLM 裁判傾向偏好低困惑度文字的自我偏好偏誤）作為角色分離與正向指令設計的依據。",
+      "feasibility": "本地可行性極高：只需 `git clone` 到 `~/.claude/skills` 即可使用 `/be-ambitious-harness`，不需安裝額外套件或申請 API key，理論上可搭配任何能讀取資料夾內 markdown 檔的 agent 使用。",
+      "limits": "README 誠實揭露目前僅完成 8 個評測任務中的 2 個驗證（evals 狀態尚早），效果仍高度依賴所用模型本身的指令遵循與角色扮演能力，且流程偏重（planner/worker/verifier 三階段）未必適合輕量任務。",
+      "reason": "文件誠實（主動揭露評測覆蓋率不足，而非誇大成效），設計理念有具體研究引用支撐且說明了引用研究的侵限性，安裝門檻低、不綁定特定模型供應商，對「AI 過度自信又難以被外部驗證」這個真實痛點提出了結構化解法。"
+    }
+  ]
+}
