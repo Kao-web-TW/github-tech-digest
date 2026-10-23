@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-23",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-21 stars:>=20 | topic:machine-learning created:>=2026-10-21 stars:>=20 | topic:llm created:>=2026-10-21 stars:>=20 | topic:ai-agent created:>=2026-10-21 stars:>=20 | topic:generative-ai created:>=2026-10-21 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜的共同主題是「Agent 外掛生態」而非單一模型或框架本身：三個入選項目分別是 Claude Code、Hermes Agent、WorkBuddy 三個不同 agent 平台的技能/外掛範例。",
+    "body": "這批候選中有不少不是以模型能力取勝，而是示範「怎麼把一個 agent 平台的能力包裝成可重複使用的 skill/plugin」：ian-xhs-carousel 是 Claude Code Skill、hermes-plugin-gameforge 是 Hermes Agent 的官方外掛格式、maimen-order-manager 是 WorkBuddy 透過 MCP 連接器呼叫外部服務的技能。這反映出 agent 平台的外掛化（plugin-ify）正在變成新專案的主要切入點，而不只是做新的底層模型或 agent 框架。另外，本次候選中出現一個以「abliteration（移除模型拒絕機制）」為主打功能的 llama.cpp fork，經評估後基於安全/倫理考量不予收錄——該工具的設計目的是讓模型對有害提示直接生成內容而非拒絕，即使其技術手法（KV cache 內的方向投影編輯）本身具研究價值，收錄並推廣仍可能造成濫用風險，故以此理由淘汰而非技術品質問題。"
+  },
+  "candidates": [
+    {
+      "full_name": "helloianneo/ian-xhs-carousel",
+      "html_url": "https://github.com/helloianneo/ian-xhs-carousel",
+      "stars": 223,
+      "selected": true,
+      "summary": "Claude Code Skill：把文章/案例/筆記自動排版成一組 3:4、1080×1440 的小紅書風格輪播圖，流程是先產出分鏡表讓使用者確認，再批次渲染成 PNG（含總覽圖與可編輯的 HTML 源檔），提供 20 個預製母版（對話框、步驟、對比、數據卡等）與淺色/深色兩版。",
+      "tech": "以 Claude Code 的 Skill 機制驅動排版決策，實際渲染靠 Python + Playwright（headless Chromium）+ Pillow 把 HTML 母版轉成固定尺寸 PNG；不涉及訓練或呼叫額外模型 API，排版邏輯本身由呼叫此 Skill 的 Claude 推理產生。",
+      "feasibility": "本地可行性高：`pip install playwright pillow && playwright install chromium` 後複製到 `~/.claude/skills` 即可用，純本機渲染免額外帳號，但首次執行需連網下載英文/程式碼字體。",
+      "limits": "僅支援 20 個固定母版風格（簡潔產品界面風），不適合手繪/插畫/大色塊海報需求；貼文標題、正文、話題標籤仍需使用者自行撰寫；高度依賴輸入素材品質（截圖解析度、Logo 是否為原始 SVG）。",
+      "reason": "GitHub 星數最高（223★），屬於目前「agent 平台外掛化」趨勢的代表案例，分鏡表確認流程設計務實、文件完整（含安裝、使用範例、相關專案），本地渲染成本低，適合收錄示範 Claude Code Skill 的實用模式。"
+    },
+    {
+      "full_name": "h9-tec/ai-roadmap-2026",
+      "html_url": "https://github.com/h9-tec/ai-roadmap-2026",
+      "stars": 115,
+      "selected": false,
+      "reason": "內容是 5 層學習路徑搭配外部資源連結與里程碑小專案建議的 Markdown 文件集，沒有可執行程式碼或工具本體，屬於學習資源彙整而非新技術/新工具，不符合本精選以『可評估的軟體/工具專案』為主的收錄標準（推測：若未來加入可執行的 mini-project 範例程式碼，可再評估）。"
+    },
+    {
+      "full_name": "BEN020406/maimen-order-manager",
+      "html_url": "https://github.com/BEN020406/maimen-order-manager",
+      "stars": 54,
+      "selected": true,
+      "summary": "WorkBuddy 桌面 agent 的技能外掛，透過官方麥當勞 MCP Server 把分散在多筆訂單裡的「待評價清單」、「好評兌換小食進度」、「發票報銷門檻湊單」、「單次積分抽獎」四個聚合問題變成一句可執行結論，所有寫入操作（抽獎）都需先出預覽卡再經使用者確認才執行。",
+      "tech": "純標準庫 Python 實作的 CLI + 狀態機，透過 streamableHttp 型 MCP 連接器呼叫麥當勞官方 MCP Server 取得訂單/積分資料，agent（WorkBuddy）端只負責自然語言轉呼叫，核心邏輯（湊單演算法、兌換檔位判斷、脫敏）都在本地程式碼完成，不涉及任何 LLM 推理成本。",
+      "feasibility": "需要 WorkBuddy 桌面端 + 向麥當勞開發者平台申請的個人 MCP Token，且商業資料僅限大陸麥當勞官方 App 帳號，地域與帳號門檻較高；但程式碼本身可離線以 `python scripts/cli.py demo` 跑通並通過 99 項單元測試，工程完整度高。",
+      "limits": "官方介面不回傳評價狀態欄位，只能靠使用者手動標記「已評過」且僅存本機瀏覽器；`order-list` 介面只回傳最近 10 筆訂單，無法對全量歷史帳單湊單；發票只能整理不能代為送出；兌換檔位依門店而異，目前僅用可配置的預設值近似。",
+      "reason": "展示了把 MCP 連接器包成 agent 技能、並對寫入型操作設計『預覽再確認』安全門的完整工程範例（99 項自動化測試、清楚的設計邊界與已知限制文件），雖然應用場景被單一商業服務與地域高度綁定、一般開發者難以直接複用，但其 MCP skill 架構模式仍有參考價值。"
+    },
+    {
+      "full_name": "jwuthri-cloud/SelfJev",
+      "html_url": "https://github.com/jwuthri-cloud/SelfJev",
+      "stars": 42,
+      "selected": true,
+      "summary": "自架的「決策模型」服務：把一段文字＋你定義的問題與選項，轉成結構化的機率型答案（是/否、單選、評分、多選），而非生成一段自然語言回覆；提供與 TypeSafe Jev API 相容的介面，可作為它的自架替代品，並附完整評測資料集與跑分結果。",
+      "tech": "核心是 Qwen3.5-4B 基礎模型 + 訓練過的 rank-64 LoRA adapter，用共享前綴樹（shared-prefix tree）讓同一份文件只編碼一次、多個問題與候選答案共用該計算，直接對候選答案打分而非逐字生成；提供 Python SDK 與 HTTP API（TreeServer 預設引擎，另有 vLLM 後端選項），並附 finetune / RLCD 校準訓練指令。",
+      "feasibility": "需要自備 NVIDIA GPU 自架：官方建議 24GB VRAM 為實務起點，但提供 4-bit（3.3GB VRAM）與 8-bit 量化版本可在 8GB 等級顯卡（如 RTX 4060）跑，純用戶端（呼叫既有伺服器）則免 GPU、`pip install selfjevai-sdk` 即可。",
+      "limits": "量化版本在長文本（16K token 以上）準確度會下降約 1 個百分點；對比用的「基準答案」評測集由 AI 產出且 AI 自審，作者自陳仍需獨立的全新 holdout 集驗證；專案仍在快速迭代（README 內多處版本號與評測時間戳記），非長期穩定 API 保證。",
+      "reason": "提供完整可重現的跑分表（含與 8 個同量級開源模型的對照）與架構說明文件，解決『用大模型做結構化判斷太貴/太慢』的具體痛點，是少見附帶嚴謹評測方法論的自架模型專案。"
+    },
+    {
+      "full_name": "DECRUX9812/hermes-plugin-gameforge",
+      "html_url": "https://github.com/DECRUX9812/hermes-plugin-gameforge",
+      "stars": 37,
+      "selected": true,
+      "summary": "Hermes Agent 的遊戲開發外掛：讓 agent 能一次性產出音效、音樂、NPC 配音、像素素材、地圖磚、3D 模型並組裝成可玩的 Web/Godot/Unity 專案，還內建一個會『實際玩』成品的 headless 測試器（記錄崩潰、卡關、FPS、無事件冷場段），最後可一鍵匯出到網頁、手機或 itch.io。",
+      "tech": "預設完全離線：純 Python + Pillow 做程序化生成（sfxr 風格合成音效、和弦/旋律生成音樂、Wang-corner 地圖磚拼接演算法、18 種低面數 3D 生成器）；AI 供應商（fal.ai、Meshy、ElevenLabs、Edge TTS）皆為選配加值；playtester 用無 Playwright 依賴的原生 CDP 客戶端操作 headless Chrome，或用視覺 LLM agent 邊看畫面邊操作。",
+      "feasibility": "本地可行性高：核心資產生成與離線引擎走純 Python，`hermes plugins install ... --enable` 後 `hermes gameforge demo` 約一分鐘可產出完整可玩遊戲；進階功能（AI 3D/語音、Godot/Unity/Blender/Unreal 匯出）需另外安裝對應引擎執行檔或申請第三方 API Key。",
+      "limits": "依賴 Hermes Agent 生態（NousResearch/hermes-agent）才能運作，非獨立工具；高品質 3D 與語音仍需選配的付費 AI 供應商；playtester 的「vision-LLM agent」模式與進階訊號（如 `window.__gameforge` 事件）需遊戲本身配合特定介面才能取得完整效益。",
+      "reason": "揭露（Disclosure）章節清楚列出網路、程序與檔案存取範圍，工程紀律好（59 個測試、資產清單記錄生成參數方便重現/授權追蹤），且『會自己玩遊戲找 bug』的 playtester 是具體且少見的實用功能，預設離線也降低了採用門檻。"
+    },
+    {
+      "full_name": "agentshield-dev/agentshield",
+      "html_url": "https://github.com/agentshield-dev/agentshield",
+      "stars": 25,
+      "selected": true,
+      "summary": "Kubernetes（Istio ambient mesh / Cilium / agentgateway）與 AWS 環境的橫向移動偵測工具：把工作負載、身分、網路政策與觀測到的流量整合成一張圖，偵測『打開新路徑或移除保護』的風險變更，再讓語言模型依圖上證據調查該訊號，最後提出需人工核准才會套用的修復建議。",
+      "tech": "Go 後端 + PostgreSQL 儲存版本化的圖資料與異動歷史；偵測規則用 CEL 撰寫並支援熱重載；『語言模型調查』透過 6 個唯讀的 MCP 圖工具讓模型查詢圖資料，只有能引用圖上真實事實與證據的回答才會被採納為 finding，且圖上資源變動會使舊 finding 失效；偵測本身不呼叫模型，僅在開啟 `--agentic-investigation` 等旗標時才會呼叫相容 OpenAI Responses API 的端點。",
+      "feasibility": "需要完整基礎設施：Go 1.27+、Docker/PostgreSQL、Kubernetes 1.30+ 叢集（可用 kind 本機建立）；若要產生 finding 還需設定模型端點與 API Key；專案附互動式 Demo UI（僅需 Node.js + pnpm，`make demo` 可在瀏覽器內用假資料跑通，不需 Go/資料庫/叢集/模型）供快速體驗。",
+      "limits": "作者自述為 pre-1.0 早期專案，API、資料庫 schema 與旗標預期會有破壞性變更；HTTP API 與 UI 目前無驗證機制，預設只綁定 127.0.0.1；單程序無高可用性設計；尚未發布容器映像；Hubble flow 與 agentgateway 的日誌正規化器已存在但尚無對應傳輸層餵資料。",
+      "reason": "是少見把『圖資料庫 + 唯讀 MCP 工具 + 證據引用才採信』這套可信賴 agent 調查模式應用在真實基礎設施安全場景的專案，附六組可重現的攻擊/對照評測情境（evals/）說明方法論，且明確要求修復建議需人工核准才套用，風險控制設計得當。"
+    },
+    {
+      "full_name": "heterodoxin/AbliteratedOutTheBox",
+      "html_url": "https://github.com/heterodoxin/AbliteratedOutTheBox",
+      "stars": 25,
+      "selected": false,
+      "reason": "此 llama.cpp fork 的主打功能是在推理時即時移除模型的拒絕機制與安全免責聲明，讓模型對原本會拒絕的有害提示直接生成內容；雖然其技術手法（讀取拒絕/安全免責聲明的方向向量並做純量投影編輯）有研究價值，但基於安全/倫理考量，本精選不收錄以『繞過模型安全防護』為核心訴求的工具（非技術品質問題）。"
+    },
+    {
+      "full_name": "TheLastOxygen/mafdet",
+      "html_url": "https://github.com/TheLastOxygen/mafdet",
+      "stars": 24,
+      "selected": true,
+      "summary": "本地 LLM 聊天應用，核心創意是『利用你打字的時間做運算』：一邊即時同步 KV cache（打字過程中持續做 prefill），一邊讓推理模型（Qwen3）提前在背景思考你還沒送出的訊息，按下 Enter 後只需處理剩餘尾段，大幅縮短送出後的等待時間。",
+      "tech": "基於 llama.cpp 的本地推理，用『最長共同前綴』比對打字中的 token 序列與既有 KV cache，裁剪快取並只對新增部份做 prefill；『提前思考』則是把中途的推理結果以『筆記』形式保留在提示詞中，文字變動時僅需重新 prefill 筆記而非整段重新推理；支援 Qwen3、Llama 3、Gemma 3、Mistral、Phi-4 五個模型家族，附 GUI 與 TUI 兩種介面。",
+      "feasibility": "本地可行性高：Windows 下雙擊 `start_mafdet.bat` 即可自動建立虛擬環境並安裝相依套件，支援純 CPU 執行；作者實測參考機為 RTX 2060（6GB VRAM），4B 模型即可流暢運作；Linux 程式碼路徑已存在但作者聲明尚未實測，macOS/AMD 顯卡尚未支援。",
+      "limits": "『提前思考』功能的正確性不是精確的（模型是基於尚未定稿的文字版本推理，與從頭推理的結果可能不同，官方以可驗證答案的題目來量化此影響而非保證語意等價）；目前只有 Qwen3 系列的推理框架經過量測調校，其他家族的 thinking mode 格式尚未支援；專案狀態標示為 prototype。",
+      "reason": "提出的『邊打字邊推理』概念具體且附有可重現的量測數據（Qwen3-4B 平均等待由 12.2 秒降到 3.2 秒、正確率不變），技術手法（最長共同前綴快取同步）嚴謹並說明了限制與測試方法，面向一般消費級顯卡用戶，是降低本地 LLM 互動延遲的務實嘗試。"
+    },
+    {
+      "full_name": "khanhtq29vn/contextcraft",
+      "html_url": "https://github.com/khanhtq29vn/contextcraft",
+      "stars": 20,
+      "selected": true,
+      "summary": "AST 感知的程式碼庫壓縮工具：用 Tree-sitter 解析程式碼庫，以 Personalized PageRank 在跨檔案依賴圖上算出每個檔案的架構重要性，再用『多選擇背包問題』在 4 種 AST 精細度層級（完整原始碼／簽章+docstring／僅簽章／僅目錄樹項目）間分配 token 預算，目標是在固定 token 數內保留最多架構訊號給 LLM 使用，而非像現有工具（repomix、gitingest）單純逐檔拼接。",
+      "tech": "Python 實作，Tree-sitter 做語法解析與跨檔案符號參照抽取、建構依賴圖後跑 Personalized PageRank（支援以 BM25 做 `--focus` 查詢個人化與一跳鄰居擴散），再用背包演算法在 token 預算內選擇每個檔案的精細度層級；輸出可為 Markdown、Claude 專用 XML 或 JSON，並內建寫入前的機密資訊（API Key、PEM、高熵字串）清洗。",
+      "feasibility": "本地可行性高：`uvx contextcraft-ai . --budget 16k ...` 可免安裝直接試跑，或 `pip install contextcraft-ai` 全域安裝；另附一個可選的 Web Playground（`uvicorn web.app:app`），可直接貼公開 GitHub repo 網址自動 clone 並壓縮，純程式碼處理不呼叫任何 LLM API。",
+      "limits": "官方跑分僅用自身專案（ContextCraft 本身）作為評測對象，尚無多樣化、大型第三方程式庫的壓縮品質對照數據；Web Playground 預設把可存取的本機路徑限制在伺服器工作目錄內（可用環境變數放寬），需注意部署時的路徑穿越風險；僅支援 Tree-sitter 已覆蓋的程式語言。",
+      "reason": "瞄準『餵程式碼給 LLM 時 token 預算有限、且重要架構容易被淹沒在樣板程式碼裡』這個具體且常見的痛點，提出有理論基礎（PageRank + 背包問題）且附量化對照（同預算下 API 簽章覆蓋率由 naive 截斷的 18.4% 提升到 70.9%）的解法，CLI/SDK/Web 三種介面完整、可直接試用。"
+    }
+  ]
+}
