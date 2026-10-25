@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-25",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-23 stars:>=20 | topic:machine-learning created:>=2026-10-23 stars:>=20 | topic:llm created:>=2026-10-23 stars:>=20 | topic:ai-agent created:>=2026-10-23 stars:>=20 | topic:generative-ai created:>=2026-10-23 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜出現兩個獨立團隊、同一天各自基於「麥當勞官方 MCP」做出的 AI Skill，顯示垂直場景 MCP server 正在被快速二次開發成消費端小工具。",
+    "body": "wahaha-potato/mcd-coupon-xray 與 xiaozhangup/Oh-My-McDonald 都是基於麥當勞官方 MCP 的獨立專案，前者專注「券能不能在這家店核銷」的精確校驗（並記錄了官方 MCP 文件本身語義不清的陷阱），後者則做成更完整的對話式點餐/比價/營養/收藏體驗。兩者功能互補而非重疊，顯示同一個垂直 MCP server 一旦公開，很快就會被社群拆解出不同顆粒度的應用（工具型 vs. 助理型）。另外本次也出現多個與 AI 無關、僅掛上熱門 AI topic 蹭流量的惡意/垃圾 repo（遊戲外掛、README 404），已於淘汰理由中註明。"
+  },
+  "candidates": [
+    {
+      "full_name": "rddmwmddr/android-ad-cleaner",
+      "html_url": "https://github.com/rddmwmddr/android-ad-cleaner",
+      "stars": 142,
+      "selected": true,
+      "summary": "桌面客戶端工具，透過 ADB 連接國產安卓手機（OPPO/vivo/小米/榮耀等），關閉系統內建的廣告、熱搜、資訊推薦與營銷推送，提供圖形化介面偵測機型並勾選要關閉的項目，執行後可一鍵還原。",
+      "tech": "Python 後端 + Electron 桌面客戶端，透過 ADB 操作安卓系統設定；README 提到可供「AI 智能體一鍵執行」，即可被 AI agent 以指令方式呼叫執行去廣告流程。",
+      "feasibility": "本地可直接下載 Mac/Windows 安裝包執行，不需 root、不需刷機，操作可逆，門檻低。",
+      "limits": "僅支援特定國產安卓 ROM（ColorOS/HyperOS/MagicOS/OriginOS），對其他品牌或國際版系統不適用；系統更新後廣告組件路徑可能變動需要持續維護規則庫。",
+      "reason": "star 數最高（142），功能明確、文件完整、可逆且對一般使用者實用，並展示了 AI agent 可直接驅動系統層操作的案例。"
+    },
+    {
+      "full_name": "wahaha-potato/mcd-coupon-xray",
+      "html_url": "https://github.com/wahaha-potato/mcd-coupon-xray",
+      "stars": 86,
+      "selected": true,
+      "summary": "基於麥當勞官方 MCP 的 AI Skill，一鍵領取所有可領優惠券後，逐家門店校驗哪些券實際可核銷、算出券後實付價，解決「能領到」和「能用掉」之間的落差問題。",
+      "tech": "Python，呼叫麥當勞官方 MCP 的 auto-bind-coupons / query-my-coupons / query-store-coupons / calculate-price 等介面；以 couponId 而非券名去重避免誤判。",
+      "feasibility": "需要麥當勞帳號與合法 Token 才能跑完整流程，本地執行門檻中等，主要受限於外部服務可用性而非程式本身。",
+      "limits": "依賴麥當勞官方 MCP 介面穩定性，僅適用於中國大陸麥當勞會員體系；文件中明確指出官方 API 語義模糊造成的陷阱，若官方介面變動需要同步調整。",
+      "reason": "展示了對第三方官方 MCP server 做深入逆向分析並修正前期踩坑（按券名去重算法曾出錯後修正），分析紀錄詳實、有實測數據，技術含金量高。"
+    },
+    {
+      "full_name": "xiaozhangup/Oh-My-McDonald",
+      "html_url": "https://github.com/xiaozhangup/Oh-My-McDonald",
+      "stars": 77,
+      "selected": true,
+      "summary": "基於麥當勞官方 MCP 的對話式 AI Skill，依使用者預算、口味偏好推薦餐品，支援門店比價、優惠查詢、營養計算，並把吃過的餐品/門店做成體素風格 PNG 圖鑑收藏。",
+      "tech": "Python 本地腳本處理 MCP 查詢結果與生成體素風格圖片，不依賴網頁介面或圖片生成 API，全部本地渲染。",
+      "feasibility": "需要麥當勞 MCP 存取權限，本地執行門檻中等；圖片生成與記錄功能為純本地腳本，容易自行架設。",
+      "limits": "同樣依賴麥當勞官方 MCP 的穩定性與資料範圍，功能偏生活消費娛樂向，非通用技術元件。",
+      "reason": "與 mcd-coupon-xray 同日出現、同樣基於麥當勞 MCP 但定位互補（對話式助理體驗 vs. 精確核銷校驗），呈現同一垂直 MCP 快速被二次開發的趨勢，功能完整度與視覺呈現具代表性。"
+    },
+    {
+      "full_name": "liyupi/dafeiyu-cleaner",
+      "html_url": "https://github.com/liyupi/dafeiyu-cleaner",
+      "stars": 68,
+      "selected": true,
+      "summary": "Chrome/Edge/Firefox 瀏覽器擴充套件，識別並標記 B 站（Bilibili）評論區由 DeepSeek 等大模型／AI Agent 驅動的機器人帳號，提供離線規則判斷與可選 DeepSeek API 精判兩種模式。",
+      "tech": "JavaScript 瀏覽器擴充套件（Chrome MV3 / Firefox 140+），離線規則比對 + 可選呼叫 DeepSeek API 做二次判讀；所有「清除」動作僅為本地隱藏，不涉及刪除評論或讀取 Cookie。",
+      "feasibility": "下載 Release 安裝即可使用，門檻極低，不需任何環境設定；作者為知名開發者（程序员鱼皮），專案維護品質可信。",
+      "limits": "僅作用於 Bilibili 平台且僅本地隱藏顯示，無法真正清除或舉報帳號；判斷機制可能有誤判／漏判，DeepSeek 精判模式需呼叫外部 API。",
+      "reason": "示範了用 AI 偵測技術反向識別 AI 生成內容/機器人帳號的實用場景，功能完整、文件清晰、作者具公開信譽，屬於值得關注的「以 AI 治理 AI」案例。"
+    },
+    {
+      "full_name": "gabe-santana/arkdraw",
+      "html_url": "https://github.com/gabe-santana/arkdraw",
+      "stars": 38,
+      "selected": true,
+      "summary": "開源繪圖應用，內建 AI 助理可依自然語言描述直接生成與編輯流程圖、UML、ER 圖、網路架構圖、線框圖與思維導圖，並支援將變更過程輸出成動畫 GIF。",
+      "tech": "TypeScript + React + Tauri（跨平台桌面 + 網頁版），支援 Anthropic Claude、OpenAI、Google Gemini、xAI Grok、DeepSeek、Mistral、Azure AI Foundry、Amazon Bedrock、Vertex AI、OpenRouter、Groq 及本地 Ollama 等多種模型後端，使用者自帶金鑰。",
+      "feasibility": "本地可直接下載桌面版執行，或用瀏覽器開啟網頁版；多模型後端支援使本地/離線（Ollama）使用也可行，檔案保留在本機磁碟。",
+      "limits": "AI 繪圖品質依賴所選模型能力；官方 AWS/Azure/GCP/K8s 圖示授權與更新需持續維護；專案剛起步（星數 38），生態與社群支援尚待觀察。",
+      "reason": "多模型後端 + 本機優先（local-first）的設計在同類 AI 繪圖工具中較少見，功能演示（prompt 直接生成並動畫化架構圖）具體且可驗證，具備實際生產力價值。"
+    },
+    {
+      "full_name": "aigamedevs/awesome-ai-tools-for-game-dev",
+      "html_url": "https://github.com/aigamedevs/awesome-ai-tools-for-game-dev",
+      "stars": 24,
+      "selected": true,
+      "summary": "遊戲開發者專用 AI 工具精選清單，涵蓋 3D/2D 素材生成、動畫、語音、音樂、AI NPC、引擎整合（含多個 Unity/Godot/Unreal MCP server）與自動化測試等 98 個條目，是 2026 年對舊清單的全面更新與整理。",
+      "tech": "純 Markdown 策展清單（awesome-list），無程式碼執行需求；延續並重新整理原作者 simoninithomas 的清單，標注已關閉/棄用/過時的工具並補充新工具。",
+      "feasibility": "作為參考資源直接閱讀即可使用，無安裝門檻。",
+      "limits": "純清單形式，本身不提供功能；條目品質與更新頻率依賴維護者持續投入，目前由新組織帳號（aigamedevs）接手維護，長期穩定性待觀察。",
+      "reason": "作為遊戲開發 AI 工具生態的整理型資源，覆蓋面廣且有明確版本比對（新增/移除/存活數量），對該領域開發者有實際查找價值，CC0 授權也便於再利用。"
+    },
+    {
+      "full_name": "lwh0630/TokenBar",
+      "html_url": "https://github.com/lwh0630/TokenBar",
+      "stars": 23,
+      "selected": true,
+      "summary": "跨平台 AI 用量監控工具，於系統選單列/工作列同時顯示 Claude、Codex、Cursor、OpenRouter、DeepSeek 等 50 個服務的剩餘額度、餘額與重置倒數，支援 Windows/macOS/Linux/Android/iOS。",
+      "tech": "Flutter（Dart）跨平台開發；桌面版讀取本機已登入的官方 CLI/App 憑證（唯讀），其他情境則需使用者自行貼上 API key 或 cookie；可選同步伺服器只接收用量快照，不經手憑證。",
+      "feasibility": "本地可直接下載對應平台版本執行，桌面版對已安裝官方 CLI 的使用者幾乎零設定；CI/Release 流程齊備。",
+      "limits": "對非桌面平台或未提供唯讀 CLI 憑證的服務，仍需手動貼上 API key／cookie，有一定操作與信任成本；覆蓋 50 個服務的解析邏輯需隨各家 API 變動持續維護。",
+      "reason": "解決多 AI 服務同時訂閱時「額度用到哪了」的真實痛點，安全模型（唯讀讀取、不經手憑證）設計清楚，覆蓋平台與服務數量多，是對 AI 重度使用者實用的基礎設施型工具。"
+    },
+    {
+      "full_name": "QuickButlerPace65/AnythingLLM-Desktop",
+      "html_url": "https://github.com/QuickButlerPace65/AnythingLLM-Desktop",
+      "stars": 37,
+      "selected": false,
+      "reason": "推測為安全風險較高的來源不明重新打包版本：README 聲稱是官方 AnythingLLM Desktop 的「強化版」可攜式 Windows 執行檔，但文件中仍留有未填寫的範本文字「(Note: Update these points with your actual specific changes)」，顯示作者並未實際說明具體改動內容，卻直接提供下載即執行的 .exe/.zip；帳號名稱風格（隨機字母數字組合）亦與可信來源的開源維護者典型命名不符，淘汰以避免引導使用者下載未經驗證的可執行檔。"
+    },
+    {
+      "full_name": "Cinderubasp/InterviewCopilot-rpocket-team",
+      "html_url": "https://github.com/Cinderubasp/InterviewCopilot-rpocket-team",
+      "stars": 29,
+      "selected": false,
+      "reason": "README 無法取得（raw.githubusercontent.com 回傳 404），且 repo topics 同時掛了與描述完全無關的「cheat-engine-desktop」「cheat-engine-forza-horizon-6」「cheat2026」等遊戲外掛標籤，推測是蹭 AI 熱門 topic 導流的垂類外掛/垂圾 repo，與「面試助手」描述不符，淘汰。"
+    },
+    {
+      "full_name": "Hellko63421/rpocket-team-elden-ring",
+      "html_url": "https://github.com/Hellko63421/rpocket-team-elden-ring",
+      "stars": 29,
+      "selected": false,
+      "reason": "README 無法取得（404），描述為「艾爾登法環遊戲外掛（ESP ＆ 無後座力）」，與所掛的 llm/chatbot topic 毫無關聯，且與上一筆 Cinderubasp/InterviewCopilot-rpocket-team 同為 rpocket-team 命名模式、同一天建立、同樣 29 星，高度推測為同一批次蹭熱門 AI topic 以提高曝光度的垂圾/外掛 repo，淘汰。"
+    }
+  ]
+}
