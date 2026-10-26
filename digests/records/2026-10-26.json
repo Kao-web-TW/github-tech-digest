@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-26",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-24 stars:>=20 | topic:machine-learning created:>=2026-10-24 stars:>=20 | topic:llm created:>=2026-10-24 stars:>=20 | topic:ai-agent created:>=2026-10-24 stars:>=20 | topic:generative-ai created:>=2026-10-24 stars:>=20",
+  "notice": {
+    "lede": "今天候選池非常薄——artificial-intelligence / machine-learning / generative-ai 三個 topic 都查不到任何符合條件的新 repo，去重後僅有 6 個候選，其中 2 個因高風險/倫理問題被直接淘汰。",
+    "body": "本日 5 個 topic 查詢中，只有 llm（3 筆）與 ai-agent（5 筆）有結果，另外三個 topic 的過去 2 天內新建、star 數 >=20 的 repo 數量為 0，顯示當天 GitHub 上新興 AI repo 的爆發量明顯低於平常。去重合併後只有 6 個獨立候選，分析後發現其中 jadezane6634-ops/dsh-purge-flash 是針對 DeepSeek Harness 的「反審查/越獄」插件（topics 明確標註 anti-censorship、jailbreak、prompt-injection、red-team、uncensored），jacke-pp/ai-wallet-binance 則是以 AI 自然語言下單包裝的迷因幣狙擊/投機交易工具，兩者皆因高風險或倫理顧慮被淘汰，不計入技術新穎性評估。最終僅有 4 個候選入選，低於平常 5-10 個的目標區間，如實反映當天的候選池規模，未做任何灌水。另一個觀察是入選與淘汰的候選中，有一半與 DeepSeek Harness（一個第三方 coding agent 工具）生態圈有關（dsh-go、dsh-purge-flash），顯示該生態圈的衍生工具（行動端、插件）正在快速冒出。"
+  },
+  "candidates": [
+    {
+      "full_name": "rddmwmddr/android-ad-cleaner",
+      "html_url": "https://github.com/rddmwmddr/android-ad-cleaner",
+      "stars": 773,
+      "selected": true,
+      "summary": "去除國產安卓手機系統內建廣告、熱搜資訊推薦與營銷推送的工具，核心賣點不是功能本身，而是把整個操作流程寫成給 AI 智能體讀的 AGENTS.md 規範：使用者只要把『克隆這個 repo，讀 AGENTS.md，幫我的手機去廣告』丟給 Claude Code / Codex / Cursor 等 coding agent，agent 就會依規範透過 adb + uiautomator2 逐步操作手機設定並回報每一步要改什麼；也支援直接把提示詞丟給聊天型 AI（DeepSeek、ChatGPT）代為操作，或用桌面客戶端一鍵執行。",
+      "tech": "Python（uiautomator2 讀屏引擎）+ adb 控制 Android 裝置；核心創新是為 AI coding agent 撰寫的 AGENTS.md 操作規範與配套 prompts，讓 LLM 扮演『操作者』角色逐步執行系統設定變更，而非單純腳本自動化。",
+      "feasibility": "只需電腦連接手機透過 adb（開發者模式 + USB 偵錯）即可執行，不需 root；提供桌面客戶端給不想用命令列的使用者，也可以直接貼提示詞給聊天 AI 操作，門檻低、本地可行性高。",
+      "limits": "僅支援透過 adb 連接的安卓裝置，暫不支援鴻蒙 HDC；不同品牌/機型（一加、榮耀、vivo 等）仍在逐步補完適配與社群回報修正中，部分功能仍屬實驗性（explore.py 標註為『新機型探路，實驗』）；涉及修改系統通知/無障礙設定，操作錯誤有風險。",
+      "reason": "star 數高（773）且是『AGENTS.md 驅動 AI coding agent 操作真實裝置』這一新興模式的代表作，而非單純蹭 ai-agent tag 的傳統腳本工具，具技術與趨勢觀察價值，入選。"
+    },
+    {
+      "full_name": "xiaozhangup/Oh-My-McDonald",
+      "html_url": "https://github.com/xiaozhangup/Oh-My-McDonald",
+      "stars": 116,
+      "selected": true,
+      "summary": "基於麥當勞官方 MCP（Model Context Protocol）打造的對話式 AI Skill：使用者用自然語言告訴 AI 今天想吃什麼、預算多少、忌口什麼，AI 透過官方 MCP 查詢餐品/門店/優惠/營養資料，再交給本地 Python 腳本整理成四種體素風格 PNG 場景（餐品圖鑑、優惠日曆、門店比價、營養餐桌），並可把確認過的紀錄保存成個人探索記錄。",
+      "tech": "官方 MCP（餐品/門店/價格/優惠/營養資料來源）+ 對話式 LLM 理解自然語言需求 + 本地 Python 腳本做資料處理與體素風格圖片渲染，不依賴圖片生成 API、不需網頁介面。",
+      "feasibility": "需要能存取麥當勞官方 MCP 的環境（本質上是官方提供的資料介面），搭配本地 Python 腳本即可運行，個人使用門檻不高；展示圖片基於 2026-10-24 的真實 MCP 查詢快照（非即時數據）。",
+      "limits": "功能完全侷限於麥當勞餐飲場景，可用性高度依賴麥當勞官方 MCP 的存取權限與穩定性；目前展示的『餐品圖鑑』使用的是示範記錄而非真實使用資料。",
+      "reason": "是『把官方 MCP 包裝成好用對話式 AI Skill』這個新興模式的清楚示範，應用場景具體、功能完整度高，入選作為 MCP 生態應用案例。"
+    },
+    {
+      "full_name": "lwh0630/TokenBar",
+      "html_url": "https://github.com/lwh0630/TokenBar",
+      "stars": 49,
+      "selected": true,
+      "summary": "開源跨平台 AI 額度監控工具，一次掌握 Codex、Claude、Cursor、OpenRouter、DeepSeek、z.ai 等 50 個 AI 服務供應商的剩餘額度、餘額、重置倒數與燒錢速度，支援 Windows / macOS / Linux / Android / iOS。",
+      "tech": "Flutter 跨平台 App；桌面端讀取官方 CLI/App 本機已存的登入憑證（唯讀），其他平台則貼 API key 或 cookie，資料直接向各供應商自家端點查詢，絕不經手密碼；選配同步伺服器只接收用量快照，不接收憑證。",
+      "feasibility": "五大平台皆可本機安裝使用，對同時使用多個 AI 編碼工具/服務的開發者而言可直接上手，屬於周邊開發者工具，可行性高。",
+      "limits": "涵蓋 50 家供應商，但新增/調整供應商端點需手動維護；依賴各家服務自身 API 的穩定性與格式不變動。",
+      "reason": "回應開發者同時訂閱多個 AI 服務後『額度管理』的真實痛點，是 AI 工具生態周邊基礎設施的代表性新專案，入選。"
+    },
+    {
+      "full_name": "ccch1mneyyy/dsh-go",
+      "html_url": "https://github.com/ccch1mneyyy/dsh-go",
+      "stars": 48,
+      "selected": true,
+      "summary": "第三方 coding agent 工具 DeepSeek Harness（DSH）的 Android 客戶端：可在手機上直接運行 DSH，也能用手機遠端遙控電腦上的 DSH，並附帶可互動的桌面寵物角色提示任務進度。",
+      "tech": "Flutter 開發的 Android App，對接 DeepSeek Harness（一款類似 Claude Code 的第三方 coding agent）的事件/通訊介面，提供遠端遙控與本機執行雙模式。",
+      "feasibility": "需要 Android 8+ 裝置並已具備 DeepSeek Harness 環境（電腦端或可遠端連線的 DSH 服務）才能使用，對一般使用者門檻略高於單純手機 App。",
+      "limits": "目前仍為『內測中』（非官方穩定版），為非官方（Unofficial）第三方客戶端，社群支援規模較小（透過 QQ 群與論壇），功能與穩定性仍在迭代。",
+      "reason": "展示『AI coding agent 行動化、可遠端遙控』的趨勢，雖仍在內測且屬小眾第三方生態，但技術方向明確、具觀察價值，入選並於限制中標註其內測狀態。"
+    },
+    {
+      "full_name": "jadezane6634-ops/dsh-purge-flash",
+      "html_url": "https://github.com/jadezane6634-ops/dsh-purge-flash",
+      "stars": 31,
+      "selected": false,
+      "reason": "topics 明確標註 anti-censorship、jailbreak、prompt-injection、red-team、uncensored，README 也直接寫明目的是『破甲』——繞過 DeepSeek Harness 的拒答/安全防護機制。屬於規避模型安全防護的越獄工具，不適合在本精選中推廣，予以淘汰。"
+    },
+    {
+      "full_name": "jacke-pp/ai-wallet-binance",
+      "html_url": "https://github.com/jacke-pp/ai-wallet-binance",
+      "stars": 22,
+      "selected": false,
+      "reason": "主要定位是讓 AI 以自然語言下單操作幣安 Agentic Wallet 進行迷因幣『狙擊』與自動 mint 等高風險投機交易，AI 在其中僅扮演自然語言下單介面，技術新穎性有限且涉及顯著金融投機風險，不適合在技術精選中推廣，予以淘汰。"
+    }
+  ]
+}
