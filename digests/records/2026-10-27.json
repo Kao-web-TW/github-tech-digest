@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-27",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-25 stars:>=20 | topic:machine-learning created:>=2026-10-25 stars:>=20 | topic:llm created:>=2026-10-25 stars:>=20 | topic:ai-agent created:>=2026-10-25 stars:>=20 | topic:generative-ai created:>=2026-10-25 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜被兩股潮流瓜分：手機端「agentic coding 助手」App（DeepSeek Harness、AstrBot）與「AI agent 操作加密錢包」工具，同時出現兩個用 AI/LLM 話題標籤蹭曝光、實際是遊戲作弊工具的項目。",
+    "body": "本次合併 5 個 topic 搜尋後僅得 8 個不重複候選（machine-learning topic 當期無任何符合 created:>=2026-10-25 stars:>=20 的結果），整體候選池偏小。其中兩個手機類項目（ccch1mneyyy/dsh-go、JunWan666/astrbot-for-android）都是把既有的桌面端 LLM 工具（DeepSeek coding agent、AstrBot+NapCat）搬進 Android，透過本機執行或 PRoot 容器降低部署門檻，反映「把 agent 裝進口袋」是近期一個明顯方向。另一端 jacke-pp/ai-wallet-binance 代表「AI agent 直接操作交易錢包」的新興類別，star 數高但功能聚焦在迷因幣狙擊與投機交易，風險與本精選目標（開發工具/模型應用）關聯度較弱，故未入選。值得留意的是本次候選中出現兩個刻意在 topics 裡塞入 artificial-intelligence/llm 等標籤、但 README 完全無法取得、實際內容是遊戲作弊工具（Cheat Engine 腳本、Elden Ring ESP/No Recoil）的項目，顯示 GitHub topic 搜尋存在一定程度的標籤濫用，後續篩選需持續留意。"
+  },
+  "candidates": [
+    {
+      "full_name": "patch-gg/trompe",
+      "html_url": "https://github.com/patch-gg/trompe",
+      "stars": 100,
+      "selected": true,
+      "summary": "用圖像生成模型幫遊戲關卡的灰模貼材質：規劃可站立的攝影機位置，讓圖像模型畫出每個視角看到的畫面，再把畫面投影回關卡幾何並烘焙成一張材質；在覆蓋光（overcast light）下作畫,因此輸出是 albedo,可在引擎裡用真實光影重新打光。",
+      "tech": "前端/規劃/投影/烘焙都在瀏覽器用 GPU 跑（TypeScript + WebGL/three.js）；實際生成畫面呼叫 fal.ai 上的 FLUX 3 Klein 與 Fibo 2 影像模型 API。",
+      "feasibility": "`npm install && npm run dev` 即可在本機瀏覽器執行，需要自備 fal.ai API Key（FAL_KEY），也支援命令列 headless 執行；對一般開發者門檻低,但生成仍需按次付費（README 範例約 $4.44/26 分鐘）。",
+      "limits": "依賴外部付費 API（fal.ai），非完全離線；輸入關卡需要 UV 且 Y 軸朝上的 .glb 模型，對素材格式有要求；目前是驗證性質的工具,尚未看到大型生產專案採用的案例。",
+      "reason": "把生成式影像模型用在遊戲關卡材質貼圖的流程做得完整（規劃相機→生成→投影→烘焙→輸出 glTF），是具體可用的生成式 AI 應用,且 100 星為本次候選榜最高。"
+    },
+    {
+      "full_name": "jacke-pp/ai-wallet-binance",
+      "html_url": "https://github.com/jacke-pp/ai-wallet-binance",
+      "stars": 96,
+      "selected": false,
+      "reason": "讓 Claude/Codex/DeepSeek/Grok 等 AI agent 直接操作幣安 Agentic Wallet 進行迷因幣狙擊與投機交易,雖然技術上示範了「AI agent 操作金融錢包」的新趨勢,但核心功能是加密貨幣合約狙擊/投機交易工具,與本精選聚焦的開發工具/模型應用關聯度弱,且涉及較高財務風險,故不列入精選（僅作為候選榜觀察,見 notice）。"
+    },
+    {
+      "full_name": "ccch1mneyyy/dsh-go",
+      "html_url": "https://github.com/ccch1mneyyy/dsh-go",
+      "stars": 69,
+      "selected": true,
+      "summary": "DeepSeek Harness（一套 coding agent 工具）的非官方 Android 客戶端,可在手機上直接本機跑,也能用手機遙控電腦上執行的 DSH,並用可愛的寵物動畫顯示 agent 執行狀態（打字中/完成/等待確認）。",
+      "tech": "Android App（Flutter）,底層串接 DeepSeek Harness/DSH 這套 coding agent 的執行與通訊協定。",
+      "feasibility": "需要 Android 8 以上裝置;專案標示「內測中」,屬早期階段,非官方維護,安裝與穩定性風險需自行評估。",
+      "limits": "仍在內測,功能與穩定性未經大規模驗證;依賴 DeepSeek Harness 生態,非獨立通用工具;目前中文資源較多,英文文件相對有限。",
+      "reason": "把桌面端 coding agent 搬上手機、支援遠端遙控電腦執行,反映「口袋裡的 agent」這個新興使用情境,具代表性。"
+    },
+    {
+      "full_name": "Hvftpie13/Flashmind_Gemini-3.8-Flash_Smart-agent",
+      "html_url": "https://github.com/Hvftpie13/Flashmind_Gemini-3.8-Flash_Smart-agent",
+      "stars": 33,
+      "selected": true,
+      "summary": "幫 Gemini 3.8 Flash（或其他快速但容易遺忘/幻覺的模型）加上跨工具共享記憶（透過 Engram MCP）、反幻覺規則與可隨需載入的 coding skill playbook,讓模型在新任務開始時自動回想先前的架構決策與踩過的坑,結束前存下新教訓。",
+      "tech": "MCP（Model Context Protocol）插件 + 本機共享資料庫做持久記憶,搭配 GEMINI.md 規則檔強制引用程式碼證據、區分事實與假設;可裝在 Gemini CLI、Antigravity、Cursor、VS Code、Windsurf、Claude Code 等多個編輯器/agent 環境。",
+      "feasibility": "`npx flashmind` 即可快速安裝,零外部依賴（dependencies: 0）,本機執行、免額外伺服器。",
+      "limits": "記憶效果與反幻覺規則仍仰賴底層模型是否確實遵循 GEMINI.md 規則,無法完全消除幻覺;目前以 Gemini 生態為主要宣傳對象,其他模型相容性需自行測試。",
+      "reason": "解決多編輯器/多 agent 環境下「每次新 session 都要重新解釋專案」與「模型自稱已驗證卻沒跑測試」的實際痛點,且支援多種主流 AI coding 工具,實用性高。"
+    },
+    {
+      "full_name": "OFat34764e/InterviewCopilot-rpocket-team",
+      "html_url": "https://github.com/OFat34764e/InterviewCopilot-rpocket-team",
+      "stars": 32,
+      "selected": false,
+      "reason": "README 無法取得（raw.githubusercontent.com 回傳 404）,且 topics 中混雜 cheat-engine-desktop/cheat-engine-forza-horizon-6/cheat-engine-windows/cheat2026 等與面試輔助工具描述明顯不符的標籤,推測是蹭 AI/LLM 話題標籤曝光的遊戲作弊相關帳號,不列入精選（推測）。"
+    },
+    {
+      "full_name": "Maefdancer29436/rpocket-team-elden-ring",
+      "html_url": "https://github.com/Maefdancer29436/rpocket-team-elden-ring",
+      "stars": 32,
+      "selected": false,
+      "reason": "README 無法取得（raw.githubusercontent.com 回傳 404）,且專案描述明確為《艾爾登法環》遊玩輔助/外掛（ESP 與 No Recoil）,與 AI/LLM 完全無關,topics 中的 llm 標籤應為蹭曝光的標籤濫用,不列入精選。"
+    },
+    {
+      "full_name": "JunWan666/astrbot-for-android",
+      "html_url": "https://github.com/JunWan666/astrbot-for-android",
+      "stars": 27,
+      "selected": true,
+      "summary": "在 Android 手機上免 Root 本機部署與管理 AstrBot（開源 LLM 聊天機器人框架）與 NapCat（QQ 協議端）,內建 PRoot Ubuntu 執行環境,提供原生管理介面、WebUI、日誌、備份還原與獨立更新功能。",
+      "tech": "Kotlin + Jetpack Compose 原生 Android App,內部用 PRoot 建立 Ubuntu 環境跑 AstrBot/NapCat,屬自架（self-hosted）LLM 聊天機器人方案。",
+      "feasibility": "需 Android 8.0 以上、ARM64 架構裝置,提供可直接安裝的 APK;免 Root 降低一般使用者部署門檻,但仍需手機長時間在背景執行服務。",
+      "limits": "目前版本為 1.0.0,屬早期版本;手機硬體資源（記憶體/電量）會限制可承載的模型規模與併發量;功能高度依賴 AstrBot/NapCat 生態本身的更新。",
+      "reason": "把常見的自架 LLM 聊天機器人框架與 QQ 整合搬到手機、免 Root 即可用,降低自架部署的門檻,屬於實用的「隨身自架 AI」工具。"
+    },
+    {
+      "full_name": "zhangshuibai/molten",
+      "html_url": "https://github.com/zhangshuibai/molten",
+      "stars": 21,
+      "selected": true,
+      "summary": "針對 LiquidAI LFM2.5-24B-A2B（24B 參數、2B 啟用的推理/coding agent 模型）打造的原生 Rust + Metal 推理引擎,在 Apple Silicon 上執行官方 MLX 4-bit 量化版本,單一約 6MB 的可執行檔,免 Python/PyTorch/MLX 執行環境。",
+      "tech": "Rust + Metal,直接呼叫 macOS 系統框架做推理,提供 CLI、互動式對話與 OpenAI 相容的 server（含串流、reasoning 輸出與 tool calls）。",
+      "feasibility": "需要 M5 系列 Mac（M5/M5 Pro/M5 Max）、24GB 以上記憶體、macOS 26 以上,下載官方發行的二進位檔與模型權重即可執行,門檻集中在硬體要求而非安裝複雜度。",
+      "limits": "硬體限制嚴格,僅支援最新 M5 系列晶片,一般使用者（舊款 Mac 或非 Mac 平台）無法使用;模型本身鎖定 LFM2.5-24B-A2B,非通用推理引擎。",
+      "reason": "作者聲稱在 M5 Max 上達到 300+ tok/s、比 mlx-lm 快 1.45-1.6 倍、比 llama.cpp 快 1.3-1.5 倍,且用 MATH-500/IFEval 分數對齊官方數字驗證正確性,是具體且可驗證的推理效能工程成果。"
+    }
+  ]
+}
