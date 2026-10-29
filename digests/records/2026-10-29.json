@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-29",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-27 stars:>=20 | topic:machine-learning created:>=2026-10-27 stars:>=20 | topic:llm created:>=2026-10-27 stars:>=20 | topic:ai-agent created:>=2026-10-27 stars:>=20 | topic:generative-ai created:>=2026-10-27 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜清一色是「給 AI 代理人用的工具」——桌面殼、動畫管線外掛、教學教材、威脅建模技能包，而不是新模型或新框架本身。",
+    "body": "本輪 5 個 topic 查詢合併後僅有 4 個不重複候選（artificial-intelligence、machine-learning 兩個 topic 當日均無符合 stars>=20 的新 repo），數量偏少，但品質尚可。值得注意的是其中三個（capri-ai、anymove、grim-prompter）都明確標榜與 Claude Code / Codex 等既有 coding agent 整合，而非自建模型，顯示目前新興專案更多是圍繞既有 LLM agent 生態系做「外圍工具」而非核心模型創新。"
+  },
+  "candidates": [
+    {
+      "full_name": "ChannelCooperStart/capri-ai",
+      "html_url": "https://github.com/ChannelCooperStart/capri-ai",
+      "stars": 385,
+      "selected": true,
+      "summary": "Windows 桌面應用程式，作為 Claude Code、Codex、Antigravity 等既有 AI assistant 的「殼」：使用者用自然語言下指令，Capri 負責路由到所選的 AI 引擎、規劃步驟、呼叫工具（檔案操作、shell、瀏覽器）並在執行前要求使用者核准，介面走賽博龐克風格。",
+      "tech": "本身不含自有模型，是在既有 LLM coding agent（Claude Code / Codex / Antigravity）之上包一層桌面 UI 與工具調度層（Engine Router + Tool Layer + Approval Gate）。",
+      "feasibility": "本地執行可行性中等偏低：僅提供 Windows 安裝檔/portable zip（倉庫原始碼本身僅 17KB，核心應用程式以編譯好的 Release 形式釋出，無法從原始碼建置驗證），且需要使用者自備所串接之 AI assistant 帳號或 API Key 才能真正運作，macOS/Linux 版本仍在規劃中。",
+      "limits": "僅支援 Windows 10 以上；需額外安裝/登入下游 AI assistant 才有實際功能；核心執行檔未開源，透明度與可稽核性有限。",
+      "reason": "385 顆星為本輪候選最高，且是「AI agent 桌面殼」這類新興產品形態的代表作，故列入精選；但因原始碼透明度與平台限制需一併標註（推測：倉庫極小代表主要邏輯在編譯後的 Release 二進位檔中）。"
+    },
+    {
+      "full_name": "patch-gg/anymove",
+      "html_url": "https://github.com/patch-gg/anymove",
+      "stars": 348,
+      "selected": true,
+      "summary": "把「一支 AI 生成的雙機位影片」轉成任意裝配好骨架的生物（含翅膀、尾巴、八隻腳）的動畫：用雙鏡頭（正面＋側面同畫面）拍一支 AI 影片，訓練一個針對該生物的 DINOv2 關節偵測器，在兩個視角中找出所有關節並三角定位成 3D 座標，再逐幀把骨架 fit 上去輸出成 GLB。",
+      "tech": "Tripo H3.1（文字/圖片轉 3D mesh）、Blender（手動裝骨與蒙皮）、MiniMax H3 Max（經 fal.ai 生成雙視角影片，另有自訓練 LoRA 版本）、Meta DINOv2（微調為單一生物的關節偵測器）。整套流程包裝成 Claude Code 的 Agent Skills 外掛（anymove-rig / anymove-film / anymove-reader / anymove-capture / anymove-lora）。",
+      "feasibility": "需要 NVIDIA GPU（訓練關節偵測器建議 24GB VRAM，推論與 fit 需求低很多）、Python 3.11、Blender 5.x、以及 fal.ai 的付費 API Key；repo 內附現成範例（龍）可直接在 CPU 上跑完整 fit 流程（約 20 秒）驗證可行性，每次生成新動作約 0.52 美元。",
+      "limits": "README 明確列出限制：八足生物走路動作雙視角關節對應會衝突不準；生物躺下的姿勢因訓練資料未涵蓋而失敗；骨架關節仍需人工在格線視圖上手動標定；影片模型偶爾會把左右肢體顏色搞混（已用 LoRA 緩解但未完全解決）。",
+      "reason": "技術管線完整、有具體量化結果（各生物的關節誤差、視角一致性分數）與誠實列出的限制，且已包裝為可重複使用的 Claude Code Agent Skills，技術深度在本輪候選中最高。"
+    },
+    {
+      "full_name": "aa1143/NamiGPT",
+      "html_url": "https://github.com/aa1143/NamiGPT",
+      "stars": 104,
+      "selected": true,
+      "summary": "面向中文零基礎讀者的 LLM 入門教程：用 PyTorch 從零手寫（不呼叫現成 Transformer 模組）一個 GPT-2，載入 OpenAI 官方權重後跑通推理與文字生成，全程以「貓吃魚」三詞例子搭配可互動視覺化動圖，逐步拆解 Tokenizer、Embedding、Self-Attention、LayerNorm 等 15 個模組。",
+      "tech": "PyTorch 手刻 GPT-2（模型程式碼不到 200 行），搭配 tiktoken 分詞、HuggingFace 官方權重載入與逐項數值比對測試，附 Gradio 網頁 demo。",
+      "feasibility": "本地可行性高：純 CPU 或單一消費級 GPU 皆可跑完整個推理流程，requirements 簡單，並提供國內 HuggingFace 鏡像設定；`pytest tests/` 數秒內跑完形狀檢查，含與 HuggingFace 實作逐項對齊的自動化測試。",
+      "limits": "僅涵蓋推理（inference）路徑，未包含預訓練/微調；所用 GPT-2 未經對話微調，僅能「接龍」不能問答；訓練語料以英文為主、建議輸入英文。",
+      "reason": "教學品質扎實（原創動態視覺化、與 HuggingFace 逐項測試對齊、程式碼可直接執行驗證），對中文圈學習 LLM 底層原理有實質價值，故納入精選。"
+    },
+    {
+      "full_name": "jmanico/grim-prompter",
+      "html_url": "https://github.com/jmanico/grim-prompter",
+      "stars": 75,
+      "selected": true,
+      "summary": "給 Claude Code / Codex 等 coding agent 使用的威脅建模（threat modeling）技能包，提供 36 種系統架構樣板與 29 種分析方法（STRIDE、PASTA、LINDDUN、attack trees 等），引導 agent 對專案做有程式碼行號佐證的結構化安全分析，並產出可追蹤的 JSON 報告供後續版本比對。",
+      "tech": "純 Prompt/Skill 包（Markdown + JSON schema），無需自有模型，作為 Claude Code 的 `/threat-model` 指令或 Codex CLI 的 `$threat-model` 指令掛載執行，各方法與架構模組可自由組合。",
+      "feasibility": "本地可行性非常高：只需 git clone 後將 `skills/threat-model` 軟連結進 `~/.claude/skills` 即可使用，無額外相依套件、無需 GPU 或付費 API，唯讀分析模式下也相對安全（README 明確要求建置/測試/網路存取需另外授權）。",
+      "limits": "本質上是 LLM 產出的分析草稿，README 自述「這些 prompt 是草稿，審閱其輸出；威脅模型不代表系統已通過安全認證」，結論品質高度依賴底層 agent 能找到的證據與讀到的程式碼範圍。",
+      "reason": "安裝門檻低、涵蓋方法論完整且誠實標註「結論仍需人工覆核」，是少見聚焦在 AI coding agent 安全輔助工具鏈的實用技能包，故納入精選。"
+    }
+  ]
+}
