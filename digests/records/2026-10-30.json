@@ -1,0 +1,136 @@
+{
+  "date": "2026-10-30",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-28 stars:>=20 | topic:machine-learning created:>=2026-10-28 stars:>=20 | topic:llm created:>=2026-10-28 stars:>=20 | topic:ai-agent created:>=2026-10-28 stars:>=20 | topic:generative-ai created:>=2026-10-28 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜裡出現一批疑似協同灌星的垃圾/殭屍倉庫,共 8 個帳號、恰好都是 32 顆星、全部集中在 2026-10-28 16:15–16:21 UTC 這 6 分鐘內建立,README 也全部抓取失敗(HTTP 404)。",
+    "body": "這 8 個倉庫(Omianheart/Deadline-resp-Tracker-AI、Doravanaheim/telegram-acp-bridge-IntelliJ-rpocket-IDEA、ElectroixHigh/rpocket-SmartGrow-AI、XB83119eeb/LooseEnds-resp、ToxicdawnhildPixel/mcp-typography-server-resocket、UnderLich86514/build-html-ppt-rpocket-team、YorEthereallab4497-alt/grand-tour-rpocket、Cloudshred/prove-the-resp-ui)有幾個共通特徵:倉庫名多帶有 \"-resp\"/\"rpocket\"/\"resocket\" 這類後綴、star 數全部精準落在 32、創建時間集中在同一個 6 分鐘窗口內、topics 欄位常混雜明顯不相關的主題(例如同時掛上 agriculture/cambodia/khmer 或 crypto/quantitative-finance 這類與描述完全無關的標籤,疑似為了觸及更多搜尋關鍵字刻意灌入)、而且每一個的 README.md 在預設分支上都抓不到(HTTP 404)。這些特徵合起來很像是用腳本批量建立、刷星數衝榜,再掛上熱門 AI topic 蹭流量的空殼倉庫,而非真正活躍維護的專案,因此今天的候選榜把它們全部排除在精選之外,不列入 selected。扣掉這批之後,今天真正值得留意的新專案數量其實不多,但其中 jmanico/grim-prompter(AI coding agent 威脅建模技能)與 aa1143/NamiGPT(手寫 GPT-2 中文教程)兩個質量明顯突出。"
+  },
+  "candidates": [
+    {
+      "full_name": "jmanico/grim-prompter",
+      "html_url": "https://github.com/jmanico/grim-prompter",
+      "stars": 156,
+      "selected": true,
+      "summary": "提供 36 種架構情境與 29 種威脅建模方法/分析提示的技能包,讓 Claude Code、Codex 等 coding agent 針對你的 repo 執行結構化的威脅建模(信任邊界、威脅、既有控制措施、緩解建議),並要求每個結論附上可檢查的程式碼證據(file-and-line citation)。",
+      "tech": "以 Markdown 提示詞/skill 檔案驅動既有 coding agent(Claude Code / Codex CLI)執行分析,非獨立模型;產出 SYSTEM_UNDER_REVIEW.md、report.md 及 JSON 階段交接檔案,方便後續比對程式碼變更。",
+      "feasibility": "本地可行性高:clone 後用 symlink 掛進 ~/.claude/skills 或 ~/.agents/skills 即可,無額外依賴,readonly 檢視預設不需要額外授權,安裝步驟清楚。",
+      "limits": "分析品質完全取決於底層 agent 與你給的範圍/文件,作者明確聲明「這些提示是草稿,威脅模型不等於系統安全」,需要人工覆核每個威脅的前提與既有控制措施。",
+      "reason": "作者是知名應用安全社群人物(OWASP),專案文件完整、方法論清楚(STRIDE/PASTA/LINDDUN 等 29 種方法、36 種架構),star 數在今天候選中最高且非短時間灌星,屬於對 AI coding agent 使用者有實際安全治理價值的工具,選入精選。"
+    },
+    {
+      "full_name": "aa1143/NamiGPT",
+      "html_url": "https://github.com/aa1143/NamiGPT",
+      "stars": 132,
+      "selected": true,
+      "summary": "零基礎中文教程,用 PyTorch 從零手寫 GPT-2(不呼叫現成 Transformer 模組,核心模型程式碼不到 200 行),涵蓋 tokenizer、embedding、注意力機制、殘差連接、層正規化到載入 OpenAI 官方權重與文本生成,共 15 篇配套教學與可執行腳本。",
+      "tech": "PyTorch + 手刻 GPT-2 架構,並用測試(tests/test_vs_huggingface.py)比對 HuggingFace 官方實作結果以驗證正確性;附帶互動式矩陣視覺化網站講解注意力計算過程。",
+      "feasibility": "本地可行性高:標準 Python/PyTorch 環境即可執行,每章都有獨立可跑的腳本,CI 測試(GitHub Actions)驗證程式碼與 HuggingFace 結果一致,適合教學與自學。",
+      "limits": "聚焦教學用途而非訓練效率或生產部署,程式碼文件採 CC BY-NC 4.0(非商業),僅涵蓋推理/文本生成路徑,未涉及訓練流程的完整實作。",
+      "reason": "對中文讀者相當友善的從零構建 LLM 教程,有逐步可運行程式碼並以自動化測試對齊 HuggingFace 官方實作驗證正確性,品質與完整度明顯優於一般教學倉庫,選入精選。"
+    },
+    {
+      "full_name": "w0ldan/exoproc",
+      "html_url": "https://github.com/w0ldan/exoproc",
+      "stars": 79,
+      "selected": false,
+      "reason": "功能為 Windows x64 執行緒劫持(thread hijacking)、函式偵錯重導向(detours)、即時記憶體修改,並明確標註「zero DLL injection、no CreateRemoteThread」——這類措辭通常用於規避端點防護/偵測機制,屬於高風險雙重用途工具(可合法用於逆向工程與除錯,但同樣的能力常見於惡意軟體的程序注入與規避技術),不適合在一般技術精選中推廣,淘汰(推測:即便作者意圖是給 agent 做除錯用,實際能力仍可能被濫用於規避安全產品)。"
+    },
+    {
+      "full_name": "harrytted/ai-agent-interview-playbook",
+      "html_url": "https://github.com/harrytted/ai-agent-interview-playbook",
+      "stars": 22,
+      "selected": true,
+      "summary": "面向 AI Agent / 大模型應用工程師的中文學習與面試手冊,含 10 章基礎、12 章進階、92 道原創詳解題、276 組追問與答案、92 個實戰案例,並提供線上閱讀站、術語字典與技術部落格搭配使用。",
+      "tech": "純文件/教材專案(Python 範例實驗為輔),涵蓋 LLM 原理、工具/MCP、RAG、記憶、規劃與多 Agent、評測、可靠性與安全等主題,並有可執行的「離線實驗」程式碼觀察重試/審批/幂等等工程行為。",
+      "feasibility": "本地可行性高:內容為 Markdown 教材與可選的 Python 實驗腳本,無特殊依賴,線上版本可直接瀏覽不需下載倉庫。",
+      "limits": "內容以中文為主,面試題與案例多為原創設計而非業界真實題庫,學習路線的「30 天衝刺」等建議屬作者主觀安排,需讀者自行調整節奏。",
+      "reason": "內容量與結構化程度高(92 題、276 組追問、12 章進階),明確針對 AI Agent 工程師求職與系統性學習需求,對中文開發者社群有實用參考價值,選入精選。"
+    },
+    {
+      "full_name": "yxiy171866-boop/x-twikit-mcp",
+      "html_url": "https://github.com/yxiy171866-boop/x-twikit-mcp",
+      "stars": 21,
+      "selected": false,
+      "reason": "基於第三方 twikit 套件、透過瀏覽器 cookie(auth_token/ct0)模擬一般帳號操作 X(Twitter)的 MCP 包裝(發推、按讚、轉推、私訊、追蹤等全自動化操作),此類「cookie 模擬登入」自動化工具與 X 官方服務條款存在衝突風險,且市面上已有大量類似的非官方 Twitter/X MCP 包裝,技術重複性高,淘汰。"
+    },
+    {
+      "full_name": "KevinChu1110/driftnet",
+      "html_url": "https://github.com/KevinChu1110/driftnet",
+      "stars": 20,
+      "selected": true,
+      "summary": "把聊天群組(LINE/Slack/Discord/Telegram)或 Chrome 分享的連結自動還原成「這篇貼文真正在講的專案」,產生一句話摘要、分類到你自訂的資料夾,並建立本機全文搜尋(含中文)的連結目錄,agent 可透過 MCP 讀寫同一份目錄。",
+      "tech": "Node.js(>=22.13)+ 本機 SQLite,可選接任意模型(Claude/Google 訂閱、Ollama 或完全不用模型),提供 MCP、/openapi.json、/llms.txt、webhook 等多種整合介面,並有 Chrome 擴充套件與多平台 bot。",
+      "feasibility": "本地可行性高:完全在自己機器上執行、不需租伺服器或帳號,官方提供線上 demo 可免安裝試用,README 詳述安全機制(拒絕私有/內部位址、不將 prompt injection 轉傳給 agent)。",
+      "limits": "依賴第三方模型 API 或本機 Ollama 才能產生摘要(無模型時連結僅會被列為未分類),部分進階功能(如 AI 整理建議、評分機制 Jev)需額外金鑰或服務;目前文件以英文/繁中為主。",
+      "reason": "解決「群組分享連結后就石沉大海」的具體痛點,設計完整(摘要、分類、全文檢索、MCP 整合、安全防護皆有說明),有實際 demo 與 CI,對開發者社群日常協作工具鏈有實用價值,選入精選。"
+    },
+    {
+      "full_name": "peterpoal134/memory-brain",
+      "html_url": "https://github.com/peterpoal134/memory-brain",
+      "stars": 20,
+      "selected": true,
+      "summary": "給 AstrBot 聊天機器人框架用的長期記憶與「生活層」插件組:五類記憶(事件/事實/反思/技能/道理)、向量+關鍵字+實體圖譜+重要性+新鮮度的混合檢索、記憶衰減與合併治理、PAD 情緒維度,以及機器人在沒人互動時的背景「生活循環」(看書、刷影片、午睡等),並以「人格檔案只讀、增強皆可關閉」為硬約束。",
+      "tech": "Python 3.12,四個 AstrBot 插件(記憶庫、情緒/好感、發送前清洗、自我檔案)+ 獨立生活層行程,依賴標準庫與 numpy,可選 Ollama/bge-m3 做 embedding,附帶評估腳本與單元測試。",
+      "feasibility": "本地可行性中等:核心插件需安裝進 AstrBot 的 plugins 目錄運作,獨立於 AstrBot 的部分(life 目錄、單元測試)可用標準 Python 直接跑;文件附有儲存量/延遲/成本的實測參考值。",
+      "limits": "強綁定 AstrBot 生態系,非通用聊天框架可直接套用;情緒與生活層的效果高度依賴所接的模型與資料規模,README 也明確註明參考值「不是承諾」,且提醒不應用於取代真實人際關係。",
+      "reason": "相對少見地針對長期記憶的「遺忘治理」與多模組可開關設計著墨,文件誠實列出限制與實測數據而非誇大效果,雖綁定特定生態系但工程思路具參考價值,選入精選。"
+    },
+    {
+      "full_name": "Omianheart/Deadline-resp-Tracker-AI",
+      "html_url": "https://github.com/Omianheart/Deadline-resp-Tracker-AI",
+      "stars": 32,
+      "selected": false,
+      "reason": "疑似協同灌星群組的一員:與另外 7 個倉庫同樣恰好 32 星、創建時間集中在 2026-10-28 16:15–16:21 UTC 的 6 分鐘內,topics 混雜不相關主題(job-matching、resume 等與「學業截止日期助理」描述無關),README 抓取失敗(HTTP 404),淘汰。"
+    },
+    {
+      "full_name": "Doravanaheim/telegram-acp-bridge-IntelliJ-rpocket-IDEA",
+      "html_url": "https://github.com/Doravanaheim/telegram-acp-bridge-IntelliJ-rpocket-IDEA",
+      "stars": 32,
+      "selected": false,
+      "reason": "疑似協同灌星群組的一員(同批 8 個倉庫之一,32 星、同一 6 分鐘窗口創建),topics 混雜 agri-tech/cambodia/khmer 等與「Telegram-IntelliJ 橋接」描述完全無關的標籤,README 抓取失敗(HTTP 404),淘汰。"
+    },
+    {
+      "full_name": "ElectroixHigh/rpocket-SmartGrow-AI",
+      "html_url": "https://github.com/ElectroixHigh/rpocket-SmartGrow-AI",
+      "stars": 32,
+      "selected": false,
+      "reason": "疑似協同灌星群組的一員(同批 8 個倉庫之一,32 星、同一 6 分鐘窗口創建),topics 混雜 crypto/quantitative-finance/yfinance 等與「植物監測」描述完全無關的標籤,README 抓取失敗(HTTP 404),淘汰。"
+    },
+    {
+      "full_name": "XB83119eeb/LooseEnds-resp",
+      "html_url": "https://github.com/XB83119eeb/LooseEnds-resp",
+      "stars": 32,
+      "selected": false,
+      "reason": "疑似協同灌星群組的一員(同批 8 個倉庫之一,32 星、同一 6 分鐘窗口創建);且其 topics 本身即為遊戲 DLC 啟用繞過/破解相關(activation-bypass、dlc-activator、entitlement-bypass),與正當 AI/ML 技術無關,README 抓取失敗(HTTP 404),淘汰。"
+    },
+    {
+      "full_name": "ToxicdawnhildPixel/mcp-typography-server-resocket",
+      "html_url": "https://github.com/ToxicdawnhildPixel/mcp-typography-server-resocket",
+      "stars": 32,
+      "selected": false,
+      "reason": "疑似協同灌星群組的一員(同批 8 個倉庫之一,32 星、同一 6 分鐘窗口創建),README 抓取失敗(HTTP 404),無法進一步驗證實際功能與可行性,淘汰。"
+    },
+    {
+      "full_name": "UnderLich86514/build-html-ppt-rpocket-team",
+      "html_url": "https://github.com/UnderLich86514/build-html-ppt-rpocket-team",
+      "stars": 32,
+      "selected": false,
+      "reason": "疑似協同灌星群組的一員(同批 8 個倉庫之一,32 星、同一 6 分鐘窗口創建),README 抓取失敗(HTTP 404),無法進一步驗證實際功能與可行性,淘汰。"
+    },
+    {
+      "full_name": "YorEthereallab4497-alt/grand-tour-rpocket",
+      "html_url": "https://github.com/YorEthereallab4497-alt/grand-tour-rpocket",
+      "stars": 32,
+      "selected": false,
+      "reason": "疑似協同灌星群組的一員(同批 8 個倉庫之一,32 星、同一 6 分鐘窗口創建),topics 大量堆疊重複的 AI-agent/skill 關鍵字(疑似為搜尋曝光刻意灌入),README 抓取失敗(HTTP 404),淘汰。"
+    },
+    {
+      "full_name": "Cloudshred/prove-the-resp-ui",
+      "html_url": "https://github.com/Cloudshred/prove-the-resp-ui",
+      "stars": 32,
+      "selected": false,
+      "reason": "疑似協同灌星群組的一員(同批 8 個倉庫之一,32 星、同一 6 分鐘窗口創建),README 抓取失敗(HTTP 404),無法進一步驗證實際功能與可行性,淘汰。"
+    }
+  ]
+}
