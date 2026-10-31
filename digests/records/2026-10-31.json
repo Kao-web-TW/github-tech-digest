@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-31",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-29 stars:>=20 | topic:machine-learning created:>=2026-10-29 stars:>=20 | topic:llm created:>=2026-10-29 stars:>=20 | topic:ai-agent created:>=2026-10-29 stars:>=20 | topic:generative-ai created:>=2026-10-29 stars:>=20",
+  "notice": {
+    "lede": "今天的候選榜被「幫既有 CLI Agent 做前端/載體」的專案佔據，從手機、Windows 桌面到 Minecraft 都有人包一層介面給 Claude Code / Codex 之類的底層模型用。",
+    "body": "8 個候選裡有一半以上並非自己訓練或微調模型，而是圍繞著 Claude Code、Codex、DeepSeek 等既有模型/CLI 工具打造操作介面或執行環境（Mika 包成 Android 背景代理、Capri-AI 包成 Windows 桌面殼、minecraft-agent-harness 把多個模型接進 Minecraft 遊玩、NamiAgent 則是從零教你寫出同類 Agent loop）。另一端則是扎實的底層工程：nemotron-30b-cpu-256k 展示如何在純 CPU 上跑 30B 模型並做到 256K context，sapper-v2 是多 Agent 協作打 CTF 的競賽冠軍方案；protuna 則把類似的最佳化手法用到蛋白質工程這種非典型場域。值得提醒的是 Legion-os 這類打著「50+ Agent」「GPT-6／Claude 5.5／Gemini 4 Carbon」等不存在或誇大型號名稱、只提供打包執行檔而非可檢視原始碼的專案，數字缺乏佐證，本次判定為可疑行銷型 repo 而未入選。"
+  },
+  "candidates": [
+    {
+      "full_name": "wangzan101/Mika",
+      "html_url": "https://github.com/wangzan101/Mika",
+      "stars": 1257,
+      "selected": true,
+      "summary": "Android 上的個人 AI 助理：在背景隱藏畫面上操作手機 App、瀏覽網頁、跑本地 Linux sandbox 完成使用者的一句話指令，手機本身可照常使用。",
+      "tech": "Android Accessibility/背景畫面操作 + 內建桌面級瀏覽器 + 本地 arm64 Linux sandbox；模型走 BYOK，支援多家供應商 preset 及任何 OpenAI 相容 / Anthropic / Gemini / OpenAI Responses 端點，無 Mika 自己的伺服器中介。",
+      "feasibility": "有現成 APK 可直接安裝，也提供「讓電腦上的 AI 助手」透過 USB 調試自動完成安裝的腳本化流程；需 Android 11+（任務需 13+，建議 14+），sandbox 僅支援 arm64 裝置。",
+      "limits": "仍為公開 beta，變動快；sandbox 限 arm64；需自備模型 API Key；在手機背景自動操作 App 屬高權限行為，使用者需留意授權範圍。",
+      "reason": "功能完整、文件齊全（含雙語 README、設定指南）、star 數高且仍在快速迭代，是目前少見把 LLM agent 落地到手機背景自動化的成熟實作。"
+    },
+    {
+      "full_name": "boardshogunfluctuate/Capri-AI",
+      "html_url": "https://github.com/boardshogunfluctuate/Capri-AI",
+      "stars": 196,
+      "selected": true,
+      "summary": "Windows 桌面版「賽博朋克風」AI 代理殼層：作為 Claude Code、Codex、Antigravity 等既有 agent 引擎的桌面介面，讓使用者用自然語言在 PC 上操作檔案/專案/程式碼，不需開終端機。",
+      "tech": "原生 Windows 桌面 App（.exe 安裝程式），作為「引擎路由層」轉接 Claude Code / Codex / Antigravity 及自訂 adapter，工具層涵蓋檔案、shell、網頁存取，並保留使用者核准關卡。",
+      "feasibility": "提供 Windows 10+ 安裝程式，無需終端機操作，但仍需自備 Claude Code / Codex 等底層引擎的帳號或 API Key 才能運作。",
+      "limits": "僅支援 Windows；本質上是既有 CLI agent 的介面殼層而非獨立模型/引擎；為同人專案，與 CD PROJEKT RED 等品牌無關。",
+      "reason": "star 數成長快，提供一般使用者友善的圖形介面降低 Claude Code / Codex 類工具的操作門檻，具一定實用性，但技術深度主要在整合層而非底層能力。"
+    },
+    {
+      "full_name": "N1nEmAn/sapper-v2",
+      "html_url": "https://github.com/N1nEmAn/sapper-v2",
+      "stars": 112,
+      "selected": true,
+      "summary": "多 Agent 協作的自動化滲透測試框架：一個「指挥官」AI 讀取戰況並派遣多個「將軍/士兵」AI 並行攻擊，並以分層 fact-intent graph 累積團隊知識，曾在騰讯雲智能攻防挑戰賽（634 隊）奪冠。",
+      "tech": "以 tmux 開啟多個 Claude Code 之類的 AI 實例作為「個體」，透過輸入框互相傳話模擬通訊，並維護分層（標題/摘要/證據）事實圖譜保存團隊記憶，强调多 Agent 分工與知識傳承而非單一模型做大。",
+      "feasibility": "README 明確標示「僅限授權安全測試」並附 DISCLAIMER.md；本地可行性取決於能否部署多個 AI CLI 實例與 tmux 編排腳本，屬進階使用者/安全研究場景。",
+      "limits": "屬雙重用途安全工具，必須在授權範圍內使用（CTF/授權滲透測試）；對一般開發者的直接可用性有限，架構也偏向研究型、尚在演進中。",
+      "reason": "多 Agent 協作＋分層知識圖譜的架構設計具參考價值，且有競賽冠軍成績佐證有效性；README 已明確限定僅供授權安全測試場景，判定可收錄作為多 Agent 系統設計案例。"
+    },
+    {
+      "full_name": "unitshaperextol/Legion-os",
+      "html_url": "https://github.com/unitshaperextol/Legion-os",
+      "stars": 75,
+      "selected": false,
+      "reason": "淘汰（推測為誇大行銷型專案）：repo 體積僅 26KB 卻宣稱可協調「50+ 自主前沿模型」，引用的「GPT-6」「Claude 5.5」「Gemini 4 Carbon」等型號名稱無法查證、疑似杜撰，且主要發布形式是打包好的 .rar 執行檔而非可檢視建置的原始碼，數據（如 ~140ms 延遲）缺乏任何佐證或測試方法說明，可信度低。"
+    },
+    {
+      "full_name": "yc-software/minecraft-agent-harness",
+      "html_url": "https://github.com/yc-software/minecraft-agent-harness",
+      "stars": 67,
+      "selected": true,
+      "summary": "讓 LLM agent 透過 Mineflayer 在 Minecraft 伺服器中遊玩（走路、挖礦、建造、戰鬥、聊天），支援多模型、可長期保存 session 狀態，並能以 JSON 設定多 agent 組隊、互傳訊息。",
+      "tech": "Node.js + Mineflayer 操控遊戲，pi 負責模型 session 管理，支援 Claude、GPT、Gemini、OpenRouter 或任何相容 OpenAI Responses API 的端點；每個 agent 可配 Docker / E2B / 本地資料夾作為 shell 環境。",
+      "feasibility": "需 Node 22.19+、模型供應商 API Key、Minecraft 伺服器（內附開發用伺服器，需 Java 21）；提供清楚的 quickstart 指令，本地可行性高。",
+      "limits": "視覺能力仍屬實驗性；大規模多 agent（如 50 人同場）對運算與 API 成本要求高；仍依賴第三方 Mineflayer 專案的相容性。",
+      "reason": "文件完整、附 CI、範例（Bed Wars）齊全，是將多模型 LLM agent 應用在遊戲環境做團隊協作測試的紮實工程實作，技術含量與可重現性俱佳。"
+    },
+    {
+      "full_name": "synchopate/nemotron-30b-cpu-256k",
+      "html_url": "https://github.com/synchopate/nemotron-30b-cpu-256k",
+      "stars": 38,
+      "selected": true,
+      "summary": "純 CPU（無 GPU）在單台 AMD Zen 5 工作站上跑 30B MoE 模型並達到 256K context 的技術報告與實作，透過混合 Mamba-2 SSM 架構與多項底層最佳化大幅降低 KV cache 與記憶體頻寬需求。",
+      "tech": "基於 llama.cpp / ggml-cpu，搭配 Hybrid Mamba-2 SSM（NVIDIA Nemotron 3.5 Lightning 30B-A3B）、AVX-512 VNNI 權重重排、2MB HugePages、draftless 線性推測解碼等 8 項底層最佳化。",
+      "feasibility": "需特定高階硬體（AMD Ryzen 9 9955HX、64GB DDR5、Zen 5 雙 CCD）才能重現文中數據，一般消費級 CPU 難以完全複現，但技術手法本身可部分遷移到其他 AVX-512 平台。",
+      "limits": "高度依賴特定 CPU 微架構（Zen 5、64MB L3）；需自行套用/編譯最佳化後的 llama.cpp，非開箱即用套件；數據為單一硬體基準測試。",
+      "reason": "提供詳實的基準數據與技術原理說明，展示本地（無 GPU）執行大型 LLM 的可行路徑，對關注地端部署成本的開發者有直接參考價值。"
+    },
+    {
+      "full_name": "kumarshreshtha/protuna",
+      "html_url": "https://github.com/kumarshreshtha/protuna",
+      "stars": 37,
+      "selected": true,
+      "summary": "用於蛋白質工程反覆設計實驗的最佳化框架：從歷史突變資料或單一候選序列出發，自動提出下一批要測試的變異序列。",
+      "tech": "結合蛋白質語言模型導向生成（Feynman–Kac steering、classifier guidance、beam search）、貝氏最佳化與主動學習，並用 Ray 做分散式大規模篩選；另提供 AI coding agent 可讀的 skills plugin 輔助建置最佳化流程。",
+      "feasibility": "`pip install protuna` 即可安裝，附完整 API 文件（readthedocs）與 CI 測試，Python 3.12+ 可直接試用基本 pipeline 範例。",
+      "limits": "屬特定科學領域（蛋白質工程/生物工程）工具，一般開發者需具備該領域背景才能有效運用；大規模篩選仍需分散式運算資源。",
+      "reason": "工程成熟度高（CI、文件、PyPI 套件齊備），展示 AI/ML 技術（引導式生成＋主動學習）應用於蛋白質工程這類非典型但具產業價值的新興場域。"
+    },
+    {
+      "full_name": "aa1143/NamiAgent",
+      "html_url": "https://github.com/aa1143/NamiAgent",
+      "stars": 24,
+      "selected": true,
+      "summary": "零基礎入門 AI Agent 的教程專案，同時也是一個可在本地執行、附網頁端視覺化的真實 Agent：從 100 行最小 while 迴圈開始，逐課加入工具、權限、上下文管理、Skills、MCP、子 Agent、記憶等能力，最後拆解 Claude Code / Codex 的實作方式。",
+      "tech": "Python 3.10+，採 OpenAI 相容介面（預設 DeepSeek，可換模型），每課（lesson-01 至 lesson-11）皆為可獨立執行、可互相 diff 的完整程式碼快照；`python web/app.py` 可開網頁端即時查看每步思考與工具呼叫。",
+      "feasibility": "本地直接可跑，寫檔/執行指令前會先詢問使用者確認；從第 3 課起每課都有自動化測試（第 11 課累計 49 個），用假資料測試不需金錢成本。",
+      "limits": "主要定位是教學專案，功能完整度不如正式產品化的 Agent 框架；文件以中文為主。",
+      "reason": "以漸進式課程拆解 Agent 核心迴圈與各項能力的實作方式，附完整測試與可運行快照，對想理解 Claude Code / Codex 等主流 Agent 內部設計的開發者有高參考價值。"
+    }
+  ]
+}
