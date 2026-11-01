@@ -1,0 +1,106 @@
+{
+  "date": "2026-11-01",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-30 stars:>=20 | topic:machine-learning created:>=2026-10-30 stars:>=20 | topic:llm created:>=2026-10-30 stars:>=20 | topic:ai-agent created:>=2026-10-30 stars:>=20 | topic:generative-ai created:>=2026-10-30 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜很小（僅 11 個），但出現兩個方向相反的安全相關項目：一個是防禦性的 NAS 勒索軟體事件回應工具，另一個是明確用來移除模型安全對齊（abliteration）的工具。",
+    "body": "過去兩天內新建、star 數 20 以上且落在五個指定 topic 的 repo 只有 11 個，數量明顯偏少，可能是這兩天 GitHub 新專案成長本來就偏慢，也可能與 topic/star 門檻篩選較嚴有關。內容上今天出現兩個值得特別點出的安全相關項目：akari-sora/synology-nas-cli 是一個協助使用者稽核並修復 Synology NAS 以應對近期 C3RB3R/.L0CK3D 勒索軟體攻擊的工具，屬於防禦用途並已納入精選；相對地，Aevonix/FlashAlign 是明確用於移除開源模型安全對齊限制（abliteration）、讓模型回答原本會拒絕的請求的工具，官方示範甚至包含繞過拒答產生偽造證件類內容，屬於規避安全防護用途，本次不予收錄。另外也看到 boardshogunfluctuate/Capri-AI 這款包裝 Claude Code/Codex 的 Windows 閉源安裝檔在短時間內拿到 516 星，但原始碼不可見、僅提供執行檔安裝，基於可驗證性與資安考量本次同樣不予收錄。"
+  },
+  "candidates": [
+    {
+      "full_name": "boardshogunfluctuate/Capri-AI",
+      "html_url": "https://github.com/boardshogunfluctuate/Capri-AI",
+      "stars": 516,
+      "selected": false,
+      "reason": "閉源 Windows 安裝檔（.exe），包裝 Claude Code/Codex/Antigravity 做成桌面助理，原始碼不可檢視，新建 repo 短期內星數異常偏高，可驗證性與安全性存疑，不予收錄（推測：可能有行銷/導流操作）。"
+    },
+    {
+      "full_name": "N1nEmAn/sapper-v2",
+      "html_url": "https://github.com/N1nEmAn/sapper-v2",
+      "stars": 336,
+      "selected": true,
+      "summary": "多代理自動化滲透測試框架：一個「指揮官」代理負責讀盤與調度，多個「將軍/士兵」代理平行攻擊，另有看門狗代理維持存活，所有代理共享分層事實圖譜記憶，個體可被取代但知識持續累積；曾在騰訊第三屆雲端智能攻防挑戰賽線上賽奪冠。",
+      "tech": "透過 tmux 自動化操控多個 Claude Code 實例（模擬人類打字操作 CLI）互相通訊，並以分層（標題/摘要/證據）事實-意圖圖譜取代單一字串記憶，降低錯誤資訊污染與 context 消耗。",
+      "feasibility": "需自行架設 tmux 環境與可用的 Claude/模型存取額度，文件完整但屬於進階自動化腳本組合，非一般使用者可直接套用；明確聲明僅限已授權的安全測試場景使用。",
+      "reason": "技術路線新穎（多代理分工+共享記憶取代單一超級代理），且有具體競賽成績佐證，並有清楚的「僅限授權測試」聲明，選入精選。"
+    },
+    {
+      "full_name": "tavern-labs-ai/persona-ai-sdk",
+      "html_url": "https://github.com/tavern-labs-ai/persona-ai-sdk",
+      "stars": 191,
+      "selected": true,
+      "summary": "TypeScript SDK，將「人格卡」（persona，含 prompt/性格/開場白）與跨對話持久記憶（擷取、溯源、整合、可見度、回憶、生命週期）、模型層、儲存層、介面層拆成五個可替換的獨立模組，並內建 8 組預設人格與 SillyTavern 相容介面。",
+      "tech": "Node.js 20+、TypeScript，模型層支援 OpenAI Responses API 與 Amazon Bedrock，儲存可選 In-memory/原子 JSON/SQLite（better-sqlite3）。",
+      "feasibility": "已發布至 npm（persona-ai-sdk），本地安裝門檻低，但需要 OpenAI API key 或 AWS Bedrock 權限才能實際產生回應。",
+      "reason": "把常被混在一起的「人格設定」與「長期記憶」明確拆層、模型與儲存皆可替換，架構設計清楚且已可透過 npm 直接安裝使用，選入精選。"
+    },
+    {
+      "full_name": "aa1143/NamiAgent",
+      "html_url": "https://github.com/aa1143/NamiAgent",
+      "stars": 93,
+      "selected": true,
+      "summary": "零基礎入門 AI Agent 的教學專案，從 100 行的最小 while 迴圈開始，每課新增一項能力（工具系統、權限分級、上下文管理、Skills、接入聊天軟體、MCP、子代理、計劃模式、長期記憶），最後再拆解 Claude Code、Codex 等主流 Agent 的實作方式；同時附帶一個可在本地直接跑、有網頁端可視化每一步思考與工具呼叫的真實 Agent。",
+      "tech": "純 Python，只依賴官方 openai 套件（不綁定任何 Agent 框架），預設接 DeepSeek，相容任何 OpenAI 相容介面；第 3 課起每課都有用假模型跑的測試，不需要 API Key 即可驗證程式碼。",
+      "feasibility": "門檻非常低：`python web/app.py` 即可啟動網頁端，每一課都是獨立可執行的程式碼快照，可直接運行或與前一課比對差異；文件以中文為主。",
+      "reason": "從零手刻 Agent 核心概念、循序漸進且每課皆可執行驗證，對理解 Claude Code/Codex 等工具底層原理很有教育價值，選入精選。"
+    },
+    {
+      "full_name": "gh9ko8y/graphmemory",
+      "html_url": "https://github.com/gh9ko8y/graphmemory",
+      "stars": 60,
+      "selected": true,
+      "summary": "給 AI 代理用的「雙時態」長期記憶服務：每條事實同時記錄「有效時間」與「記錄時間」，並以六個變數（意義/細節/檢索難度/情緒/巩固/干擾）模擬記憶隨時間自然衰減（降級而非直接刪除），搭配時間梯度、TTL 到期、語意去重與競爭式檢索機制。",
+      "tech": "基於 Graphiti（時序知識圖譜）疊加 Neo4j（實體關係）+ PostgreSQL/pgvector（雙時態事實台帳、原文帳本）+ Redis（快取），對外提供內建 MCP server、REST API 與極簡 Web GUI。",
+      "feasibility": "需要 Docker Compose 啟動 Neo4j/PostgreSQL/Redis 三個服務再跑 FastAPI 主程式，屬中等複雜度的多服務部署，文件以中文為主但步驟完整。",
+      "reason": "用「雙時態 + 六變量衰減」把記憶的遺忘/鞏固機制做得比常見向量記憶方案更細緻，且直接提供 MCP 介面可被任意支援 MCP 的代理呼叫，選入精選。"
+    },
+    {
+      "full_name": "Aevonix/FlashAlign",
+      "html_url": "https://github.com/Aevonix/FlashAlign",
+      "stars": 59,
+      "selected": false,
+      "reason": "此工具的目的是對開源模型做 abliteration（移除安全對齊/拒答機制），官方示範甚至展示繞過模型拒答生成疑似偽造證件類內容；屬於規避安全防護用途的雙用工具，不予收錄。"
+    },
+    {
+      "full_name": "glincker/awesome-selfhosted-ai",
+      "html_url": "https://github.com/glincker/awesome-selfhosted-ai",
+      "stars": 48,
+      "selected": false,
+      "reason": "本質是一份自動健康檢查、持續更新的「精選清單」（curated list）網站，收錄 308 個自架 AI 專案的連結與一句話介紹，並非單一可執行的工具或整合項目，與本次每日精選「新興工具」的定位不符，故不選入；但其收錄範圍可作為觀察生態系的參考資源。"
+    },
+    {
+      "full_name": "ProphetTitanhub21008/prove-the-resp-ui",
+      "html_url": "https://github.com/ProphetTitanhub21008/prove-the-resp-ui",
+      "stars": 43,
+      "selected": false,
+      "reason": "README 無法取得（raw.githubusercontent.com 回傳 404），無法判讀其實際功能、技術與可行性，故不選入。"
+    },
+    {
+      "full_name": "akari-sora/synology-nas-cli",
+      "html_url": "https://github.com/akari-sora/synology-nas-cli",
+      "stars": 27,
+      "selected": true,
+      "summary": "零依賴的 Python CLI 與 stdio MCP server，專門稽核並修復 Synology DSM 7 設備，針對 2026 年 10 月針對曝露在網路上的 Synology NAS 的 C3RB3R/.L0CK3D 勒索軟體攻擊活動（對應 Synology-SA-24:20、SA-26:13、SA-26:14 公告）提供一鍵稽核、唯讀事件審查、產生修復計畫（dry-run 顯示 before/after）、套用修復與事後複查的完整流程，並提供可直接交給 Claude Code/Codex/Cursor 等 AI agent 執行的 runbook。",
+      "tech": "純 Python 標準庫（3.8+，可直接在 DSM 上執行），呼叫 Synology DSM 7 Web API，內建 stdio MCP server 讓任何支援 MCP 的代理可直接調用，並支援排程健康告警推送至 webhook。",
+      "feasibility": "安裝門檻低（零第三方依賴），但實際修復動作會變更 NAS 上的真實設定（防火牆、QuickConnect、SMB 協定、帳號、快照排程等），需要謹慎審閱 dry-run 計畫後才套用；非 Synology 官方產品。",
+      "reason": "直接回應真實發生中的勒索軟體攻擊事件，提供唯讀稽核與可審閱的修復計畫流程（防禦型資安用途），並示範了 AI agent 自動化居家/中小企業資安維運的具體場景，選入精選。"
+    },
+    {
+      "full_name": "stdlogits/neuron-lens",
+      "html_url": "https://github.com/stdlogits/neuron-lens",
+      "stars": 24,
+      "selected": true,
+      "summary": "可解釋性研究專案：用三種方式（僅從權重用 Jacobian 類「透鏡」、在 1500 萬 token 真實文本上的實際激活統計、驅動神經元的確切 token）解讀 Qwen3-8B 與 Gemma 4 12B 兩個開源模型裡每一個 MLP 神經元與注意力頭的作用，Gemma 4 另外涵蓋圖像與聲音模態，並把結果整理成公開可查詢的神經元/注意力頭語意目錄。",
+      "tech": "基於 logit lens 延伸出的 R-lens / S-lens（在 RelP 傳播規則下線性化模型後續層的 Jacobian），搭配大規模激活統計；透鏡權重與目錄資料皆發布於 Hugging Face（stdlogits/rs-lenses、stdlogits/neuron-lens）。",
+      "feasibility": "本身是研究產出的資料集與分析方法，而非一個可直接部署的服務；若要重現分析需要能載入 Qwen3-8B / Gemma 4 12B 等級模型並跑過大規模語料的運算資源，但目錄與透鏡權重可直接從 Hugging Face 下載查詢，不需重新跑實驗即可使用。",
+      "reason": "少見的、對兩個具體開源模型做大規模逐神經元/逐注意力頭語意標註的可解釋性研究，方法論（R-lens/S-lens）與產出的公開目錄對理解模型內部機制有實用價值，選入精選。"
+    },
+    {
+      "full_name": "Currentliunderpass/forge-agent",
+      "html_url": "https://github.com/Currentliunderpass/forge-agent",
+      "stars": 23,
+      "selected": false,
+      "reason": "README 內容過於簡略（僅功能條列式口號，無安裝、使用方式或架構說明），無法實際判讀技術細節與可行性，故不選入（推測：專案可能仍在早期階段）。"
+    }
+  ]
+}
