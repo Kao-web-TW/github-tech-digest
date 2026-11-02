@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-02",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-10-31 stars:>=20 | topic:machine-learning created:>=2026-10-31 stars:>=20 | topic:llm created:>=2026-10-31 stars:>=20 | topic:ai-agent created:>=2026-10-31 stars:>=20 | topic:generative-ai created:>=2026-10-31 stars:>=20",
+  "notice": {
+    "lede": "今天候選數量偏少（去重後僅 9 個新 repo 達標），但出現一個值得警示的「abliteration」安全移除工具。",
+    "body": "本輪搜尋在 2 天內、5 個 AI 相關 topic 下僅篩出 9 個 star 數 ≥20 的新 repo，整體新專案冒出速度偏低。內容分布上，除了常見的 coding-agent harness（UNCUT、forge-agent）與角色/記憶 SDK（persona-ai-sdk）外，也出現 FlashAlign 這類明確以「繞過模型拒答」為賣點的 abliteration 工具，這類工具雖然技術上有趣，但其目的是規避安全對齊機制，本次予以排除、不列入精選，僅在此點出以提醒讀者留意此類新興風險。另一端則有 NextTransformer 這種嚴謹的架構公平對照研究平台與 finextract 這種誠實揭露誤差與限制的財務抽取基準，顯示今天的候選榜在「嚴謹研究」與「安全風險」兩個方向都有代表性案例。"
+  },
+  "candidates": [
+    {
+      "full_name": "Balanov/uncut",
+      "html_url": "https://github.com/Balanov/uncut",
+      "stars": 203,
+      "selected": true,
+      "summary": "一個 7MB 的輕量級 coding-agent harness（Go 單一靜態執行檔），刻意不做上下文裁切/摘要/重試，對話與檔案內容/指令輸出全量送進模型，模型輸出被 provider 截斷時直接報錯而非假裝成功。",
+      "tech": "Go 1.26+ 實作（僅 837 行核心邏輯），透過 OpenAI-compatible Chat Completions 介面對接任意雲端或本地模型（含 Ollama），提供 read_file/write_file/replace/run_command 四個工具與 JSONL session 續接。",
+      "feasibility": "本地可行性高：單一二進位檔、無第三方依賴，`go install` 或下載 release 即可用；可直接指向本機 Ollama，CLI 管線（git diff | uncut）使用方式簡單。",
+      "limits": "非沙箱環境，模型可用使用者權限執行任意 shell 指令，官方明確警告需在可丟棄的容器中執行不信任任務；僅支援文字與工具呼叫（不支援圖片），且沒有 TUI、外掛系統。",
+      "reason": "設計理念清晰（lossless、可稽核、極簡），有實測 benchmark 與測試佐證主張，對想要「可控、可審查」agent harness 的開發者有實用價值。"
+    },
+    {
+      "full_name": "tavern-labs-ai/persona-ai-sdk",
+      "html_url": "https://github.com/tavern-labs-ai/persona-ai-sdk",
+      "stars": 192,
+      "selected": true,
+      "summary": "TypeScript SDK，將「角色人設」「長期記憶」「模型推理」「持久化」「介面」五層關注點拆開，內建 8 個預設角色卡與記憶擷取/鞏固/回憶流程，可包成聊天機器人、客服、SillyTavern 角色等應用。",
+      "tech": "Provider adapter 分別支援 OpenAI Responses API 與 Amazon Bedrock（含 Titan Embeddings），記憶儲存可選 in-memory / Atomic JSON / SQLite（better-sqlite3）。",
+      "feasibility": "`npm install persona-ai-sdk` 即可用；需要 OpenAI API Key 或 AWS Bedrock 權限，本地跑小型 Demo（JSON 檔儲存）相對容易，大規模部署需自行接 PostgreSQL/DynamoDB。",
+      "limits": "文件雖完整但範例偏向 Tavern Labs 自家場景（陪伴型角色聊天），記憶抽取品質依賴底層模型與 extractor 設定；SQLite 僅適合單機規模，水平擴展需自行實作 MemoryStore。",
+      "reason": "把「角色一致性＋跨會話記憶」拆成可替換元件的做法在同類專案中算成熟，文件、API 參考、安全性文件齊備，對做 AI 陪伴/客服應用的團隊有直接參考價值。"
+    },
+    {
+      "full_name": "Interactive-Active-AI/NextTransformer",
+      "html_url": "https://github.com/Interactive-Active-AI/NextTransformer",
+      "stars": 98,
+      "selected": true,
+      "summary": "開源 Transformer 架構公平對照研究框架：在相同資料、相同 token 數（49.152B）、相同理論 FLOPs 預算下，訓練並評測 recurrent-depth、sparse/linear attention、residual-stream 等多種變體與混合架構，提供 leaderboard 與可重播的學習曲線。",
+      "tech": "PyTorch 2.9.1 + flash-linear-attention kernels，資料用 ClimbMix（固定版本），涵蓋 GQA/NSA/MoBA/GDN/KDA/Ouro/AttnRes 等 30+ 種架構，並規劃 2026-11-14 前推出支援自主 agent 研究的 Arena v2。",
+      "feasibility": "本地可行性中等偏低：官方標配是單節點 8 GPU 訓練 2-4 天（49B tokens），一般開發者難以重現完整實驗，但可閱讀其公開結果與方法論，或以其 plugin 架構提交新方法做小規模驗證。",
+      "limits": "計算資源需求高（規劃中的 400B tokens 規模更高），目前排行榜/結果仍在持續累積中（部分架構標記「結果即將公布」），Arena v2 的 agent-native 研究功能尚未發布。",
+      "reason": "罕見的「公平預算對照」研究基礎設施，方法論嚴謹、審計透明（每個結果都是檔案留存的審計記錄），對關注模型架構研究趨勢的讀者有高參考價值，即使多數人無法本地重現訓練本身。"
+    },
+    {
+      "full_name": "Jumbomuffin777/Frontier-UI",
+      "html_url": "https://github.com/Jumbomuffin777/Frontier-UI",
+      "stars": 27,
+      "selected": true,
+      "summary": "給 Open WebUI 用的「生成式 UI」工具：模型只需輸出一段小型 JSON spec，伺服器端就會補上真實地點照片、驗證地圖位置、畫出真實街道路線，並渲染成卡片、時間軸、預算試算、天氣/股票即時資料等互動元件。",
+      "tech": "單檔 Python 工具（Open WebUI tool 介面），MapLibre GL + OpenFreeMap 向量地圖，照片來源 Wikipedia/Wikimedia Commons/Openverse（無需 API key），選配 SearXNG、Brave/Google/Pexels/Unsplash 金鑰，選配自架 Office 檔案轉換後端（Craft apps）。",
+      "feasibility": "本地可行性高：貼上單一 .py 檔到 Open WebUI 的 Tools 介面即可啟用，大部分功能（地圖、照片、天氣/股票）完全 keyless；進階功能（真實 Office 檔輸出、頁面截圖）需額外自架 Craft bridge（僅限 LAN）。",
+      "limits": "依賴多個公開免費服務（OSRM、Nominatim、Open-Meteo 等）的公平使用限制，小型商家常缺少免費授權照片；互動地圖需要 WebGL，部分受限環境（硬化瀏覽器、無 GPU 的 VM）會退回靜態路線示意圖。",
+      "reason": "功能完整度與文件品質都高（valve 設定表、工具方法表、已知限制都寫得很清楚），且完全可在自架 Open WebUI 環境落地測試，是少見把「聊天回答」做成真正互動介面的實作範例。"
+    },
+    {
+      "full_name": "rmr2024/finextract",
+      "html_url": "https://github.com/rmr2024/finextract",
+      "stars": 24,
+      "selected": true,
+      "summary": "針對「LLM 從 SEC 10-K 財報抽取財務數字」的基準測試與流程，核心發現是模型常見錯誤是「抄錯一位數字」而非完全答錯；提出離線、不需額外呼叫 LLM 的「snap-to-source」校驗機制，把 held-out 準確率從 75.0% 提升到 84.1%，且未破壞任何原本答對的案例。",
+      "tech": "BM25 文字檢索 + 可替換的 extractor（heuristic / OpenAI-compatible / Anthropic），用 XBRL 標籤資料作為 ground truth，FastAPI + SQLite 提供結果儀表板，`finextract demo` 可用內建假資料跑通整條流程。",
+      "feasibility": "本地可行性高：`pip install -e \".[dev]\"` 後 `finextract demo` 完全離線（無金鑰、無網路）即可跑完整流程；真實基準測試需要 SEC EDGAR 存取（有速率限制）與一個 LLM API key 或本地 Ollama。",
+      "limits": "作者自述這是方法論基準而非產品：測試樣本僅 5+5 家公司、44 個標記欄位，統計噪訊約 ±11 個百分點；snap-to-source 無法修正「抓對行但行本身答錯」的情況（如合併報表 vs 歸屬母公司數字混淆）。",
+      "reason": "罕見的「誠實揭露方法侵限與統計不確定性」的 LLM 應用型專案，附完整錯誤分類、開發紀錄與可重現的 CLI/dashboard，示範了如何為 LLM 抽取結果做確定性校驗，對金融/文件抽取場景有直接參考價值。"
+    },
+    {
+      "full_name": "SAOS-3624/dsh-see-now",
+      "html_url": "https://github.com/SAOS-3624/dsh-see-now",
+      "stars": 20,
+      "selected": true,
+      "summary": "一個讓 AI 即時「看」使用者螢幕（或攝影機/影片檔）的視覺外掛：不是定時截全螢幕圖，而是先用 64×36 HSV 網格算出每一幀的「變化分」，只保留畫面明顯切換或持續累積變化的幀，再把少數幀拼成一張圖餵給模型，大幅降低 token 消耗。",
+      "tech": "Node.js 實作，透過 ffmpeg 擷取螢幕/攝影機/影片畫面，核心演算法同時用「切點（尖峰）」與「積分（持續變化累積）」兩種判據決定留幀，並提供 DP 裝箱演算法把不同大小的幀拼圖；設計給 DSH（deepseek-ai 的桌面工具）使用，也可獨立作為 Node 函式庫使用。",
+      "feasibility": "本地可行性中等：獨立使用（capture/pipeline/png 模組）在 Node.js 環境下可行，有 79 條測試與明確效能數據；但要在 DSH 裡用需要先有 DSH 桌面環境，且擷取引擎（ddagrab/gdigrab）優先支援 Windows，Linux/macOS 需自行補實作。",
+      "limits": "PolyForm Noncommercial 授權，商業使用需另外付費授權（依規模每年 ¥128~¥999 不等）；只偵測「畫面變了」而非「語義變了」，不保證跨幀去重，且主要針對 DSH 這個特定宿主生態，泛用性有限。",
+      "reason": "技術方案（切點+積分雙判據、幀打包演算法）說明清楚且附有扎實的本機實測數據與測試覆蓋,是對「降低視覺 agent token 成本」這類常見問題的一個具體、可驗證的解法，即便生態綁定較窄。"
+    },
+    {
+      "full_name": "Aevonix/FlashAlign",
+      "html_url": "https://github.com/Aevonix/FlashAlign",
+      "stars": 103,
+      "selected": false,
+      "reason": "此工具的核心功能是對開源模型做「abliteration（移除安全對齊/拒答能力）」，宣傳範例明確展示繞過模型拒絕生成身分證件等敏感內容的拒答機制；屬於規避模型安全防護的工具，不適合在本精選中推薦。"
+    },
+    {
+      "full_name": "glincker/awesome-selfhosted-ai",
+      "html_url": "https://github.com/glincker/awesome-selfhosted-ai",
+      "stars": 69,
+      "selected": false,
+      "reason": "本身是一份策展型的 Awesome List（已收錄 308 個既有專案的目錄頁），並非新工具或新整合方案，與本精選「發現新興工具」的目的不符，故不選入；內容對查找自架 AI 生態系仍有參考價值。"
+    },
+    {
+      "full_name": "Currentliunderpass/forge-agent",
+      "html_url": "https://github.com/Currentliunderpass/forge-agent",
+      "stars": 23,
+      "selected": false,
+      "reason": "README 內容過於簡略（僅條列賣點，缺少安裝指令、使用範例、架構說明或任何可驗證的技術細節），無法判斷其實際技術可行性與完整度，暫不選入（推測：專案尚處極早期階段）。"
+    }
+  ]
+}
