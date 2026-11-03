@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-03",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-01 stars:>=20 | topic:machine-learning created:>=2026-11-01 stars:>=20 | topic:llm created:>=2026-11-01 stars:>=20 | topic:ai-agent created:>=2026-11-01 stars:>=20 | topic:generative-ai created:>=2026-11-01 stars:>=20",
+  "notice": {
+    "lede": "候選量比平時小（5 個 topic 合計僅 8 筆過濾後去重結果），但品質偏高：本機/自架可行性強的工具（CLI agent harness、MCP 伺服器、推論引擎）佔多數。",
+    "body": "這次視窗（created:>=2026-11-01，近 2 天、star>=20）候選數量明顯偏少，可能是時間窗口較短加上高星門檻的自然結果，而非候選枯竭。入選的 6 個項目中有 3 個是「單一可執行檔/可直接跑」的基礎設施型工具（uncut、Speedy、leis-mcp），顯示本輪新興專案偏向工具鏈而非應用層 demo。另外本輪候選中出現 2 個與 AI 技術相關但不適合推薦的項目：一個是純文件/行銷倉庫（為付費第三方『無審查』LLM API 做導流，無實際原始碼實作），另一個是自動化帳號農場工具（用拋棄式信箱、代理輪替與自動化驗證繞過規避免費額度的濫用防護），兩者都標記為淘汰並說明理由，不納入精選。"
+  },
+  "candidates": [
+    {
+      "full_name": "Balanov/uncut",
+      "html_url": "https://github.com/Balanov/uncut",
+      "stars": 571,
+      "selected": true,
+      "summary": "極簡的無頭（headless）coding agent harness：單一 7MB 靜態編譯的 Go 執行檔，只有 4 個工具（read_file/write_file/replace/run_command），走 stdin/stdout，刻意不做摘要、不做上下文裁剪——プロバイダ回應被截斷時直接回報錯誤而非悄悄吞掉。",
+      "tech": "Go 實作（約 837 行核心邏輯），相容 OpenAI Chat Completions 協定（含本地 Ollama 等 OpenAI-compatible 端點），支援 append-only JSONL session 續接對話、`--json` 輸出 NDJSON 事件流。",
+      "feasibility": "本機可行性高：下載單一執行檔即可用，或 `go install` 安裝；需自備 API key 或本地模型端點（如 Ollama）。無 TUI、無背景執行、無沙箱——README 明確警示它不是沙箱，shell 指令以使用者權限直接執行，應在可拋棄的容器/環境中跑不信任的任務。",
+      "limits": "僅支援文字與工具呼叫，不支援圖片；不會延伸模型的 context window，超出 provider 限制時只會明確報錯而非降級；工具呼叫行為依賴模型本身能力。",
+      "reason": "文件清晰、測試完整（含 lossless 契約的可重現驗證腳本與量測紀錄），定位明確且與同類工具差異化（刻意不做常見的上下文裁剪/摘要），star 數也最高，入選。"
+    },
+    {
+      "full_name": "SAOS-3624/dsh-see-now",
+      "html_url": "https://github.com/SAOS-3624/dsh-see-now",
+      "stars": 161,
+      "selected": true,
+      "summary": "給 DSH（DeepSeek 桌面助理生態）用的即時視覺外掛：持續擷取螢幕/攝影機/影片畫面，用 HSV 變化分在 64×36 網格上判斷「畫面是否值得傳給模型」，只把變化夠大或累積夠久的幾個畫面拼成一張圖再送給模型，大幅降低 token 消耗。",
+      "tech": "Node.js，透過 ffmpeg 擷取（Windows 用 ddagrab/gdigrab、macOS 用 avfoundation），自製切點判定（尖峰門檻+不應期）與積分判定（持續變化累積）雙重演算法決定留幀，DP 裝箱演算法拼圖。",
+      "feasibility": "需先安裝 DSH 並透過 `dsh plugin` 安裝；也可脫離 DSH 當獨立 Node 函式庫使用（capture/pipeline/png 皆為獨立 export）。macOS 需另外授權「螢幕錄製」權限，權限未給時會靜默回傳全黑畫面，插件會偵測並提示。",
+      "limits": "僅支援 Windows 與 macOS，Linux 尚未實作（x11grab/PipeWire 未補）；只偵測「畫面有沒有變」而非語義變化，可能漏判內容不同但視覺相近的畫面；內建 87 條測試，但生態綁定 DSH（非廣泛通用工具）。",
+      "reason": "技術方案（雙判據留幀+token 成本換算）記錄詳盡、有實測數據與已知限制誠實揭露，是少見把『AI 即時看螢幕』的 token 成本問題講清楚並給出可驗證方案的專案，入選；缺點是生態綁定較窄（DSH 專用插件），故列為中等優先。"
+    },
+    {
+      "full_name": "UncensoredLabs/uncensored-ai-api",
+      "html_url": "https://github.com/UncensoredLabs/uncensored-ai-api",
+      "stars": 92,
+      "selected": false,
+      "reason": "淘汰。此倉庫只是付費第三方託管服務（UncensoredLabs，主打『無審查/abliterated』模型 API）的官方文件與範例集合，README 明確說明『託管平台的實作不包含在此』——沒有可本機部署或可行性評估的實際原始碼，本質是導流到付費商業服務的行銷文件，不符合本精選『可評估的開源 AI 整合工具』的篩選標準，且其行銷重點之一（繞過模型拒絕行為、鼓勵『困難題材』創作）也不是我們想推廣的方向。"
+    },
+    {
+      "full_name": "Jumbomuffin777/Frontier-UI",
+      "html_url": "https://github.com/Jumbomuffin777/Frontier-UI",
+      "stars": 51,
+      "selected": true,
+      "summary": "給 Open WebUI 用的「生成式 UI」工具：模型只需輸出一小段 JSON spec，伺服器端就會補齊真實照片（Wikipedia/Commons/Openverse）、地圖與街道路線（MapLibre+OpenFreeMap/OSRM）、天氣/股匯即時資料、Office 檔案匯出等，渲染成卡片直接嵌在對話裡，取代純 Markdown 回覆。",
+      "tech": "單檔 Python 工具（由 src/ 多個部件建置而成），前端用 MapLibre GL、CSP sandbox 的 HTML/JS；多個區塊型別（map/timeline/budget/weather/stock/chart 等）對應不同資料來源；可選串接自架 Craft 系列開源 Office 轉檔服務。",
+      "feasibility": "本機可行性高且門檻低：多數功能完全不需要 API key（Wikipedia/Commons/Openverse/Open-Meteo/Yahoo Finance 等皆為免費端點），只要有 Open WebUI ≥0.6 環境貼上單一檔案即可用；進階功能（更大圖片覆蓋率、自架地圖、Office 檔案真實匯出）為選配加值。",
+      "limits": "依賴多個第三方公開服務的免費額度與可用性（有限流風險，已有快取與備援機制緩解）；互動地圖需要 WebGL，否則退化成靜態路線示意圖；部分連結開啟行為受 Open WebUI 的 iframe sandbox 限制，需要管理員調整設定才能完全順暢。",
+      "reason": "功能完整度高、文件與設定表格詳盡、且刻意走『零金鑰』路線降低使用門檻，對已經在用 Open WebUI 的使用者有明確即插即用價值，入選。"
+    },
+    {
+      "full_name": "weir36/novel-config-copilot",
+      "html_url": "https://github.com/weir36/novel-config-copilot",
+      "stars": 27,
+      "selected": true,
+      "summary": "面向網文平台編輯的資源配置決策系統示範專案：把政策文件結構化成知識圖譜，用兩階段 GraphRAG 檢索＋ReAct Agent（7 個工具）做多步推理，再用確定性規則引擎（R001~R004）兜底校驗配置方案是否違反依賴/互斥規則。",
+      "tech": "Python/FastAPI；向量檢索（FAISS，可降級 numpy）、關鍵詞檢索（Elasticsearch BM25，可降級 rank_bm25）、知識圖譜（Neo4j，可降級 networkx）、會話狀態（Redis，可降級記憶體 LRU），LLM 走任意 OpenAI-compatible 端點或離線 MockLLM。",
+      "feasibility": "`make demo` 可在無 API key 情況下跑完整離線評測（用 MockLLM 佔位）；要接真實 LLM 需自備 OpenAI-compatible 金鑰。所有外部依賴都有本地降級模式，個人機器可跑完整 pipeline，但生產形態元件（Neo4j/Redis/Elasticsearch）需额外 `make up`。",
+      "limits": "作者誠實列出多項限制：語料規模小（僅 6 篇政策文件、16 個配置項）、文件本身是自己與 AI 所寫（關係抽取指標偏樂觀）、端到端樣本量太小（方案合法率差距在統計上不顯著）、追問識別靠規則判斷準確率僅 0.75。專案聲明為個人練習項目、非真實平台資料。",
+      "reason": "雖是示範/練習型專案而非生產工具，但罕見地附上完整可重現評測報告、消融實驗與誠實的已知限制清單，GraphRAG+Agent+規則引擎兜底的架構設計具參考價值，入選作為架構示範類代表。"
+    },
+    {
+      "full_name": "DevDock-AI/Speedy",
+      "html_url": "https://github.com/DevDock-AI/Speedy",
+      "stars": 24,
+      "selected": true,
+      "summary": "針對消費級 RTX 3080 10GB 顯卡調校的大模型推理引擎（Strata 的 fork），讓 125B MoE 模型（Qwen3.8-Flash-Next）能在一張或兩張 3080 上以 229K 原生上下文、甚至 1M token 分層模式運行，每項優化都附帶同視窗 A/B 測試與品質閘門把關。",
+      "tech": "C++/CUDA（基於 llama.cpp/ggml 家族的 Strata），OpenAI/Anthropic 相容的 serve/server.py；支援多顯卡 layer-split、推測解碼（MTP）、llama-swap 多量化版本共享埠號。",
+      "feasibility": "本機可行性中等偏高：需要 Ampere 架構以上 NVIDIA GPU（RTX 30/40/50 系列），提供針對 RTX 3080 的現成 preset 設定檔，單卡即可跑較低量化版本；AMD 走 HIP 後端可編譯但未經作者實測。需要 CUDA 開發環境與約 60-120GB 磁碟空間存放量化模型。",
+      "limits": "所有效能數據僅在作者自有的 RTX 3080 硬體上量測，其他顯卡未經驗證；最佳效能依賴第三方核心層解鎖工具（gpu-unlock，非必需但有明顯加速）；Windows 效能低於 Linux 基準；僅為單一硬體世代調校，泛化性需社群貢獻驗證。",
+      "reason": "罕見地在消費級硬體限制下做到有憑有據的效能工程（附完整量測方法、硬體規格、品質閘門與對照實驗），對自架大模型、預算有限的開發者有直接參考價值，入選。"
+    },
+    {
+      "full_name": "mazulo/leis-mcp",
+      "html_url": "https://github.com/mazulo/leis-mcp",
+      "stars": 23,
+      "selected": true,
+      "summary": "巴西法律文本 MCP 伺服器，讓 Claude Code/Claude Desktop 等 MCP 客戶端直接查詢並引用超過 120 萬筆巴西法規（CLT、CDC、LGPD、憲法等）的官方原文，附帶來源連結與廢止/修訂警示，避免模型憑記憶複述法條內容。",
+      "tech": "Python 3.12+，PyPI 套件發佈，MCP stdio/HTTP 雙傳輸；用 `git clone --filter=blob:none --sparse` 輕量取得法規倉庫樹狀結構建 SQLite 索引，內容按需從 raw.githubusercontent.com 下載並以 blob hash 校驗、本地快取。",
+      "feasibility": "本機可行性高：`uvx leis-mcp index` 一行指令建索引（約 1 分鐘），`claude mcp add` 一行指令掛載，純讀取不修改來源倉庫；另提供 Docker compose 與 HTTP 傳輸選項。",
+      "limits": "全文檢索僅限已快取的法規（無法對全部 120 萬筆做語意搜尋/embedding）；文本為官方來源的自動轉檔/OCR 結果，可能有轉換誤差，不能取代官方公報；廢止狀態偵測依賴來源庫的 metadata 與文本內注記，無獨立時效性驗證。",
+      "reason": "文件完整（含架構圖、範例回應、已知限制、測試說明），解決『模型憑記憶編造法條』的具體真實痛點，安裝流程簡單且對 Claude Code 使用者直接相關，入選。"
+    },
+    {
+      "full_name": "ImRevoltexee/gonka-autoinject",
+      "html_url": "https://github.com/ImRevoltexee/gonka-autoinject",
+      "stars": 20,
+      "selected": false,
+      "reason": "淘汰。此專案是自動化『帳號農場』工具：用拋棄式信箱大量註冊帳號、自動求解 Turnstile 驗證碼、依代理輪替規避單一 IP 的註冊限流，批量取得 GonkaRouter 的免費模型配額金鑰再灌入自架路由器——核心用途是規避服務方的濫用防護機制（反機器人驗證、per-IP 限流），屬於服務濫用/規則繞過類自動化工具，不適合作為正面推薦的 AI 整合工具收錄。"
+    }
+  ]
+}
