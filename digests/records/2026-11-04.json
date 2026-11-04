@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-04",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-02 stars:>=20 | topic:machine-learning created:>=2026-11-02 stars:>=20 | topic:llm created:>=2026-11-02 stars:>=20 | topic:ai-agent created:>=2026-11-02 stars:>=20 | topic:generative-ai created:>=2026-11-02 stars:>=20",
+  "notice": {
+    "lede": "候選池本身不大（去重後僅 7 筆），其中混入一筆濫用服務條款的帳號刷取工具與一筆以 AI 聊天為介面的加密代幣分發專案，兩者都在分析階段被剔除。",
+    "body": "今天 5 個 topic 合併去重後只有 7 個候選，數量偏少，顯示近兩天內新建立且達到 20 星門檻的 repo 本來就不多。值得注意的是候選中出現 gonka-autoinject（自動化繞過人機驗證、批量申請免費帳號以刷取 API 配額並灌入路由器）與 askglyph（以 AI 聊天角色驅動的 $GLYPH 代幣與鏈上 NFT 發放專案），兩者雖然都掛上了 AI 相關 topic，但核心價值並非「可被工程師複用的 AI 整合技術」，而是服務條款濫用自動化與加密貨幣投機發放機制，因此本次精選將其排除，僅保留技術本身可學習、可複用的 5 個項目。"
+  },
+  "candidates": [
+    {
+      "full_name": "capri-com/Capri-AI",
+      "html_url": "https://github.com/capri-com/Capri-AI",
+      "stars": 82,
+      "selected": true,
+      "summary": "Windows 桌面應用，把 Claude Code、Codex、Antigravity 等既有 AI CLI/助理包裝成一個有語音、人格化介面的桌面代理，使用者可用自然語言下指令操作檔案、開應用程式、寫程式、建立自動化排程，並在執行敏感動作前要求使用者核准。",
+      "tech": "Electron 風格桌面殼層 + 引擎路由器（Engine Router）轉接 Claude Code / Codex / Antigravity 等既有 CLI 工具作為後端大腦，另搭配本機語音辨識/合成（可選 Fish Audio、ElevenLabs、OpenAI 語音）。",
+      "feasibility": "目前僅提供 Windows 安裝檔與免安裝版，需自行持有所串接引擎（如 Claude Code）的帳號或 API 金鑰；macOS/Linux 版本仍在路線圖上，尚未可用。",
+      "limits": "僅支援 Windows 10 以上；核心能力完全依賴所串接的外部 AI 引擎而非自研模型；屬早期專案（README 標註多項功能仍在學習/完善中），新應用常見的 SmartScreen 警示也可能讓一般使用者卻步。",
+      "reason": "把多種主流 AI coding CLI 統一包裝成桌面代理並附帶核准機制與自動化排程，對『想用 Claude Code 等工具但不想碰終端機』的使用者有實際價值，功能完整度與文件說明在候選中屬佳。"
+    },
+    {
+      "full_name": "skingko/PastAi",
+      "html_url": "https://github.com/skingko/PastAi",
+      "stars": 50,
+      "selected": true,
+      "summary": "原生 macOS 剪貼簿管理器（仿 Paste）與文字選取工具列（仿 PopClip），內建可自帶模型的 AI 代理，能搜尋、整理、改寫、合併剪貼簿歷史，並用沙箱化 JavaScript 擴充功能市集擴充操作項目。",
+      "tech": "Swift 6、只用系統框架、不含第三方依賴；AI 部分走 OpenAI 相容協定（可接 OpenAI、Gemini、DeepSeek、Qwen、Ollama、LM Studio 等）或原生 Anthropic API；擴充功能跑在無網路/檔案存取權限的 JS 沙箱裡。",
+      "feasibility": "需 macOS 26+ 且為 Apple Silicon，原始碼可直接用內建 Xcode command line tools 編譯；若搭配 Ollama/LM Studio 可完全離線不經雲端。",
+      "limits": "僅支援 macOS（Apple Silicon），不支援 Intel Mac；AI 代理本身沒有檔案系統/網路/shell 工具存取權限（設計上刻意限制），删除與修改一律需人工核准。",
+      "reason": "工程設計嚴謹：隱私分層（隱藏資料對 AI 不可見、憑證自動偵測隱藏）、審批流程、可復原（undo log）、開源、無強制雲端依賴，是候選中完整度與安全考量最高的一個。"
+    },
+    {
+      "full_name": "ImRevoltexee/gonka-autoinject",
+      "html_url": "https://github.com/ImRevoltexee/gonka-autoinject",
+      "stars": 36,
+      "selected": false,
+      "reason": "本質是自動化繞過 Turnstile 人機驗證、批量申請一次性信箱帳號以刷取 GonkaRouter 免費模型配額、再灌入自架路由器的工具，屬於服務條款濫用性質的帳號農場腳本，而非可複用的 AI 整合技術，不符合精選標準予以淘汰。"
+    },
+    {
+      "full_name": "weir36/deep-research-langgraph",
+      "html_url": "https://github.com/weir36/deep-research-langgraph",
+      "stars": 35,
+      "selected": true,
+      "summary": "基於 LangGraph 重新實作的多代理深度研究助手（規劃 → 調研 → 計算 → 寫作），把 deer-flow 流程改寫以強化狀態可靠性、平行執行效率、引用可信度與效果可量化評測。",
+      "tech": "LangGraph 狀態圖 + reducer 合併增量狀態、SQLite checkpoint 支援中斷續跑、依賴感知的步驟並行（Send）、獨立 Python 沙箱執行計算、兩層模型分級（basic/reasoning）、完整的引用治理與五維度評測框架。",
+      "feasibility": "Python 專案，`pip install` 後配置 OPENAI_API_KEY（可選 TAVILY_API_KEY，不填則用 mock 搜尋）即可本機執行；附帶可不需金鑰執行的 pytest 測試集。",
+      "limits": "评测樣本僅 5 道研究題，部分結論（如關閉並行反而分數較高）作者自承落在誤差範圍內，需謹慎看待量化數字；知識庫、資源儲存、使用者記憶等外部依賴皆為本地 mock，尚未對接真實服務。",
+      "reason": "文件詳實記錄了相對參考實作修復的具體工程問題（狀態競爭、引用編號錯位、迴圈保護失效等），並附消融實驗與可重現評測數字，是少見把多代理研究系統的可靠性與可信度問題講清楚的專案。"
+    },
+    {
+      "full_name": "askglyph/glyph",
+      "html_url": "https://github.com/askglyph/glyph",
+      "stars": 30,
+      "selected": false,
+      "reason": "表面是帶人格、ASCII 動畫的對話代理，但核心功能是透過 X 社群任務發放 $GLYPH 代幣與鏈上壓縮 NFT 的加密貨幣投機發放機制，AI 聊天僅作為互動介面，技術上可學習價值低於其投機/行銷性質，予以淘汰（推測：專案目的偏向代幣行銷而非技術整合工具）。"
+    },
+    {
+      "full_name": "vixhal-baraiya/qwenFS",
+      "html_url": "https://github.com/vixhal-baraiya/qwenFS",
+      "stars": 29,
+      "selected": true,
+      "summary": "實驗性模型：把一個確定性檔案系統（讀寫、連結、反向連結）直接編譯進 Qwen3.5-2B 的權重中（額外 8 層變換器層接在原本 24 層之前），模型透過自己原生的 tool call 存取檔案，所有邏輯由權重本身執行而非外部程式。",
+      "tech": "手工建構（非訓練）的額外 Transformer 層：Attention 作為檔案內容儲存與路徑查找、Gated DeltaNet 狀態作為版本表/路徑表/連結圖的暫存器、MLP 負責解析 tool call 並強制輸出特定 token；merge 腳本將殘差維度從 2048 擴寬到 3072 並零填充既有權重。",
+      "feasibility": "需 Python 3.11+、uv、just，約 16GB 記憶體即可在 Apple Silicon（MPS）、NVIDIA GPU 或 CPU 上建置並執行；提供 `just build`/`just chat` 一鍵建置與互動介面。",
+      "limits": "僅支援最多 32 個檔案、路徑最長 8 token、每次寫入約 590 token、每檔案 63 個版本；不支援檔內搜尋與部分編輯（整篇覆寫）；MPS 上僅約 20 token/s；檔案系統本身正確性高，但 Qwen 的判斷（何時該讀檔）仍會出錯。",
+      "reason": "少見的「機制可解釋性 / 權重編輯」方向實作，把確定性資料結構直接刻進大型語言模型權重並驗證輸出 token 分布幾乎不變（KL ≈ 2e-3），對關注模型內部機制與可驗證工具呼叫的研究者有獨特參考價值。"
+    },
+    {
+      "full_name": "weir36/novel-config-copilot",
+      "html_url": "https://github.com/weir36/novel-config-copilot",
+      "stars": 27,
+      "selected": true,
+      "summary": "面向網文平台編輯的資源配置決策系統，把分散在政策文件裡的設定知識結構化成知識圖譜，用 GraphRAG 做跨文件檢索、ReAct Agent 做多步推理與試算，再用確定性規則引擎（R001~R004）對產出方案做最終合規校驗。",
+      "tech": "語義切塊（按標題非固定字數）+ 向量/BM25 混合檢索 + 知識圖譜兩階段 GraphRAG（實體定位→子圖擴展→文本召回）+ ReAct Agent（7 個工具）+ 規則引擎兜底校驗，各類外部依賴（Neo4j/Redis/Elasticsearch）皆有本地降級方案並於啟動時印出實際後端。",
+      "feasibility": "`make demo` 即可離線建庫、跑測試與全部離線評測；要接真實 LLM 需填 OpenAI 相容的 `LLM_API_KEY`；生產形態元件（Neo4j+Redis+Elasticsearch）透過 `make up` 另外啟動，非必需。",
+      "limits": "語料規模小（16 個配置項、6 篇政策文件），作者自承評測結論在更大規模語料上未必成立；文件是自己與 AI 所寫，關係抽取指標偏樂觀；端到端樣本僅 12 條、僅 5 條出方案，統計上效力有限；專案為個人示範、全部為模擬資料非真實平台。",
+      "reason": "雖然應用場景（網文平台配置）偏窄，但 GraphRAG + ReAct Agent + 確定性規則引擎兜底的三層架構設計完整，並附有 RAG 消融實驗與誠實列出的六項已知局限，是示範「Agent 輸出必須經過確定性校驗」這一工程模式的優質範例。"
+    }
+  ]
+}
