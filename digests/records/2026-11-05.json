@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-05",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-03 stars:>=20 | topic:machine-learning created:>=2026-11-03 stars:>=20 | topic:llm created:>=2026-11-03 stars:>=20 | topic:ai-agent created:>=2026-11-03 stars:>=20 | topic:generative-ai created:>=2026-11-03 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜異常稀少，5 個 topic 合併後只有 4 筆通過門檻，且其中一半與 AI/ML 本質關聯薄弱。",
+    "body": "過去 2 天內新建、star 數 ≥20 的 repo 中，只有 4 筆同時掛上 artificial-intelligence / machine-learning / llm / ai-agent / generative-ai 這 5 個 topic 之一。更值得注意的是，其中 relayworkslab/relayworks 雖然掛了 ai-agent topic，實際內容是 Solana 錢包登入、$RELAY memecoin 代幣頁與 x402 USDC 收款的行銷網站，「AI agent」只是產品敘事包裝，技術上並非 AI/ML 專案；這類「蹭 AI topic 做行銷」的 repo 在候選榜上持續出現，篩選時需要特別留意 topic 與實際內容是否相符。今天真正值得關注的只有兩個：一個是中文本地會議紀要工具（FunASR + Tauri/Rust，隱私與可追溯性做得細緻），一個是 Hermes Agent 的 Generative UI 外掛（安全設計說明詳盡）。"
+  },
+  "candidates": [
+    {
+      "full_name": "tancheng33/tingo",
+      "html_url": "https://github.com/tancheng33/tingo",
+      "stars": 27,
+      "selected": true,
+      "summary": "本地優先的中文 AI 會議紀要工具（曾名 jiyao）。錄下視訊會議（腾讯会议/飞书/Zoom）或麥克風聲音，在本機轉寫、區分說話人，再交給使用者指定的大模型整理成議題/決議/待辦/風險的會議紀要，並產生「鱼骨图」將每個歸納結論的分支連結回轉寫原話的時間戳，標示出沒有原文依據或依據薄弱的結論。支援 PDF/Word/SRT/Obsidian/飞书機器人等多種匯出管道。",
+      "tech": "桌面 App 用 Tauri + Rust 殼層，核心語音識別用阿里達摩院 FunASR 系列模型（Paraformer-large / SenseVoice / Fun-ASR-Nano）透過 sherpa-onnx 做本地 int8 推理，聲紋分離用 CAM++ 做譜聚類；紀要生成階段呼叫任何 OpenAI 相容介面或 Anthropic/本地 Ollama。命令列版本另有 Python + FunASR 的實作，前端為 TypeScript + Vite。",
+      "feasibility": "可行性高：桌面 App 僅限 Apple Silicon macOS 13+（錄系統音需 macOS 15+），下載 .dmg 即可用，約 330MB 的識別模型下載後可完全離線運作；命令列版可用 `uv tool install` 裝在 Linux 上做錄音＋轉寫（Windows 需先用會議軟體錄製再匯入）。倉庫內附完整開發/測試指令（uv sync、cargo test、pnpm tauri build），文件詳盡，MIT 授權。",
+      "limits": "桌面 App 目前只支援 Apple Silicon macOS，無 Windows/Intel Mac 版；多人搶話或聲音相近時說話人分離可能出錯；外放喇叭的回聲抑制是「讓路」而非真正 AEC，偶有識別誤差；App 尚未用開發者憑證簽名，首次開啟需手動解除 Gatekeeper 限制。紀要品質仍取決於使用者外接的大模型能力。",
+      "reason": "功能完整、技術細節具體可查證（FunASR/sherpa-onnx/CAM++ 皆為真實可驗證的開源元件），强调录音不出本机的隱私設計與「結論可溯源到原話」的鱼骨图是少見的差異化賣點，README 誠實列出已知限制與路線圖，判定為今日最值得收錄的候選。"
+    },
+    {
+      "full_name": "sagarmainkar/hermes-genui",
+      "html_url": "https://github.com/sagarmainkar/hermes-genui",
+      "stars": 20,
+      "selected": true,
+      "summary": "為 Hermes Agent（Hermes Desktop）打造的 Generative UI 外掛：讓 LLM 的聊天回覆不只是文字，而是直接畫出圖表、表格、時間軸、計算機、流程圖解等互動元件。模型只負責決定「要顯示什麼」，外掛的元件庫負責「怎麼畫」，確保視覺風格一致並支援深色/淺色主題與各地數字格式。",
+      "tech": "透過 `show_blocks` 工具讓模型輸出結構化 JSON（非 HTML/程式碼），外掛驗證後存成 board 並以 `::blocks{id}` 標籤交給 Hermes Desktop 抓取渲染；另提供 `market_history`（Yahoo Finance）、`find_photos`（Wikimedia/Openverse，可選接 Unsplash/Pexels/Tavily）等資料工具確保圖表數字來自真實來源而非模型編造。README 列出已測試相容的模型：DeepSeek V4.1 Flash、Qwen3.6 35B-A3B（MLX 本地量化）、Gemma 4 26B-A4B。",
+      "feasibility": "需先安裝 Hermes Agent 0.22.5+ 並啟用 Hermes Desktop，透過 `hermes plugins install` 一行指令安裝，純外掛形式不需另外起服務；本地可搭配 Ollama/MLX 量化模型跑完全離線的生成式 UI，但大型版面對模型能力要求較高，弱模型可能退化成純文字。",
+      "limits": "依賴 Hermes Agent 生態（非獨立可執行專案），只在 Hermes Desktop 內才能畫出圖形，Telegram/CLI 等介面只會退回成 Markdown 文字；小型/能力較弱的本地模型（如 Gemma 4 26B-A4B）在大型版面下容易失敗退回文字。",
+      "reason": "安全設計說明詳盡（模型只送資料不送程式碼、計算機公式用無 eval 的小型解析器、圖片抓取限定 https 公開位址並做 DNS pin 防重綁），功能展示具體、架構圖與資料流清楚，是少見把「LLM 生成式 UI」做得兼顧安全與可驗證性的開源外掛，故收錄。"
+    },
+    {
+      "full_name": "silverdugongenhance/PromptReel",
+      "html_url": "https://github.com/silverdugongenhance/PromptReel",
+      "stars": 104,
+      "selected": false,
+      "reason": "倉庫內未見任何原始碼，README 只提供下載預編譯 .exe 的連結（包裝開源的 Wan 2.2 文字轉影片模型），無法檢視或驗證實際實作內容；README 仍留有「<!-- Add real minimum specs here -->」這類未完成的行銷範本註解，整體更像是套殼行銷頁而非可審查的開源專案，且一天內即衝上 100+ star 與其行銷包裝風格相符（推測：可能有推廣/導流操作），故不收錄。"
+    },
+    {
+      "full_name": "relayworkslab/relayworks",
+      "html_url": "https://github.com/relayworkslab/relayworks",
+      "stars": 47,
+      "selected": false,
+      "reason": "雖掛 ai-agent topic，但內容實質是 Solana 錢包登入、$RELAY memecoin 代幣頁與 x402 USDC 付款流程的行銷網站（純前端 HTML/ES modules + Three.js 場景），「AI 代理完成未完工作」只是產品敘事包裝，看不到任何 AI/ML 模型或推理邏輯，與本精選主題（AI/ML 技術整合工具）關聯薄弱，故不收錄。"
+    }
+  ]
+}
