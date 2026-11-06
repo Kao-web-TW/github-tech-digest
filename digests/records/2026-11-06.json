@@ -1,0 +1,143 @@
+{
+  "date": "2026-11-06",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-04 stars:>=20 | topic:machine-learning created:>=2026-11-04 stars:>=20 | topic:llm created:>=2026-11-04 stars:>=20 | topic:ai-agent created:>=2026-11-04 stars:>=20 | topic:generative-ai created:>=2026-11-04 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜中出現一批疑似星數灌水帳號,逐字複製現有熱門 AI/ML 專案並掛上熱門 topic 標籤。",
+    "body": "本次 5 個 topic 搜尋共合併出 16 個候選,其中至少 7 個(bristinmaralina/zsh_codex、fieldpincocknxxc/prompt-poet、garge33limer/imbalanced-dataset-sampler、jannybloug/openai-gemini、mandeal303/tiktokenizer、mwell70/node2vec,以及可疑但證據較弱的 phonny40rowle/rag-search)被核對出是既有熱門專案(多筆甚至連 README 內的徽章連結都還指向被複製的原帳號,例如 prabeakarve)幾乎逐字的複製品,帳號多為近期建立、命名模式相似,且在一天內就衝上 20-50 顆星。這顯示 GitHub 以 topic + created + stars 做熱門新專案探索時,容易被這類灌水帳號污染榜單。今天最終入選的 5 個項目都已逐一核對 README 內容、作者脈絡與外部連結,確認為原創專案。另外 3 個候選因 README 無法取得(可能是私有化、刪除或 CDN 尚未同步)而跳過分析。"
+  },
+  "candidates": [
+    {
+      "full_name": "silverdugongenhance/PromptReel",
+      "html_url": "https://github.com/silverdugongenhance/PromptReel",
+      "stars": 151,
+      "selected": false,
+      "reason": "封裝開源影片模型 Wan2.2 的免費本機文字轉影片 Windows 桌面應用,構想有趣且星數最高,但 repo 只提供封閉原始碼的 .exe 安裝檔,無法稽核程式碼來源與安全性,README 內還留有未填的佔位符註解(顯示文件尚未完成),故不建議收錄(推測:未經驗證的執行檔案存在安全風險)。"
+    },
+    {
+      "full_name": "yucezerey/turkish-anti-ai-skill",
+      "html_url": "https://github.com/yucezerey/turkish-anti-ai-skill",
+      "stars": 58,
+      "selected": true,
+      "summary": "給 Claude Code、Cursor、Codex 等 agent 使用的「土耳其語反 AI 腔」Agent Skill,用三層語言學規則(構句、句法形態、標點/TDK 規範)偵測並修復 LLM 生成土耳其文中常見的「翻譯腔」痕跡,並附帶一個不依賴外部函式庫的 Python CLI 偵測器(detect_tr_ai.py)用來量化文本的 AI 腔程度與 burstiness。",
+      "tech": "Agent Skill 規格(Markdown 規則 + progressive disclosure 參考文件)搭配確定性的 Python 規則引擎,偵測本身不靠 LLM 判斷,而是量化句型/標點/詞綴等特徵。",
+      "feasibility": "可用 `npx skills add` 或直接 git clone 安裝進 Claude Code/Cursor/Gemini CLI 等多種 agent;CLI 偵測器僅需標準 Python,不需 GPU 或額外服務,本機可用性高。",
+      "limits": "僅限土耳其語文本;修復效果仍依賴底層主 LLM 的改寫品質,CLI 偵測器只能分析/評分而非真正改寫;README 功能描述詳盡但未見實際使用者回饋或 evals 結果展示。",
+      "reason": "針對小語種 LLM 輸出品質問題,方法論清楚且附確定性可重現的偵測工具,在本次候選中技術完整度最高、內容確認原創。"
+    },
+    {
+      "full_name": "prabeakarve/microgpt",
+      "html_url": "https://github.com/prabeakarve/microgpt",
+      "stars": 51,
+      "selected": true,
+      "summary": "純 NumPy(零框架、零 autograd)從零實作的 decoder-only Transformer(GPT),手刻前向與反向傳播、byte-level tokenizer、AdamW 優化器,附 14 個梯度檢查測試,訓練小模型在筆電 CPU 上約一分鐘內完成。",
+      "tech": "NumPy 手寫 Transformer forward/backward pass、byte-level tokenization(256 符號)、AdamW + warmup/cosine 排程、權重綁定(weight tying)。",
+      "feasibility": "安裝僅需 `pip install -e .`,Python 3.10+ 與 NumPy,無需 GPU,CPU 筆電即可在一分鐘內跑完訓練範例,文件附完整 CLI 使用範例,可行性極高。",
+      "limits": "僅教學規模(約 8KB 語料、byte-level 256 詞表),無法用於實際生產級語言模型;沒有分散式或 GPU 加速支援。",
+      "reason": "程式碼量小、附完整梯度驗證測試與清楚設計筆記,是理解 Transformer 反向傳播機制的優質教材型專案,確認為原創內容。"
+    },
+    {
+      "full_name": "bristinmaralina/zsh_codex",
+      "html_url": "https://github.com/bristinmaralina/zsh_codex",
+      "stars": 50,
+      "selected": false,
+      "reason": "README 內容與 star 徽章皆指向 prabeakarve/zsh_codex,為既有熱門 zsh AI 補全外掛近乎逐字的複製品(非 GitHub fork 關係),疑似星數灌水帳號複製既有專案搭 topic 熱度,非原創新工具(推測)。"
+    },
+    {
+      "full_name": "fieldpincocknxxc/prompt-poet",
+      "html_url": "https://github.com/fieldpincocknxxc/prompt-poet",
+      "stars": 50,
+      "selected": false,
+      "reason": "內容確認為 Character.AI 「prompt-poet」套件(README 內 PyPI 下載徽章指向真正的 prompt-poet 專案)的複製品,非原創,疑似與 zsh_codex 複製品同一手法的星數灌水帳號(推測)。"
+    },
+    {
+      "full_name": "garge33limer/imbalanced-dataset-sampler",
+      "html_url": "https://github.com/garge33limer/imbalanced-dataset-sampler",
+      "stars": 50,
+      "selected": false,
+      "reason": "README 中的 license 徽章仍指向「prabeakarve/imbalanced-dataset-sampler」,為既有 PyTorch 不平衡資料採樣套件的複製品,非原創(推測為同一波灌水帳號之一)。"
+    },
+    {
+      "full_name": "jannybloug/openai-gemini",
+      "html_url": "https://github.com/jannybloug/openai-gemini",
+      "stars": 50,
+      "selected": false,
+      "reason": "內容與既有的「openai-gemini」免費 OpenAI 相容代理服務專案高度相似,疑似複製既有專案而非原創新作(推測)。"
+    },
+    {
+      "full_name": "mandeal303/tiktokenizer",
+      "html_url": "https://github.com/mandeal303/tiktokenizer",
+      "stars": 50,
+      "selected": false,
+      "reason": "README 本身即是知名 tiktoken 線上試算工具 Tiktokenizer 的致謝頁面複製,非原創,且 README 內容僅 3 行、資訊量過少(推測為複製帳號)。"
+    },
+    {
+      "full_name": "mwell70/node2vec",
+      "html_url": "https://github.com/mwell70/node2vec",
+      "stars": 50,
+      "selected": false,
+      "reason": "README 逐字複製自知名 node2vec Python 實作(含原作者「我沒時間維護了」的棄坑聲明),為既有套件的複製品,非原創(推測)。"
+    },
+    {
+      "full_name": "phonny40rowle/rag-search",
+      "html_url": "https://github.com/phonny40rowle/rag-search",
+      "stars": 50,
+      "selected": false,
+      "reason": "功能(自架 RAG 搜尋 API)普通,README 內容單薄,帳號命名模式與本次發現的多個複製帳號相似、星數成長速度不自然,可信度存疑,故不選入(推測可能屬同一波灌水帳號)。"
+    },
+    {
+      "full_name": "AstralBeneathSilver/Deadline-resp-Tracker-AI",
+      "html_url": "https://github.com/AstralBeneathSilver/Deadline-resp-Tracker-AI",
+      "stars": 40,
+      "selected": false,
+      "reason": "README 無法取得(raw.githubusercontent.com 對 main/master/HEAD 及常見檔名組合皆回傳 404),無法判讀內容,故不選入。"
+    },
+    {
+      "full_name": "WrenthGreen/grand-tour-rpocket",
+      "html_url": "https://github.com/WrenthGreen/grand-tour-rpocket",
+      "stars": 39,
+      "selected": false,
+      "reason": "README 無法取得(同上,嘗試多種分支/檔名組合皆 404),無法判讀內容,故不選入。"
+    },
+    {
+      "full_name": "Zenithopal/LooseEnds-resp",
+      "html_url": "https://github.com/Zenithopal/LooseEnds-resp",
+      "stars": 38,
+      "selected": false,
+      "reason": "README 無法取得(同上,404),無法判讀內容,故不選入。"
+    },
+    {
+      "full_name": "TIGER-AI-Lab/WebsiteBench",
+      "html_url": "https://github.com/TIGER-AI-Lab/WebsiteBench",
+      "stars": 37,
+      "selected": true,
+      "summary": "評測 AI agent 能否僅透過瀏覽器探索一個正式營運網站,就重建出外觀與行為相符的全端網站複製品的 benchmark,附公開 Leaderboard 網站與 HuggingFace 資料集。",
+      "tech": "Benchmark 框架(browser exploration + 全端程式碼生成評測),整合 HuggingFace datasets 與 Harbor Hub。",
+      "feasibility": "`git clone` + `uv sync` 即可開始,文件含 quickstart/evaluate/tasks/雲端執行指南,但要完整跑評測需要自備 agent 與瀏覽器執行環境,可行性中等偏高。",
+      "limits": "評測對象是 agent 的端到端網站重建能力,任務集規模未知,README 僅以徽章連結論文而未附論文細節摘要。",
+      "reason": "TIGER-AI-Lab 為具公開研究記錄的學術團隊,此為有正式 leaderboard/資料集支撐的新 benchmark,填補「agent 網站逆向工程能力評測」的空白,確認為原創研究專案。"
+    },
+    {
+      "full_name": "imsai-sh/fish-pocket",
+      "html_url": "https://github.com/imsai-sh/fish-pocket",
+      "stars": 27,
+      "selected": true,
+      "summary": "在 iPhone/iPad 上以 SwiftUI 原生介面本機執行 DeepSeek「Harness」推理引擎的 App,不連電腦、不連伺服器,目前提供 TestFlight 公測。",
+      "tech": "Swift/SwiftUI + 端側(on-device)DeepSeek 推理引擎,topics 包含 nodejs-mobile,顯示底層可能橋接 Node.js 執行環境。",
+      "feasibility": "一般使用者需透過 TestFlight 安裝到實機測試,無法直接在電腦本機執行;若要自行建置原始碼需要 iOS 開發環境與對應裝置算力。",
+      "limits": "僅限 iOS/iPadOS 裝置,且為公測階段(open issues 7 個),效能與耗電等規格未在 README 量化說明。",
+      "reason": "少見的「手機原生執行 LLM 推理引擎」嘗試,topics 涵蓋 on-device/ios 等反映端側 AI 新趨勢,確認為原創專案,值得追蹤。"
+    },
+    {
+      "full_name": "HimanshuMohanty-Git24/gitaviswa",
+      "html_url": "https://github.com/HimanshuMohanty-Git24/gitaviswa",
+      "stars": 26,
+      "selected": true,
+      "summary": "把《薄伽梵歌》701 節經文建成 3D 互動知識圖譜,可瀏覽概念關聯、對照 6 個傳統的 20 種註釋、聽誦讀,並用「bring your own key」的 LLM 根據經文本身回答問題。",
+      "tech": "Next.js 15 前端 + 知識圖譜視覺化 + 使用者自備 API 金鑰呼叫 LLM 做 RAG 式問答。",
+      "feasibility": "有上線的 Vercel 網站可直接體驗,README 另附「在自己電腦上執行」說明,只要有 Node 環境與 LLM API 金鑰即可本機跑起來,可行性高。",
+      "limits": "問答功能品質依賴使用者自備的 LLM 與金鑰,知識圖譜內容(經文與註釋)的正確性未見第三方審校說明。",
+      "reason": "將宗教經典結構化為可互動探索的知識圖譜並結合 LLM 問答,是資料視覺化與 RAG 問答結合人文內容的有新意的應用,確認為原創專案。"
+    }
+  ]
+}
