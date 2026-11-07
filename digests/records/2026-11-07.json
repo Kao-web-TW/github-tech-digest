@@ -1,0 +1,269 @@
+{
+  "date": "2026-11-07",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-05 stars:>=20 | topic:machine-learning created:>=2026-11-05 stars:>=20 | topic:llm created:>=2026-11-05 stars:>=20 | topic:ai-agent created:>=2026-11-05 stars:>=20 | topic:generative-ai created:>=2026-11-05 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜被一波『翻版既有知名開源專案』與『完全重複的空殼 repo』洗版，真正原創的新專案數量偏少。",
+    "body": "本次 34 個候選中，有 19 個是同名同描述的「ai-manus」repo（分別建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內的 19 個不同新帳號下，星數同為 44），推測是刷量／repo 農場行為而非獨立專案；另外至少 6 個（node2vec、imbalanced-dataset-sampler、tiktokenizer、openai-gemini、prompt-poet、zsh_codex）經比對 README 內容與徽章連結，確認是把既有多年歷史的知名開源專案（如 ufoym/imbalanced-dataset-sampler、PublicAffairs/openai-gemini、Character.AI 的 prompt-poet、tom-doerr/zsh_codex 等）整份翻版後改掛到全新帳號名下重新發佈，其中多個翻版帳號的徽章甚至直接指向同一個中介帳號 prabeakarve。扣除這些重複與翻版項目後，剩下具備明確原創性與完整文件的候選只有個位數，最終精選 5 個，低於平常慣例的 5-10 區間上緣。"
+  },
+  "candidates": [
+    {
+      "full_name": "yucezerey/turkish-anti-ai-skill",
+      "html_url": "https://github.com/yucezerey/turkish-anti-ai-skill",
+      "stars": 228,
+      "selected": true,
+      "reason": "選中：228 星為本次候選榜最高，文件完整、問題定義具體（土耳其語 AI 腔／翻譯腔），且提供可驗證的量化偵測工具，是少見針對非英語語言做深度 AI 文風治理的 Agent Skill。",
+      "summary": "一套給 AI agent 用的 Agent Skill，專門偵測並改寫「AI 味土耳其語」（英文直譯腔），依土耳其語 TDK 正字法與句法規則重建自然母語語感，並附一個不需外部套件的 Python CLI 偵測器量化 AI 腔用詞密度與句子長度變異度。",
+      "tech": "Agent Skill（SKILL.md + 參考規則檔）＋ 純 Regex/統計的 Python CLI 偵測器，無需呼叫模型即可做靜態分析；改寫本身由安裝此 Skill 的 LLM agent（Claude Code/Cursor/Codex 等）執行。",
+      "feasibility": "可行性高：`npx skills add` 或 `git clone` 到 `~/.claude/skills/` 即可用，CLI 偵測器零依賴，但改寫品質仍取決於宿主 LLM 本身的土耳其語能力。",
+      "limits": "僅處理土耳其語；偵測器只抓表層詞彙/統計特徵，抓不到語序、動名詞等句法層級的問題（README 自述），須由模型人工判斷。"
+    },
+    {
+      "full_name": "imsai-sh/fish-pocket",
+      "html_url": "https://github.com/imsai-sh/fish-pocket",
+      "stars": 97,
+      "selected": true,
+      "reason": "選中：97 星，是少見把『AI coding agent harness』完整原生化到手機/平板的實作（而非網頁套殼），對『agent 可攜性』趨勢具代表性，且附完整架構對比表與示範影片。",
+      "summary": "在 iPhone / iPad 上用完全原生 SwiftUI 介面本機執行 DeepSeek Harness 的 App，內建終端（node/pnpm/git 等常用指令）與插件生態，不需連接電腦或伺服器，支援動態島與鎖屏即時活動顯示任務進度。",
+      "tech": "SwiftUI 原生 iOS/iPadOS App，內嵌 Node.js 執行環境與靜態連結 libgit2；需透過 DeepSeek 帳號或 API Key 呼叫模型（推論仍在雲端，僅 agent harness 跑在裝置端）。",
+      "feasibility": "中：需加入 TestFlight 公測才能安裝，僅支援 iOS/iPadOS 裝置；核心引擎（Agent loop/工具呼叫）在手機本機執行但仍依賴網路呼叫 DeepSeek API，並非完全離線。",
+      "limits": "非完整 Linux 環境，只有內建指令與 Node，效能比桌面慢數倍；目前為 TestFlight 公測階段，非正式上架。"
+    },
+    {
+      "full_name": "prabeakarve/microgpt",
+      "html_url": "https://github.com/prabeakarve/microgpt",
+      "stars": 51,
+      "selected": false,
+      "reason": "淘汰（推測）：同帳號 prabeakarve 在本次候選榜另外還有 imbalanced-dataset-sampler、openai-gemini、zsh_codex 三個項目，其 README 徽章與內容證實皆為既有知名開源專案（分別對應 ufoym/imbalanced-dataset-sampler、PublicAffairs/openai-gemini、tom-doerr/zsh_codex 等）的逐字翻版後改掛自己帳號，顯示此帳號有系統性重新上傳他人專案的模式；microgpt 雖未直接發現對應的原始出處，但基於同帳號行為模式，推測也可能非原創實作，保守不列入精選。"
+    },
+    {
+      "full_name": "mwell70/node2vec",
+      "html_url": "https://github.com/mwell70/node2vec",
+      "stars": 50,
+      "selected": false,
+      "reason": "淘汰：README 內容（含『I no longer have time to maintain this』一段）與原作者 aditya-grover/node2vec（2016 年發布的經典論文實作，已上 PyPI 多年）逐字相同，是既有老牌函式庫的翻版重傳，非新興專案。"
+    },
+    {
+      "full_name": "garge33limer/imbalanced-dataset-sampler",
+      "html_url": "https://github.com/garge33limer/imbalanced-dataset-sampler",
+      "stars": 50,
+      "selected": false,
+      "reason": "淘汰：README 徽章指向 prabeakarve/imbalanced-dataset-sampler，而其內容與早已存在、廣為人知的 PyTorch 不平衡資料採樣器（原作者為 ufoym，已發佈 torchsampler 套件多年）完全相同，為既有專案翻版，非新技術。"
+    },
+    {
+      "full_name": "mandeal303/tiktokenizer",
+      "html_url": "https://github.com/mandeal303/tiktokenizer",
+      "stars": 50,
+      "selected": false,
+      "reason": "淘汰（推測）：README 極簡短且技術堆疊（T3 Stack + shadcn/ui + openai/tiktoken）與既有廣泛使用的線上 tokenizer 比較工具高度相似，建立時間與同批出現多個翻版帳號的時間窗重疊，推測為既有工具的翻版而非原創，不列入精選。"
+    },
+    {
+      "full_name": "jannybloug/openai-gemini",
+      "html_url": "https://github.com/jannybloug/openai-gemini",
+      "stars": 50,
+      "selected": false,
+      "reason": "淘汰：Vercel 一鍵部署按鈕的連結直接指向 prabeakarve/openai-gemini，可確認是既有 OpenAI-相容 Gemini 代理專案（原作者為 PublicAffairs/openai-gemini）的翻版重傳，非新專案。"
+    },
+    {
+      "full_name": "fieldpincocknxxc/prompt-poet",
+      "html_url": "https://github.com/fieldpincocknxxc/prompt-poet",
+      "stars": 50,
+      "selected": false,
+      "reason": "淘汰：內容與早已發佈在 PyPI、由 Character.AI 開源的 prompt-poet（低程式碼 Prompt 模板工具）完全一致，為既有知名專案的翻版重傳，非新興工具。"
+    },
+    {
+      "full_name": "bristinmaralina/zsh_codex",
+      "html_url": "https://github.com/bristinmaralina/zsh_codex",
+      "stars": 50,
+      "selected": false,
+      "reason": "淘汰：README 內多個徽章連結直接指向 prabeakarve/zsh_codex，可確認是既有 Zsh AI 命令列插件（原作者 tom-doerr/zsh_codex）的翻版重傳，非新專案。"
+    },
+    {
+      "full_name": "phonny40rowle/rag-search",
+      "html_url": "https://github.com/phonny40rowle/rag-search",
+      "stars": 50,
+      "selected": true,
+      "reason": "選中：50 星且 README 未見抄襲既有知名專案的痕跡（無指向他人帳號的徽章），是本次候選中少數看起來為原創的 RAG 工具型小專案，具備一定實用性。",
+      "summary": "一個可自架的 RAG 搜尋 API：串接網頁搜尋（Serper）、內容擷取、向量化（Zilliz/Milvus）與 OpenAI 相容模型做答案生成，可設定重排序（reranking）與多層過濾（filter）。",
+      "tech": "FastAPI + OpenAI 相容 API（含 embedding）+ Zilliz 向量資料庫 + Serper 搜尋 API。",
+      "feasibility": "中：`pip install -r requirements.txt` 後 `uvicorn` 即可跑，但需自備 Serper、OpenAI 相容端點與 Zilliz 的 API Key/服務，屬於『接好幾個外部服務』的組裝型工具，非單機零依賴。",
+      "limits": "README 簡短，未說明速率限制、錯誤處理或成本；依賴三個外部付費/限額服務。"
+    },
+    {
+      "full_name": "hussein1labtop-jpg/ai-manus",
+      "html_url": "https://github.com/hussein1labtop-jpg/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "willsmanuel123-creator/ai-manus",
+      "html_url": "https://github.com/willsmanuel123-creator/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "Gigachad-byte/ai-manus",
+      "html_url": "https://github.com/Gigachad-byte/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "thecoderrrer/ai-manus",
+      "html_url": "https://github.com/thecoderrrer/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "osarhiemenaiyevbosa-cloud/ai-manus",
+      "html_url": "https://github.com/osarhiemenaiyevbosa-cloud/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "Abdul-Rehman7826/ai-manus",
+      "html_url": "https://github.com/Abdul-Rehman7826/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "melkisedecksayi-gif/ai-manus",
+      "html_url": "https://github.com/melkisedecksayi-gif/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "viet140612/ai-manus",
+      "html_url": "https://github.com/viet140612/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "fedibenameur11/ai-manus",
+      "html_url": "https://github.com/fedibenameur11/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "Teolimaof/ai-manus",
+      "html_url": "https://github.com/Teolimaof/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "Kolg123/ai-manus",
+      "html_url": "https://github.com/Kolg123/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "quyetcao/ai-manus",
+      "html_url": "https://github.com/quyetcao/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "hamzamostafa77772-cyber/ai-manus",
+      "html_url": "https://github.com/hamzamostafa77772-cyber/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "Abdoandqsnk/ai-manus",
+      "html_url": "https://github.com/Abdoandqsnk/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "Adil-Ijaz7/ai-manus",
+      "html_url": "https://github.com/Adil-Ijaz7/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "jfpereirasantos4-arch/ai-manus",
+      "html_url": "https://github.com/jfpereirasantos4-arch/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "dharmapalkarki123/ai-manus",
+      "html_url": "https://github.com/dharmapalkarki123/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "johnstiles/ai-manus",
+      "html_url": "https://github.com/johnstiles/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "monirchemrubd/ai-manus",
+      "html_url": "https://github.com/monirchemrubd/ai-manus",
+      "stars": 44,
+      "selected": false,
+      "reason": "淘汰：這是「ai-manus」同名同描述（44 星、全部建立於 2026-11-06 18:15-18:17 UTC 這 2 分鐘內）在 20 個不同新帳號下重複出現的其中一份拷貝，推測是 repo 農場/刷量行為而非獨立專案，不計入精選（同類項目僅標註一次於 notice）。"
+    },
+    {
+      "full_name": "AstralBeneathSilver/Deadline-resp-Tracker-AI",
+      "html_url": "https://github.com/AstralBeneathSilver/Deadline-resp-Tracker-AI",
+      "stars": 40,
+      "selected": false,
+      "reason": "淘汰：README 無法取得（raw.githubusercontent.com 回傳 404），無法確認專案實際內容與可行性，保守不列入精選。"
+    },
+    {
+      "full_name": "WrenthGreen/grand-tour-rpocket",
+      "html_url": "https://github.com/WrenthGreen/grand-tour-rpocket",
+      "stars": 39,
+      "selected": false,
+      "reason": "淘汰：README 無法取得（raw.githubusercontent.com 回傳 404），無法確認專案實際內容與可行性，保守不列入精選。"
+    },
+    {
+      "full_name": "inclusionAI/ASpec",
+      "html_url": "https://github.com/inclusionAI/ASpec",
+      "stars": 38,
+      "selected": true,
+      "reason": "選中：雖然 38 星不算高，但發布單位（inclusionAI／螞蟻集團）具公信力，技術深度與文件完整度明顯高於同星數的其他候選，代表「LLM 推理加速」這條技術線的嚴肅研究進展。",
+      "summary": "螞蟻集團 inclusionAI 團隊發布的高吞吐量 Speculative Decoding（推測性解碼）草稿模型訓練框架，延續自 TorchSpec，優化 Draft 模型的前向/反向/優化器執行，並讓 Target 特徵生成與 Draft 訓練重疊執行、可在多個獨立實驗間共享相容的 Target 特徵。",
+      "tech": "PyTorch 分散式訓練框架，支援 DSpark/DFlash/EAGLE3/EAGLE4/native MTP 等推測解碼演算法，支援 Dense/MoE（Qwen MoE、Ling MoE）架構與長上下文（sequence packing、context parallelism）。",
+      "feasibility": "低（對一般開發者）：定位是研究級多 GPU/多節點訓練框架，需要相當的 GPU 叢集資源與熟悉推測解碼領域的背景知識才能上手，不是單機可玩的玩具專案。",
+      "limits": "README 自述 DFlash2 仍屬實驗性，官方主力優化僅聚焦 DSpark/DFlash 搭配 Qwen 與 Ling 系列模型，其他路徑的支援邊界有限。"
+    },
+    {
+      "full_name": "Zenithopal/LooseEnds-resp",
+      "html_url": "https://github.com/Zenithopal/LooseEnds-resp",
+      "stars": 38,
+      "selected": false,
+      "reason": "淘汰：README 無法取得（raw.githubusercontent.com 回傳 404）；且描述為《The Sims 4》相關內容，與 AI/ML 主題關聯度低，不列入精選。"
+    },
+    {
+      "full_name": "BountyForge-xyz/pwn-skill",
+      "html_url": "https://github.com/BountyForge-xyz/pwn-skill",
+      "stars": 34,
+      "selected": true,
+      "reason": "選中（推測）：34 星規模不大，但是本次候選中唯一把『AI agent + 二元漏洞利用』結合、並明確框定在 CTF／授權研究情境下的 Agent Skill，對資安技術線有代表性；是否具備長期維護與社群採用度仍待觀察。",
+      "summary": "名為 PWN HUNTER 的 Agent Skill，讓 AI agent 具備二元漏洞利用（binary exploitation）工作流程：從 triage（checksec/readelf/libc 辨識）、找 primitive、堆疊/格式化字串/堆積攻擊手法，到產出可運作的 exploit，明確定位為 CTF pwn、本地實驗室二進位檔與已授權的漏洞研究場景使用。",
+      "tech": "單檔 Agent Skill（供 Claude Code 等支援 Agent Skills 規格的工具載入），底層依賴 pwntools、pwndbg/gef、ROPgadget、one_gadget、patchelf 等既有二元分析/漏洞利用工具鏈。",
+      "feasibility": "中：需要 Linux 環境＋前述二元分析工具鏈都裝好，且使用者需具備基礎 pwn/CTF 背景才能有效運用這套 Skill 的引導流程。",
+      "limits": "README 明確自我定位僅限 CTF、本地實驗室與已授權場域使用；若濫用於未授權目標即屬違法，使用情境高度依賴使用者自律與授權邊界。"
+    }
+  ]
+}
