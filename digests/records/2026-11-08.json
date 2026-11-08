@@ -1,0 +1,361 @@
+{
+  "date": "2026-11-08",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-06 stars:>=20 | topic:machine-learning created:>=2026-11-06 stars:>=20 | topic:llm created:>=2026-11-06 stars:>=20 | topic:ai-agent created:>=2026-11-06 stars:>=20 | topic:generative-ai created:>=2026-11-06 stars:>=20",
+  "notice": {
+    "lede": "今日候選榜被一波冒名「ai-manus / Manus AI」的洗星／疑似惡意下載連結活動完全佔據，無任何項目入選。",
+    "body": "本次搜尋合併 5 個 topic 後取得 61 個不重複候選、依 star 數取前 50 筆，結果全數為同一事件：大量帳號（含多個明顯隨機產生的使用者名稱）在 2026-11-06 至 11-07 短短數小時內，集中建立命名為「ai-manus」「ai--manus」「manus-ai」「ai_manus」等倉庫，倉庫說明文字逐字相同，且在建立後幾乎立刻各自累積 92-93 顆 star（在正常社群成長曲線下不可能發生）。抽查星數最高的 quyetcao/ai-manus 後發現，其 README 內容與真正的開源專案 Simpleyyt/ai-manus（2025-04 建立、現有 1600+ star）完全不同，改放行銷式文案並附上一個指向 Dropbox「Manus_Studio.rar」的下載連結，疑似是假冒知名 AI Agent 專案「Manus」品牌、誘導使用者下載未知執行檔的惡意推廣/詐騙手法，而非真正的原始碼專案。由於星數人為灌水、內容非原創且具潛在資安風險，今日判定無任何候選符合收錄標準，candidates 中的 61（取前 50）筆全數標記為不選中並保留分析理由以利留存紀錄；topic:machine-learning 與 topic:ai-agent 另各有一筆非此次活動的候選（42 星），但因排序後落在前 50 名之外、且其 README 皆無法透過 raw.githubusercontent.com 取得（404），依規則略過未納入分析。"
+  },
+  "candidates": [
+    {
+      "full_name": "quyetcao/ai-manus",
+      "html_url": "https://github.com/quyetcao/ai-manus",
+      "stars": 93,
+      "selected": false,
+      "reason": "並非真正新專案：README 內容與真實的 Simpleyyt/ai-manus（2025-04 建立、1600+ star 的開源 AI Agent 專案）完全無關，改放的是行銷文案與一個指向 Dropbox 的「Manus_Studio.rar」下載連結（含 PROMO2026 字樣），是典型的冒名下載誘餌手法；且此帳號與同批近 60 個「ai-manus / ai--manus / manus-ai / ai_manus」同名同描述倉庫，幾乎同一時間（2026-11-06～07 數小時內）由大量帳號集中建立並各自迅速累積 92-93 顆 star，判斷為協同洗星/冒名推廣活動的一部分，不收錄。"
+    },
+    {
+      "full_name": "TaytopazAbyssal26005/ai--manus",
+      "html_url": "https://github.com/TaytopazAbyssal26005/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "SableMysticit32531/ai--manus",
+      "html_url": "https://github.com/SableMysticit32531/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "BehindBasilisk42972/ai--manus",
+      "html_url": "https://github.com/BehindBasilisk42972/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "OrbitForge40815/ai--manus",
+      "html_url": "https://github.com/OrbitForge40815/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "hussein1labtop-jpg/ai-manus",
+      "html_url": "https://github.com/hussein1labtop-jpg/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "CloudAssassin30642/ai--manus",
+      "html_url": "https://github.com/CloudAssassin30642/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "XanegshredFalcon55771/ai--manus",
+      "html_url": "https://github.com/XanegshredFalcon55771/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "LordobsidianFierce32779/ai--manus",
+      "html_url": "https://github.com/LordobsidianFierce32779/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "OmegaElfda86686/ai--manus",
+      "html_url": "https://github.com/OmegaElfda86686/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "LaserOrlayr58754/ai--manus",
+      "html_url": "https://github.com/LaserOrlayr58754/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "Abdul-Rehman7826/ai-manus",
+      "html_url": "https://github.com/Abdul-Rehman7826/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "BesideRaelwave39799/ai--manus",
+      "html_url": "https://github.com/BesideRaelwave39799/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "DruidseaHunter22631/ai--manus",
+      "html_url": "https://github.com/DruidseaHunter22631/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "tireddwarf99/manus-ai",
+      "html_url": "https://github.com/tireddwarf99/manus-ai",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "LumiVikinggard89137/ai--manus",
+      "html_url": "https://github.com/LumiVikinggard89137/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "thecoderrrer/ai-manus",
+      "html_url": "https://github.com/thecoderrrer/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "Gigachad-byte/ai-manus",
+      "html_url": "https://github.com/Gigachad-byte/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "willsmanuel123-creator/ai-manus",
+      "html_url": "https://github.com/willsmanuel123-creator/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "FrostFromquasar89091/ai--manus",
+      "html_url": "https://github.com/FrostFromquasar89091/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "tireddwarf99/ai_manus",
+      "html_url": "https://github.com/tireddwarf99/ai_manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "PaxattechMega79503/ai--manus",
+      "html_url": "https://github.com/PaxattechMega79503/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "osarhiemenaiyevbosa-cloud/ai-manus",
+      "html_url": "https://github.com/osarhiemenaiyevbosa-cloud/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "SagaridgeBerserker21917/ai--manus",
+      "html_url": "https://github.com/SagaridgeBerserker21917/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "VoltagefeatherClear81638/ai--manus",
+      "html_url": "https://github.com/VoltagefeatherClear81638/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "ToBlazejupiter/ai--manus",
+      "html_url": "https://github.com/ToBlazejupiter/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "ArcaneTovenom76868/ai--manus",
+      "html_url": "https://github.com/ArcaneTovenom76868/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "Kolg123/ai-manus",
+      "html_url": "https://github.com/Kolg123/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "Abdoandqsnk/ai-manus",
+      "html_url": "https://github.com/Abdoandqsnk/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "Adil-Ijaz7/ai_manus",
+      "html_url": "https://github.com/Adil-Ijaz7/ai_manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "Adil-Ijaz7/ai-manus",
+      "html_url": "https://github.com/Adil-Ijaz7/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "NuclearOrlaix26356/ai--manus",
+      "html_url": "https://github.com/NuclearOrlaix26356/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "SorenMonstersatyr54032/ai--manus",
+      "html_url": "https://github.com/SorenMonstersatyr54032/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "Infernogoldep/ai--manus",
+      "html_url": "https://github.com/Infernogoldep/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "viet140612/ai-manus",
+      "html_url": "https://github.com/viet140612/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "Teolimaof/ai-manus",
+      "html_url": "https://github.com/Teolimaof/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "fedibenameur11/ai-manus",
+      "html_url": "https://github.com/fedibenameur11/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "Eldarmor/ai--manus",
+      "html_url": "https://github.com/Eldarmor/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "EpicGiantite13205/ai--manus",
+      "html_url": "https://github.com/EpicGiantite13205/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "OmegamaneLucky59003/ai--manus",
+      "html_url": "https://github.com/OmegamaneLucky59003/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "proteus1121/manus-ai",
+      "html_url": "https://github.com/proteus1121/manus-ai",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "hamzamostafa77772-cyber/ai-manus",
+      "html_url": "https://github.com/hamzamostafa77772-cyber/ai-manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "TalonAscendedking81130/ai--manus",
+      "html_url": "https://github.com/TalonAscendedking81130/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "GeniewingKeen36258/ai--manus",
+      "html_url": "https://github.com/GeniewingKeen36258/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "CynuraslayerAngel62471/ai--manus",
+      "html_url": "https://github.com/CynuraslayerAngel62471/ai--manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "thecoderrrer/ai_manus",
+      "html_url": "https://github.com/thecoderrrer/ai_manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "Adil-Ijaz7/manus-ai",
+      "html_url": "https://github.com/Adil-Ijaz7/manus-ai",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "abhinay-h/ai_manus",
+      "html_url": "https://github.com/abhinay-h/ai_manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "proteus1121/ai_manus",
+      "html_url": "https://github.com/proteus1121/ai_manus",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    },
+    {
+      "full_name": "abhinay-h/manus-ai",
+      "html_url": "https://github.com/abhinay-h/manus-ai",
+      "stars": 92,
+      "selected": false,
+      "reason": "為同一波「ai-manus / manus-ai」冒名倉庫洗星活動的其中一個複本：倉庫說明文字與其他近 60 個候選完全相同，帳號於 2026-11-06～07 數小時內集中建立並迅速取得 92 顆 star（多個帳號名稱為隨機字串組合，疑似人頭/機器人帳號），非原創內容，疑似散布假冒 Manus 品牌的惡意下載檔，不收錄。"
+    }
+  ]
+}
