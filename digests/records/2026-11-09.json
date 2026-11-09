@@ -1,0 +1,145 @@
+{
+  "date": "2026-11-09",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-07 stars:>=20 | topic:machine-learning created:>=2026-11-07 stars:>=20 | topic:llm created:>=2026-11-07 stars:>=20 | topic:ai-agent created:>=2026-11-07 stars:>=20 | topic:generative-ai created:>=2026-11-07 stars:>=20",
+  "notice": {
+    "lede": "今天的候選榜幾乎被同一套廣告/詐騙範本洗版:18 個候選中有 16 個是『manus-ai / ai_manus / ai--manus』分身 repo。",
+    "body": "這 16 個 repo 由 15 個不同帳號在 2026-11-07 當天數分鐘內接連建立,GitHub topics 都複製貼上同一段「AI Manus 通用 AI Agent」說明,star 數也幾乎一致集中在 53-54(很可能是灌星)。但實際讀取 README 後發現內容是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 檔案的下載連結(標注『PROMO2026』),並沒有附上可審視的原始碼實作——這是利用 GitHub topic 搜尋演算法做內容農場、甚至可能是惡意軟體散布的典型手法,而非真實的新工具發布,因此今天全數不予選入。扣除這批洗版內容後,真正值得留意的新專案只有兩個:一個是 Roblox Studio 專用的桌面 AI agent(Studsmith),另一個是模型可解釋性/編輯研究工具(Laplace's Scissors)。"
+  },
+  "candidates": [
+    {
+      "full_name": "RapidSailorFreeze/studsmith",
+      "html_url": "https://github.com/RapidSailorFreeze/studsmith",
+      "stars": 95,
+      "selected": true,
+      "summary": "Windows 桌面 App,作為 Roblox Studio 的 AI agent:用自然語言描述需求後自動規劃、產生 Luau 腳本、以 diff 方式呈現變更,並可自動執行 playtest 迴圈讀取錯誤並修正。",
+      "tech": "可接本地模型(如 Ollama)或自備 API key 的 LLM,整合 Roblox Studio(roblox-studio-mcp)。",
+      "feasibility": "僅發行編譯好的 Windows 10/11 64-bit 執行檔,直接下載即可用;未經程式碼簽署會跳 SmartScreen 警告,repo 本身未附完整原始碼可供審視(屬閉源二進位發布)。",
+      "limits": "僅支援 Windows;閉源執行檔,無法直接審查原始碼內容,信任風險需自行評估;功能聚焦於 Roblox 遊戲開發這個小眾場景。",
+      "reason": "今天候選中少數有明確產品形態、使用說明與版本發布紀錄的真實新專案,聚焦 Roblox 開發這個明確場景。"
+    },
+    {
+      "full_name": "Miyamoto-Renya/LaplacesScissors",
+      "html_url": "https://github.com/Miyamoto-Renya/LaplacesScissors",
+      "stars": 27,
+      "selected": true,
+      "summary": "LLM 可解釋性/模型編輯研究工具:透過旋轉模型輸出矩陣來診斷『弱輸出方向』、修復錯誤答案同時保留原本正確的生成結果,並能分析不同模型規模下的 scaling 偏差量。",
+      "tech": "Rust + Triton + CUDA/HIP,示範模型為 Hugging Face 上的 Qwen/Qwen3-0.6B,MIT 授權。",
+      "feasibility": "需準備 Rust toolchain、可匯入 Triton 3.8 的 Python 環境與 CUDA 或 HIP GPU;提供完整 CLI(fetch/inspect/probe/diagnose/generate/export/scale)與範例 JSONL 測試案例,本地重現步驟清楚。",
+      "limits": "需要實體 GPU 與對應驅動(CUDA 或 ROCm),僅支援 safetensors 格式模型,屬研究型診斷工具而非終端產品。",
+      "reason": "具體、有完整 CLI 與測試案例的機制可解釋性研究工具,技術內容扎實,非行銷性質的空殼專案。"
+    },
+    {
+      "full_name": "tireddwarf99/ai_manus",
+      "html_url": "https://github.com/tireddwarf99/ai_manus",
+      "stars": 54,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "tireddwarf99/manus-ai",
+      "html_url": "https://github.com/tireddwarf99/manus-ai",
+      "stars": 54,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "EpicGiantite13205/ai--manus",
+      "html_url": "https://github.com/EpicGiantite13205/ai--manus",
+      "stars": 54,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "abhinay-h/manus-ai",
+      "html_url": "https://github.com/abhinay-h/manus-ai",
+      "stars": 54,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "abhinay-h/ai_manus",
+      "html_url": "https://github.com/abhinay-h/ai_manus",
+      "stars": 54,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "thecoderrrer/ai_manus",
+      "html_url": "https://github.com/thecoderrrer/ai_manus",
+      "stars": 54,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "thecoderrrer/manus-ai",
+      "html_url": "https://github.com/thecoderrrer/manus-ai",
+      "stars": 54,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "yassinebourzza1/ai--manus",
+      "html_url": "https://github.com/yassinebourzza1/ai--manus",
+      "stars": 53,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "Sorsax/ai--manus",
+      "html_url": "https://github.com/Sorsax/ai--manus",
+      "stars": 53,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "YanBatistaa/ai--manus",
+      "html_url": "https://github.com/YanBatistaa/ai--manus",
+      "stars": 53,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "iamumairayub/ai--manus",
+      "html_url": "https://github.com/iamumairayub/ai--manus",
+      "stars": 53,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "shadowdarkmr/ai--manus",
+      "html_url": "https://github.com/shadowdarkmr/ai--manus",
+      "stars": 53,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "Youw/ai--manus",
+      "html_url": "https://github.com/Youw/ai--manus",
+      "stars": 53,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "jatinyadav2036/ai--manus",
+      "html_url": "https://github.com/jatinyadav2036/ai--manus",
+      "stars": 53,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "sachinspanchal05/ai--manus",
+      "html_url": "https://github.com/sachinspanchal05/ai--manus",
+      "stars": 53,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    },
+    {
+      "full_name": "ShedrackOlisa/ai--manus",
+      "html_url": "https://github.com/ShedrackOlisa/ai--manus",
+      "stars": 53,
+      "selected": false,
+      "reason": "淘汰:這是同一套內容農場/廣告範本在短時間內用多個分身帳號複製貼上的 repo。GitHub topics 寫著『AI Manus 通用 AI Agent』,但實際 README 是置換關鍵字的 SEO 文案,主打一個指向 Dropbox .rar 的下載連結,並非真正可審視的開源程式碼,且 15 個帳號集中在 2026-11-07 數分鐘內建立、star 數幾乎相同(53-54),明顯是灌星/洗版行為,非真實新工具。"
+    }
+  ]
+}
