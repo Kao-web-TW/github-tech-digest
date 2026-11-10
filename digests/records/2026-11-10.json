@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-10",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-08 stars:>=20 | topic:machine-learning created:>=2026-11-08 stars:>=20 | topic:llm created:>=2026-11-08 stars:>=20 | topic:ai-agent created:>=2026-11-08 stars:>=20 | topic:generative-ai created:>=2026-11-08 stars:>=20",
+  "notice": {
+    "lede": "今天候選榜中出現兩個幾乎一模一樣的「蹭熱門模型名稱」空殼倉庫，提醒精選流程要特別留意品牌仿冒型垂釣倉庫。",
+    "body": "liujiaqi2024/Free-ClaudeOpus-5.5 與 Pickardt/Chat-GPT-Astra-6.1 兩個倉庫使用幾乎逐字相同的制式 README 樣板（功能描述空泛、免責聲明文字一致），且都把「下載」導向同一個 telegra.ph 短連結而非倉庫本身內容，分別蹭上「Claude Opus 5.5」與「GPT 6.1」這兩個當紅模型名稱衝 star/流量。兩者皆未附授權條款、無可檢視的實際原始碼邏輯，本次判定為高度疑似垂釣/惡意軟體散布型空殼倉庫並予以淘汰；日後若在候選榜中再看到類似「XXX Astra」命名加 telegra.ph 下載連結的組合，應直接視為同一批樣板倉庫處理。"
+  },
+  "candidates": [
+    {
+      "full_name": "FJNB5/fujiang-pojia",
+      "html_url": "https://github.com/FJNB5/fujiang-pojia",
+      "stars": 289,
+      "selected": false,
+      "reason": "Star 數最高（289），但本質是 DeepSeek Harness 的「全自動授權滲透」插件，內建大量 CVE/PoC 利用知識庫與自動化攻擊鏈；屬於高風險雙用途安全工具且綁定非主流 AI 平台（DeepSeek Harness），不適合在每日精選中推廣，予以淘汰。"
+    },
+    {
+      "full_name": "RapidSailorFreeze/studsmith",
+      "html_url": "https://github.com/RapidSailorFreeze/studsmith",
+      "stars": 95,
+      "selected": true,
+      "reason": "Roblox Studio 專用 AI coding agent，功能明確、有實際發行版與使用說明，star 數穩健（95），適合收錄。",
+      "summary": "Windows 桌面應用，讓使用者用自然語言描述需求，agent 自動產生 Luau 腳本、在 Roblox Studio 場景中建立物件，並附帶變更前 diff 預覽、復原點、以及自動遊玩測試（playtest loop）偵測並修正錯誤的迴圈。",
+      "tech": "支援本地模型或使用者自備 API key；核心是把需求轉成 Luau 程式碼的 LLM agent，並透過與 Roblox Studio 的整合執行與驗證。",
+      "feasibility": "僅提供 Windows 10/11 x64 執行檔（未開源原始碼），下載解壓即可執行；因未簽署程式碼會觸發 SmartScreen 警示，官方提供 release 的 SHA-256 供核對，風險可控但無法本地建置/審查原始碼。",
+      "limits": "僅支援 Windows 平台；目前未開源，無法自行編譯或擴充；功能仍侵限於 Roblox/Luau 生態，非通用程式開發工具。"
+    },
+    {
+      "full_name": "liujiaqi2024/Free-ClaudeOpus-5.5",
+      "html_url": "https://github.com/liujiaqi2024/Free-ClaudeOpus-5.5",
+      "stars": 71,
+      "selected": false,
+      "reason": "README 為制式樣板文字（功能描述空泛、無實際程式碼說明），下載方式指向 telegra.ph 外部連結而非 repo 本身內容，且刻意蹭「Claude Opus 5.5」品牌名稱、無授權條款；高度疑似垂釣/惡意軟體散布型空殼倉庫，淘汰並建議留意同類樣板倉庫。"
+    },
+    {
+      "full_name": "Dodaios/ste80-humanizer",
+      "html_url": "https://github.com/Dodaios/ste80-humanizer",
+      "stars": 65,
+      "selected": true,
+      "reason": "文件完整、方法論清楚（26 條 AI 寫作痕跡 + 15 條 STE80 簡化英文規則），附帶無依賴的 Python 檢查腳本與正式測試案例，MIT 授權，適合收錄。",
+      "summary": "讓 AI 產生的文字讀起來像人寫的、但不改變原意的 Claude Code Skill：結合「移除 AI 用語痕跡」與 Andrej Karpathy 提出的「80% 簡化技術英文（STE80）」兩套方法，可依指令做輕度、預設或嚴格三種改寫模式。",
+      "tech": "以 Claude Code Skill 形式運作（/ste80-humanizer 指令或自然語言觸發），附 scripts/ste_check.py 作為無第三方依賴的 Python 規則檢查器，並以 claude plugin eval 格式提供 4 組測試案例。",
+      "feasibility": "可透過 npx skills add 或 Claude Code plugin marketplace 一行指令安裝，亦支援 Claude.ai/Claude Desktop 以 ZIP 上傳技能，本地執行門檻低。",
+      "limits": "規則集主要針對英文（ASD-STE100 為英文標準），其他語言僅套用結構規則而非字彙表；僅為「風格」近似，非官方 STE 合規認證；不適用於小說、演講、品牌文案等非說明性文字。"
+    },
+    {
+      "full_name": "bookleme/bookleme",
+      "html_url": "https://github.com/bookleme/bookleme",
+      "stars": 37,
+      "selected": true,
+      "reason": "文件詳盡、強調可驗證的忠實度指標與版權硬性門檻、零第三方依賴，設計嚴謹且誠實標註未驗證/未達標項目，適合收錄。",
+      "summary": "把一本書「編譯」成可安裝、可運行的 Agent Skill 的工具鏈：產出結構化知識包（knowledge_pack）與會運行的行為型 Skill（behavior_skill）兩類產物，而非單純讀書筆記。",
+      "tech": "純 Python 標準庫實作（Python ≥3.9、零第三方依賴），S0–S9 確定性編譯流水線，雙引擎（知識包/行為 Skill）共享中間表示，支援可插拔「體裁」插件（coach_dialogue、knowledge_reference 已實作）。",
+      "feasibility": "git clone 後直接 `python3 -m bookleme run ...` 即可本地執行，附完整單元測試與驗證器（含逐字引文校驗、版權硬門檢查），無需額外依賴安裝。",
+      "limits": "S4 原子能力抽取目前僅為確定性抽取器，LLM judge 尚未接入（groundedness 等指標為 null）；coverage_score 實測 0.667 未達 0.85 目標；professional_analysis、decision_checklist 插件仍在規劃（M4）；處理第三方書籍產出的 Skill 預設私有、公開分發需明確額外確認旗標。"
+    },
+    {
+      "full_name": "Pickardt/Chat-GPT-Astra-6.1",
+      "html_url": "https://github.com/Pickardt/Chat-GPT-Astra-6.1",
+      "stars": 29,
+      "selected": false,
+      "reason": "與 liujiaqi2024/Free-ClaudeOpus-5.5 採用幾乎一致的制式樣板文字與同一個 telegra.ph 下載連結，刻意蹭「GPT 6.1」品牌名稱、無授權條款，同屬疑似垂釣/惡意軟體散布型空殼倉庫，淘汰。"
+    },
+    {
+      "full_name": "assassin808/learn-from-lessons",
+      "html_url": "https://github.com/assassin808/learn-from-lessons",
+      "stars": 23,
+      "selected": true,
+      "reason": "設計理念清楚（引用 Anthropic《The Components of Agent Memory》）、有具體評測數據支持效果、本地執行、MIT 授權，適合收錄。",
+      "summary": "讀取本機已有的 coding agent（Claude Code、Codex、opencode）對話紀錄，自動找出使用者糾正 agent 的片段，萃取成附原文引用的「教訓（lesson）」，供下次 session 讓 agent 載入，避免重複犯同樣的錯。",
+      "tech": "Python 3.9+、pipx 安裝、純本地運行；同時提供 Claude Code skill、Codex/opencode 的 AGENTS.md 區塊、以及一個 MCP server（lessons mcp）三種整合方式；lesson 分為原則/規則/案例三層並標記驗證狀態。",
+      "feasibility": "`pipx install git+https://github.com/assassin808/learn-from-lessons` 一行安裝，無其他依賴，直接讀取本機既有 transcript，無需額外帳號或雲端服務。",
+      "limits": "作者自述目前僅有「一人的資料」作為評測樣本（47 個新情境、85%→98-100% 的遵循率提升),尚待更多使用者與多種 agent（Cursor、Aider、Gemini CLI、Cline）驗證；目前讀取器主要支援 Claude Code/Codex/opencode。"
+    },
+    {
+      "full_name": "minorun365/unslop-ai-app",
+      "html_url": "https://github.com/minorun365/unslop-ai-app",
+      "stars": 23,
+      "selected": true,
+      "reason": "針對「AI 做的網頁看起來很像 AI 做的」這個具體痛點提供規則與檢查腳本，含日文排版/手機檢查特化內容，授權明確（Apache 2.0），適合收錄。",
+      "summary": "一套給 Claude Code 等 AI agent 讀取的 Skill 集合，教 AI 避免做出「一眼就知道是 AI 做的」網頁 UI（例如不必要的裝飾卡片、表情符號圖示、宣傳式標題等），並涵蓋 AI agent 聊天介面特有的設計規範（思考中/工具執行中狀態、登入畫面等）。",
+      "tech": "三個 Skill（app-ui-design、agent-app-ui、mobile-web-check）+ 一個無依賴的 Node.js 檢查腳本 tools/check-ui.mjs，掃描前端原始碼找出「AI 感」寫法；手機檢查流程仰賴 iOS Simulator/Xcode。",
+      "feasibility": "只需把 repo clone 到 ~/.claude/skill-repos 並將 skills/ 複製到 ~/.claude/skills/ 即可使用，檢查腳本僅需 Node.js 18+；iOS 模擬檢查則需要 Xcode 環境。",
+      "limits": "內容與範例以日文介面/文案為主（組版、用語規則特化日文），英文或其他語言場景需自行調整；iOS Simulator 檢查步驟僅能在 macOS + Xcode 環境執行。"
+    },
+    {
+      "full_name": "yusuke-114/claude-xcode-agent",
+      "html_url": "https://github.com/yusuke-114/claude-xcode-agent",
+      "stars": 22,
+      "selected": true,
+      "reason": "解決一個具體且實際的整合痛點（Xcode GUI 啟動 agent 時沒有 shell 環境變數、adapter 會誤讀全域設定檔),架構說明清楚、MIT 授權，適合收錄。",
+      "summary": "讓 Claude Code 能在 Xcode 27 的 Agent（ACP, Agent Client Protocol）介面中作為可用的 coding agent 執行，可設定自己的 API key 或自訂 gateway/模型。",
+      "tech": "透過一個雙重角色的 shell 腳本 claude-acp.sh：第一次以「agent」身分讀取 config.json 設環境變數並 exec 官方 claude-agent-acp adapter，adapter 每個 session 再呼叫腳本第二次以「claude」身分 exec 真正的 claude 指令，全程皆用 exec 不留駐留的 wrapper process。",
+      "feasibility": "`git clone` 後執行 `./setup.sh` 自動安裝 node/claude/adapter 並印出路徑，在 Xcode「新增 Agent」設定該路徑即可，需自備 Anthropic API key 或相容 gateway；僅支援 macOS + Xcode 27 環境。",
+      "limits": "僅適用於 Xcode 27 的 Agent 整合介面，非通用工具；需要使用者自行管理 API key/gateway 設定於本機 config.json（未加密，僅靠檔案權限 600 保護）。"
+    }
+  ]
+}
