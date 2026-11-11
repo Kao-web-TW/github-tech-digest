@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-11",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-09 stars:>=20 | topic:machine-learning created:>=2026-11-09 stars:>=20 | topic:llm created:>=2026-11-09 stars:>=20 | topic:ai-agent created:>=2026-11-09 stars:>=20 | topic:generative-ai created:>=2026-11-09 stars:>=20",
+  "notice": {
+    "lede": "今天候選池明顯偏小（5 個 topic 合併去重後僅 8 筆），且多數是透過 skills.sh / npx skills add 安裝的「Agent Skill」套件而非完整框架。",
+    "body": "本次以 2026-11-09 至今建立、star 數 ≥20 為篩選條件，5 個 topic 合併去重後只找到 8 個候選，明顯少於以往。入選的 6 個中有 4 個（ste80-humanizer、unslop-ai-app、learn-from-lessons、agent-traffic）都是以「可被 Claude Code / Codex / Cursor 等 coding agent 直接安裝使用的 Skill」形式發布，顯示 skills.sh 這類輕量安裝管道正在成為新興 AI 工具的主要分發形式，而不只是傳統的 pip/npm 套件。另外本輪也出現一個高星（511）但涉及自動化滲透測試/漏洞利用的中文桌面 agent 外掛，因安全敏感性與目標平台過於小眾而未入選。"
+  },
+  "candidates": [
+    {
+      "full_name": "FJNB5/fujiang-pojia",
+      "html_url": "https://github.com/FJNB5/fujiang-pojia",
+      "stars": 511,
+      "selected": false,
+      "reason": "為 DeepSeek Harness（小眾中文桌面 AI agent 平台）打包 CVE/PoC 知識庫與自動化滲透作業鏈（偵查→指紋識別→漏洞匹配→利用→橫向移動→報告）的外掛，安全敏感且目標平台小眾，與本精選「可泛用 AI 整合工具」的定位不符，故不選入。"
+    },
+    {
+      "full_name": "Dodaios/ste80-humanizer",
+      "html_url": "https://github.com/Dodaios/ste80-humanizer",
+      "stars": 304,
+      "selected": true,
+      "summary": "將 AI 生成文字改寫成更像人類撰寫的 Agent Skill，結合「AI 用語特徵移除」（26 種常見 tell）與 Andrej Karpathy 提出的 ASD-STE100 航空簡化英文寫作法（80% 強度）兩道處理，可透過 skills.sh / Claude Code plugin / Claude.ai Skills 安裝使用。",
+      "tech": "Agent Skill（SKILL.md）+ 零依賴 Python 檢查腳本（scripts/ste_check.py），支援 Claude Code、Codex、Cursor 等多種 agent 透過 skills CLI 安裝。",
+      "feasibility": "本地可行性高：安裝即用，無需外部 API 或額外依賴，checker 腳本可獨立執行做靜態檢測，附 4 組 claude plugin eval 測試案例。",
+      "limits": "只是啟發式檢查而非 AI 偵測器或合規驗證工具；僅對英文套用完整字詞規則，其他語言只套用結構規則；不保證真正符合官方 ASD-STE100 規範。",
+      "reason": "想法具體且可驗證（結合既有 humanizer 方法與 Karpathy 公開提出的寫作法），有自動化檢查腳本與對照測試，可直接套用在真實工作流，故入選。"
+    },
+    {
+      "full_name": "bookleme/bookleme",
+      "html_url": "https://github.com/bookleme/bookleme",
+      "stars": 106,
+      "selected": true,
+      "summary": "把一本書（PDF/EPUB/DOCX/MD/HTML/RTF/MOBI）編譯成可安裝的 Agent Skill，分為「知識包」與「行為 Skill」兩類產物，核心賣點是逐字忠實度回驗（7 項指標）與版權工程化（6 條確定性硬門），避免摘要幻覺與原文外流。",
+      "tech": "Python 3.9+ 零第三方依賴，S0–S9 確定性編譯管線 + 可插拔體裁插件（coach_dialogue、knowledge_reference 已實作，另 2 種規劃中），可選串接 OpenAI 相容 LLM 做抽取。",
+      "feasibility": "本地可行性高，純標準庫執行，附單元測試，並以真實 273 頁中文書稿端到端跑通並留下具體指標數據。",
+      "limits": "目前僅 2 個體裁插件落地，LLM judge 尚未接入（groundedness 指標為 null）；公開分發第三方書籍產物需額外顯式確認，版權規則嚴格限制分發範圍。",
+      "reason": "機制設計嚴謹（逐字忠實度回驗、版權硬門）並附真實測試數據，相較同類專案（book-to-skill、bookforge-skills）有明確差異化，故入選。"
+    },
+    {
+      "full_name": "yusuke-114/claude-xcode-agent",
+      "html_url": "https://github.com/yusuke-114/claude-xcode-agent",
+      "stars": 44,
+      "selected": true,
+      "summary": "讓 Xcode 27 的 Intelligence Agent 介面直接呼叫 Claude Code，透過一支腳本（claude-acp.sh）解決 Xcode GUI 啟動時沒有 shell 環境、以及官方 ACP adapter 會誤讀使用者全域設定檔的問題，可設定自有 API key、Gateway 或 MCP servers。",
+      "tech": "Shell 腳本橋接 ACP（Agent Client Protocol）與 Claude Code CLI，以雙重 exec（先作為 agent 載入設定，再作為 claude 啟動 session）確保 session 持續且 stdout 保持純 ACP 訊息。",
+      "feasibility": "本地可行性高，一個 setup.sh 安裝 node/claude/adapter 並印出可用路徑，設定檔為 JSON，全程在本機執行。",
+      "limits": "僅適用 macOS + Xcode 27 使用者；需自行準備 Claude API key 或 Gateway；MCP server 需用絕對路徑（Xcode 不帶使用者 shell PATH）。",
+      "reason": "填補 Xcode 原生 agent 介面與 Claude Code 之間的落差，對 iOS/macOS 開發者有直接實用價值，設計說明清楚可行，故入選。"
+    },
+    {
+      "full_name": "minorun365/unslop-ai-app",
+      "html_url": "https://github.com/minorun365/unslop-ai-app",
+      "stars": 39,
+      "selected": true,
+      "summary": "日文版「去 AI 感」UI 設計技能集，專注修正 AI 產生畫面常見的罐頭模式（半邊上色卡片、emoji 圖示、宣傳式標題），並補強 Agent 聊天介面特有的規範（思考中/工具執行中狀態、登入畫面、公開場合操作畫面），含 iOS Simulator 手機版檢查流程與零依賴的靜態檢查腳本。",
+      "tech": "Claude Code Skills（app-ui-design、agent-app-ui、mobile-web-check）+ Node.js 檢查腳本（tools/check-ui.mjs），無其他依賴。",
+      "feasibility": "本地可行性高，只需 Node.js 18+ 即可跑檢查腳本；iOS 模擬器檢查需要 Xcode。",
+      "limits": "規則以日文畫面文案與排版為主，直接套用在其他語言介面效果有限；是風格指南而非嚴格規範，仍需人工判斷。",
+      "reason": "針對一個常見但少有工具處理的痛點（AI 生成 UI 的「罐頭感」），提供具體可執行的檢查規則與腳本，對開發 Agent 應用的團隊有實用價值，故入選。"
+    },
+    {
+      "full_name": "rohitjee7022-blip/Anonymous-Campus",
+      "html_url": "https://github.com/rohitjee7022-blip/Anonymous-Campus",
+      "stars": 36,
+      "selected": false,
+      "reason": "為特定學校（IIIT Sonepat）打造的匿名意見回饋平台，AI（BharatCode AI / Qwen）僅作為管理後台的洞察摘要輔助功能，屬學校專案/黑客松 demo，不具備可泛用的 AI 整合工具參考價值，故不選入。"
+    },
+    {
+      "full_name": "assassin808/learn-from-lessons",
+      "html_url": "https://github.com/assassin808/learn-from-lessons",
+      "stars": 30,
+      "selected": true,
+      "summary": "讀取本機已存在的 Claude Code / Codex / opencode 對話記錄，找出使用者糾正 agent 的時刻，自動萃取成「可引用原文」的簡短教訓（lesson），並注入到 CLAUDE.md 等設定檔讓下次對話載入，避免同樣錯誤重複發生。",
+      "tech": "Python 3.9+ CLI（pipx 安裝），同時提供 Claude Code skill、AGENTS.md 區塊（供 Codex/opencode）與 MCP server 三種介面；設計呼應 Anthropic《Agent Memory 的組成》一文（原則→規則→案例三層結構）。",
+      "feasibility": "本地可行性高，純本機執行、無外部依賴，一鍵 pipx 安裝即可用。",
+      "limits": "目前只支援讀取 Claude Code、Codex、opencode 的記錄格式，尚未支援 Cursor/Aider/Gemini CLI/Cline；成效數據僅來自作者一人的 47 個情境測試，樣本量小（推測：對不同使用習慣的使用者效果可能有落差）。",
+      "reason": "直接命中「coding agent 重複犯同樣錯誤」的痛點，設計呼應 Anthropic 官方 Agent Memory 論述並附初步實測數據（遵循率 85%→98–100%），對長期使用 coding agent 的開發者實用，故入選。"
+    },
+    {
+      "full_name": "mintlify/agent-traffic",
+      "html_url": "https://github.com/mintlify/agent-traffic",
+      "stars": 23,
+      "selected": true,
+      "summary": "辨別 HTTP 請求來自真人、AI agent（如 Claude Code、ChatGPT）、AI 爬蟲（訓練用途）或一般 bot 的分類套件，內建經測試的真實 user agent/header/官方 IP 範圍驗證資料集，可偵測偽造成 GPTBot 等知名爬蟲的冒充者。",
+      "tech": "TypeScript/JS 零依賴套件（@mintlify/agent-traffic），可在 Node/Bun/Deno/Cloudflare Workers/Vercel Edge 執行；同時以 npx skills add 形式提供 Claude Code/Cursor/Codex 技能版本，並可查詢 ClickHouse/DuckDB/Postgres 日誌。",
+      "feasibility": "本地可行性高，npm install 即可用，或透過 skill 讓 agent 直接操作；資料集與 IP 範圍驗證邏輯公開可查。",
+      "limits": "部分產品共用相同識別特徵（如 Codex 曾被回報偽裝成 ChatGPT-User），無法完全區分；在使用者自己瀏覽器內執行的 agentic browser（Atlas、Comet、Claude in Chrome）在 HTTP 層與真人無法區分。",
+      "reason": "來自 Mintlify 處理海量文件流量的實戰需求，解決「真假 AI 流量辨識」這個日益重要卻缺乏可靠工具的問題，資料集經實測且持續維護，故入選。"
+    }
+  ]
+}
