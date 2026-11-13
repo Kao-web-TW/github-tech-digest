@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-13",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-11 stars:>=20 | topic:machine-learning created:>=2026-11-11 stars:>=20 | topic:llm created:>=2026-11-11 stars:>=20 | topic:ai-agent created:>=2026-11-11 stars:>=20 | topic:generative-ai created:>=2026-11-11 stars:>=20",
+  "notice": {
+    "lede": "候選量很小（僅 7 個通過門檻），但入選項目有個共同點：MCP 伺服器正變成把 AI 助理接進任意垂直領域（3D 建模、交易、短影音生產）的通用整合層。",
+    "body": "今天 2 天視窗 + stars>=20 的門檻只篩出 7 個候選，是近期執行中數量偏少的一天，可能反映週末後的發布節奏，也可能是門檻本身在小型新 repo 上偏嚴格。值得注意的是，入選的 5 個項目裡有 3 個（Blender 外掛、交易代理人、ViralForge）都內建了 MCP server 作為讓 Claude / Codex / Cursor 之類的 agent 直接操作該工具的標準介面，而不是各自發明一套 webhook 或 REST API；這和另外兩個入選項目（AI 工程作品集、LLM 白板教學 benchmark）呈現的「誠實標註限制、可離線重現」風格放在一起看，顯示這波新專案不只是在做 AI 應用，也在認真處理「AI 應用要如何被另一個 AI agent 安全地呼叫與驗證」這個更底層的問題。"
+  },
+  "candidates": [
+    {
+      "full_name": "8hjkkwikl8/ai-portfolio",
+      "html_url": "https://github.com/8hjkkwikl8/ai-portfolio",
+      "stars": 90,
+      "selected": true,
+      "summary": "求職導向的 AI 工程作品集，包含三個可獨立執行的專案：InsightRAG（可追溯引用的中文 RAG 問答，含 Recall/MRR/引用合法率金標評測）、PromptLens（不可變版本管理的提示詞評測與 HTML 報告）、DataChat BI（自然語言轉唯讀 SQL，多層安全邊界）。",
+      "tech": "Python 3.13 標準庫為主；BM25 + 雜湊 n-gram 向量做混合檢索並以 RRF 融合（非真實語義嵌入）；FastAPI/uvicorn 起 Web 服務；可選接 OpenAI 相容端點做線上生成，但生成內容需逐句通過引用校驗，否則退回離線摘要。",
+      "feasibility": "本地可行性高：三個離線演示零第三方依賴、不需任何 API Key，`python verify_all.py` 可一次跑完 106 項自動化測試；只有想接真實模型時才需設定 OPENAI_API_KEY。",
+      "limits": "README 誠實列出『真實性邊界』：RAG 語料僅 3 篇演示文件、無法外推至生產知識庫；PromptLens 範例指標來自 mock provider，不代表模型品質；DataChat BI 僅 48 行示範訂單，是規則式離線規劃器，非通用自然語言理解；三者都是單機演示，無帳號權限與分散式索引。",
+      "reason": "少見的『誠實標註限制、可重現驗證』風格作品集，三個專案分別覆蓋 RAG／評測／安全 NL2SQL 三個常見痛點且都能零金鑰離線跑通，工程完整度高，值得精選。"
+    },
+    {
+      "full_name": "molly554/whiteboard-ai-tutor",
+      "html_url": "https://github.com/molly554/whiteboard-ai-tutor",
+      "stars": 58,
+      "selected": true,
+      "summary": "開源白板 AI 家教：模型以 JSON 形式串流繪圖指令（寫字/畫線/擦除），瀏覽器端即時畫成手寫板書，學生可隨時打斷重問；同時是一個六個模型（Gemini 4 Argon、Claude Haiku/Sonnet 5.5、Gemini 3.8 Flash、DeepSeek V4 Pro/Flash）在同一凍結 prompt 下的盲評 benchmark，288 次呼叫、64 幅板書人工複核。",
+      "tech": "LLM 驅動的六操作繪圖協議（write/line/rect/ellipse/path/erase），透過 OpenRouter 呼叫 Claude/Gemini、DeepSeek 用自家金鑰；評審用 Claude Fable 5.2 做盲評（不知道模型名稱,僅看像素座標判斷幾何正確性）。",
+      "feasibility": "本地可行性高：`python serve.py` 即可零金鑰零依賴重播所有已錄製的板書（含線上 gallery），只有想『自己跑一輪新模型對戰』才需要 OPENROUTER_API_KEY / DEEPSEEK_API_KEY，且提供 mock_server.py 可免費測試執行流程。",
+      "limits": "README 明確寫出：每模型僅 11 幅板書樣本量太小（9/11、8/11、7/11 無法有效區分）；僅評估最終板書，中間繪製過程未審查；prompt 固定一種中文措辞，換一種措辞排名可能不同；僅 8 個情境 3 次重複，不代表真實學生規模；延遲是單機量測且 Claude/Gemini 多繞了 OpenRouter 一層跳轉，不能類比正式環境數字。",
+      "reason": "把「AI 教學」拆成可驗證的協議+player+盲評流程，罕見地做了严谨的多模型 benchmark 並誠實標出樣本量與方法限制，是本日最具研究價值的一筆，精選。"
+    },
+    {
+      "full_name": "jackson-cmd/risk-aware-trading-agents",
+      "html_url": "https://github.com/jackson-cmd/risk-aware-trading-agents",
+      "stars": 49,
+      "selected": true,
+      "summary": "美股風險優先交易代理人系統：綜合宏觀日曆（FOMC/CPI/非農）、VIX 恐慌指數、交叉驗證新聞（Finviz+RSS+SEC 8-K）判斷市場狀態，搭配 EMA50/100/200 回檔、財報品質檢查的交易邏輯，提供每日紙上交易代理人、11 種策略（含選擇權）回測、10 家券商介面與一個給 Claude/Codex/Gemini 使用的 MCP server，可用自然語言描述策略讓 AI 寫程式碼並自動做『未來函數』檢查後回測。",
+      "tech": "Python 3.10+，規則式多代理人架構（宏觀/事件/技術/基本面/新聞代理人）+ 風控層做最終把關，可選接 GPT/Claude/本地 Ollama 模型做『多空判官』但只能微調 ±0.15 信心、不能自行下單；MCP server 曝露 13 個唯讀或僅操作本地紙上帳戶的工具。",
+      "feasibility": "本地可行性高：`riskaware init/regime/scan/backtest` 等核心指令完全不需帳號或 API Key，內建 2026 年新聞/SEC 檔案可直接回測；只有要接 LLM 判官或券商下單才需要對應金鑰，且預設即是紙上交易、真實下單需三道明確開關。",
+      "limits": "README 自行揭露：2018-2026 長期回測中策略因維持 30% 現金而落後 SPY 的年化報酬（10.4% vs 14.1%），僅在大跌時回撤較小；選擇權回測用 Black-Scholes 模擬隱含波動率而非真實歷史報價，結果對假設敏感；2026 含新聞回測僅 10 個月樣本，作者自己說『還是看 2018-2026 那張表更準』；多數券商介面只做過單元測試或沙盒測試，未必經過真實下單驗證。",
+      "reason": "工程成熟度高、風控邊界寫得很清楚（現金底線、單一部位上限、LLM 只能微調不能下單），且主動把自己的回測數字放在長週期脈絡裡解讀而不誇大短期勝率，是今日最嚴謹的金融類 AI 代理人專案，精選。"
+    },
+    {
+      "full_name": "fendouai/ViralForge",
+      "html_url": "https://github.com/fendouai/ViralForge",
+      "stars": 44,
+      "selected": true,
+      "summary": "面向短影音的「病毒影片結構複製」工作室：貼上一支爆款短影音連結或本地檔案，產出拆解鉤子/分鏡/字幕節奏/情緒曲線的『病毒 DNA 報告』，再一鍵把同一結構套用到新產品上生成可編輯的 VFML 專案，並批量產出 10 個 A/B 測試變體；設計為 Skill + MCP server + CLI 三種介面都可被 agent 直接呼叫。",
+      "tech": "Node.js 22.15+ / Vite + React 前端，結構分析（分鏡偵測、BPM、節奏）用 OpenCV/PySceneDetect 等在本地計算；MCP server（mcp/server.mjs）曝露 list_cases/get_case/analyze_video/build_project 工具；渲染用 FFmpeg + Playwright，無需任何模型或平台 API Key。",
+      "feasibility": "本地可行性中高：`npm run dev` 可零金鑰跑三個示範案例的完整『拆解→複製→10 變體』流程，結構分析（分鏡/BPM/節奏）是本地真實計算；但 README 自己說明 demo 的『語義層』（鉤子評分、DNA 敘述）是人工標註而非模型即時推論，要串真實模型生成需另外接 provider。",
+      "limits": "status 標示為 v0.1.0 MVP：示範影片是預先渲染好的,非即時生成；英文版 UI 尚未完成（demo 用中文素材）；WhisperX 詞級對齊與多模態標註、各家模型/影像/TTS 的 provider adapter 都還在規劃中；平台連結下載功能刻意未實作（僅支援本機上傳）。",
+      "reason": "少見把「短影音結構拆解」做成可被 agent 呼叫的標準三介面（Skill/MCP/CLI）並誠實區分『本地真實計算的結構分析』與『目前仍是人工標註的語義層』，方向有趣、邊界說得清楚，精選；但注意目前核心賣點之一（DNA 語義報告）在 demo 中是精心準備的素材而非即時模型輸出。"
+    },
+    {
+      "full_name": "hitkeeen/blender-ai-mcp-addon",
+      "html_url": "https://github.com/hitkeeen/blender-ai-mcp-addon",
+      "stars": 31,
+      "selected": true,
+      "summary": "Blender 內建的 AI 助理外掛：可檢視場景、建立/編輯物件與材質、截圖視窗、搜尋並匯入 Poly Haven/Sketchfab 等資源，並內建 MCP server 讓 OpenCode 等外部 MCP client 連線操作；支援單一助理模式或『經理-工人-審核』多代理人任務鏈，21 個場景工具。",
+      "tech": "Blender 4.2+ 擴充功能（Python/bpy API），可接 OpenAI、Anthropic Claude、Google Gemini、OpenRouter、OpenCode Zen、本地 Ollama 或自訂端點；多代理人模式下任務按順序執行，失敗一次給一次修正機會，二次審核失敗即停止流程。",
+      "feasibility": "本地可行性受限：目前發布版僅提供 Windows x64 的 ZIP 安裝包（非直接開源建置流程說明完整），且場景操作需要連接一個雲端或本地模型供應商（含金鑰），本身不是零金鑰工具；Ollama 本地模型路徑可免 API 費用但仍需另外安裝模型。",
+      "limits": "README 自承『Python 工具驗證只能抓明顯錯誤，不是安全沙盒』，外部 MCP client 要自己做好核准政策；僅支援 Windows x64 與 Blender 4.2 以上版本，Mac/Linux 使用者無法使用；連線憑證存在使用者本機設定中，聊天記錄僅存在當次 session。",
+      "reason": "把『AI 操作 3D 建模軟體』做成標準 MCP 介面且支援多代理人任務鏈，是今日唯一的創作工具類代理人專案，功能完整度高，精選；但平台僅限 Windows、且需自備模型金鑰，限制要明確告知使用者。"
+    },
+    {
+      "full_name": "alexturkey/ozel-uzak-masaustu",
+      "html_url": "https://github.com/alexturkey/ozel-uzak-masaustu",
+      "stars": 26,
+      "selected": false,
+      "reason": "淘汰：本質是一份土耳其語的 Tailscale+RustDesk 遠端桌面架設教學，AI agent 只是被用來『照著 Markdown 指南逐步執行安裝指令』的執行者角色，與 AI/ML 技術本身（模型、推論、資料）無直接關聯，且僅服務土耳其語使用者，與本精選主題（新興 AI 整合工具）關聯度過低。"
+    },
+    {
+      "full_name": "Pinnaclesys/Voice-Changer-2026",
+      "html_url": "https://github.com/Pinnaclesys/Voice-Changer-2026",
+      "stars": 24,
+      "selected": false,
+      "reason": "淘汰（推測有風險）：README 導向下載一個未經簽署、放在另一個帳號下 release 頁面的 .rar 執行檔，建置指令裡的 clone 網址還留著『username/ai-voice-changer.git』這種看起來像是未改完的範本，結尾又塞了一大段與專案本身無關的 SEO 關鍵字堆疊（『tiktok voice changer』『free fire voice changer』等），整體樣態更像是搜尋引擎導流/誘導下載不明執行檔的頁面，而非可信的開源專案，不建議收錄。"
+    }
+  ]
+}
