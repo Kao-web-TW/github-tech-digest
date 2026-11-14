@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-14",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-12 stars:>=20 | topic:machine-learning created:>=2026-11-12 stars:>=20 | topic:llm created:>=2026-11-12 stars:>=20 | topic:ai-agent created:>=2026-11-12 stars:>=20 | topic:generative-ai created:>=2026-11-12 stars:>=20",
+  "notice": {
+    "lede": "今天 5 個 topic 搜尋合併後的 66 個候選中,有 59 個(近九成)是同一套『manus--ai』文案與星數(146)的刷星農場倉庫,真正獨立的候選只剩 7 個。",
+    "body": "這是本 digest 執行以來首次遇到明顯的 GitHub 刷星/倉庫農場現象:大量帳號(多為隨機字串或一次性命名)在同一兩天內建立了內容完全相同、描述一字不差、星數完全一致(146)的『ai--manus』與『manus--ai』倉庫。若不先依內容特徵去重,這類農場倉庫會直接把 top 50 榜單中真正的候選擠光。今天也另外發現兩個偽裝成開源 OSINT AI 工具、實際是導流到外部商業網站下載封閉原始碼執行檔的『行銷倉庫』(legwork、shamus,同一文案模板與網域),以及一個下載連結指向他人帳號、原始碼章節殘留範本文字的可疑語音變聲器倉庫。今天的精選改以技術內容與可驗證性為準,寧可選出較少數量,也不納入刷星或行銷導流類倉庫。"
+  },
+  "candidates": [
+    {
+      "full_name": "hitkeeen/blender-ai-mcp-addon",
+      "html_url": "https://github.com/hitkeeen/blender-ai-mcp-addon",
+      "stars": 164,
+      "selected": true,
+      "summary": "mcp-for-blender-pro：Blender 內建的 AI 助理與 MCP 伺服器,可檢視/編輯場景、指派多代理人(manager/worker/reviewer)分工執行多步驟 3D 建模任務,並提供 21 種場景工具(建立物件、材質、匯出、資產搜尋等)。",
+      "tech": "Model Context Protocol (MCP) 伺服器 + Blender Python API(bpy);可連接 OpenAI、Anthropic Claude、Google Gemini、OpenRouter、本地 Ollama 或自訂端點;支援多代理人工作流(manager/workers/reviewers)。",
+      "feasibility": "需 Windows x64 + Blender 4.2+,從 Releases 下載 zip 以 Blender 擴充功能方式安裝;本地可跑 Ollama 免金鑰使用,或接雲端模型需自備 API Key。僅提供封裝後的 zip 安裝包,原始碼在 repo 中的完整程度未能從 README 確認。",
+      "limits": "僅支援 Windows x64;雲端模型須自備金鑰;README 末段有大量 SEO 關鍵字堆疊(常見於行銷導向頁面,但不影響功能本身的可信度判斷);Python 工具驗證非安全沙箱,官方亦明確聲明。",
+      "reason": "功能完整、技術說明具體、支援多家主流模型與本地 Ollama,屬於真實可用的 Blender×AI/MCP 整合工具,選入。"
+    },
+    {
+      "full_name": "Axillios1/manus--ai",
+      "html_url": "https://github.com/Axillios1/manus--ai",
+      "stars": 146,
+      "selected": false,
+      "reason": "疑似大規模刷星/农场式複製倉庫:合併後的候選榜中發現 59 個帳號(含 ai--manus / manus--ai 兩種命名)皆為一字不差的描述、完全相同的 146 星數,帳號名稱多為隨機字串或一次性帳號,判斷為協同刷星/倉庫農場,非真實獨立專案,全數排除並列為今日觀察重點。"
+    },
+    {
+      "full_name": "StormBrawlerSack/legwork-osint-ai-investigator",
+      "html_url": "https://github.com/StormBrawlerSack/legwork-osint-ai-investigator",
+      "stars": 93,
+      "selected": false,
+      "reason": "README 幾乎全為行銷文案與截圖,repo 內無可檢視的原始碼,下載連結導向外部商業網站(awesomeosint.tools)下載 Windows 執行檔,屬於封閉原始碼商業軟體的導流頁面而非開源工具,不符合『本地可行性』與可驗證性要求,排除。"
+    },
+    {
+      "full_name": "RouteInferno/shamus-osint-ai-agent",
+      "html_url": "https://github.com/RouteInferno/shamus-osint-ai-agent",
+      "stars": 71,
+      "selected": false,
+      "reason": "與上一筆(legwork)同一文案模板、同一外部網域(awesomeosint.tools)、同樣只有行銷文案與截圖、無原始碼,推測為同一營運者的另一個導流/廣告倉庫,排除。"
+    },
+    {
+      "full_name": "oil-oil/agy-fast-io",
+      "html_url": "https://github.com/oil-oil/agy-fast-io",
+      "stars": 69,
+      "selected": true,
+      "summary": "fast-io 是 Google Antigravity(AI 編碼助理)的非官方插件,僅用一份規則檔案(AGENTS.md,不到 70 行)改變 Agent 找代碼、讀檔、下指令與回答長度的習慣,目的是減少模型回合數與雲端審查等待時間。",
+      "tech": "純提示工程/規則插件,無額外工具或 MCP;規則引導 Agent 優先使用免審查白名單指令(grep/git ls-files/ls)取代會觸發雲端審查的 rg/find,並要求一次讀取足量內容、合併可平行的只讀操作、精簡回答長度。",
+      "feasibility": "本地可行性高:`git clone` 後用 `agy plugin install` 或手動複製到 Antigravity/Gemini 設定目錄即可啟用,新開會話即生效,無需額外依賴或金鑰。",
+      "limits": "規則非強制,模型偶爾不遵守;改檔案(edit_file/write_file)的雲端審查無法避免;僅在單一 2000+ 檔案的 Swift 專案做過對照測試,結果僅供量級參考;依賴 Antigravity 內建白名單,未來版本異動需同步更新規則。",
+      "reason": "切入點明確(降低 AI 編碼助理的回合數與審查延遲)、有實測數據與限制說明,是少見的『給 AI 工具用的設定/規則』類型專案,選入。"
+    },
+    {
+      "full_name": "gitcommit90/1Helm",
+      "html_url": "https://github.com/gitcommit90/1Helm",
+      "stars": 62,
+      "selected": true,
+      "summary": "1Helm 是部署在使用者自有 Cloudflare 帳號上的個人 AI 工作空間,包含 Worker、網頁應用、頻道運算環境映像,以及可選的手機/桌面客戶端,可串接任何相容 OpenAI Chat Completions API 的模型供應商。",
+      "tech": "Cloudflare Workers + D1(資料庫)+ R2(儲存)+ Workers AI + Containers(頻道運算環境)+ Email Service;以 Wrangler 部署;核心為 AGPL-3.0,企業版原始碼另外授權但公開版停用。",
+      "feasibility": "需自備 Cloudflare Workers Paid 帳號(啟用 Workers/D1/R2/Workers AI/Browser Run/Images/Containers/Email Service)、自有網域搭配 Cloudflare DNS 與 Email Service、Node.js 22+、npm、Docker;透過 `npm run setup` 互動式部署,流程具體但門檻偏高,非一鍵本地執行。",
+      "limits": "僅支援單一擁有者(第一個登入信箱即為擁有者,其後信箱無法再註冊);為全新安裝,無法從舊版 Linux 伺服器版本直接升級;遺失 VAULT_KEY 會導致已存密鑰與分享連結金鑰失效;需 Cloudflare 付費方案與自備網域,成本與設定門檻不低。",
+      "reason": "架構完整、文件詳盡(含備份/還原、升級、設定文件與本地測試指令),是具備真實可部署性的『自架個人 AI 工作空間』專案,選入,但需提醒讀者部署門檻較高。"
+    },
+    {
+      "full_name": "spacesky-cell/TwinFix",
+      "html_url": "https://github.com/spacesky-cell/TwinFix",
+      "stars": 39,
+      "selected": true,
+      "summary": "TwinFix 是面向線上故障的 AI Agent,從告警/錯誤日誌/Issue 接入後自動完成分診、診斷、在一次性『孪生環境』中復現故障、修復、由獨立流程驗證,最終交由人工審批合併,強調『先復現後修復』與『驗證與修復分離』。",
+      "tech": "4 個 LLM Agent(診斷/復現/修復/驗證)+ 1 個確定性 Reporter,由 LangGraph 狀態機編排,狀態寫入 PostgreSQL checkpoint;支援 Java/Python/Go/TypeScript/C# 五種語言;自帶 40 個故障注入用例的 Arena 基準測試套件。",
+      "feasibility": "提供免 LLM Key 的 Demo 模式(`docker compose up` 即可在內建模擬情境中走完整流程);接真實 LLM 需自備相容 OpenAI 格式的端點與金鑰,並額外設定沙箱與孪生環境資源;本地可行性中等,Demo 模式門檻低但生產模式設定複雜。",
+      "limits": "目前為 v0.1 alpha,官方明確說明生產使用前需在目標倉庫與基礎設施中驗證適配器;本地預設關閉鑑權,對外暴露前需手動設定 JWT 密鑰與建立管理員帳號;僅在作者自有基準測試上驗證過效果。",
+      "reason": "『修復前先用失敗測試復現、驗證與修復流程分離、人工核准合併』的設計在自動修復類 Agent 中具代表性,且有完整架構文件與可重現的基準測試,雖為 alpha 版本仍選入。"
+    },
+    {
+      "full_name": "Pinnaclesys/Voice-Changer-2026",
+      "html_url": "https://github.com/Pinnaclesys/Voice-Changer-2026",
+      "stars": 24,
+      "selected": false,
+      "reason": "多項可疑特徵:下載連結指向另一個帳號倉庫(Pinnaclesys/Pinnaclesys)的 release 壓縮檔而非本倉庫自身建置產物;『從原始碼建置』章節的 clone 網址仍是範本文字『username/ai-voice-changer』,顯示內容可能未經實際測試或為批量生成;README 結尾堆疊大量與本專案無關的競品/品牌關鍵字(SEO 導流手法);為 Windows 未簽章執行檔。綜合判斷風險偏高,推測為誘導下載不明執行檔的可疑倉庫,不選入亦不建議使用者下載執行。"
+    }
+  ]
+}
