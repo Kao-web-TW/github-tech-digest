@@ -1,0 +1,436 @@
+{
+  "date": "2026-11-15",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-13 stars:>=20 | topic:machine-learning created:>=2026-11-13 stars:>=20 | topic:llm created:>=2026-11-13 stars:>=20 | topic:ai-agent created:>=2026-11-13 stars:>=20 | topic:generative-ai created:>=2026-11-13 stars:>=20",
+  "notice": {
+    "lede": "今日候選榜幾乎被一場大規模洗星/帳號農場攻擊淹沒：50 個以上帳號在同一時間複製同一個「ai--manus」專案並灌入假 star，真正的新專案被壓到榜尾。",
+    "body": "本次合併 5 個 topic 查詢後共取得 59 筆不重複候選，其中 49 筆是對同一個 AI Agent 專案（ai--manus / ai--manus2.0）的逐字複製：帳號名稱均為隨機詞彙加數字組合（例如 Topkiflare74、trackersnailgrip、BrickAssemblyRepel），建立時間精確相同，README 與描述完全一致，star 數集中在 296-297 與 649-677 兩個區間，呈現典型的帳號農場洗星模式。另外三個高星候選（Capri-AI、legwork-osint-ai-investigator、shamus-osint-ai-agent）同樣使用隨機詞彙帳號名，repo 內沒有可檢視的原始碼，只有行銷著陸頁並導向第三方網域下載未經驗證的 Windows 執行檔，風險偏高，未予選中。為避免真正的新專案被灌水的假星徹底淹沒，本次分析改為檢視全部 59 筆合併結果（而非僅依星數截斷的前 50 筆），最終在星數明顯偏低、但內容具體可驗證的候選中選出 3 個真正值得關注的專案。"
+  },
+  "candidates": [
+    {
+      "full_name": "Topkiflare74/ai--manus2.0",
+      "html_url": "https://github.com/Topkiflare74/ai--manus2.0",
+      "stars": 677,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "topapothecarycanal/ai--manus2.0",
+      "html_url": "https://github.com/topapothecarycanal/ai--manus2.0",
+      "stars": 666,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "toppatronweave/ai--manus2.0",
+      "html_url": "https://github.com/toppatronweave/ai--manus2.0",
+      "stars": 665,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "topconstableinlet67/ai--manus2.0",
+      "html_url": "https://github.com/topconstableinlet67/ai--manus2.0",
+      "stars": 663,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "tornadonovicewhirl40/ai--manus2.0",
+      "html_url": "https://github.com/tornadonovicewhirl40/ai--manus2.0",
+      "stars": 659,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "TitanShieldRavine/ai--manus2.0",
+      "html_url": "https://github.com/TitanShieldRavine/ai--manus2.0",
+      "stars": 659,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "trackersnailgrip/ai--manus2.0",
+      "html_url": "https://github.com/trackersnailgrip/ai--manus2.0",
+      "stars": 654,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "Ultimateakiln/ai--manus2.0",
+      "html_url": "https://github.com/Ultimateakiln/ai--manus2.0",
+      "stars": 654,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "Torusdrasocket/ai--manus2.0",
+      "html_url": "https://github.com/Torusdrasocket/ai--manus2.0",
+      "stars": 653,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "TrapBladesmith/ai--manus2.0",
+      "html_url": "https://github.com/TrapBladesmith/ai--manus2.0",
+      "stars": 653,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "TremorRatTackle/ai--manus2.0",
+      "html_url": "https://github.com/TremorRatTackle/ai--manus2.0",
+      "stars": 652,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "violetkomodolimit/ai--manus2.0",
+      "html_url": "https://github.com/violetkomodolimit/ai--manus2.0",
+      "stars": 651,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "taboospecialistblade/ai--manus2.0",
+      "html_url": "https://github.com/taboospecialistblade/ai--manus2.0",
+      "stars": 651,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "Tonephorepair/ai--manus2.0",
+      "html_url": "https://github.com/Tonephorepair/ai--manus2.0",
+      "stars": 650,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "trackboatwrightplan/ai--manus2.0",
+      "html_url": "https://github.com/trackboatwrightplan/ai--manus2.0",
+      "stars": 649,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：15 個帳號名稱均為隨機詞彙+數字組合，建立時間完全相同（2026-11-14T19:15:24Z），description 與專案內容逐字相同，為同一 fork/clone 在不同帳號下重複發布，非原創內容，淘汰"
+    },
+    {
+      "full_name": "Outpostkrewhirl86/Capri-AI",
+      "html_url": "https://github.com/Outpostkrewhirl86/Capri-AI",
+      "stars": 345,
+      "selected": false,
+      "reason": "帳號名稱（隨機詞彙+數字）與今日洗星帳號命名模式一致；README 僅為行銷文案與 Windows 可攜式執行檔（.exe）下載連結，未見可檢視的原始碼倉庫內容，且提示 Windows SmartScreen 警告為「正常現象」——無法驗證來源可信度，列為可疑/不推薦，淘汰（推測）"
+    },
+    {
+      "full_name": "WinnerBrokerBarrow/ai--manus",
+      "html_url": "https://github.com/WinnerBrokerBarrow/ai--manus",
+      "stars": 297,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "armsworminterface/ai--manus",
+      "html_url": "https://github.com/armsworminterface/ai--manus",
+      "stars": 297,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "BarrierCenter/ai--manus",
+      "html_url": "https://github.com/BarrierCenter/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "TealAgentRevive/ai--manus",
+      "html_url": "https://github.com/TealAgentRevive/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "TorusBarbarianMap9/ai--manus",
+      "html_url": "https://github.com/TorusBarbarianMap9/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "AdmiralEmporium/ai--manus",
+      "html_url": "https://github.com/AdmiralEmporium/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "WestLightningMove/ai--manus",
+      "html_url": "https://github.com/WestLightningMove/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "AtomEmissary/ai--manus",
+      "html_url": "https://github.com/AtomEmissary/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "AdvisorShake/ai--manus",
+      "html_url": "https://github.com/AdvisorShake/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "ApothecaryDesign/ai--manus",
+      "html_url": "https://github.com/ApothecaryDesign/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "Feathershosmash/ai--manus",
+      "html_url": "https://github.com/Feathershosmash/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "Cloudryospeed/ai--manus",
+      "html_url": "https://github.com/Cloudryospeed/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "ClampOverlord46/ai--manus",
+      "html_url": "https://github.com/ClampOverlord46/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "Lowbydemodulator/ai--manus",
+      "html_url": "https://github.com/Lowbydemodulator/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "Bannerzurpray/ai--manus",
+      "html_url": "https://github.com/Bannerzurpray/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "HurricaneMonarchDart/ai--manus",
+      "html_url": "https://github.com/HurricaneMonarchDart/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "GryphonEmpress/ai--manus",
+      "html_url": "https://github.com/GryphonEmpress/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "assassinswandemolish/ai--manus",
+      "html_url": "https://github.com/assassinswandemolish/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "BrickMosquito/ai--manus",
+      "html_url": "https://github.com/BrickMosquito/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "SortGuardian/ai--manus",
+      "html_url": "https://github.com/SortGuardian/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "StudentSeparate/ai--manus",
+      "html_url": "https://github.com/StudentSeparate/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "bandbeetleruminate/ai--manus",
+      "html_url": "https://github.com/bandbeetleruminate/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "pyramidteachermap/ai--manus",
+      "html_url": "https://github.com/pyramidteachermap/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "ApparitionBowyerPort/ai--manus",
+      "html_url": "https://github.com/ApparitionBowyerPort/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "psychenotecorridor/ai--manus",
+      "html_url": "https://github.com/psychenotecorridor/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "BrickAssemblyRepel/ai--manus",
+      "html_url": "https://github.com/BrickAssemblyRepel/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "avenuemistravage47/ai--manus",
+      "html_url": "https://github.com/avenuemistravage47/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "AmplitudePikemanHeed/ai--manus",
+      "html_url": "https://github.com/AmplitudePikemanHeed/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "ArcherAmplify/ai--manus",
+      "html_url": "https://github.com/ArcherAmplify/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "ChannelSparrowYank/ai--manus",
+      "html_url": "https://github.com/ChannelSparrowYank/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "ceilingthunderretort/ai--manus",
+      "html_url": "https://github.com/ceilingthunderretort/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "AgentLobster/ai--manus",
+      "html_url": "https://github.com/AgentLobster/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "AmplitudeBoss/ai--manus",
+      "html_url": "https://github.com/AmplitudeBoss/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "Lightningeuchant/ai--manus",
+      "html_url": "https://github.com/Lightningeuchant/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "ArcticPrawnEmporium/ai--manus",
+      "html_url": "https://github.com/ArcticPrawnEmporium/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "Shardclamove/ai--manus",
+      "html_url": "https://github.com/Shardclamove/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "ArtisanArouse/ai--manus",
+      "html_url": "https://github.com/ArtisanArouse/ai--manus",
+      "stars": 296,
+      "selected": false,
+      "reason": "疑似洗星/帳號農場：同一手法的另一批複製品（34 個帳號，star 數集中在 296-297），description 與內容逐字相同，非原創內容，淘汰"
+    },
+    {
+      "full_name": "StormBrawlerSack/legwork-osint-ai-investigator",
+      "html_url": "https://github.com/StormBrawlerSack/legwork-osint-ai-investigator",
+      "stars": 222,
+      "selected": false,
+      "reason": "repo 內無實際原始碼，README 僅為行銷著陸頁（截圖+文案），導向第三方網域 awesomeosint.tools 下載未經驗證的 Windows 執行檔；帳號名稱風格與其他可疑帳號一致，淘汰（推測為行銷/風險工具）"
+    },
+    {
+      "full_name": "RouteInferno/shamus-osint-ai-agent",
+      "html_url": "https://github.com/RouteInferno/shamus-osint-ai-agent",
+      "stars": 157,
+      "selected": false,
+      "reason": "與 legwork-osint-ai-investigator 同一手法、同一第三方下載網域（awesomeosint.tools），repo 內無實際原始碼，僅行銷著陸頁，淘汰（推測為同一行銷/風險工具網路的另一項目）"
+    },
+    {
+      "full_name": "oil-oil/agy-fast-io",
+      "html_url": "https://github.com/oil-oil/agy-fast-io",
+      "stars": 104,
+      "selected": true,
+      "summary": "非官方的 Google Antigravity（agentic coding 工具）插件，僅包含一份規則檔（AGENTS.md，不到 70 行），透過改變 Agent 的檢索/讀檔/回答習慣（先 grep 定位再一次讀完、只用免審查白名單指令、合併需審查指令、精簡回答長度）來減少模型回合數與桌面版的雲端審查次數",
+      "tech": "純提示工程規則（無工具、無 Hook、無 MCP），作用於 Google Antigravity 桌面版與 agy CLI",
+      "feasibility": "可行性高：安裝僅需 git clone 後用 agy plugin install 或手動複製 plugin 目錄即可，MIT 授權，無需額外服務或金鑰",
+      "limits": "僅在一個約 2000 檔案的 Swift 專案上做過對照測試，規則對模型非強制、偶爾失效；grep -rn 不會跳過 .gitignore 目錄；白名單為 Antigravity 內建、未來版本變動需同步更新規則",
+      "reason": "文件完整、附對照測試方法與數據、原始碼與授權皆可驗證，是具體可用的 agentic coding 效率改善工具，選中"
+    },
+    {
+      "full_name": "spacesky-cell/TwinFix",
+      "html_url": "https://github.com/spacesky-cell/TwinFix",
+      "stars": 71,
+      "selected": true,
+      "summary": "面向線上故障的 AI Agent：從告警/錯誤日誌/Issue 接入後，自動完成分診、診斷、在一次性「孪生環境」中復現故障、產生修復、由獨立流程驗證，最終交給人工審批合併；強調修復前必須先用失敗測試證明故障存在，且驗證者與修復者相互獨立",
+      "tech": "LangGraph 狀態機編排 4 個 LLM Agent（診斷/復現/修復/驗證）+ 1 個確定性 Reporter，支援 Java/Python/Go/TypeScript/C# 多語言，Docker Compose 或 Kubernetes 建立孪生環境，PostgreSQL 做 checkpoint",
+      "feasibility": "有無需 LLM Key 的 Demo 模式（docker compose 一鍵啟動、內建模擬 Agent），可快速試跑；接入真實 LLM 需自備 OpenAI 相容端點與金鑰，並需額外設定沙箱與資源限制",
+      "limits": "目前為 v0.1 alpha，官方聲明生產使用前需驗證適配器並依 SECURITY.md 設定鑑權；僅支援五種語言的既定建置/測試慣例，客製化專案需覆寫 project.config.commands",
+      "reason": "架構完整（含基準測試套件、CI、ADR 文件）、Apache 2.0 授權、demo 模式可直接驗證，是少見且具體可行的 AI 自動修復/SRE 類專案，選中"
+    },
+    {
+      "full_name": "Igniaemage/Deadline-resp-Tracker-AI",
+      "html_url": "https://github.com/Igniaemage/Deadline-resp-Tracker-AI",
+      "stars": 50,
+      "selected": false,
+      "reason": "README 無法取得（raw.githubusercontent 回傳 404），無法判讀內容，淘汰"
+    },
+    {
+      "full_name": "JuneYaooo/rea-toon",
+      "html_url": "https://github.com/JuneYaooo/rea-toon",
+      "stars": 32,
+      "selected": true,
+      "summary": "供 AI Agent（Claude Code/Codex）使用的短劇拆解工具：輸入短劇影片，自動產出「賞析/劇本/分鏡」三種頁面，並輸出開放格式 VIDEO.md 供其他 Agent 之後直接讀取，不需重新看影片",
+      "tech": "建立在作者既有專案 rea-video（鏡頭切割、人聲/配樂分離）之上，搭配本地 OCR（RapidOCR）讀字幕，並用具視覺能力的 Agent 或相容視覺模型 API（Gemini、Doubao、Qwen-VL 等）逐鏡頭分析",
+      "feasibility": "可行性中等：需 ffmpeg 與 Python 3.10+，可直接用 Claude Code/Codex 本身的視覺能力執行（免金鑰），但每集約需 30 次視覺呼叫，長劇集數多時 token 消耗大，建議先跑 5 集試算成本",
+      "limits": "目前輸出頁面與報告皆為中文介面（因針對中文短劇設計）；授權為 PolyForm Noncommercial 1.0.0，禁止商業使用",
+      "reason": "功能具體、有實際 demo 影片與既有專案背書、原始碼與授權透明，屬小眾但具體可行的垂直領域 AI 應用，選中"
+    }
+  ]
+}
