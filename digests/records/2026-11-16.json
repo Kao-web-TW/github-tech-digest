@@ -1,0 +1,471 @@
+{
+  "date": "2026-11-16",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-14 stars:>=20 | topic:machine-learning created:>=2026-11-14 stars:>=20 | topic:llm created:>=2026-11-14 stars:>=20 | topic:ai-agent created:>=2026-11-14 stars:>=20 | topic:generative-ai created:>=2026-11-14 stars:>=20",
+  "notice": {
+    "lede": "今日候選榜被兩個大型刷星/疑似惡意軟體散布帳號網路淹沒，實際通過安全與品質把關的精選項目僅 3 個。",
+    "body": "本次合併 5 個 topic 搜尋後共取得 64 個不重複的候選 repo，其中 21 個是內容幾乎一致的『Gemini-Config-Checker-』（宣稱測試可登入 Google AI Studio/Gemini 的代理設定，但只透過 Dropbox 提供 .rar 執行檔，無原始碼），另有約 30 個是內容幾乎一致的『ai--manus / ai--manus2.0』（冒用知名開源 Manus 專案之名，透過 Dropbox 提供『ManusStudio2.0.rar』執行檔並帶促銷文案）。兩者都呈現帳號名稱隨機生成、star 數集中於同一梯次、只給執行檔不給原始碼的典型刷星/惡意軟體散布特徵，本次全數排除，不列入精選。另外兩個看起來像獨立專案的候選（Capri-AI、pixverse-desktop）帳號命名風格與上述刷星網路相似且同樣只提供執行檔，出於安全考量一併排除。最終僅有 3 個候選（rea-toon、bayesian-modelling-notes、churn-boosting-showdown）內容紮實、來源正常，予以收錄，低於平常 5-10 個的收錄目標，如實反映今日候選榜的實際狀況而非硬湊數量。"
+  },
+  "candidates": [
+    {
+      "full_name": "YellowLaborerMarket/Gemini-Config-Checker-",
+      "html_url": "https://github.com/YellowLaborerMarket/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "WindGatorRise37/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WindGatorRise37/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "WinnerSpecialist/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WinnerSpecialist/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "Visionbeyondtrack/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Visionbeyondtrack/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "VortexHostFeel/Gemini-Config-Checker-",
+      "html_url": "https://github.com/VortexHostFeel/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "weightcashiercupola/Gemini-Config-Checker-",
+      "html_url": "https://github.com/weightcashiercupola/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "wisemeadowlarkspike/Gemini-Config-Checker-",
+      "html_url": "https://github.com/wisemeadowlarkspike/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "Watchlespeed/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Watchlespeed/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "Violetnyudress/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Violetnyudress/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "WyrmClimberManacle/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WyrmClimberManacle/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "WireProvostPucker/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WireProvostPucker/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "TurtleReside/Gemini-Config-Checker-",
+      "html_url": "https://github.com/TurtleReside/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "WingDataVacuum/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WingDataVacuum/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "TypeTyrantScheme/Gemini-Config-Checker-",
+      "html_url": "https://github.com/TypeTyrantScheme/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "WindowStaffGate11/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WindowStaffGate11/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "WerewolfEmuHub/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WerewolfEmuHub/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "VisionWormStudio/Gemini-Config-Checker-",
+      "html_url": "https://github.com/VisionWormStudio/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "WestLocksmithSpout/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WestLocksmithSpout/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "TrooperFilter/Gemini-Config-Checker-",
+      "html_url": "https://github.com/TrooperFilter/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "WharfBoulderColander/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WharfBoulderColander/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "weldbladesmithwharf/Gemini-Config-Checker-",
+      "html_url": "https://github.com/weldbladesmithwharf/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 21 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數幾乎相同（明顯的刷星模式），且不提供原始碼，只透過 Dropbox 連結提供 .rar 執行檔下載，宣稱可找到能登入 Google AI Studio/Gemini 的『代理設定』並在已登入瀏覽器中測試，高度疑似憑證竊取/惡意軟體偽裝成工具散布，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "topapothecarycanal/ai--manus2.0",
+      "html_url": "https://github.com/topapothecarycanal/ai--manus2.0",
+      "stars": 381,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "toppatronweave/ai--manus2.0",
+      "html_url": "https://github.com/toppatronweave/ai--manus2.0",
+      "stars": 380,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "topconstableinlet67/ai--manus2.0",
+      "html_url": "https://github.com/topconstableinlet67/ai--manus2.0",
+      "stars": 378,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "violetkomodolimit/ai--manus2.0",
+      "html_url": "https://github.com/violetkomodolimit/ai--manus2.0",
+      "stars": 375,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "trackersnailgrip/ai--manus2.0",
+      "html_url": "https://github.com/trackersnailgrip/ai--manus2.0",
+      "stars": 373,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "Ultimateakiln/ai--manus2.0",
+      "html_url": "https://github.com/Ultimateakiln/ai--manus2.0",
+      "stars": 371,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "taboospecialistblade/ai--manus2.0",
+      "html_url": "https://github.com/taboospecialistblade/ai--manus2.0",
+      "stars": 371,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "trackboatwrightplan/ai--manus2.0",
+      "html_url": "https://github.com/trackboatwrightplan/ai--manus2.0",
+      "stars": 370,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "TrapBladesmith/ai--manus2.0",
+      "html_url": "https://github.com/TrapBladesmith/ai--manus2.0",
+      "stars": 370,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "Tonephorepair/ai--manus2.0",
+      "html_url": "https://github.com/Tonephorepair/ai--manus2.0",
+      "stars": 370,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "Outpostkrewhirl86/Capri-AI",
+      "html_url": "https://github.com/Outpostkrewhirl86/Capri-AI",
+      "stars": 345,
+      "selected": false,
+      "reason": "可疑：帳號命名風格（隨機詞彙組合，如 'Outpostkrewhirl86'）與今日發現的兩個刷星/惡意軟體散布帳號網路高度相似，star 數（345）對一個新帳號而言異常偏高，且僅提供 Windows 執行檔（portable ZIP）下載而非可審閱的原始碼，出於安全考量不予收錄（推測，未實際執行其執行檔驗證）。"
+    },
+    {
+      "full_name": "JuneYaooo/rea-toon",
+      "html_url": "https://github.com/JuneYaooo/rea-toon",
+      "stars": 180,
+      "selected": true,
+      "summary": "用 AI 拆解短劇（動畫、真人、AI 生成皆可）：分析為什麼某部短劇會紅、劇本怎麼寫、每一鏡怎麼拍，並將拆解結果輸出成開放格式 VIDEO.md，讓其他 agent 可以逐層讀取理解。",
+      "tech": "Python ≥3.10；設計上在 Claude Code / Codex 等 LLM agent 環境中執行；建構在作者既有專案 rea-video 之上。",
+      "feasibility": "原始碼開源可直接 clone 執行，README 提供中英文版本與完整使用說明，並有 Discord / LINUX.DO 社群支援，本地執行門檻中等（需要可用的 LLM agent）。",
+      "limits": "授權為 Noncommercial，限制商業使用；輸出品質依賴所分析影片的可取得性與所用 LLM 的理解能力，非全自動零門檻工具。",
+      "reason": "功能明確、有真實使用情境（短劇內容學習/拆解），作者帳號正常、有可追溯的既有生態（rea-video）與持續維護紀錄，非今日大量出現的刷星/傀儡帳號。"
+    },
+    {
+      "full_name": "super-bison-32/pixverse-desktop",
+      "html_url": "https://github.com/super-bison-32/pixverse-desktop",
+      "stars": 107,
+      "selected": false,
+      "reason": "可疑：提供的是『離線打包版』Windows 執行檔安裝程式而非原始碼，說明文字強調繞過『線上取得步驟』部署，帳號命名風格（'super-bison-32'，隨機詞+數字）與今日刷星帳號網路相似，疑似盜版/惡意軟體散布，不予收錄（推測）。"
+    },
+    {
+      "full_name": "PennantSpawn/ai--manus2.0",
+      "html_url": "https://github.com/PennantSpawn/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "ProtonDonorLure/ai--manus2.0",
+      "html_url": "https://github.com/ProtonDonorLure/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "SamuraiVacuum/ai--manus2.0",
+      "html_url": "https://github.com/SamuraiVacuum/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "PhotonFollower/ai--manus2.0",
+      "html_url": "https://github.com/PhotonFollower/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "optichokagecharm/ai--manus2.0",
+      "html_url": "https://github.com/optichokagecharm/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "Percentmofascinate/ai--manus2.0",
+      "html_url": "https://github.com/Percentmofascinate/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "restraintstageheal/ai--manus2.0",
+      "html_url": "https://github.com/restraintstageheal/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "Meteornyuspeed/ai--manus2.0",
+      "html_url": "https://github.com/Meteornyuspeed/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "ronintoadempty/ai--manus2.0",
+      "html_url": "https://github.com/ronintoadempty/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "mindduelistmotor/ai--manus",
+      "html_url": "https://github.com/mindduelistmotor/ai--manus",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "massswanball/ai--manus",
+      "html_url": "https://github.com/massswanball/ai--manus",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "MixInspector/ai--manus2.0",
+      "html_url": "https://github.com/MixInspector/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "scalebyterattle/ai--manus2.0",
+      "html_url": "https://github.com/scalebyterattle/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "Nexusgrucontrol/ai--manus2.0",
+      "html_url": "https://github.com/Nexusgrucontrol/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "NanoGeninMove/ai--manus2.0",
+      "html_url": "https://github.com/NanoGeninMove/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "Moatpemanacle/ai--manus2.0",
+      "html_url": "https://github.com/Moatpemanacle/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "RecordLayerAsk/ai--manus2.0",
+      "html_url": "https://github.com/RecordLayerAsk/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "OfficialKind/ai--manus2.0",
+      "html_url": "https://github.com/OfficialKind/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "ShoreAeromancer/ai--manus2.0",
+      "html_url": "https://github.com/ShoreAeromancer/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "powerorioledescribe/ai--manus2.0",
+      "html_url": "https://github.com/powerorioledescribe/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "PieceControl79/ai--manus2.0",
+      "html_url": "https://github.com/PieceControl79/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "MillerRectifier/ai--manus2.0",
+      "html_url": "https://github.com/MillerRectifier/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "PlaneKaiserUnderpass/ai--manus2.0",
+      "html_url": "https://github.com/PlaneKaiserUnderpass/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "RouteDataPipe/ai--manus2.0",
+      "html_url": "https://github.com/RouteDataPipe/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "mindduelistmotor/ai--manus2.0",
+      "html_url": "https://github.com/mindduelistmotor/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "MindSamuraiSky/ai--manus2.0",
+      "html_url": "https://github.com/MindSamuraiSky/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "maneswordyell/ai--manus2.0",
+      "html_url": "https://github.com/maneswordyell/ai--manus2.0",
+      "stars": 87,
+      "selected": false,
+      "reason": "可疑：同一份內容被至少 30 個命名風格一致、疑似批量生成的帳號各建立一份幾乎相同的 repo，star 數集中在同一梯次（疑似刷星），不提供原始碼，只透過 Dropbox 連結提供『ManusStudio2.0.rar』執行檔下載，文案帶有『PROMO2026』促銷用語，疑似冒用真實開源專案 Manus 之名散布惡意軟體，不予收錄（安全考量，推測為惡意軟體）。"
+    },
+    {
+      "full_name": "Igniaemage/Deadline-resp-Tracker-AI",
+      "html_url": "https://github.com/Igniaemage/Deadline-resp-Tracker-AI",
+      "stars": 50,
+      "selected": false,
+      "reason": "README 無法取得（raw.githubusercontent.com 回傳 404，HEAD 與 main 分支皆試過），且專案主題（學業截止日期追蹤、履歷分析、Telegram 通知）與本次精選聚焦之通用 AI 工具關聯度較低，不予收錄。"
+    },
+    {
+      "full_name": "Danuzco/bayesian-modelling-notes",
+      "html_url": "https://github.com/Danuzco/bayesian-modelling-notes",
+      "stars": 44,
+      "selected": true,
+      "summary": "一份貝葉斯建模（Bayesian Modelling）課程的手寫講義筆記與對應 Jupyter Notebook 程式碼，涵蓋高斯先驗推導、卡爾曼濾波器更新、高斯過程後驗、Metropolis-Hastings 接受率等主題。",
+      "tech": "PyMC 6、JAX（from-scratch 推論實作）、Jupyter Notebooks。",
+      "feasibility": "筆記與 Notebook 均可直接本地執行（需 Python + PyMC/JAX 環境），不依賴雲端服務或 API key，上手門檻低，適合自學。",
+      "limits": "課程仍在進行中，內容持續增補，非一次性完整教材；筆記授權為 CC BY 4.0、程式碼為 MIT，皆允許再利用但需標註來源。",
+      "reason": "內容紮實、作者具名且具學術背景（AI 博士課程講師），提供可重現的程式碼而非空泛筆記，適合想扎實學習貝氏建模與 JAX 推論實作的開發者。"
+    },
+    {
+      "full_name": "hexsyro/churn-boosting-showdown",
+      "html_url": "https://github.com/hexsyro/churn-boosting-showdown",
+      "stars": 30,
+      "selected": true,
+      "summary": "以 Telco 客戶流失資料集（7,043 筆）為基準，讓 XGBoost、LightGBM、CatBoost 三套梯度提升函式庫在同一任務、同一資料上正面比較，並附訓練/驗證損失曲線與 ROC-AUC 結果分析。",
+      "tech": "XGBoost、LightGBM、CatBoost、Python。",
+      "feasibility": "資料集規模小（測試集僅 1,409 筆），可在本地筆電環境完整重現訓練與比較實驗，適合做模型選型前的基準測試練習。",
+      "limits": "樣本量小，三套函式庫的 ROC-AUC 差異（0.8376～0.8477）在統計上並不顯著，結論僅適用於此特定資料集，不可直接推論到其他場景或更大規模資料。",
+      "reason": "方法嚴謹、有明確可重現的量化發現（含圖表與數據），對評估三套主流 boosting 函式庫的實務選型具參考價值，非空泛教學文。"
+    }
+  ]
+}
