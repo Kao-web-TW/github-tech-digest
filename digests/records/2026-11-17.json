@@ -1,0 +1,202 @@
+{
+  "date": "2026-11-17",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-15 stars:>=20 | topic:machine-learning created:>=2026-11-15 stars:>=20 | topic:llm created:>=2026-11-15 stars:>=20 | topic:ai-agent created:>=2026-11-15 stars:>=20 | topic:generative-ai created:>=2026-11-15 stars:>=20",
+  "notice": {
+    "lede": "今日候選榜被一場疑似刷星/惡意工具推廣活動佔據:21 個以隨機英文詞拼湊帳號名、兩天內建立、星數集中在 473-474 的「Gemini-Config-Checker」重複 repo 洗版候選池,實際內容是繞過 Gemini 地區限制的未簽署代理工具,已全數排除。",
+    "body": "這批重複 repo 使用幾乎相同的 README 與專案名稱(僅帳號名不同),分散在 21 個看起來是隨機產生的新帳號下,於 2026-11-15~11-17 間同步建立,星數異常集中在 473 或 474——明顯不是自然成長曲線,而是協同刷星或殭屍帳號灌星的樣態。專案本身引導使用者從 Dropbox 連結下載未經簽署的 Windows/macOS/Linux 執行檔,用途是尋找能繞過 Google AI Studio/Gemini 地區限制的代理節點,屬於高風險的第三方未知來源軟體,與本精選的 AI 開發工具/框架宗旨無關,因此本日全數標記為不選入,並在此特別記錄以供稽核與後續偵測類似洗版手法參考。排除這批之後,本日實際剩下 4 個有效候選,品質均達選入標準,一併選入。"
+  },
+  "candidates": [
+    {
+      "full_name": "YellowLaborerMarket/Gemini-Config-Checker-",
+      "html_url": "https://github.com/YellowLaborerMarket/Gemini-Config-Checker-",
+      "stars": 474,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "WireProvostPucker/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WireProvostPucker/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "Violetnyudress/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Violetnyudress/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "WinnerSpecialist/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WinnerSpecialist/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "Visionbeyondtrack/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Visionbeyondtrack/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "TurtleReside/Gemini-Config-Checker-",
+      "html_url": "https://github.com/TurtleReside/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "VortexHostFeel/Gemini-Config-Checker-",
+      "html_url": "https://github.com/VortexHostFeel/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "WindGatorRise37/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WindGatorRise37/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "wisemeadowlarkspike/Gemini-Config-Checker-",
+      "html_url": "https://github.com/wisemeadowlarkspike/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "Watchlespeed/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Watchlespeed/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "TypeTyrantScheme/Gemini-Config-Checker-",
+      "html_url": "https://github.com/TypeTyrantScheme/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "WingDataVacuum/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WingDataVacuum/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "WyrmClimberManacle/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WyrmClimberManacle/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "weightcashiercupola/Gemini-Config-Checker-",
+      "html_url": "https://github.com/weightcashiercupola/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "weldbladesmithwharf/Gemini-Config-Checker-",
+      "html_url": "https://github.com/weldbladesmithwharf/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "VisionWormStudio/Gemini-Config-Checker-",
+      "html_url": "https://github.com/VisionWormStudio/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "WestLocksmithSpout/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WestLocksmithSpout/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "WharfBoulderColander/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WharfBoulderColander/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "TrooperFilter/Gemini-Config-Checker-",
+      "html_url": "https://github.com/TrooperFilter/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "WindowStaffGate11/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WindowStaffGate11/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "WerewolfEmuHub/Gemini-Config-Checker-",
+      "html_url": "https://github.com/WerewolfEmuHub/Gemini-Config-Checker-",
+      "stars": 473,
+      "selected": false,
+      "reason": "疑似刷星/垃圾重複 repo——與另外 20 個帳號在同一兩天內建立、名稱相同、星數幾乎一致(473-474),內容為透過第三方 Dropbox 連結下載未簽署執行檔的『Gemini 區域限制繞過代理工具』,判斷為星數造假/惡意工具推廣活動,不予選入(推測)。"
+    },
+    {
+      "full_name": "edgerunners2/capri-ai-desktop",
+      "html_url": "https://github.com/edgerunners2/capri-ai-desktop",
+      "stars": 213,
+      "selected": true,
+      "summary": "Windows 桌面寵物/疊加層,整合 Claude Code、Codex、Ollama、DeepSeek 與 MCP server,可語音加入 Discord 通話並自動化桌面任務。",
+      "tech": "Electron/桌面應用殼 + 多種 LLM/agent 後端(Claude Code、Codex、Ollama、DeepSeek)透過 MCP 協議串接。",
+      "feasibility": "提供 Windows 可攜式 zip,下載即用,但僅支援 Windows,且需自行配置各 LLM 後端的 API key 才能啟用對應功能。",
+      "limits": "僅 Windows 平台;多數進階功能依賴外部 LLM 服務金鑰;專案年輕($213 星),長期維護狀況待觀察。",
+      "reason": "結合多個主流 agent/LLM 後端的桌面助理整合案例,topic 命中且功能完整,選入。"
+    },
+    {
+      "full_name": "manuelgscom/inside-llm",
+      "html_url": "https://github.com/manuelgscom/inside-llm",
+      "stars": 85,
+      "selected": true,
+      "summary": "以 llama.cpp 載入 1~2 個 GGUF 模型,即時視覺化逐 token 機率、取樣器篩選過程與兩模型分歧點,支援瀏覽器互動與離線重播。",
+      "tech": "llama.cpp 推論引擎 + 原生單一執行檔內建網頁伺服器,純本地運算,無需雲端 API。",
+      "feasibility": "提供 Linux/Windows 的 CUDA、Vulkan 預編譯包,單一執行檔即可運行,僅需 GPU 驅動,本地可行性高。",
+      "limits": "需要相容 tokenizer 的兩個模型才能做比較模式;對 GPU 顯存有要求;目前星數尚少($85),屬早期專案。",
+      "reason": "少見的 LLM 推論內部可視化除錯工具,對理解取樣/量化差異很有價值,本地可執行,選入。"
+    },
+    {
+      "full_name": "linggan121/lingling-desktop-pet",
+      "html_url": "https://github.com/linggan121/lingling-desktop-pet",
+      "stars": 70,
+      "selected": true,
+      "summary": "中文桌面 AI 助理桌寵,支援拖檔案自動格式轉換(圖片/PDF/Office/影音),並可接 DeepSeek、豆包、Kimi、通義或本機 Ollama 進行對話與螢幕截圖視覺理解。",
+      "tech": "Python + tkinter 桌面應用,內建轉檔引擎(Pillow/PyMuPDF/pillow-heif/py7zr),對話串接多家 OpenAI 相容 LLM API 或本機 Ollama。",
+      "feasibility": "提供 Windows exe 可直接執行,亦可用 Python 3.9+ 跑原始碼;不設金鑰時也能離線使用基礎桌寵功能,本地可行性高。",
+      "limits": "僅 Windows 平台;進階對話/視覺理解功能需自行配置 LLM API 金鑰或本機 Ollama;星數不高($70),屬個人專案初期階段。",
+      "reason": "結合實用檔案轉換工具與可選 LLM 對話/視覺理解的桌寵專案,功能具體、可離線使用,選入。"
+    },
+    {
+      "full_name": "lynote-ai/ai-tutor",
+      "html_url": "https://github.com/lynote-ai/ai-tutor",
+      "stars": 29,
+      "selected": true,
+      "summary": "將筆記、投影片與連結轉換成「每個論點都能回溯到原文引用句」的分章學習路徑與測驗,避免模型幻覺式延伸內容。",
+      "tech": "Python + Docker Compose,串接 DeepSeek(出題/教學)、OpenRouter 上的 Jev 模型(驗證引文是否真的支持論點)、Azure Document Intelligence(文件/圖片轉文字)。",
+      "feasibility": "Docker compose up 即可本地啟動,內附三章節範例不需金鑰即可試用;正式使用需自備 DeepSeek/OpenRouter/Azure 三組 API 金鑰,一般使用者設定門檻中等。",
+      "limits": "依賴三個外部商業 API,非完全本地執行;星數尚少($29),為新專案;README 含明顯的產品導流連結(utm_source=github)。",
+      "reason": "以「引文可追溯」機制對抗 LLM 幻覺的學習工具,技術角度(claim-quote binding)有參考價值,選入,但對其商業導流性質已於備註標註。"
+    }
+  ]
+}
