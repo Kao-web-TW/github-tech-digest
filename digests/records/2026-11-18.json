@@ -1,0 +1,206 @@
+{
+  "date": "2026-11-18",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-16 stars:>=20 | topic:machine-learning created:>=2026-11-16 stars:>=20 | topic:llm created:>=2026-11-16 stars:>=20 | topic:ai-agent created:>=2026-11-16 stars:>=20 | topic:generative-ai created:>=2026-11-16 stars:>=20",
+  "notice": {
+    "lede": "今天的候選榜被一波同分鐘內大量帳號灌水的重複 repo（AI Manus 複製品、「Gemini Config Checker」代理工具）淹沒，真正獨立的新專案只有個位數。",
+    "body": "25 筆候選中有 19 筆（76%）是在同一分鐘內由數十個看起來像拋棄式帳號各自建立、內容逐字相同的 repo：一組偽裝成「AI Manus」通用 agent 系統，另一組是聲稱能找到進入 Google AI Studio 的代理設定的「Gemini Config Checker」。這種跨帳號同步鋪量的模式通常是灌 star／洗量或用來分發可疑工具，因此全數排除，不計入精選。剩下的少數獨立專案裡，也有一支只提供未附原始碼的 Windows exe 下載、涉及線上輪盤分析的工具，同樣因來源可信度問題排除。今天的精選內容相對單薄，反映的是候選池本身被雜訊稀釋，而非 AI 開源生態的產出減少。"
+  },
+  "candidates": [
+    {
+      "full_name": "sybil-solutions/inference-optimisation-skill",
+      "html_url": "https://github.com/sybil-solutions/inference-optimisation-skill",
+      "stars": 917,
+      "selected": true,
+      "summary": "給 agent 使用的「本機 LLM 推論效能調校」技能包，引導 agent 針對任意硬體/量化組合找出 decode、prefill、KV cache、啟動時間等效能瓶頸並系統性調優到接近理論上限。",
+      "tech": "以 SKILL.md 定義流程，搭配純 Python 標準庫 + bash 的量測工具（bench.py 測 TTFT/decode/prefill/長文檢索穩定性，ceiling.py 算理論天花板，queue.sh 做交錯對照實驗），相容 Claude Code 等支援 SKILL.md 的 agent，也可用 PROMPT.md 讓一般模型照做。",
+      "feasibility": "本地可行性高——它是流程/腳本而非服務，只需 clone 並放進 ~/.claude/skills 即可被 Claude Code 讀取；實際調優仍依賴使用者自備的 LLM 推理服務（vLLM/SGLang/llama.cpp/ExLlama）與對應硬體。",
+      "limits": "效能數字只對應作者實測硬體（Intel Arc/B70、RTX 3090、H200 等），遷移到其他硬體要重新跑基準；調優幅度受限於物理頻寬/FLOPs 天花板，並非每個模型都能達到示範中的加速比例。",
+      "reason": "star 數高（917）、技術深度與可重現性俱佳，是少見的「agent 技能」類別新作，適合收錄。"
+    },
+    {
+      "full_name": "lynote-ai/ai-tutor",
+      "html_url": "https://github.com/lynote-ai/ai-tutor",
+      "stars": 64,
+      "selected": true,
+      "summary": "把筆記、投影片、連結轉成「只教文件中可逐字引用內容」的章節式學習路徑，強制每個知識點、每道題都要能對應回原文片段，否則不產生。",
+      "tech": "DeepSeek 負責抽取論點/排序章節/出題，透過 OpenRouter 呼叫另一模型（Jev）驗證引文是否真的支持論點，Azure Document Intelligence/Vision 做文件與圖片 OCR；後端 Python + SQLite，前端 Vite，Docker Compose 一鍵起服務。",
+      "feasibility": "可本機執行（Docker Compose），內建 3 章節示範課程完全離線不需金鑰；要用自己的教材生成課程則需自備 DeepSeek/OpenRouter/Azure 金鑰。",
+      "limits": "單一來源文字上限約 20 萬字元、送進模型上限約 5.6 萬字元、知識點上限 40 個、章節上限 8 章，超過會被取樣摘錄而非完整閱讀；私有/本機位址會被拒絕抓取。",
+      "reason": "「引文落地」的防幻覺設計明確、文件完整、可本機 Docker 一鍵跑通，是落地度高的教育類 AI 應用，收錄。"
+    },
+    {
+      "full_name": "mancommits/ai--manus2.0",
+      "html_url": "https://github.com/mancommits/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "Andriy-samp/ai--manus2.0",
+      "html_url": "https://github.com/Andriy-samp/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "lloweryfn-rgb/Gemini-Config-Checker-",
+      "html_url": "https://github.com/lloweryfn-rgb/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "eluyonga/ai--manus2.0",
+      "html_url": "https://github.com/eluyonga/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "4liyev/Gemini-Config-Checker-",
+      "html_url": "https://github.com/4liyev/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "Physico-Academic/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Physico-Academic/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "omshashisagar-netizen/Gemini-Config-Checker-",
+      "html_url": "https://github.com/omshashisagar-netizen/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "Sorsax/ai--manus2.0",
+      "html_url": "https://github.com/Sorsax/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "Mariete333/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Mariete333/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "abodeahsz00az-cmd/ai--manus2.0",
+      "html_url": "https://github.com/abodeahsz00az-cmd/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "mkselvamm/Gemini-Config-Checker-",
+      "html_url": "https://github.com/mkselvamm/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "KingUnlock7/Gemini-Config-Checker-",
+      "html_url": "https://github.com/KingUnlock7/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "Hypertrainer-The-First/ai--manus2.0",
+      "html_url": "https://github.com/Hypertrainer-The-First/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "AntikvarX/ai--manus2.0",
+      "html_url": "https://github.com/AntikvarX/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "Samokoto/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Samokoto/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "rasterotboga-source/Gemini-Config-Checker-",
+      "html_url": "https://github.com/rasterotboga-source/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "Mariajsjsj/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Mariajsjsj/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "alphafalcongamer-creator/ai--manus2.0",
+      "html_url": "https://github.com/alphafalcongamer-creator/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "kazim768/ai--manus2.0",
+      "html_url": "https://github.com/kazim768/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與另外數十個帳號在同一分鐘內推送內容完全相同的 repo（疑似灌量/洗 star 或惡意分發的灌水帳號網路），非獨立原創專案，排除。"
+    },
+    {
+      "full_name": "zxfccmm4/magpie-remote",
+      "html_url": "https://github.com/zxfccmm4/magpie-remote",
+      "stars": 52,
+      "selected": true,
+      "summary": "幫開源 AI Gateway/路由中介層 magpie 做的原生 iOS/iPadOS 遠端控制台，可在手機上管理 agent 供應商、路由分組、額度配額、工作階段紀錄與 Skills/MCP 市集。",
+      "tech": "純 SwiftUI、零第三方依賴，用系統 Keychain 存金鑰、原生 URLSession 處理網路，支援 iOS/iPadOS 26 Liquid Glass 設計語言。",
+      "feasibility": "需先部署好 magpie server 並開啟其 Web API，再用 App 連線；可從 GitHub Release 下載簽好的 IPA 搭配 TrollStore/AltStore/SideStore 側載，或自行用 Xcode 建置，無法直接上架 App Store。",
+      "limits": "僅支援 magpie 這套特定後端，非通用 AI 介面；需要 iOS 26+ 裝置與側載簽署流程，一般使用者安裝門檻較高。",
+      "reason": "技術實作完整（零依賴原生 App）、填補了 magpie 生態系「行動端管理」的空缺，屬於小而精緻的 AI 基礎設施工具，收錄。"
+    },
+    {
+      "full_name": "punit2911/meridian-multimodal-rag",
+      "html_url": "https://github.com/punit2911/meridian-multimodal-rag",
+      "stars": 45,
+      "selected": true,
+      "summary": "針對「工業維修文件」（PDF 手冊、掃描頁、Word service bulletin、維修日誌、儀表照片）做的可溯源多模態 RAG 系統，每個答案都附頁面出處、逐句驗證且查無證據就拒答。",
+      "tech": "版面感知解析（表格轉結構化事實、圖表數值化、OCR）、8 路檢索（BM25/稀疏向量/n-gram/實體/事實/視覺/PRF/圖）做加權融合與重排，CRAG 式證據評分器＋修正重試，逐句幻覺驗證器，可選接 Anthropic/OpenAI/Ollama 任何相容 LLM，預設離線（無金鑰無 GPU）也能跑。",
+      "feasibility": "本地可行性高，`pip install` + Tesseract OCR 即可離線跑（內建示範文件），或 Docker Compose 一鍵含 Qdrant 向量庫；要接 LLM 只需設環境變數。",
+      "limits": "公開的準確率數字（Hit@1 89.5%、答案正確率 93% 等）皆基於作者自建的合成示範語料庫，非真實世界工業手冊的驗證結果；向量更新目前是整庫重建而非增量更新。",
+      "reason": "工程深度與自我驗證機制（拒答、幻覺偵測、可重現 benchmark）在同類 RAG 專案中少見，且附有完整測試與基準報告，收錄。"
+    },
+    {
+      "full_name": "CrimflintVenom/rob-run-roulette-session-analytics",
+      "html_url": "https://github.com/CrimflintVenom/rob-run-roulette-session-analytics",
+      "stars": 32,
+      "selected": false,
+      "reason": "僅提供未附原始碼的 Windows exe 下載連結，README 僅 3 行，涉及線上輪盤/博弈分析工具，來源可信度與安全性存疑，且與 AI/ML 技術無明顯直接關聯，排除。"
+    },
+    {
+      "full_name": "TartarusAIDev/awesome-ai-coding-agents",
+      "html_url": "https://github.com/TartarusAIDev/awesome-ai-coding-agents",
+      "stars": 20,
+      "selected": true,
+      "summary": "一份持續自動驗證的 AI 編碼助理（CLI/IDE/自主型）比較清單，區分「GitHub API 驗證過的事實」（star 數/授權/最後提交）與「人工編輯的評價」（是否支援本機模型、多供應商、定價等），並提供 CLI 查詢工具。",
+      "tech": "資料全放在 data/agents.json，用 Python 標準庫腳本（agents.py 查詢、build_dataset.py 拉 GitHub API 驗證、gen_tables.py 重新產生 README 表格），搭配排程 workflow 定期重新核對連結與數據。",
+      "feasibility": "純文件/資料集，`python scripts/agents.py` 即可查詢篩選，無需安裝額外依賴，適合直接拿來做工具選型參考。",
+      "limits": "「編輯欄位」（分類、是否支援本機模型等）仍是人工判斷，可能落後於上游工具的實際進度；維護者本身的商業產品（Tartarus）也列在清單內，雖標示透明但仍需留意潛在立場。",
+      "reason": "以資料驅動＋自動化驗證取代常見「awesome list」的過時/人工堆砌問題，方法論清楚且附可查驗的原始數據，收錄作為選型參考資源。"
+    }
+  ]
+}
