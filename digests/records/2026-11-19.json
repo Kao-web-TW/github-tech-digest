@@ -1,0 +1,166 @@
+{
+  "date": "2026-11-19",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-17 stars:>=20 | topic:machine-learning created:>=2026-11-17 stars:>=20 | topic:llm created:>=2026-11-17 stars:>=20 | topic:ai-agent created:>=2026-11-17 stars:>=20 | topic:generative-ai created:>=2026-11-17 stars:>=20",
+  "notice": {
+    "lede": "今日候選榜被一波明顯的星數造假/垃圾倉庫洗版，真正的新興工具僅剩 2 個。",
+    "body": "本次搜尋合併去重後共 21 個候選，其中 19 個是由近 20 個互不相關的帳號在同一秒內各自建立、內容幾乎逐字相同的複製倉庫（分為「Gemini-Config-Checker-」與「ai--manus2.0」兩組），且每個複本的星數都恰好是 62 顆，明顯是批量刷星製造熱度。「Gemini-Config-Checker-」一組的描述聲稱是繞過地區限制存取 Google AI Studio / Gemini 的「反 DPI」代理設定掃描工具，這類手法與近期 GitHub 上散布可疑/惡意軟體的模式高度相似，本次全數判定為垃圾/可疑內容不予收錄。扣除這些複製倉庫後，今天實際可供分析的候選只剩 2 個，均已選入。"
+  },
+  "candidates": [
+    {
+      "full_name": "4liyev/Gemini-Config-Checker-",
+      "html_url": "https://github.com/4liyev/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他 18 個帳號在同一秒內建立的內容幾乎完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星的垃圾倉庫；描述聲稱是繞過地區限制存取 Gemini 的「反 DPI」代理掃描工具，特徵高度符合近期 GitHub 上散布可疑/惡意軟體的手法，不予收錄。"
+    },
+    {
+      "full_name": "Andriy-samp/ai--manus2.0",
+      "html_url": "https://github.com/Andriy-samp/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他帳號在同一秒內建立的內容完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星製造熱度的垃圾/盜版倉庫（疑似盜用 AI-Manus 專案名稱），不予收錄。"
+    },
+    {
+      "full_name": "AntikvarX/ai--manus2.0",
+      "html_url": "https://github.com/AntikvarX/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他帳號在同一秒內建立的內容完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星製造熱度的垃圾/盜版倉庫（疑似盜用 AI-Manus 專案名稱），不予收錄。"
+    },
+    {
+      "full_name": "Hypertrainer-The-First/ai--manus2.0",
+      "html_url": "https://github.com/Hypertrainer-The-First/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他帳號在同一秒內建立的內容完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星製造熱度的垃圾/盜版倉庫（疑似盜用 AI-Manus 專案名稱），不予收錄。"
+    },
+    {
+      "full_name": "KingUnlock7/Gemini-Config-Checker-",
+      "html_url": "https://github.com/KingUnlock7/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他 18 個帳號在同一秒內建立的內容幾乎完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星的垃圾倉庫；描述聲稱是繞過地區限制存取 Gemini 的「反 DPI」代理掃描工具，特徵高度符合近期 GitHub 上散布可疑/惡意軟體的手法，不予收錄。"
+    },
+    {
+      "full_name": "Mariajsjsj/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Mariajsjsj/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他 18 個帳號在同一秒內建立的內容幾乎完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星的垃圾倉庫；描述聲稱是繞過地區限制存取 Gemini 的「反 DPI」代理掃描工具，特徵高度符合近期 GitHub 上散布可疑/惡意軟體的手法，不予收錄。"
+    },
+    {
+      "full_name": "Mariete333/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Mariete333/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他 18 個帳號在同一秒內建立的內容幾乎完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星的垃圾倉庫；描述聲稱是繞過地區限制存取 Gemini 的「反 DPI」代理掃描工具，特徵高度符合近期 GitHub 上散布可疑/惡意軟體的手法，不予收錄。"
+    },
+    {
+      "full_name": "Physico-Academic/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Physico-Academic/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他 18 個帳號在同一秒內建立的內容幾乎完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星的垃圾倉庫；描述聲稱是繞過地區限制存取 Gemini 的「反 DPI」代理掃描工具，特徵高度符合近期 GitHub 上散布可疑/惡意軟體的手法，不予收錄。"
+    },
+    {
+      "full_name": "Samokoto/Gemini-Config-Checker-",
+      "html_url": "https://github.com/Samokoto/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他 18 個帳號在同一秒內建立的內容幾乎完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星的垃圾倉庫；描述聲稱是繞過地區限制存取 Gemini 的「反 DPI」代理掃描工具，特徵高度符合近期 GitHub 上散布可疑/惡意軟體的手法，不予收錄。"
+    },
+    {
+      "full_name": "Sorsax/ai--manus2.0",
+      "html_url": "https://github.com/Sorsax/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他帳號在同一秒內建立的內容完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星製造熱度的垃圾/盜版倉庫（疑似盜用 AI-Manus 專案名稱），不予收錄。"
+    },
+    {
+      "full_name": "abodeahsz00az-cmd/ai--manus2.0",
+      "html_url": "https://github.com/abodeahsz00az-cmd/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他帳號在同一秒內建立的內容完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星製造熱度的垃圾/盜版倉庫（疑似盜用 AI-Manus 專案名稱），不予收錄。"
+    },
+    {
+      "full_name": "alphafalcongamer-creator/ai--manus2.0",
+      "html_url": "https://github.com/alphafalcongamer-creator/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他帳號在同一秒內建立的內容完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星製造熱度的垃圾/盜版倉庫（疑似盜用 AI-Manus 專案名稱），不予收錄。"
+    },
+    {
+      "full_name": "eluyonga/ai--manus2.0",
+      "html_url": "https://github.com/eluyonga/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他帳號在同一秒內建立的內容完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星製造熱度的垃圾/盜版倉庫（疑似盜用 AI-Manus 專案名稱），不予收錄。"
+    },
+    {
+      "full_name": "kazim768/ai--manus2.0",
+      "html_url": "https://github.com/kazim768/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他帳號在同一秒內建立的內容完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星製造熱度的垃圾/盜版倉庫（疑似盜用 AI-Manus 專案名稱），不予收錄。"
+    },
+    {
+      "full_name": "lloweryfn-rgb/Gemini-Config-Checker-",
+      "html_url": "https://github.com/lloweryfn-rgb/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他 18 個帳號在同一秒內建立的內容幾乎完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星的垃圾倉庫；描述聲稱是繞過地區限制存取 Gemini 的「反 DPI」代理掃描工具，特徵高度符合近期 GitHub 上散布可疑/惡意軟體的手法，不予收錄。"
+    },
+    {
+      "full_name": "mancommits/ai--manus2.0",
+      "html_url": "https://github.com/mancommits/ai--manus2.0",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他帳號在同一秒內建立的內容完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星製造熱度的垃圾/盜版倉庫（疑似盜用 AI-Manus 專案名稱），不予收錄。"
+    },
+    {
+      "full_name": "mkselvamm/Gemini-Config-Checker-",
+      "html_url": "https://github.com/mkselvamm/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他 18 個帳號在同一秒內建立的內容幾乎完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星的垃圾倉庫；描述聲稱是繞過地區限制存取 Gemini 的「反 DPI」代理掃描工具，特徵高度符合近期 GitHub 上散布可疑/惡意軟體的手法，不予收錄。"
+    },
+    {
+      "full_name": "omshashisagar-netizen/Gemini-Config-Checker-",
+      "html_url": "https://github.com/omshashisagar-netizen/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他 18 個帳號在同一秒內建立的內容幾乎完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星的垃圾倉庫；描述聲稱是繞過地區限制存取 Gemini 的「反 DPI」代理掃描工具，特徵高度符合近期 GitHub 上散布可疑/惡意軟體的手法，不予收錄。"
+    },
+    {
+      "full_name": "rasterotboga-source/Gemini-Config-Checker-",
+      "html_url": "https://github.com/rasterotboga-source/Gemini-Config-Checker-",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他 18 個帳號在同一秒內建立的內容幾乎完全相同的複製倉庫、星數同樣恰好 62 顆，明顯是批量刷星的垃圾倉庫；描述聲稱是繞過地區限制存取 Gemini 的「反 DPI」代理掃描工具，特徵高度符合近期 GitHub 上散布可疑/惡意軟體的手法，不予收錄。"
+    },
+    {
+      "full_name": "chuxuan861119/zhichan-xiaozhan-work",
+      "html_url": "https://github.com/chuxuan861119/zhichan-xiaozhan-work",
+      "stars": 31,
+      "selected": true,
+      "summary": "中國專利撰寫與文件管理桌面工作台，整合專利庫管理、專利五書編輯、附圖製作與二維 CAD 標註、本機規則檢查，並提供可選的 AI 輔助與 Word/PDF 匯入匯出。",
+      "tech": "Electron + React + TypeScript 桌面應用；核心文件編輯與資料管理功能完全本地運行，AI 輔助、更新檢查等聯網功能依使用者自行設定。",
+      "feasibility": "GPL-3.0 開源桌面應用，可直接 clone 後本機建置執行，不需註冊帳號即可使用核心功能；但場景高度垂直（限中國發明/實用新型專利撰寫）。",
+      "limits": "目前開源版本（1.1.8）不含外觀設計工作台；僅支援中國專利格式與流程；AI 輔助功能需自行設定外部服務。",
+      "reason": "少見的「AI 輔助但核心功能可完全離線運作」的垂直領域實用工具，授權（GPL-3.0）清晰、文件完整（推測：中文專利撰寫是真實痛點）。"
+    },
+    {
+      "full_name": "TartarusAIDev/awesome-ai-coding-agents",
+      "html_url": "https://github.com/TartarusAIDev/awesome-ai-coding-agents",
+      "stars": 20,
+      "selected": true,
+      "summary": "經策展並定期驗證的 AI 編碼代理／CLI 工具／自主開發代理比較清單，以『來源可驗證的事實（授權、star 數、最後提交時間取自 GitHub API）』搭配明確標註的主觀欄位（分類、介面、本地模型支援、計價）呈現，附帶可自行查詢的資料與腳本。",
+      "tech": "資料驅動的 Awesome List：資料存於 data/agents.json，附 Python 腳本 scripts/agents.py 供查詢與統計，README 內的統計區塊會自動更新。",
+      "feasibility": "純文件＋資料瀏覽專案，無需安裝即可直接閱讀 README 比較；若要用查詢腳本篩選則需要 Python 環境。",
+      "limits": "本身不是可執行工具，而是比較/索引型資源；內容的時效性與正確性仰賴維護者持續驗證。",
+      "reason": "相較於同類清單常見的浮誇敘述，此專案以可驗證事實加自動化統計區分品質，工程紀律良好，對篩選 AI 編碼代理工具有實用參考價值。"
+    }
+  ]
+}
