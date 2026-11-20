@@ -1,0 +1,324 @@
+{
+  "date": "2026-11-20",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-18 stars:>=20 | topic:machine-learning created:>=2026-11-18 stars:>=20 | topic:llm created:>=2026-11-18 stars:>=20 | topic:ai-agent created:>=2026-11-18 stars:>=20 | topic:generative-ai created:>=2026-11-18 stars:>=20",
+  "notice": {
+    "lede": "今日候選榜幾乎被假星/倉庫農場式的垂直洗版淹沒,43個候選中逾35個是同一份描述重複發佈的「GTA 6 PC 安裝器」仿冒帳號或 PowerShell 一鍵安裝型態的知名專案改名仿冒倉庫,真正具參考價值的新工具僅3個。",
+    "body": "本次對 artificial-intelligence / machine-learning / llm / ai-agent / generative-ai 五個 topic 的搜尋合併後取得43個去重候選,但逐一讀取 README 後發現其中逾30個是同一段「GTA VI PC Installer hub」描述,被三十多個不同帳號重複發佈,明顯是濫用熱門 AI topic 標籤博取曝光的倉庫農場,與 AI/ML 毫無關聯;另外有4個倉庫疑似把 open-webui、OpenBB、Pinokio 等知名開源專案改名、加上 PowerShell 一鍵安裝按鈕與誇大的下載/測試徽章,手法高度一致,疑似仿冒或惡意安裝器包裝,出於安全考量全數排除。星數最高(495)的 bookwjitchieni1986/blender-ai-mcp-addon 雖然 README 製作精良、功能描述具體,但帳號命名模式與短時間內的星數增幅與上述洗版倉庫雷同,無法排除是同一波操作,因此也保守地排除,等待後續觀察驗證。最終僅 chat-in-dsh(DeepSeek Harness 原版網頁聊天面板)、skill-siphon(Agent Skills 技能萃取工具)、system-on-an-agent(極簡 agent 架構示範)三個項目通過品質審核,數量低於平常的5-10個,如實反映今日候選品質分佈,未虛增選入項目。"
+  },
+  "candidates": [
+    {
+      "full_name": "bookwjitchieni1986/blender-ai-mcp-addon",
+      "html_url": "https://github.com/bookwjitchieni1986/blender-ai-mcp-addon",
+      "stars": 495,
+      "selected": false,
+      "reason": "README 本身製作精良、功能描述具體(21項場景工具、多模型供應商、MCP server),但倉庫在建立後短時間內即累積495顆星,且帳號命名模式(隨機詞+出生年數字)與本次搜尋結果中其他已確認的仿冒/洗星倉庫相同,無法排除是同一波假星操作的一部分（推測）。僅提供 Windows 執行檔下載、作者身份也無法核實,出於安全考量不予收錄,但功能構想本身值得之後持續觀察驗證。"
+    },
+    {
+      "full_name": "hasan6969macho-bit/vectorbt-avoria-analysis",
+      "html_url": "https://github.com/hasan6969macho-bit/vectorbt-avoria-analysis",
+      "stars": 94,
+      "selected": false,
+      "reason": "帳號命名模式(隨機詞+數字)、PowerShell 一鍵安裝按鈕、誇大 badge(tests success/build green)與本次搜尋結果中其他數個同手法倉庫高度一致,疑似假星與可疑安裝器包裝的仿冒倉庫（推測）,出於安全考量不予收錄。"
+    },
+    {
+      "full_name": "kenzz-devv/open-webui-talora-ai-workspace",
+      "html_url": "https://github.com/kenzz-devv/open-webui-talora-ai-workspace",
+      "stars": 94,
+      "selected": false,
+      "reason": "倉庫名稱疑似在知名專案 open-webui 後綴加上虛構品牌字(Talora)進行改名,搭配 PowerShell 安裝按鈕與誇大 badge,與本次搜尋結果中其他同手法倉庫高度一致,疑似仿冒/誤導倉庫（推測）,不予收錄。"
+    },
+    {
+      "full_name": "pgmergulhao75-dot/openbb-calvona-market-research",
+      "html_url": "https://github.com/pgmergulhao75-dot/openbb-calvona-market-research",
+      "stars": 93,
+      "selected": false,
+      "reason": "倉庫名稱疑似在知名專案 OpenBB 後綴加上虛構品牌字(Calvona)進行改名,搭配 PowerShell 安裝按鈕與誇大 badge,與本次搜尋結果中其他同手法倉庫高度一致,疑似仿冒/誤導倉庫（推測）,不予收錄。"
+    },
+    {
+      "full_name": "senickimoro-art/pinokio-olvara-ai-workspace",
+      "html_url": "https://github.com/senickimoro-art/pinokio-olvara-ai-workspace",
+      "stars": 93,
+      "selected": false,
+      "reason": "倉庫名稱疑似在知名專案 Pinokio 後綴加上虛構品牌字(Olvara)進行改名,搭配 PowerShell 安裝按鈕、虛構下載次數 badge,與本次搜尋結果中其他同手法倉庫高度一致,疑似仿冒/誤導倉庫（推測）,不予收錄。"
+    },
+    {
+      "full_name": "beyondtahir/beyondgtaclips",
+      "html_url": "https://github.com/beyondtahir/beyondgtaclips",
+      "stars": 51,
+      "selected": false,
+      "reason": "本質是 GTA 6 直播剪輯自動化工具,訴求「剪片賺觀看分潤」的行銷語氣濃厚,與 AI 整合工具的技術評選主旨關聯度低,且主題與本次搜尋結果中大量 GTA 6 相關洗版倉庫重疊,不予收錄。"
+    },
+    {
+      "full_name": "WLfear/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/WLfear/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "yassinebourzza1/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/yassinebourzza1/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "mohamedhamdytaha/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/mohamedhamdytaha/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "kamesha12/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/kamesha12/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "Samokoto/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Samokoto/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "Andriy-samp/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Andriy-samp/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "mancommits/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/mancommits/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "EpicGiantite13205/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/EpicGiantite13205/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "johnstiles/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/johnstiles/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "Kkaramaddinnn/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Kkaramaddinnn/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "Mariajsjsj/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Mariajsjsj/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "zalman-ua/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/zalman-ua/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "python001-dev/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/python001-dev/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "Ernestoracua/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Ernestoracua/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "monirchemrubd/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/monirchemrubd/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "meirz911/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/meirz911/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "YanBatistaa/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/YanBatistaa/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "hanataki41-ui/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/hanataki41-ui/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "ITprogamatikDedSec/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/ITprogamatikDedSec/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "eluyonga/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/eluyonga/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "ShukvaniPlayz/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/ShukvaniPlayz/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "sebastianor08/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/sebastianor08/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "qwerthegoe-hash/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/qwerthegoe-hash/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "simadan11/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/simadan11/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "bx98592kqp-ui/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/bx98592kqp-ui/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "Fisheriks/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Fisheriks/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "AntikvarX/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/AntikvarX/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "SandyPandyMandy/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/SandyPandyMandy/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "lloweryfn-rgb/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/lloweryfn-rgb/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "kazim768/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/kazim768/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "kemans35/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/kemans35/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "stancaedy10-glitch/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/stancaedy10-glitch/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "Woshilaji8763/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Woshilaji8763/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "mecidovv/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/mecidovv/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "這個描述完全相同的「GTA 6 PC 安裝器」倉庫在本次搜尋結果中由超過30個不同帳號重複發佈,屬假星/倉庫農場洗版模式,內容與 AI/ML 毫無關聯,僅濫用 topic 標籤博取曝光,不予收錄。"
+    },
+    {
+      "full_name": "YinkaiYu/chat-in-dsh",
+      "html_url": "https://github.com/YinkaiYu/chat-in-dsh",
+      "stars": 30,
+      "selected": true,
+      "summary": "在 DeepSeek Harness(DSH,DeepSeek 官方類 Claude Code 的開發者 CLI/Agent 工具)裡,新增一個獨立面板還原「原汁原味」的 DeepSeek 網頁版對話體驗——拿掉 DSH 預設注入的大量系統提示詞與工具,改用官方極簡網頁版介面與伺服端能力,因應 2026/11/16 DeepSeek App 與網頁版開始限額後,開發者用戶轉用 DSH 卻失去純聊天/寫作體驗的痛點。",
+      "tech": "基於 DeepSeek 官方開源 chat-demo 二次開發,以 DSH 已登入帳號直接呼叫官方 API(依量計費,不受網頁版限額影響),前端按官網樣式逐項復刻(搜尋、置頂、語音、Mermaid 圖表縮放等)。",
+      "feasibility": "已發佈於 npm(chat-in-dsh)並附 GitHub Actions 測試徽章,安裝方式是在 DSH 插件頁填入套件名即可,屬輕量級外掛,本地可行性高。",
+      "limits": "僅服務 DSH 使用者這個垂直場景,且依賴 DeepSeek 官方 chat-demo 的介面與 API 穩定性,一旦官方介面改版需要跟進維護;歷史對話匯入/搬移為單向覆蓋,需注意資料管理。",
+      "reason": "功能具體、文件完整、可驗證來源(npm/測試徽章或清晰協議規格),在今日嚴重被洗版污染的候選榜中屬少數可信、對 AI 開發者社群有實際參考價值的項目。"
+    },
+    {
+      "full_name": "JL-GUO/skill-siphon",
+      "html_url": "https://github.com/JL-GUO/skill-siphon",
+      "stars": 25,
+      "selected": true,
+      "summary": "一個遵循開放 Agent Skills 協議(SKILL.md + references/)的「技能萃取」skill:給定一個學習領域或指定某個高星 skill,會先搜尋並列出候選,選定後深入閱讀該 skill 的引用鏈,把「步驟背後的門道、取捨與例外」萃取成三份新手可理解、可練習的學習資料(學習指南、上手實踐、來源與邊界),而非單純逐句翻譯複述原指令。",
+      "tech": "純 Markdown + 流程規範構成的 Agent Skill(無程式碼依賴),明確聲明可相容於 Claude Code、Codex、Cursor、Gemini CLI、OpenCode、DeepSeek Harness 等任何支援 Agent Skills 協議的 runtime。",
+      "feasibility": "安裝方式為 git clone 後放入對應應用的 skills 目錄即可使用,不需額外編譯或依賴,本地可行性高;文件詳盡且明確劃定「誠實邊界」(熱度僅作發現線索、分析不等於授權執行、拿不到的數據標示「未核實」),工程與倫理考量皆到位。",
+      "limits": "核心方法論(SKILL.md 與 references/)明確不接受外部 PR 直接修改,僅能透過 issue 建議,社群擴充受限;效果依賴底層 LLM 對引用鏈的深讀與萃取品質,目前星數尚低(25),為剛起步的新專案。",
+      "reason": "功能具體、文件完整、可驗證來源(npm/測試徽章或清晰協議規格),在今日嚴重被洗版污染的候選榜中屬少數可信、對 AI 開發者社群有實際參考價值的項目。"
+    },
+    {
+      "full_name": "fitzyracing1/system-on-an-agent",
+      "html_url": "https://github.com/fitzyracing1/system-on-an-agent",
+      "stars": 22,
+      "selected": true,
+      "summary": "把「System on a Chip」的類比直接對應到 agent 架構:Planner(處理器)、Memory+Skills(儲存)、Connectors(I/O)、Bus/Router(匯流排)四個核心模組,刻意保持極簡,其餘能力透過 manifest + hook(before_plan/after_plan/before_step/after_step/on_error)以外掛形式擴充,不改動核心。",
+      "tech": "Python 實作,預設規劃器是「不需要語言模型」的規則式(deterministic rule-based)規劃器,可選接 LLMProvider 介面,模型失敗時退回規則式規劃器作為 fallback;內建本地檔案與 echo(mock)兩種 connector。",
+      "feasibility": "`pip install -e \".[dev]\"` 後即可用 `soa` CLI 執行(skills list / connectors list / run),並附 pytest 測試,屬可直接跑的最小可行骨架,本地驗證成本低。",
+      "limits": "目前核心功能相當單薄,預設不含真正的 LLM 推理(規則式規劃器涵蓋少數內建句型),屬概念驗證/架構示範階段而非成熟工具,星數也低(22),後續是否能長出實質能力待觀察。",
+      "reason": "功能具體、文件完整、可驗證來源(npm/測試徽章或清晰協議規格),在今日嚴重被洗版污染的候選榜中屬少數可信、對 AI 開發者社群有實際參考價值的項目。"
+    }
+  ]
+}
