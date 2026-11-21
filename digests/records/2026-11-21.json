@@ -1,0 +1,346 @@
+{
+  "date": "2026-11-21",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-19 stars:>=20 | topic:machine-learning created:>=2026-11-19 stars:>=20 | topic:llm created:>=2026-11-19 stars:>=20 | topic:ai-agent created:>=2026-11-19 stars:>=20 | topic:generative-ai created:>=2026-11-19 stars:>=20",
+  "notice": {
+    "lede": "今天的候選榜被兩個明顯的洗版/詐騙範本網路佔據，過半候選並非真實 AI 工具。",
+    "body": "本次合併 5 個 topic 搜尋共取得 45 個候選，但其中約 25 個是同一個「GTA VI PC 安裝器」模板在數十個新建帳號下重複出現（借用 generative-ai/ai 等 topic 洗版曝光，實際內容是導向 Dropbox .rar 下載的疑似盜版/惡意軟體頁面），另外 6 個則是另一組高度相似的範本網站（相同的 PowerShell 安裝按鈕 + 加密貨幣捐款地址 + AI 生成行銷文案，包裝成 Claude Code / OpenCode / AnythingLLM / Open WebUI / Adobe Firefly 等知名工具的「桌面版」）。這兩群都被排除。真正值得關注的新工具僅 5 個：Blender 的 MCP 外掛、Replit 官方發布的自架個人 AI 代理 Amuse、Android 本機 AI 代理 Aether、極簡 agent 框架 system-on-an-agent，以及給 AI coding agent 用的 Godot 技能包。"
+  },
+  "candidates": [
+    {
+      "full_name": "bookwjitchieni1986/blender-ai-mcp-addon",
+      "html_url": "https://github.com/bookwjitchieni1986/blender-ai-mcp-addon",
+      "stars": 1766,
+      "selected": true,
+      "summary": "Blender 外掛，內建 MCP server，讓 AI 助手能檢視場景、建立物件、編輯材質、尋找資源並執行多步驟工作流程，附帶視覺化聊天工作區。",
+      "tech": "Model Context Protocol (MCP) server + Blender 4.2+ Python 外掛；可接雲端模型供應商或本機 Ollama。",
+      "feasibility": "本機可行：下載 Windows x64 版本安裝於 Blender 內即可使用，文件含 QUICKSTART 與 CONNECTIONS 說明。",
+      "limits": "MIT 授權；repo 僅 2 天內新建但已有 1766 星，star 數異常偏高（推測可能有初期社群/行銷推廣因素，無法完全排除刷星，但 README/文件/截圖內容完整、非範本農場特徵），功能本身對 Blender 創作者確有實用價值。",
+      "reason": "真實且文件完整的 Blender MCP 整合外掛，功能具體可驗證，列入精選（star 數偏高一點需留意，但內容非灌水範本）。"
+    },
+    {
+      "full_name": "zavi2997-droid/claude-code-agent-workspace",
+      "html_url": "https://github.com/zavi2997-droid/claude-code-agent-workspace",
+      "stars": 158,
+      "selected": false,
+      "reason": "與其他候選高度相同的範本網站（files/preview.png 圖、PowerShell 安裝按鈕導向 github.io、加密貨幣捐款地址、幾乎同樣措辭的 AI 生成說明文字），疑似同一批帳號批量產出的範本/推廣型 repo，非可驗證的真實開源工具，淘汰。"
+    },
+    {
+      "full_name": "han938/open-webui-private-ai-desk",
+      "html_url": "https://github.com/han938/open-webui-private-ai-desk",
+      "stars": 158,
+      "selected": false,
+      "reason": "與其他候選高度相同的範本網站（files/preview.png 圖、PowerShell 安裝按鈕導向 github.io、加密貨幣捐款地址、幾乎同樣措辭的 AI 生成說明文字），疑似同一批帳號批量產出的範本/推廣型 repo，非可驗證的真實開源工具，淘汰。"
+    },
+    {
+      "full_name": "wozniakalan323-bit/opencode-project-workbench",
+      "html_url": "https://github.com/wozniakalan323-bit/opencode-project-workbench",
+      "stars": 158,
+      "selected": false,
+      "reason": "與其他候選高度相同的範本網站（files/preview.png 圖、PowerShell 安裝按鈕導向 github.io、加密貨幣捐款地址、幾乎同樣措辭的 AI 生成說明文字），疑似同一批帳號批量產出的範本/推廣型 repo，非可驗證的真實開源工具，淘汰。"
+    },
+    {
+      "full_name": "dickoyudha-netizen/adobe-firefly-image-creator",
+      "html_url": "https://github.com/dickoyudha-netizen/adobe-firefly-image-creator",
+      "stars": 158,
+      "selected": false,
+      "reason": "與其他候選高度相同的範本網站（files/preview.png 圖、PowerShell 安裝按鈕導向 github.io、加密貨幣捐款地址、幾乎同樣措辭的 AI 生成說明文字），疑似同一批帳號批量產出的範本/推廣型 repo，非可驗證的真實開源工具，淘汰。"
+    },
+    {
+      "full_name": "chase1225/anythingllm-verona-document-chat",
+      "html_url": "https://github.com/chase1225/anythingllm-verona-document-chat",
+      "stars": 157,
+      "selected": false,
+      "reason": "與其他候選高度相同的範本網站（files/preview.png 圖、PowerShell 安裝按鈕導向 github.io、加密貨幣捐款地址、幾乎同樣措辭的 AI 生成說明文字），疑似同一批帳號批量產出的範本/推廣型 repo，非可驗證的真實開源工具，淘汰。"
+    },
+    {
+      "full_name": "marketzy/codex-cli-repo-workbench",
+      "html_url": "https://github.com/marketzy/codex-cli-repo-workbench",
+      "stars": 156,
+      "selected": false,
+      "reason": "與其他候選高度相同的範本網站（files/preview.png 圖、PowerShell 安裝按鈕導向 github.io、加密貨幣捐款地址、幾乎同樣措辭的 AI 生成說明文字），疑似同一批帳號批量產出的範本/推廣型 repo，非可驗證的真實開源工具，淘汰。"
+    },
+    {
+      "full_name": "replit/amuse",
+      "html_url": "https://github.com/replit/amuse",
+      "stars": 103,
+      "selected": true,
+      "summary": "自架個人 AI 代理：可研究網路、操作可即時介入的瀏覽器、設定提醒與背景監控、追蹤目標並建立小型應用，執行付款/送出前會先徵求同意。",
+      "tech": "Node.js + pnpm + PostgreSQL + OpenAI API（含 web search 與瀏覽器自動化），Docker Compose 一鍵啟動。",
+      "feasibility": "本機可行：`docker compose up -d --build` 或原始碼建置皆有清楚步驟，需自備 OpenAI API key，僅於本機 127.0.0.1 啟動。",
+      "limits": "需要 OpenAI API key 及 PostgreSQL；目前僅支援單人自架使用。",
+      "reason": "官方 Replit 組織發布，文件與安全設計（審核卡、加密保險箱）完整，是可信的自架 AI 代理專案。"
+    },
+    {
+      "full_name": "beyondtahir/beyondgtaclips",
+      "html_url": "https://github.com/beyondtahir/beyondgtaclips",
+      "stars": 99,
+      "selected": false,
+      "reason": "訴求偏向「蹭 GTA6 熱度剪片賺錢」的行銷導向工具，非以 AI/ML 技術本身為核心賣點，品質與可信度存疑（推測），與每日精選的技術整合工具定位不符，淘汰。"
+    },
+    {
+      "full_name": "hexsyro/kaggle-dress-rehearsal",
+      "html_url": "https://github.com/hexsyro/kaggle-dress-rehearsal",
+      "stars": 47,
+      "selected": false,
+      "reason": "內容紮實、非灌水，但本質是個人 Kaggle 練習/教學專案（比較交叉驗證與超參數搜尋策略），並非可供他人直接整合使用的工具或框架，與本精選聚焦的「新興 AI 整合工具」定位不符，淘汰。"
+    },
+    {
+      "full_name": "aether-aiagent/aether",
+      "html_url": "https://github.com/aether-aiagent/aether",
+      "stars": 38,
+      "selected": true,
+      "summary": "Android 本機 AI 代理 App，可在裝置上執行多步驟工具呼叫並回應使用者指令（含俄語介面）。",
+      "tech": "Kotlin + Jetpack Compose，支援 on-device 執行、可接 Anthropic/OpenAI/本機 LLM，另有 Termux/Shizuku 整合。",
+      "feasibility": "本機可行：提供 APK 下載與每日 nightly build CI，Android 8.0+ 可直接安裝使用。",
+      "limits": "GPL-3.0 授權；介面以俄語為主，國際化程度未知（推測仍在早期階段）。",
+      "reason": "具備真實 CI/releases 與清楚技術棧的 Android 端 AI 代理專案，非範本農場內容。"
+    },
+    {
+      "full_name": "Kkaramaddinnn/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Kkaramaddinnn/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 37,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "Samokoto/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Samokoto/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "Ernestoracua/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Ernestoracua/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "eluyonga/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/eluyonga/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "ShukvaniPlayz/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/ShukvaniPlayz/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "ITprogamatikDedSec/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/ITprogamatikDedSec/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "bx98592kqp-ui/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/bx98592kqp-ui/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "Woshilaji8763/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Woshilaji8763/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 36,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "yassinebourzza1/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/yassinebourzza1/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "mohamedhamdytaha/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/mohamedhamdytaha/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "WLfear/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/WLfear/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "kamesha12/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/kamesha12/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "EpicGiantite13205/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/EpicGiantite13205/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "johnstiles/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/johnstiles/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "zalman-ua/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/zalman-ua/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "python001-dev/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/python001-dev/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "mancommits/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/mancommits/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "Andriy-samp/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Andriy-samp/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "hanataki41-ui/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/hanataki41-ui/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "monirchemrubd/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/monirchemrubd/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "meirz911/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/meirz911/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "sebastianor08/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/sebastianor08/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "qwerthegoe-hash/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/qwerthegoe-hash/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "simadan11/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/simadan11/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "kazim768/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/kazim768/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "kemans35/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/kemans35/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "Fisheriks/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/Fisheriks/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "AntikvarX/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/AntikvarX/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "lloweryfn-rgb/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/lloweryfn-rgb/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "SandyPandyMandy/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/SandyPandyMandy/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "stancaedy10-glitch/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/stancaedy10-glitch/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "mecidovv/GTA-6-Switch-Version--PC-Emulator-2026",
+      "html_url": "https://github.com/mecidovv/GTA-6-Switch-Version--PC-Emulator-2026",
+      "stars": 35,
+      "selected": false,
+      "reason": "疑似盜版/詐騙散布網路：repo 內容是「GTA VI PC 安裝器」，引導下載 Dropbox 上的 .rar 檔，與 AI/ML 無實質關聯，僅借用 generative-ai/ai 等 topic 洗版曝光；同一模板在數十個新建帳號下重複出現（stars 35-37 集中），判定為協同灌星/惡意下載站。"
+    },
+    {
+      "full_name": "fitzyracing1/system-on-an-agent",
+      "html_url": "https://github.com/fitzyracing1/system-on-an-agent",
+      "stars": 31,
+      "selected": true,
+      "summary": "以「單晶片系統」概念類比設計的極簡 agent 框架：Planner、Memory/Skills、Connectors、Bus/Router 四個核心元件，可透過 manifest 掛載外掛。",
+      "tech": "Python 3.10+，預設為規則式（非 LLM）的 planner，另留有 LLMProvider 介面可選接。",
+      "feasibility": "本機可行：`pip install -e \".[dev]\"` 後即可用 `soa` CLI 執行，並附測試套件（pytest）。",
+      "limits": "MIT 授權；核心功能刻意精簡（僅內建本機檔案與 echo 連接器），進階功能需自行擴充外掛。",
+      "reason": "概念清晰、程式碼與文件具體可驗證的輕量級 agent 框架，適合學習或作為底層骨架。"
+    },
+    {
+      "full_name": "EL4CTEO/godot-skills",
+      "html_url": "https://github.com/EL4CTEO/godot-skills",
+      "stars": 21,
+      "selected": true,
+      "summary": "為 AI coding agent（Claude Code、Codex、OpenCode、Gemini CLI、GitHub Copilot、Cursor）設計的 18 組 Godot 4.7 技能包，涵蓋 GDScript 與 C#。",
+      "tech": "以 Claude Code plugin marketplace 或安裝腳本（bash/PowerShell）佈署技能至 `~/.claude/skills` 等目錄，並有 CI 驗證每個程式碼範例皆可在 Godot 4.7.2 編譯。",
+      "feasibility": "本機可行：`/plugin marketplace add` 或 git clone 後執行安裝腳本，需 Godot 4.7+ 與 Python 3.9+。",
+      "limits": "MIT 授權；僅適用於 Godot 4.7 以上版本，且需搭配支援 skills 機制的 AI coding agent 才能發揮效果。",
+      "reason": "文件完整、有真實 CI 驗證且解決具體痛點（agent 對遊戲引擎 API 的掌握），是紮實的 AI coding agent 技能擴充專案。"
+    }
+  ]
+}
