@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-22",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-20 stars:>=20 | topic:machine-learning created:>=2026-11-20 stars:>=20 | topic:llm created:>=2026-11-20 stars:>=20 | topic:ai-agent created:>=2026-11-20 stars:>=20 | topic:generative-ai created:>=2026-11-20 stars:>=20",
+  "notice": {
+    "lede": "今天的候選榜被一批冒用知名商業 AI 工具品牌(RunwayML、Descript、ElevenLabs、CapCut、Jasper AI、Copy.ai)的可疑 repo 大量佔據,真正具備原始碼與文件的新興工具僅 2 個。",
+    "body": "本次合併 5 個 topic 的搜尋結果共 17 個候選,其中 9 個使用幾乎一致的模板:制式 SEO 行銷文案、README 內嵌加密貨幣捐款地址、並導向外部網站的「PowerShell 一鍵安裝」按鈕,分別冒用多款知名商業 AI 工具的名稱(RunwayML、Descript、ElevenLabs、CapCut、Jasper AI、Copy.ai)或知名開源/編碼助理品牌(open-webui、Claude Code、Codex CLI),卻無任何可檢視的實際原始碼,高度疑似濫用 GitHub topic 機制(同時掛上 artificial-intelligence、generative-ai、llm 等熱門標籤)衝高曝光度、誘導使用者執行來源不明的安裝腳本。另有一個候選(dsh-workbuddy)目的是規避第三方 AI 服務供應商的用量/計費檢查機制,存在明顯 ToS 風險。扣除這些可疑或高風險項目後,僅剩 w01fb0ss/PiBot(本機優先多 Agent 桌面助理)與 sous-labs/songe(本機模型線上蒸餾訓練工具)兩個具備真實程式碼、文件與授權條款的新興工具,故本日入選數低於慣常的 5-10 個下限,如實反映觀察結果而非湊數選入可疑項目。"
+  },
+  "candidates": [
+    {
+      "full_name": "w01fb0ss/PiBot",
+      "html_url": "https://github.com/w01fb0ss/PiBot",
+      "stars": 170,
+      "selected": true,
+      "summary": "本地優先的桌面 AI Agent 團隊應用,可建立多個具名 Bot(含角色、技能、權限、記憶),單獨對話或群組協作完成本機任務(執行指令、編輯檔案、瀏覽網頁、操作電腦),每個高風險步驟皆需人工核准。",
+      "tech": "基於開源 agent kernel `pi`(earendil-works/pi),Electron + TypeScript 桌面應用(apps/desktop),另有 React Native/Expo 的 Android App;指令執行沙盒採用 Anthropic 的 `sandbox-runtime`,支援 Ollama 本地模型、OpenRouter 及自備 API key 的模型供應商。",
+      "feasibility": "跨平台(macOS 13+ / Windows 10/11 / 64-bit Linux)桌面應用,原始碼公開(Apache-2.0),提供完整建置指令(pnpm install/dev/build/check/verify),本機自架可行性高;需自備模型金鑰或本機模型伺服器,無遙測、資料留在本機。",
+      "limits": "初版發佈不到一天(created 2026-11-21),社群與生態尚待觀察;多 Agent 群組協作與審批流程增加操作複雜度,需要使用者理解其權限/沙盒模型才能安全使用(推測)。",
+      "reason": "文件完整、原始碼開放、採用知名沙盒套件與清晰的分層架構,是本次候選中少數具備真實程式碼與開發流程說明的新興 AI agent 桌面工具。"
+    },
+    {
+      "full_name": "sous-labs/songe",
+      "html_url": "https://github.com/sous-labs/songe",
+      "stars": 169,
+      "selected": true,
+      "summary": "在背景持續「訓練」本機模型的工具:攔截 opencode/pi 等 agent 與本機模型伺服器間的互動,記錄使用者更正與工具錯誤等訊號,在使用者閒置時以這些訊號做 Quick Dream(調整系統提示)或 Deep Dream(線上蒸餾式微調),新版本只有表現更好才會被採用。",
+      "tech": "Python 套件(PyPI `songe`),支援 LM Studio、vLLM、Ollama、llama.cpp、mlx-lm 作為模型伺服器;訓練利用 Apple Silicon 的 MLX 或 NVIDIA/AMD 的 PyTorch,採用 on-policy distillation(以原模型為教師、加 adapter 的模型為學生)。",
+      "feasibility": "`uv tool install songe` 或 `pipx install songe`(亦提供 Homebrew tap)即可安裝,完全離線本機運作、無帳號無雲端連線;但 Deep Dream 訓練需要 GPU(Apple Silicon 或 NVIDIA/AMD),純 CPU 機器只能記錄互動、無法訓練。",
+      "limits": "目前完整支援並測試的 agent 僅 opencode 與 pi,其餘工具需自行相容 OpenAI API 介面;訓練品質依賴使用者實際互動量與更正訊號多寡,訓練規模依機器效能自動調整(見 DESIGN.md,推測實際效果因人而異)。",
+      "reason": "技術路線新穎(用使用者日常修正訊號做本機持續學習/蒸餾),附有 PyPI 套件、Roadmap 與設計文件,是具體可行且有別於一般包裝型工具的本機 AI 強化專案。"
+    },
+    {
+      "full_name": "han938/open-webui-private-ai-desk",
+      "html_url": "https://github.com/han938/open-webui-private-ai-desk",
+      "stars": 151,
+      "selected": false,
+      "reason": "README 充斥制式行銷文案與誇大 FAQ,要求透過外部網站的「PowerShell 一鍵安裝」按鈕安裝,並在文件中嵌入加密貨幣捐款地址,屬於疑似透過偽裝 AI 工具散布可疑安裝程式的模板化 repo,無可檢視的實際原始碼,不選入。"
+    },
+    {
+      "full_name": "wozniakalan323-bit/opencode-project-workbench",
+      "html_url": "https://github.com/wozniakalan323-bit/opencode-project-workbench",
+      "stars": 151,
+      "selected": false,
+      "reason": "與 han938/open-webui-private-ai-desk 高度相同的模板(PowerShell 一鍵安裝按鈕+加密貨幣捐款地址+制式行銷文案,無實際原始碼可檢視),判定為同一批可疑/垃圾 repo,不選入。"
+    },
+    {
+      "full_name": "zavi2997-droid/claude-code-agent-workspace",
+      "html_url": "https://github.com/zavi2997-droid/claude-code-agent-workspace",
+      "stars": 150,
+      "selected": false,
+      "reason": "同一可疑模板,且冒用「Claude Code」品牌名稱製造信任假象,風險較高,不選入。"
+    },
+    {
+      "full_name": "marketzy/codex-cli-repo-workbench",
+      "html_url": "https://github.com/marketzy/codex-cli-repo-workbench",
+      "stars": 148,
+      "selected": false,
+      "reason": "同一可疑模板,冒用「Codex CLI」品牌名稱,無實際原始碼,不選入。"
+    },
+    {
+      "full_name": "LIUFelix2004/dsh-workbuddy",
+      "html_url": "https://github.com/LIUFelix2004/dsh-workbuddy",
+      "stars": 73,
+      "selected": false,
+      "reason": "專案目的是將多個第三方服務(WorkBuddy)帳號池化並「自動繞過閘道的渠道校驗、壓上破甲層」以規避用量/計費檢查,屬於規避供應商反濫用機制的工具,可能違反目標服務使用條款(推測),存在明顯風險,不選入。"
+    },
+    {
+      "full_name": "GuzmanJacqueline93/copy-ai-pro-win",
+      "html_url": "https://github.com/GuzmanJacqueline93/copy-ai-pro-win",
+      "stars": 40,
+      "selected": false,
+      "reason": "冒用知名商業產品「Copy.ai」名稱,README 為制式「Windows 設定指南」行銷文案並導向外部一鍵安裝頁面,無實際原始碼,屬可疑的品牌冒用/潛在惡意安裝程式散布模板,不選入。"
+    },
+    {
+      "full_name": "Aroralayla99/capcut-seedance-win",
+      "html_url": "https://github.com/Aroralayla99/capcut-seedance-win",
+      "stars": 40,
+      "selected": false,
+      "reason": "冒用「CapCut」及「Seedance」品牌名稱,與其他 *-win repo 同一制式模板,無實際原始碼,不選入。"
+    },
+    {
+      "full_name": "JieFedorov81/runway-ml-pro-win",
+      "html_url": "https://github.com/JieFedorov81/runway-ml-pro-win",
+      "stars": 39,
+      "selected": false,
+      "reason": "冒用「Runway ML」品牌名稱,同一可疑安裝程式模板,不選入。"
+    },
+    {
+      "full_name": "Juanlabs1989/descript-pro-win",
+      "html_url": "https://github.com/Juanlabs1989/descript-pro-win",
+      "stars": 38,
+      "selected": false,
+      "reason": "冒用「Descript」品牌名稱,同一可疑安裝程式模板,不選入。"
+    },
+    {
+      "full_name": "Morriswawan05/elevenlabs-pro-win",
+      "html_url": "https://github.com/Morriswawan05/elevenlabs-pro-win",
+      "stars": 38,
+      "selected": false,
+      "reason": "冒用「ElevenLabs」品牌名稱,同一可疑安裝程式模板,不選入。"
+    },
+    {
+      "full_name": "Cloudcode04/runway-ml-pro-win",
+      "html_url": "https://github.com/Cloudcode04/runway-ml-pro-win",
+      "stars": 37,
+      "selected": false,
+      "reason": "與 JieFedorov81/runway-ml-pro-win 幾乎相同內容,屬同一批冒用「Runway ML」品牌的重複 repo,不選入。"
+    },
+    {
+      "full_name": "debugdigital677/descript-pro-win",
+      "html_url": "https://github.com/debugdigital677/descript-pro-win",
+      "stars": 35,
+      "selected": false,
+      "reason": "與 Juanlabs1989/descript-pro-win 幾乎相同內容,屬同一批冒用「Descript」品牌的重複 repo,不選入。"
+    },
+    {
+      "full_name": "isanders5152/descript-pro-win",
+      "html_url": "https://github.com/isanders5152/descript-pro-win",
+      "stars": 27,
+      "selected": false,
+      "reason": "與 Juanlabs1989/descript-pro-win 幾乎相同內容,屬同一批冒用「Descript」品牌的重複 repo,不選入。"
+    },
+    {
+      "full_name": "josephyoung28/capcut-seedance-win",
+      "html_url": "https://github.com/josephyoung28/capcut-seedance-win",
+      "stars": 24,
+      "selected": false,
+      "reason": "與 Aroralayla99/capcut-seedance-win 幾乎相同內容,屬同一批冒用「CapCut/Seedance」品牌的重複 repo,不選入。"
+    },
+    {
+      "full_name": "suryacode04/jasper-ai-win",
+      "html_url": "https://github.com/suryacode04/jasper-ai-win",
+      "stars": 22,
+      "selected": false,
+      "reason": "冒用「Jasper AI」品牌名稱,同一可疑安裝程式模板,不選入。"
+    }
+  ]
+}
