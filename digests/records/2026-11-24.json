@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-24",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-22 stars:>=20 | topic:machine-learning created:>=2026-11-22 stars:>=20 | topic:llm created:>=2026-11-22 stars:>=20 | topic:ai-agent created:>=2026-11-22 stars:>=20 | topic:generative-ai created:>=2026-11-22 stars:>=20",
+  "notice": {
+    "lede": "今日候選榜被一波範本化的「免編譯、下載即用」假工具 repo 占據，疑似刷星與潛在風險軟體發布，實際可收錄的 AI 工具數量大幅減少。",
+    "body": "本次 5 個 topic 合併去重後僅得 10 個候選，其中 6 個（unfiltered-ai-chat、free-llm-router、llm-router-free、key-pool-rotator、llm-key-rotator、uncensored-ai-chat）由 6 個不同、疑似同批建立的帳號於同一天發布，彼此的 README 排版、徽章樣式、「免編譯、下載即用」文案幾乎一致，且全部只提供 Windows 預編譯 .zip/.exe 下載、沒有可檢視的原始碼；另有一個偽裝成「GTA 6 PC Emulator」的非 AI 風險軟體，以及一個 repo 內無任何原始碼、只引導下載執行檔的「VRAM 檢測工具」。這些共同指向一波利用熱門 AI 相關 topic（llm、ai-agent 等）來刷星數、誘導下載執行檔的農場式/風險軟體操作，而非真正的新興 AI 工具，因此本次全數排除。最終只有 2 個候選（DeepSeek Harness 求職外掛、MBZUAI 的權重空間程式合成研究）具備足夠的實質內容與可信來源，予以收錄。"
+  },
+  "candidates": [
+    {
+      "full_name": "Meetsaini/emulator",
+      "html_url": "https://github.com/Meetsaini/emulator",
+      "stars": 338,
+      "selected": false,
+      "reason": "非 AI/ML 相關工具，偽裝成「GTA 6 PC Emulator」，透過 PowerShell 一鍵安裝按鈕誘導執行腳本，含灌水式的「安裝數/星數」徽章，疑似詐騙/風險軟體，不予收錄。"
+    },
+    {
+      "full_name": "TekihiXac52/unfiltered-ai-chat",
+      "html_url": "https://github.com/TekihiXac52/unfiltered-ai-chat",
+      "stars": 66,
+      "selected": false,
+      "reason": "與其他數個同日建立的帳號發布之 repo（free-llm-router / llm-router-free / key-pool-rotator / llm-key-rotator / unfiltered-ai-chat / uncensored-ai-chat）共用幾乎一致的範本化 README（相同排版、相同「免編譯、下載即用」文案、相同 CI/Release 徽章），僅提供 Windows 預編譯 .zip/.exe 下載、無可稽核原始碼，疑似刷星農場或惡意軟體散布模式，不予收錄。"
+    },
+    {
+      "full_name": "Karimk899/free-llm-router",
+      "html_url": "https://github.com/Karimk899/free-llm-router",
+      "stars": 65,
+      "selected": false,
+      "reason": "與其他數個同日建立的帳號發布之 repo（free-llm-router / llm-router-free / key-pool-rotator / llm-key-rotator / unfiltered-ai-chat / uncensored-ai-chat）共用幾乎一致的範本化 README（相同排版、相同「免編譯、下載即用」文案、相同 CI/Release 徽章），僅提供 Windows 預編譯 .zip/.exe 下載、無可稽核原始碼，疑似刷星農場或惡意軟體散布模式，不予收錄。"
+    },
+    {
+      "full_name": "ThaoYou30020/llm-router-free",
+      "html_url": "https://github.com/ThaoYou30020/llm-router-free",
+      "stars": 62,
+      "selected": false,
+      "reason": "與其他數個同日建立的帳號發布之 repo（free-llm-router / llm-router-free / key-pool-rotator / llm-key-rotator / unfiltered-ai-chat / uncensored-ai-chat）共用幾乎一致的範本化 README（相同排版、相同「免編譯、下載即用」文案、相同 CI/Release 徽章），僅提供 Windows 預編譯 .zip/.exe 下載、無可稽核原始碼，疑似刷星農場或惡意軟體散布模式，不予收錄。"
+    },
+    {
+      "full_name": "aSimmons5907/key-pool-rotator",
+      "html_url": "https://github.com/aSimmons5907/key-pool-rotator",
+      "stars": 48,
+      "selected": false,
+      "reason": "與其他數個同日建立的帳號發布之 repo（free-llm-router / llm-router-free / key-pool-rotator / llm-key-rotator / unfiltered-ai-chat / uncensored-ai-chat）共用幾乎一致的範本化 README（相同排版、相同「免編譯、下載即用」文案、相同 CI/Release 徽章），僅提供 Windows 預編譯 .zip/.exe 下載、無可稽核原始碼，疑似刷星農場或惡意軟體散布模式，不予收錄。"
+    },
+    {
+      "full_name": "ebbapanagiotou44/llm-key-rotator",
+      "html_url": "https://github.com/ebbapanagiotou44/llm-key-rotator",
+      "stars": 41,
+      "selected": false,
+      "reason": "與其他數個同日建立的帳號發布之 repo（free-llm-router / llm-router-free / key-pool-rotator / llm-key-rotator / unfiltered-ai-chat / uncensored-ai-chat）共用幾乎一致的範本化 README（相同排版、相同「免編譯、下載即用」文案、相同 CI/Release 徽章），僅提供 Windows 預編譯 .zip/.exe 下載、無可稽核原始碼，疑似刷星農場或惡意軟體散布模式，不予收錄。"
+    },
+    {
+      "full_name": "SerapoQosa58/uncensored-ai-chat",
+      "html_url": "https://github.com/SerapoQosa58/uncensored-ai-chat",
+      "stars": 41,
+      "selected": false,
+      "reason": "與其他數個同日建立的帳號發布之 repo（free-llm-router / llm-router-free / key-pool-rotator / llm-key-rotator / unfiltered-ai-chat / uncensored-ai-chat）共用幾乎一致的範本化 README（相同排版、相同「免編譯、下載即用」文案、相同 CI/Release 徽章），僅提供 Windows 預編譯 .zip/.exe 下載、無可稽核原始碼，疑似刷星農場或惡意軟體散布模式，不予收錄。"
+    },
+    {
+      "full_name": "Powerdaalembic/LocalAI-VRAMReadyCheck",
+      "html_url": "https://github.com/Powerdaalembic/LocalAI-VRAMReadyCheck",
+      "stars": 33,
+      "selected": false,
+      "reason": "repo 僅含 README 與指向 GitHub Release 的 LocalAICheck.exe 下載連結，GitHub 語言偵測結果為 null（代表 repo 內無程式原始碼），屬於誘導使用者下載執行未知可執行檔的高風險模式，與同日出現的其他範本化農場 repo 手法相似，不予收錄。"
+    },
+    {
+      "full_name": "Nimbus318/dsh-niuma-broker",
+      "html_url": "https://github.com/Nimbus318/dsh-niuma-broker",
+      "stars": 31,
+      "selected": true,
+      "reason": "功能完整、文件清楚並附實際截圖與安裝說明，是少見但紮實的 AI agent 應用型工具，有助求職流程自動化。",
+      "summary": "「牛马经纪人」是針對 DeepSeek Harness 平台的求職經紀人外掛，整合目標設定、簡歷版本管理、公司官網職缺定時巡檢、AI 職缺匹配打分（附理由與硬傷提示）、投遞流程追蹤看板，以及面試/Offer 時程自動寫入系統日曆等功能，協助求職者系統化管理求職全流程。",
+      "tech": "以 Node.js 實作，作為 DeepSeek Harness（DSH）的外掛程式運行，借助 DSH 平台的 agent/LLM 能力進行職缺匹配分析與背景調查摘要。",
+      "feasibility": "需先安裝 DeepSeek Harness（版本區間 >=0.2.2-rc.5 且 <0.3.0）與 Node.js >=22，可透過 DSH 桌面端/Web 插件市集直接安裝，或用 DSH CLI／npm 安裝；本地可行性高，但強耦合 DeepSeek Harness 生態，無法脫離該平台獨立使用。",
+      "limits": "僅支援特定版本區間的 DeepSeek Harness；官網職缺巡檢功能依賴目標公司官網頁面結構抓取，網站改版可能導致功能失效；非獨立可執行工具，需完整的 DSH 執行環境。"
+    },
+    {
+      "full_name": "mbzuai-oryx/LoopedWSP",
+      "html_url": "https://github.com/mbzuai-oryx/LoopedWSP",
+      "stars": 21,
+      "selected": true,
+      "reason": "出自知名 AI 研究機構（MBZUAI Oryx 團隊）的嚴謹研究項目，探索新穎的權重空間程式合成方法，具學術與可解釋性研究價值。",
+      "summary": "由 MBZUAI Oryx 研究團隊發布的研究專案，探索「Looped Weight-Space Programming」——讓 LLM 直接「撰寫」能在權重空間中迴圈執行的 Transformer 程式，用於處理長程演算法推理任務（如迷宮、數獨、河內塔等），且可在無額外訓練（no-training）的情況下由 LLM 直接生成對應的權重程式。",
+      "tech": "Python 實作，基於 Transformer 架構與 LLM（含 Claude Opus 5.5 參與生成）進行權重空間程式合成與機制可解釋性（mechanistic interpretability）研究。",
+      "feasibility": "研究型 repo，附有部落格文章與網頁 demo（迷宮、數獨等任務可直接線上體驗）；若要在本地重現完整實驗，需要對應的訓練/推理腳本與模型權重，適合有 ML 研究背景的使用者深入復現，一般開發者可先透過線上 demo 體驗概念。",
+      "limits": "偏研究導向、非生產級工具；目前效能與泛化能力仍待更多驗證；demo 僅涵蓋特定演算法推理任務（迷宮/數獨/河內塔等），尚未涵蓋更廣泛的實務場景。"
+    }
+  ]
+}
