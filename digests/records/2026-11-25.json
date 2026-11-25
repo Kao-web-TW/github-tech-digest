@@ -1,0 +1,143 @@
+{
+  "date": "2026-11-25",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-23 stars:>=20 | topic:machine-learning created:>=2026-11-23 stars:>=20 | topic:llm created:>=2026-11-23 stars:>=20 | topic:ai-agent created:>=2026-11-23 stars:>=20 | topic:generative-ai created:>=2026-11-23 stars:>=20",
+  "notice": {
+    "lede": "今天 62%（10/16）的候選項目來自同一批次的模板化帳號群，疑似散布規避 AI 用量限制或防毒偵測的惡意軟體，已全數淘汰未選入。",
+    "body": "以 5 個 topic 分別查詢『created:>=2026-11-23 stars:>=20』後合併得到 16 個候選，其中 10 個（claude-code-unlimited / ccu-tool / unfiltered-ai-chat / local-ai-chat-uncensored / uncensored-ai-chat / free-llm-router / llm-router-free / llm-key-pool / key-pool-rotator / llm-key-rotator）的 README 幾乎逐字相同（同一套『Executive Summary & Design』樣板、『存取碼 2026』解壓 zip、執行 Setup_x64.exe），帳號名稱也呈隨機英數字樣式（例如 SodovaFo7、TekihiXac52、CajasiZep76），明顯是同一批次量產的帳號在用熱門 AI 關鍵字（claude-code、llm-router、uncensored chat 等）刷 topic/stars 以提高曝光，訴求又多半涉及規避官方用量限制或安全過濾，風險很高，故本次全數標記 selected: false 並在 reason 中註明。另一個候選（Powerdaalembic/LocalAI-VRAMReadyCheck）雖非同一樣板，但同樣只提供 .exe 下載、沒有原始碼，且教使用者繞過 Windows SmartScreen 警告，一併淘汰。今天真正選入的 5 個項目則橫跨學術研究（類器官訊號引導 LLM agent、用 LLM 手寫 transformer 權重解演算法題）與實用工具（本機推理引擎 FLYX、Kaggle 免費 GPU 的 MCP 橋接、DeepSeek Harness 求職助理插件），品質落差明顯。"
+  },
+  "candidates": [
+    {
+      "full_name": "brainintelli/BioSignal-Guided-LLM-Reinforcement-Learning",
+      "html_url": "https://github.com/brainintelli/BioSignal-Guided-LLM-Reinforcement-Learning",
+      "stars": 141,
+      "selected": true,
+      "summary": "研究型 repo：用微電極陣列（MEA）記錄的類器官（organoid）神經活動離線回放訊號，作為 Qwen3.5-0.8B LLM agent 在生存遊戲中探索決策的輔助輸入，比較『有訊號 vs 全零對照』等條件下的探索/生存表現差異，並公開論文、程式碼、訓練軌跡與模型檢查點。",
+      "tech": "Qwen3.5-0.8B（凍結基礎模型 + PPO 更新的 policy adapter）、獨立 value network、Python 3.12、MEA 電生理訊號前處理。",
+      "feasibility": "核心重現腳本（python -m src.reproduce smoke/exploration）可離線執行、不需 GPU 叢集，但完整重現需另外下載 182 份原始 H5 電生理檔案（存放於中國夸克網盤，非 GitHub 發行版），對海外使用者取得略有門檻。",
+      "limits": "作者自述效果多為『方向一致但統計上不顯著』：主要發現的中位數差異為零、在第二顆晶片上未能重現，且審查發現部分設計識別碼於評估後被更動、原始驗證雜湊不符——論文本身對這些落差有詳列說明，屬於誠實揭露限制的研究，而非誇大成果。",
+      "reason": "跨領域（神經科學 × LLM agent）的誠實、可重現研究，附完整程式碼與數據/限制揭露，具教育與研究參考價值。"
+    },
+    {
+      "full_name": "mbzuai-oryx/LoopedWSP",
+      "html_url": "https://github.com/mbzuai-oryx/LoopedWSP",
+      "stars": 92,
+      "selected": true,
+      "summary": "MBZUAI Oryx 團隊展示讓 Claude Opus 5.5 直接『手寫』一個小型 transformer 的全部權重（無梯度訓練），該 transformer 透過『迴圈』機制逐步推進最短路徑搜尋，在 30x30 高難度迷宮、Sudoku-Extreme、20 階河內塔、GraphWalks 等多個演算法推理基準上達到 100% 正確率，大幅超越同架構以梯度下降訓練的模型（例如梯度下降訓練同架構得 0%）。",
+      "tech": "Claude Opus 5.5 作為『權重程式設計師』、一個可迴圈執行的小型 transformer（最小僅 928 個權重）、numpy 推論腳本，另有線上 Hugging Face Space 與瀏覽器 Demo。",
+      "feasibility": "極高：weights/ 目錄下的 run.py 只需 Python 3 + numpy 即可在任何筆電執行所有十個任務的權重，不需 GPU、不需安裝深度學習框架。",
+      "limits": "方法目前侵限於作者精心設計、可用迴圈／狀態機風格求解的演算法任務（迷宮、數獨、河內塔、圖搜尋等），並非通用訓練方法；權重是由 Claude 以『手動設定』方式產生，過程成本與可重複性（能否穩定對其他任務重現）尚待更廣泛驗證。",
+      "reason": "極具啟發性的 LLM 能力展示（用 LLM 直接『寫』神經網路權重取代訓練），程式碼與權重完整公開、可一鍵在本機重現，是今天品質最突出的候選之一。"
+    },
+    {
+      "full_name": "Nimbus318/dsh-niuma-broker",
+      "html_url": "https://github.com/Nimbus318/dsh-niuma-broker",
+      "stars": 66,
+      "selected": true,
+      "summary": "『牛马经纪人』是給 DeepSeek Harness（DSH）用的求職輔助插件：巡檢公司官網職缺、依個人履歷做 AI 配對打分與風險排雷、從日常工作對話中（需使用者明確授權的工作區）靜默提煉可寫入履歷的工作成果，並提供多主幹/定向分支式的履歷版本管理與一鍵排版匯出。",
+      "tech": "DeepSeek Harness 插件（需 DSH >=0.2.2-rc.5 <0.3.0、Node.js >=22），模型路由可自行指定（例：DeepSeek-V4.1-Flash），本機 JSON 儲存於 ~/.dsh/profiles/。",
+      "feasibility": "中等：需先安裝特定版本的 DeepSeek Harness 與 Node.js 22+，macOS 體驗最完整（原生日曆/提醒事項整合），Linux/Windows 僅支援核心功能；不綁定模型供應商，但需自行在 DSH 設定好至少一個模型。",
+      "limits": "明確聲明不模擬登入、不代為投遞職缺，工作對話擷取需使用者按目錄手動授權；公司列表僅為公開職缺頁捷徑、與所列公司無關聯；AI 建議僅供參考。",
+      "reason": "功能設計具體、且在隱私/自動化邊界上刻意保守（不代投遞、先審後用），是少見的『真實可用』求職類 AI agent 插件，值得留意（雖然生態綁定 DeepSeek Harness 而非通用）。"
+    },
+    {
+      "full_name": "SodovaFo7/claude-code-unlimited",
+      "html_url": "https://github.com/SodovaFo7/claude-code-unlimited",
+      "stars": 68,
+      "selected": false,
+      "reason": "淘汰：此 repo 屬於今日觀察到的同一批次模板化帳號群（隨機英數帳號、幾乎逐字相同的 README 樣板），引導使用者下載 zip（附「存取碼」解壓）後執行 Setup_x64.exe，且無任何可檢視的原始碼。此下載模式（含「存取碼」規避靜態掃描/防毒偵測）是常見的惡意軟體散布手法，加上訴求（規避 Claude Code 用量限制、繞過安全過濾）本身即涉及違反服務條款，不予選入；建議不要下載執行。"
+    },
+    {
+      "full_name": "TekihiXac52/unfiltered-ai-chat",
+      "html_url": "https://github.com/TekihiXac52/unfiltered-ai-chat",
+      "stars": 66,
+      "selected": false,
+      "reason": "淘汰：此 repo 屬於今日觀察到的同一批次模板化帳號群（隨機英數帳號、幾乎逐字相同的 README 樣板），引導使用者下載 zip（附「存取碼」解壓）後執行 Setup_x64.exe，且無任何可檢視的原始碼。此下載模式（含「存取碼」規避靜態掃描/防毒偵測）是常見的惡意軟體散布手法，加上訴求（規避 Claude Code 用量限制、繞過安全過濾）本身即涉及違反服務條款，不予選入；建議不要下載執行。"
+    },
+    {
+      "full_name": "Karimk899/free-llm-router",
+      "html_url": "https://github.com/Karimk899/free-llm-router",
+      "stars": 65,
+      "selected": false,
+      "reason": "淘汰：此 repo 屬於今日觀察到的同一批次模板化帳號群（隨機英數帳號、幾乎逐字相同的 README 樣板），引導使用者下載 zip（附「存取碼」解壓）後執行 Setup_x64.exe，且無任何可檢視的原始碼。此下載模式（含「存取碼」規避靜態掃描/防毒偵測）是常見的惡意軟體散布手法，加上訴求（規避 Claude Code 用量限制、繞過安全過濾）本身即涉及違反服務條款，不予選入；建議不要下載執行。"
+    },
+    {
+      "full_name": "ThaoYou30020/llm-router-free",
+      "html_url": "https://github.com/ThaoYou30020/llm-router-free",
+      "stars": 62,
+      "selected": false,
+      "reason": "淘汰：此 repo 屬於今日觀察到的同一批次模板化帳號群（隨機英數帳號、幾乎逐字相同的 README 樣板），引導使用者下載 zip（附「存取碼」解壓）後執行 Setup_x64.exe，且無任何可檢視的原始碼。此下載模式（含「存取碼」規避靜態掃描/防毒偵測）是常見的惡意軟體散布手法，加上訴求（規避 Claude Code 用量限制、繞過安全過濾）本身即涉及違反服務條款，不予選入；建議不要下載執行。 另與 Karimk899/free-llm-router 功能重複（同一主題換殼）。"
+    },
+    {
+      "full_name": "TegevoXi39/ccu-tool",
+      "html_url": "https://github.com/TegevoXi39/ccu-tool",
+      "stars": 57,
+      "selected": false,
+      "reason": "淘汰：此 repo 屬於今日觀察到的同一批次模板化帳號群（隨機英數帳號、幾乎逐字相同的 README 樣板），引導使用者下載 zip（附「存取碼」解壓）後執行 Setup_x64.exe，且無任何可檢視的原始碼。此下載模式（含「存取碼」規避靜態掃描/防毒偵測）是常見的惡意軟體散布手法，加上訴求（規避 Claude Code 用量限制、繞過安全過濾）本身即涉及違反服務條款，不予選入；建議不要下載執行。 另與 SodovaFo7/claude-code-unlimited 功能重複（同一主題換殼）。"
+    },
+    {
+      "full_name": "CajasiZep76/local-ai-chat-uncensored",
+      "html_url": "https://github.com/CajasiZep76/local-ai-chat-uncensored",
+      "stars": 52,
+      "selected": false,
+      "reason": "淘汰：此 repo 屬於今日觀察到的同一批次模板化帳號群（隨機英數帳號、幾乎逐字相同的 README 樣板），引導使用者下載 zip（附「存取碼」解壓）後執行 Setup_x64.exe，且無任何可檢視的原始碼。此下載模式（含「存取碼」規避靜態掃描/防毒偵測）是常見的惡意軟體散布手法，加上訴求（規避 Claude Code 用量限制、繞過安全過濾）本身即涉及違反服務條款，不予選入；建議不要下載執行。 另與 TekihiXac52/unfiltered-ai-chat、SerapoQosa58/uncensored-ai-chat 功能重複（同一主題換殼）。"
+    },
+    {
+      "full_name": "francoisokada/llm-key-pool",
+      "html_url": "https://github.com/francoisokada/llm-key-pool",
+      "stars": 51,
+      "selected": false,
+      "reason": "淘汰：此 repo 屬於今日觀察到的同一批次模板化帳號群（隨機英數帳號、幾乎逐字相同的 README 樣板），引導使用者下載 zip（附「存取碼」解壓）後執行 Setup_x64.exe，且無任何可檢視的原始碼。此下載模式（含「存取碼」規避靜態掃描/防毒偵測）是常見的惡意軟體散布手法，加上訴求（規避 Claude Code 用量限制、繞過安全過濾）本身即涉及違反服務條款，不予選入；建議不要下載執行。"
+    },
+    {
+      "full_name": "aSimmons5907/key-pool-rotator",
+      "html_url": "https://github.com/aSimmons5907/key-pool-rotator",
+      "stars": 48,
+      "selected": false,
+      "reason": "淘汰：此 repo 屬於今日觀察到的同一批次模板化帳號群（隨機英數帳號、幾乎逐字相同的 README 樣板），引導使用者下載 zip（附「存取碼」解壓）後執行 Setup_x64.exe，且無任何可檢視的原始碼。此下載模式（含「存取碼」規避靜態掃描/防毒偵測）是常見的惡意軟體散布手法，加上訴求（規避 Claude Code 用量限制、繞過安全過濾）本身即涉及違反服務條款，不予選入；建議不要下載執行。 另與 francoisokada/llm-key-pool、ebbapanagiotou44/llm-key-rotator 功能重複（同一主題換殼）。"
+    },
+    {
+      "full_name": "SerapoQosa58/uncensored-ai-chat",
+      "html_url": "https://github.com/SerapoQosa58/uncensored-ai-chat",
+      "stars": 41,
+      "selected": false,
+      "reason": "淘汰：此 repo 屬於今日觀察到的同一批次模板化帳號群（隨機英數帳號、幾乎逐字相同的 README 樣板），引導使用者下載 zip（附「存取碼」解壓）後執行 Setup_x64.exe，且無任何可檢視的原始碼。此下載模式（含「存取碼」規避靜態掃描/防毒偵測）是常見的惡意軟體散布手法，加上訴求（規避 Claude Code 用量限制、繞過安全過濾）本身即涉及違反服務條款，不予選入；建議不要下載執行。"
+    },
+    {
+      "full_name": "ebbapanagiotou44/llm-key-rotator",
+      "html_url": "https://github.com/ebbapanagiotou44/llm-key-rotator",
+      "stars": 41,
+      "selected": false,
+      "reason": "淘汰：此 repo 屬於今日觀察到的同一批次模板化帳號群（隨機英數帳號、幾乎逐字相同的 README 樣板），引導使用者下載 zip（附「存取碼」解壓）後執行 Setup_x64.exe，且無任何可檢視的原始碼。此下載模式（含「存取碼」規避靜態掃描/防毒偵測）是常見的惡意軟體散布手法，加上訴求（規避 Claude Code 用量限制、繞過安全過濾）本身即涉及違反服務條款，不予選入；建議不要下載執行。"
+    },
+    {
+      "full_name": "Powerdaalembic/LocalAI-VRAMReadyCheck",
+      "html_url": "https://github.com/Powerdaalembic/LocalAI-VRAMReadyCheck",
+      "stars": 33,
+      "selected": false,
+      "reason": "淘汰（推測為可疑）：repo 內沒有任何可檢視的原始碼，只提供下載連結與一個 .exe，並教使用者在 Windows SmartScreen 警告時點擊『仍要執行』——這是規避系統安全警示常見的誘導手法；同帳號下還有多個命名風格相同、互相連結的『Offline/Local』工具 repo，疑似同一批次量產帳號，不予選入。"
+    },
+    {
+      "full_name": "enwove/flyx",
+      "html_url": "https://github.com/enwove/flyx",
+      "stars": 31,
+      "selected": true,
+      "summary": "FLYX 是一套零依賴、約 50MB 單檔的本機 LLM 推理引擎，可直接執行 GGUF 模型，支援長上下文（K/V cache 超出 VRAM 時平滑溢出到系統 RAM 而非截斷）、依 GPU 自動調校的 kernel 參數表，並原生相容 OpenAI 與 Anthropic API 格式，可一鍵整合 Claude Code / Codex CLI 等本機 coding agent。",
+      "tech": "C++/CUDA 推理引擎、GGUF 與自家 .flyx 格式（支援 LoRA/V-LoRA、NVFP4）、投機解碼（MTP/DFlash2）、內建多語言 Web 儀表板。",
+      "feasibility": "高：Windows 雙擊 .exe 或 Linux 解壓執行皆可，僅需 NVIDIA 驅動 ≥580，不需 CUDA Toolkit/Python/Docker；亦提供原始碼可自行編譯（CMake + CUDA 13）。",
+      "limits": "目前僅支援單一 GPU 行程、特定 Qwen3.5/Qwen3.8/Qwen3/Llama 系列密集模型（不支援 MoE 與視覺模型），MXFP4 格式不支援；效能數據為官方自測，未見第三方獨立驗證。",
+      "reason": "文件完整、附真實硬體 benchmark 數據、原始碼可建置、背後有公司（enwove.ai）掛名，是今天少數成熟度高、對開發者立即可用的本機推理工具。"
+    },
+    {
+      "full_name": "NguyenQuocDat06-AI/kaggle-shell-mcp",
+      "html_url": "https://github.com/NguyenQuocDat06-AI/kaggle-shell-mcp",
+      "stars": 30,
+      "selected": true,
+      "summary": "kaggle-shell-mcp（CLI 名 kgsh）把 Kaggle 每週約 30 小時的免費 GPU 額度，包裝成可供 AI agent 透過 MCP 操作的多槽即時遠端終端機與離線競賽批次執行環境，支援雙槽並行（4×T4=60GB VRAM）、L4/H100/TPU 等硬體、以及斷網競賽模式下透過 Kaggle Host SSE 即時取得訓練日誌。",
+      "tech": "MCP stdio server + CLI（Python 3.11+，可用 uvx/pip 安裝）、Kaggle Kernel API、stdlib PTY/RPC daemon、Cloudflared/Tailscale 做連線穿透。",
+      "feasibility": "高：一行 uvx 指令即可在 Claude Code / Cursor 等支援 MCP 的用戶端安裝，只需 Kaggle 帳號與 API Token（需完成手機驗證才能解鎖 GPU）。",
+      "limits": "完全依賴 Kaggle 免費額度與其穩定性（12 小時會話上限、每週約 30 小時配額），README 自身也提醒需遵守 Kaggle 服務條款（不得用於挖礦、公開網站代管或網路代理）。",
+      "reason": "把免費雲端 GPU 轉換成 agent 可操作資源的實用 MCP 工具，文件清楚、附『合理使用』提醒，對沒有自有 GPU 的開發者/學生有實際價值。"
+    }
+  ]
+}
