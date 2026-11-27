@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-27",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-25 stars:>=20 | topic:machine-learning created:>=2026-11-25 stars:>=20 | topic:llm created:>=2026-11-25 stars:>=20 | topic:ai-agent created:>=2026-11-25 stars:>=20 | topic:generative-ai created:>=2026-11-25 stars:>=20",
+  "notice": {
+    "lede": "候選池很小（僅 5 筆），其中 2 筆是明顯的範本化可疑下載型 repo。",
+    "body": "今天 5 個 topic 合併後只有 5 個候選，數量遠低於平常。更值得注意的是其中兩筆（tDupuis19341/claude-session-rotator 與 YukiCatalano8591/llm-fallback-router）README 結構幾乎逐字相同：同樣的「Executive Summary & Design」「Engine Components」表格、同樣寫著「存取碼 2026」要求解壓縮下載的 Windows exe、clone URL 都寫著佔位帳號 TestOwner，明顯是同一套生成模板大量產出的誘騙下載型 repo，不是真正的開源專案。保留在紀錄中但標記淘汰，供後續人工複核與留意此類手法。"
+  },
+  "candidates": [
+    {
+      "full_name": "alesha-pro/llm.asm",
+      "html_url": "https://github.com/alesha-pro/llm.asm",
+      "stars": 1508,
+      "selected": true,
+      "summary": "用 100% 純 x86-64 NASM 組合語言從零手刻三個 LLM 專案：14KB 的 Qwen3-0.6B 推理引擎（含 BPE tokenizer、GQA/RoPE/SwiGLU）、24KB 可直接開機的 bare-metal LLM OS，以及 32KB 的 Mini-GPT 訓練器（含即時 Braille TUI loss 曲線）。全部零 C / 零 libc / 零外部依賴。",
+      "tech": "手刻 AVX2+FMA+F16C 的 GEMM/GEMV 核心、INT8xINT8 量化矩陣乘、clone()/futex() thread pool、Multiboot bare-metal kernel、解析梯度反向傳播 + AdamW optimizer，全部以 NASM 組語實作。",
+      "feasibility": "可在一般 x86-64 Linux 上用 nasm/ld 直接編譯執行，推理用二進位檔僅 14KB；bare-metal OS 模式則需 QEMU/Proxmox 等虛擬化環境或實體機開機測試，门槛較高但作者提供了可重現的 benchmark 與 PyTorch 梯度對照（cosine 1.0000000000）。",
+      "limits": "僅支援 x86-64 + AVX2，可讀性與可維護性因全組語實作而大幅降低，屬實驗/展示性質而非通用生產工具；模型僅支援 Qwen3-0.6B。",
+      "reason": "技術含量與可驗證性都很高（有對 llama.cpp 的正式 benchmark 比較與對 PyTorch 的梯度正確性驗證），純組語實作 LLM 推理+訓練+bare-metal OS 三合一在候選中獨一無二，值得精選。"
+    },
+    {
+      "full_name": "op7418/guizang-magi2-skill",
+      "html_url": "https://github.com/op7418/guizang-magi2-skill",
+      "stars": 62,
+      "selected": true,
+      "summary": "給 Antigravity / Claude Code / Codex 用的 Agent Skill，打通「Video to Code」（先用 LibTV MAGI-2 生成參考影片，再讓 AI 寫出一鏡到底的滾動式互動網頁）與「Code to Video」（先用程式碼做動作預演灰盒，再用 MAGI-2 重繪成水墨/手繪/3D 成片）兩套工作流，內附 MAGI-2 提示詞優化規則與 LibTV MCP 連線修復腳本。",
+      "tech": "Agent Skill（SKILL.md）+ 透過 MCP 呼叫 LibTV 的 MAGI-2 影片生成 API，搭配作者實測整理的提示詞工程規則與 Antigravity MCP 連線修復 script。",
+      "feasibility": "安裝成本低（可直接丟給有終端權限的 AI 助手自動 clone + 設定 MCP），但實際生成影片需要 LibTV 帳號並依秒計費（約每秒幾分錢），並非完全本地免費執行；文件主要為簡體中文（附英文版）。",
+      "limits": "依賴單一第三方商業服務 LibTV/MAGI-2，功能偏向網站特效/短片製作等創意應用而非一般開發工具，SKILL 品質好壞高度綁定該外部服務的穩定性與計費。",
+      "reason": "是少見的「程式碼 ↔ AI 影片」雙向工作流 Agent Skill，同時相容 Antigravity、Claude Code、Codex 三種 agent CLI，文件與示範影片完整，具體可操作性強，值得精選。"
+    },
+    {
+      "full_name": "RaphaelAI-OpenLab/awesome-magi-2-prompts",
+      "html_url": "https://github.com/RaphaelAI-OpenLab/awesome-magi-2-prompts",
+      "stars": 22,
+      "selected": false,
+      "reason": "本質是 MAGI-2 影片生成提示詞範例彙整（awesome list），README 充斥大量帶 UTM 追蹤參數導向 raphael.app 商業網站的推廣連結，內容偏行銷而非工具/函式庫本身，且星數偏低、剛建立；與每日精選聚焦「新興整合工具」的定位不符，淘汰（推測：偏向站方自我推廣而非社群自然成長）。"
+    },
+    {
+      "full_name": "tDupuis19341/claude-session-rotator",
+      "html_url": "https://github.com/tDupuis19341/claude-session-rotator",
+      "stars": 66,
+      "selected": false,
+      "reason": "README 疑似範本化生成：clone 指令裡的帳號寫著佔位字樣 TestOwner、要求以「存取碼 2026」解壓縮下載的 Windows exe 才能使用、內容空泛重複（「Claude Code Unlimited — Claude Code Unlimited — ...」），與同日候選 YukiCatalano8591/llm-fallback-router 的 README 結構幾乎逐字相同，判斷為誘騙下載執行檔的可疑/範本生成型 repo，不予選入（推測為同一批次生成的可疑帳號）。"
+    },
+    {
+      "full_name": "YukiCatalano8591/llm-fallback-router",
+      "html_url": "https://github.com/YukiCatalano8591/llm-fallback-router",
+      "stars": 59,
+      "selected": false,
+      "reason": "README 與 tDupuis19341/claude-session-rotator 幾乎逐字相同的範本（同樣的 TestOwner 佔位 clone URL、同樣要求存取碼解壓縮下載 exe、同樣的「Engine Components」表格），明顯為範本化大量產出的可疑下載型 repo，不予選入（推測為同一批次生成的可疑帳號）。"
+    }
+  ]
+}
