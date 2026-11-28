@@ -1,0 +1,104 @@
+{
+  "date": "2026-11-28",
+  "status": "success",
+  "query": "topic:artificial-intelligence created:>=2026-11-26 stars:>=20 | topic:machine-learning created:>=2026-11-26 stars:>=20 | topic:llm created:>=2026-11-26 stars:>=20 | topic:ai-agent created:>=2026-11-26 stars:>=20 | topic:generative-ai created:>=2026-11-26 stars:>=20",
+  "notice": {
+    "lede": "今日候選中逾半數(6/11)屬同一批疑似內容農場/導流倉庫,共享相同的『PowerShell 安裝按鈕 → 個人 github.io 頁面』版型與灌水徽章。",
+    "body": "這批帳號名稱風格隨機、建立時間集中在過去 1-2 天內,README 明顯由同一套範本大量產出(可見語句破碎、形容詞後缺名詞等生成痕跡),並以偽造的使用人數、評分徽章,搭配導向個人 GitHub Pages 的『PowerShell 安裝器/設定按鈕』誘導下載執行腳本,疑似濫用 GitHub topic 搜尋曝光機制進行自動化灌水或導流。這些項目均已排除於本日精選之外,提醒讀者對來路不明、要求執行 PowerShell 安裝指令的『AI 工具』倉庫保持警覺,避免直接下載執行。"
+  },
+  "candidates": [
+    {
+      "full_name": "Red2076-arch/waifu2x-image-upscaler-windows",
+      "html_url": "https://github.com/Red2076-arch/waifu2x-image-upscaler-windows",
+      "stars": 476,
+      "selected": true,
+      "reason": "技術具體可驗證(基於真實開源引擎)且立即可用,但星數成長異常,選中並附使用前自行核實來源的提醒(推測風險)。",
+      "summary": "Windows 桌面 GUI 包裝,透過 Vulkan GPU 加速進行 AI 圖像放大(2x/4x)與去噪,支援動漫插畫與一般相片,底層基於知名開源引擎 waifu2x-ncnn-vulkan。",
+      "tech": "Vulkan + ncnn 推理框架,waifu2x 超解析度模型,C++ 實作,支援 Intel/AMD/NVIDIA GPU 與 CPU fallback,亦提供 CLI 供自動化批次處理。",
+      "feasibility": "下載 GitHub Releases 的可攜式 .exe 即可使用,免安裝 CUDA/Caffe,門檻低。",
+      "limits": "僅支援 Windows;本質是現有 waifu2x-ncnn-vulkan 引擎的 GUI 包裝而非原創模型;單一新帳號在不到一天內獲得 476 星,成長速度異常,建議使用者自行核實倉庫來源可信度(推測)。"
+    },
+    {
+      "full_name": "Emirborovac/phone-connector-for-claude",
+      "html_url": "https://github.com/Emirborovac/phone-connector-for-claude",
+      "stars": 94,
+      "selected": true,
+      "reason": "具體落地的 AI agent 操作手機自動化整合,說明詳盡且內建操作前確認的安全機制,選中。",
+      "summary": "Claude Code 外掛,透過 Android 模擬器或實機(ADB)讓 Claude 操作手機 App(Email、LinkedIn、Instagram、Facebook、X、YouTube 等),執行前皆會請示使用者確認再送出。",
+      "tech": "Android Emulator / ADB 自動化,將螢幕內容轉為可操作的 UI 元素列表,輔以截圖辨識,Python 腳本封裝為 Claude Code plugin/skill。",
+      "feasibility": "需安裝 Claude Code 與 Python 3.8+,一鍵建立模擬器並提供桌面捷徑,支援 Windows/macOS/Linux,帳密與資料保留在使用者本機裝置。",
+      "limits": "目前僅支援 Android(無 iOS),依賴 ADB 連線穩定性與各 App UI 變動的適應性。"
+    },
+    {
+      "full_name": "123zhaozheng/SlideForge",
+      "html_url": "https://github.com/123zhaozheng/SlideForge",
+      "stars": 71,
+      "selected": true,
+      "reason": "技術路線清晰、以實際渲染結果佐證,解決『AI 生成 PPT 不可編輯』的真實痛點,選中。",
+      "summary": "Agent skill,將文件、構想或扁平 AI 幻燈片轉換為 100% 原生可編輯的 PowerPoint(.pptx),採用四層架構(使用者背景、OOXML 向量圖形、AI 透明元件、可編輯文字)並以 PowerPoint/LibreOffice 實際渲染驗證結果。",
+      "tech": "OOXML 向量重建 + 多批次 AI 元件 sprite sheet(呼叫 OpenAI 相容圖像模型後抽取透明 RGBA)+ Python,並處理中日韓/西文/符號字型標籤避免 CJK 跑版。",
+      "feasibility": "需 Python ≥3.10,跨平台(Windows/macOS/Linux),作為 Claude Code / Cursor 的 Agent Skill 安裝即可用,提供中英文 README 與完整架構文件。",
+      "limits": "依賴外部圖像生成 API(需金鑰與額度);實際生成品質與各版本 PowerPoint/LibreOffice 相容性仍需使用者自行實測(推測)。"
+    },
+    {
+      "full_name": "1lamech/ai-image-generator-prompts",
+      "html_url": "https://github.com/1lamech/ai-image-generator-prompts",
+      "stars": 37,
+      "selected": false,
+      "reason": "本質為提示詞資料集而非工具,且採用與同批次多個可疑倉庫相同的『PowerShell Command Button → <帳號>.github.io』版型與灌水徽章,疑似內容農場/導流手法,不選入(推測)。"
+    },
+    {
+      "full_name": "titisseptian-SS/omniroute-explorer",
+      "html_url": "https://github.com/titisseptian-SS/omniroute-explorer",
+      "stars": 37,
+      "selected": false,
+      "reason": "README 文字明顯由範本產生且語句破碎不完整(例如功能描述中出現無主詞的殘缺句),並採用與其他可疑倉庫相同的『PowerShell Installer → <帳號>.github.io』導流版型,可信度低,不選入(推測)。"
+    },
+    {
+      "full_name": "SenpaiSpide664/ai-visual-prompt-cookbook",
+      "html_url": "https://github.com/SenpaiSpide664/ai-visual-prompt-cookbook",
+      "stars": 36,
+      "selected": false,
+      "reason": "本質為提示詞收藏而非工具,且使用與同批次相同的『PowerShell Setup → <帳號>.github.io』可疑導流版型,不選入(推測)。"
+    },
+    {
+      "full_name": "thebodytheory01-commits/final-round-ai-desktop",
+      "html_url": "https://github.com/thebodytheory01-commits/final-round-ai-desktop",
+      "stars": 36,
+      "selected": false,
+      "reason": "徽章聲稱『USERS-184K』等明顯灌水數據,且使用與同批次可疑倉庫相同的 PowerShell 安裝器導流版型,可信度低,不選入(推測)。"
+    },
+    {
+      "full_name": "Ndarrr07/pro-llm-api-hub",
+      "html_url": "https://github.com/Ndarrr07/pro-llm-api-hub",
+      "stars": 35,
+      "selected": false,
+      "reason": "本質為免費 LLM API 清單/資料集而非工具,且採用與同批次相同的可疑『PowerShell Setup Button → <帳號>.github.io』導流版型,不選入(推測)。"
+    },
+    {
+      "full_name": "abhinavsaini1/grand-tour-codebase-walkthrough",
+      "html_url": "https://github.com/abhinavsaini1/grand-tour-codebase-walkthrough",
+      "stars": 35,
+      "selected": false,
+      "reason": "徽章聲稱『USERS-412』『RATE-4.5/5』等明顯灌水數據,且使用與同批次可疑倉庫相同的 PowerShell Setup Button 導流版型,不選入(推測)。"
+    },
+    {
+      "full_name": "jakubcurik/nano-banana",
+      "html_url": "https://github.com/jakubcurik/nano-banana",
+      "stars": 25,
+      "selected": true,
+      "reason": "小而實用,具備成本控制與多圖生成前確認的安全機制,設計成熟,選中。",
+      "summary": "Agent skill,整合 Google Gemini Nano Banana / Nano Banana Pro 模型進行圖片生成與編輯,內建成本估算與提示詞撰寫指南。",
+      "tech": "Gemini 圖像生成 API,Python + uv 管理環境,封裝為 Claude Code skill 格式。",
+      "feasibility": "需自備 Gemini API 金鑰,設定簡單,適合需要在 Claude Code 工作流程中直接產生/編輯圖片的情境。",
+      "limits": "依賴付費 API 額度;僅支援 Gemini 系列模型,非本地推理;單張成本超過 0.5 美元或生成超過 4 張圖需使用者額外同意,屬限制亦屬安全設計。"
+    },
+    {
+      "full_name": "RaphaelAI-OpenLab/awesome-magi-2-prompts",
+      "html_url": "https://github.com/RaphaelAI-OpenLab/awesome-magi-2-prompts",
+      "stars": 22,
+      "selected": false,
+      "reason": "本質為提示詞清單,且全文充滿導向商業網站 raphael.app 的 UTM 行銷追蹤連結,性質為行銷導流而非開源工具,不選入。"
+    }
+  ]
+}
